@@ -2,7 +2,7 @@
 <html lang="fa" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Pariya's Universe | دنیای اختصاصی پریا</title>
     <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;600;700;900&display=swap" rel="stylesheet">
     <style>
@@ -12,6 +12,7 @@
             --accent-purple: #8b5cf6;
             --accent-blue: #38bdf8;
             --accent-pink: #ec4899;
+            --accent-green: #10b981;
             --text-main: #f1f5f9;
             --text-muted: #94a3b8;
             --border: rgba(255, 255, 255, 0.08);
@@ -23,6 +24,7 @@
             padding: 0;
             font-family: 'Vazirmatn', sans-serif;
             scroll-behavior: smooth;
+            -webkit-tap-highlight-color: transparent;
         }
 
         body {
@@ -30,19 +32,63 @@
             color: var(--text-main);
             line-height: 1.8;
             overflow-x: hidden;
+            transition: background 0.4s ease;
         }
 
-        /* منوی بالای سایت */
+        /* دکمه شناور حالت Zen */
+        .zen-toggle-btn {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue));
+            color: white;
+            border: none;
+            padding: 12px 22px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            cursor: pointer;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* حالت Zen/Focus */
+        body.zen-mode .container, 
+        body.zen-mode header, 
+        body.zen-mode footer,
+        body.zen-mode .hero {
+            display: none !important;
+        }
+
+        .zen-screen {
+            display: none;
+            min-height: 100vh;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+            padding: 20px;
+        }
+
+        body.zen-mode .zen-screen {
+            display: flex;
+        }
+
+        /* هدر */
         header {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            background: rgba(10, 12, 16, 0.85);
-            backdrop-filter: blur(15px);
+            background: rgba(10, 12, 16, 0.9);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             border-bottom: 1px solid var(--border);
             z-index: 1000;
-            padding: 15px 5%;
+            padding: 12px 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -50,7 +96,7 @@
 
         .logo {
             font-weight: 900;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             background: linear-gradient(135deg, var(--accent-purple), var(--accent-pink));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -59,86 +105,175 @@
         nav a {
             color: var(--text-muted);
             text-decoration: none;
-            margin-right: 15px;
-            font-size: 0.85rem;
-            transition: color 0.3s;
+            margin-right: 12px;
+            font-size: 0.8rem;
         }
 
-        nav a:hover {
-            color: var(--text-main);
-        }
-
-        /* بخش هیرو / اصلی */
+        /* هیرو */
         .hero {
-            padding: 140px 20px 80px;
+            padding: 120px 20px 30px;
             text-align: center;
             max-width: 900px;
             margin: 0 auto;
         }
 
         .hero h1 {
-            font-size: 2.2rem;
+            font-size: 1.8rem;
             font-weight: 900;
-            margin-bottom: 15px;
-            letter-spacing: -0.5px;
+            margin-bottom: 12px;
         }
 
         .hero p {
             color: var(--text-muted);
-            font-size: 1rem;
-            max-width: 650px;
-            margin: 0 auto 30px;
+            font-size: 0.9rem;
+            max-width: 600px;
+            margin: 0 auto 20px;
         }
 
         .badge {
             display: inline-block;
-            padding: 6px 16px;
+            padding: 5px 14px;
             background: rgba(139, 92, 246, 0.15);
             border: 1px solid var(--accent-purple);
             color: #c4b5fd;
             border-radius: 30px;
-            font-size: 0.8rem;
-            margin-bottom: 20px;
+            font-size: 0.75rem;
+            margin-bottom: 12px;
         }
 
-        /* شبکه‌بندی محتوا (Grid) */
+        /* Grid */
         .container {
             max-width: 1100px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 15px;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
         }
 
         .card {
             background-color: var(--card-bg);
             border: 1px solid var(--border);
-            border-radius: 20px;
-            padding: 25px;
-            transition: transform 0.3s, border-color 0.3s;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(139, 92, 246, 0.4);
+            border-radius: 18px;
+            padding: 20px;
+            position: relative;
         }
 
         .card-title {
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: 700;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
         }
 
-        /* بخش ۱: اتاق تمرکز و صداها */
+        /* تست فرشته */
+        .verify-card {
+            grid-column: 1 / -1;
+            background: linear-gradient(135deg, rgba(18, 22, 32, 0.95), rgba(30, 27, 75, 0.5));
+            border: 1px solid var(--accent-purple);
+            border-radius: 18px;
+            padding: 25px 15px;
+            text-align: center;
+        }
+
+        .verify-box {
+            background: rgba(0,0,0,0.3);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 15px;
+            max-width: 550px;
+            margin: 15px auto 0;
+            min-height: 160px;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            margin-top: 15px;
+        }
+
+        .btn-yes {
+            background: linear-gradient(135deg, var(--accent-purple), var(--accent-pink));
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 0.85rem;
+        }
+
+        .btn-no {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-muted);
+            border: 1px solid var(--border);
+            padding: 10px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 0.85rem;
+        }
+
+        .verify-msg {
+            margin-top: 12px;
+            font-size: 0.85rem;
+            color: var(--accent-pink);
+            font-weight: 600;
+            min-height: 30px;
+        }
+
+        /* مود پیکر */
+        .mood-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-top: 12px;
+        }
+
+        .mood-btn {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--border);
+            color: var(--text-main);
+            padding: 12px 8px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            text-align: center;
+        }
+
+        /* حباب استرس */
+        .bubble-wrap {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+            margin-top: 15px;
+        }
+
+        .bubble {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: rgba(139, 92, 246, 0.2);
+            border: 1px solid var(--accent-purple);
+            cursor: pointer;
+            transition: transform 0.2s, opacity 0.2s;
+        }
+
+        .bubble.popped {
+            transform: scale(0);
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        /* صداها */
         .sound-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 10px;
-            margin-top: 15px;
+            margin-top: 12px;
         }
 
         .sound-btn {
@@ -150,188 +285,253 @@
             cursor: pointer;
             text-align: center;
             font-size: 0.85rem;
-            transition: 0.2s;
         }
 
         .sound-btn.playing {
-            background: var(--accent-purple);
-            border-color: var(--accent-purple);
+            background: linear-gradient(135deg, var(--accent-purple), var(--accent-pink));
+            border-color: transparent;
         }
 
-        /* بخش ۲: کارت‌های تاروت/فال */
+        /* فال */
         .tarot-flex {
             display: flex;
             gap: 10px;
             justify-content: center;
-            margin-top: 15px;
+            margin-top: 12px;
         }
 
         .tarot-card {
             flex: 1;
-            height: 120px;
+            height: 95px;
             background: linear-gradient(135deg, #1e1b4b, #311042);
             border: 1px dashed var(--accent-purple);
-            border-radius: 14px;
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             cursor: pointer;
-            transition: transform 0.4s;
-        }
-
-        .tarot-card:hover {
-            transform: scale(1.05);
         }
 
         .tarot-result {
-            margin-top: 15px;
-            background: rgba(0,0,0,0.3);
+            margin-top: 12px;
+            background: rgba(0,0,0,0.4);
             padding: 12px;
-            border-radius: 10px;
+            border-radius: 12px;
             font-size: 0.85rem;
             color: var(--accent-blue);
-            min-height: 50px;
+            min-height: 70px;
             text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(56, 189, 248, 0.2);
         }
 
-        /* بخش ۳: داشبورد و آمارها */
-        .stat-item {
-            margin-bottom: 15px;
+        /* کپسول راز */
+        .capsule-box {
+            text-align: center;
+            padding: 15px;
+            background: rgba(0,0,0,0.3);
+            border-radius: 14px;
+            border: 1px dashed var(--accent-blue);
+            margin-top: 12px;
         }
 
+        .capsule-btn {
+            background: var(--accent-blue);
+            color: #000;
+            border: none;
+            padding: 8px 18px;
+            border-radius: 20px;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 10px;
+            font-size: 0.8rem;
+        }
+
+        /* آمارها */
+        .stat-item { margin-bottom: 12px; }
         .stat-label {
             display: flex;
             justify-content: space-between;
             font-size: 0.8rem;
             color: var(--text-muted);
-            margin-bottom: 5px;
+            margin-bottom: 4px;
         }
-
         .progress-bar {
             width: 100%;
-            height: 8px;
+            height: 7px;
             background: rgba(255, 255, 255, 0.05);
             border-radius: 10px;
             overflow: hidden;
         }
-
         .progress-fill {
             height: 100%;
             background: linear-gradient(90deg, var(--accent-purple), var(--accent-pink));
             border-radius: 10px;
         }
 
-        /* بخش ۴: یادداشت‌ها / مقالات */
-        .article-card {
-            grid-column: 1 / -1;
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            border-radius: 20px;
-            padding: 30px;
-            margin-top: 20px;
-        }
-
-        .article-title {
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: var(--text-main);
-            margin-bottom: 10px;
-        }
-
-        .article-body {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            line-height: 1.9;
-        }
-
-        /* فوتر */
         footer {
             text-align: center;
-            padding: 40px 20px;
+            padding: 30px 20px;
             border-top: 1px solid var(--border);
             color: var(--text-muted);
-            font-size: 0.8rem;
-            margin-top: 60px;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 1.7rem; }
-            .container { grid-template-columns: 1fr; }
+            font-size: 0.75rem;
+            margin-top: 40px;
         }
     </style>
 </head>
 <body>
 
+    <!-- دکمه شناور حالت Zen -->
+    <button class="zen-toggle-btn" onclick="toggleZen()">
+        <span>🧘‍♀️</span>
+        <span id="zenBtnText">حالت سکوتِ مطلق</span>
+    </button>
+
+    <!-- صفحه اختصاصی حالت سکوت -->
+    <div class="zen-screen">
+        <h1 style="font-size: 2rem; margin-bottom: 15px; color: var(--accent-blue);">منطقه سکوت و ریلکسیشن</h1>
+        <p style="color: var(--text-muted); max-width: 450px; margin-bottom: 25px; font-size: 0.9rem;">تمام هیاهوی صفحه خاموش شد. فقط تو هستی و آرامش. یک چای بنوش و ریلکس کن. 🤍</p>
+        <button class="sound-btn" style="padding: 12px 25px; font-weight: 700;" onclick="toggleSound('rain', this)">🌧️ پخش صدای باران ملایم</button>
+    </div>
+
     <!-- هدر -->
     <header>
         <div class="logo">PARIYA.SPACE</div>
         <nav>
-            <a href="#focus">اتاق تمرکز</a>
-            <a href="#tarot">فال فرکانس</a>
-            <a href="#notes">یادداشت‌ها</a>
+            <a href="#verify">فرشته</a>
+            <a href="#mood">مود</a>
+            <a href="#focus">صدا</a>
         </nav>
     </header>
 
-    <!-- بخش اصلی / هیرو -->
+    <!-- هیرو -->
     <section class="hero">
         <div class="badge">ایستگاه اختصاصی درون‌گرایی و آرامش</div>
-        <h1>فضای شخصی برای فرار از شلوغی‌های روزمره</h1>
-        <p>یک مجموعه سفارشی شامل ابزارهای تمرکز، فضا‌سازی صوتی و یادداشت‌های ثبت‌شده برای پریا. بدون هیاهو، فقط آرامش و کیفیت.</p>
+        <h1>فضای شخصی برای فرار از شلوغی‌ها</h1>
+        <p>یک مجموعه کامل، اختصاصی و پر از انرژی‌های باحال برای پریا. بدون هیاهو، فقط رفاقت و آرامش.</p>
     </section>
 
-    <!-- شبکه‌بندی ابزارها -->
+    <!-- شبکه‌بندی -->
     <div class="container">
 
-        <!-- بخش اتاق تمرکز -->
+        <!-- ۱. تست هوشمند فرشته بودن -->
+        <div class="verify-card" id="verify">
+            <div class="badge" style="background: rgba(16, 185, 129, 0.15); border-color: var(--accent-green); color: #6ee7b7;">احراز هویت هوشمند</div>
+            <h2>🔒 تست راستی‌آزمایی: انسان یا فرشته؟</h2>
+            <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 4px;">لطفاً جهت ورود کامل به سایت، هویت خودت رو تایید کن:</p>
+            
+            <div class="verify-box">
+                <p id="questionText" style="font-weight: 700; font-size: 0.95rem;">سوال ۱: آیا شما یک انسان معمولی هستید یا یک فرشته مهربان؟</p>
+                
+                <div class="btn-group">
+                    <button class="btn-yes" onclick="answerAngel()">👼 قطعا فرشته هستم</button>
+                    <button class="btn-no" id="noBtn" onclick="failAngel()">👤 خیر، انسانم</button>
+                </div>
+                <div class="verify-msg" id="verifyMsg"></div>
+            </div>
+        </div>
+
+        <!-- ۲. مود امروز -->
+        <div class="card" id="mood">
+            <div class="card-title">
+                <span>🎭</span>
+                <span>مود و حس‌وحال امروزت؟</span>
+            </div>
+            <p style="font-size: 0.78rem; color: var(--text-muted);">حالت رو انتخاب کن تا فرکانس صفحه باهات ست بشه:</p>
+            <div class="mood-grid">
+                <button class="mood-btn" onclick="setMood('quiet')">🤫 سکوت مطلق</button>
+                <button class="mood-btn" onclick="setMood('tired')">🔋 خسته از آدما</button>
+                <button class="mood-btn" onclick="setMood('chill')">🎧 فقط ریلکس</button>
+                <button class="mood-btn" onclick="setMood('happy')">✨ حس خوب</button>
+            </div>
+            <div id="moodOutput" style="margin-top: 10px; font-size: 0.8rem; color: var(--accent-purple); font-weight: 600;"></div>
+        </div>
+
+        <!-- ۳. حباب‌های تخلیه استرس -->
+        <div class="card">
+            <div class="card-title">
+                <span>🧼</span>
+                <span>تخلیه ذهن و استرس‌زدایی</span>
+            </div>
+            <p style="font-size: 0.78rem; color: var(--text-muted);">روی حباب‌ها بزن تا بترکن و ذهنت آروم بشه:</p>
+            <div class="bubble-wrap">
+                <div class="bubble" onclick="popBubble(this)"></div>
+                <div class="bubble" onclick="popBubble(this)"></div>
+                <div class="bubble" onclick="popBubble(this)"></div>
+                <div class="bubble" onclick="popBubble(this)"></div>
+                <div class="bubble" onclick="popBubble(this)"></div>
+                <div class="bubble" onclick="popBubble(this)"></div>
+                <div class="bubble" onclick="popBubble(this)"></div>
+                <div class="bubble" onclick="popBubble(this)"></div>
+            </div>
+            <div style="text-align: center; margin-top: 10px;">
+                <button style="background: none; border: none; color: var(--text-muted); font-size: 0.75rem; cursor: pointer;" onclick="resetBubbles()">تجدید حباب‌ها 🔄</button>
+            </div>
+        </div>
+
+        <!-- ۴. اتاق صداها -->
         <div class="card" id="focus">
             <div class="card-title">
                 <span>🎧</span>
-                <span>اتاق صداهای آرامش (Focus Room)</span>
+                <span>اتاق صداهای واقعی (Focus)</span>
             </div>
-            <p style="font-size: 0.8rem; color: var(--text-muted);">صداهای دلخواهت را ترکیب کن تا فضای تمرکز یا استراحتت ساخته بشه:</p>
+            <p style="font-size: 0.78rem; color: var(--text-muted);">صداها رو روشن کن (قابل ترکیب):</p>
             <div class="sound-grid">
-                <button class="sound-btn" onclick="toggleSound('rain', this)">🌧️ باران ملایم</button>
-                <button class="sound-btn" onclick="toggleSound('cafe', this)">☕ فضای کافه</button>
-                <button class="sound-btn" onclick="toggleSound('fire', this)">🔥 شومینه</button>
-                <button class="sound-btn" onclick="toggleSound('waves', this)">🌊 امواج دریا</button>
+                <button class="sound-btn" onclick="toggleSound('rain', this)">🌧️ باران</button>
+                <button class="sound-btn" onclick="toggleSound('waves', this)">🌊 دریا</button>
+                <button class="sound-btn" onclick="toggleSound('birds', this)">🕊️ جنگل</button>
+                <button class="sound-btn" onclick="toggleSound('night', this)">🌙 شب</button>
             </div>
         </div>
 
-        <!-- بخش فال / کارت‌ها -->
+        <!-- ۵. کارت‌های فال خودمونی -->
         <div class="card" id="tarot">
             <div class="card-title">
                 <span>🔮</span>
-                <span>فال روزانه فرکانس</span>
+                <span>فال گردونِ فرکانس</span>
             </div>
-            <p style="font-size: 0.8rem; color: var(--text-muted);">یک کارت را انتخاب کن تا پیام امروزت صادر بشه:</p>
+            <p style="font-size: 0.78rem; color: var(--text-muted);">روی یک کارت بزن تا پیام امروزت رو ببینی:</p>
             <div class="tarot-flex">
-                <div class="tarot-card" onclick="drawTarot(1)">🎴</div>
-                <div class="tarot-card" onclick="drawTarot(2)">🎴</div>
-                <div class="tarot-card" onclick="drawTarot(3)">🎴</div>
+                <div class="tarot-card" onclick="drawTarot()">🎴</div>
+                <div class="tarot-card" onclick="drawTarot()">🎴</div>
+                <div class="tarot-card" onclick="drawTarot()">🎴</div>
             </div>
-            <div class="tarot-result" id="tarotText">کارتت رو انتخاب کن...</div>
+            <div class="tarot-result" id="tarotText">یکی از کارت‌ها رو بزن...</div>
         </div>
 
-        <!-- بخش شاخص‌های درون‌گرایی -->
+        <!-- ۶. کپسول راز روزانه -->
+        <div class="card">
+            <div class="card-title">
+                <span>🎁</span>
+                <span>کپسول راز روزانه</span>
+            </div>
+            <div class="capsule-box">
+                <p id="capsuleText" style="font-size: 0.8rem; color: var(--text-muted);">یک پیام قفل‌شده برای امروز وجود داره...</p>
+                <button class="capsule-btn" id="capsuleBtn" onclick="openCapsule()">بازکردن کپسول 🔓</button>
+            </div>
+        </div>
+
+        <!-- ۷. وضعیت فرکانس -->
         <div class="card">
             <div class="card-title">
                 <span>📊</span>
-                <span>وضعیت فرکانس روحی (Live Metrics)</span>
+                <span>وضعیت فرکانس روحی (Live)</span>
             </div>
             
             <div class="stat-item">
                 <div class="stat-label">
-                    <span>نیازمند سکوت و آرامش</span>
-                    <span>95%</span>
+                    <span>نیازمند سکوت و هندزفری</span>
+                    <span>98%</span>
                 </div>
-                <div class="progress-bar"><div class="progress-fill" style="width: 95%;"></div></div>
+                <div class="progress-bar"><div class="progress-fill" style="width: 98%;"></div></div>
             </div>
 
             <div class="stat-item">
                 <div class="stat-label">
-                    <span>کیفیت دوستی و معرفت</span>
+                    <span>خفنی و معرفت بی‌درنگ</span>
                     <span>100%</span>
                 </div>
                 <div class="progress-bar"><div class="progress-fill" style="width: 100%;"></div></div>
@@ -340,43 +540,77 @@
             <div class="stat-item">
                 <div class="stat-label">
                     <span>صبر در برابر آدم‌های رو اعصاب</span>
-                    <span>12%</span>
+                    <span>10%</span>
                 </div>
-                <div class="progress-bar"><div class="progress-fill" style="width: 12%;"></div></div>
-            </div>
-        </div>
-
-        <!-- مقالات / یادداشت‌های دلی -->
-        <div class="article-card" id="notes">
-            <div class="badge" style="background: rgba(236, 72, 153, 0.15); border-color: var(--accent-pink); color: #fbcfe8;">یادداشت اصلی</div>
-            <h2 class="article-title">درباره کیفیت، سکوت و رفاقت‌های واقعی</h2>
-            <div class="article-body">
-                پریا خانم سلام!<br><br>
-                توی دنیایی که همه ادای شلوغ بودن و حرف‌های قلم‌سلمبه رو درمیارن، آدم‌هایی که بی‌کلک، آروم و باکیفیتن خیلی نایابن. این وب‌سایت رو نه با چند تا کد پیش‌فرض، بلکه به عنوان یک فضای اختصاصی و واقعی ساختم تا هر وقت خواستی کمی از شلوغی‌های دور و برت فاصله بگیری، یک کنجِ دنج برای خودت داشته باشی.<br><br>
-                از اتاق صداهای آرامش گرفته تا کارت‌ها و یادداشت‌ها، همه طوری چیده شدن که حس خوب و لبخند بیارن روی لبت. مرسی که هستی و با همون رفتار با معرفتت، فرکانس دوستیت همیشه ثابته. خنده‌هات دائمی! 🤍
+                <div class="progress-bar"><div class="progress-fill" style="width: 10%;"></div></div>
             </div>
         </div>
 
     </div>
 
-    <!-- فوتر -->
     <footer>
         <p>طراحی و توسعه‌یافته به صورت اختصاصی برای پریا • ۲۰۲۶</p>
-        <p style="margin-top: 5px; opacity: 0.5;">تمامی حقوق و فرکانس‌های این صفحه محفوظ است.</p>
     </footer>
 
     <!-- فایل‌های صوتی -->
-    <audio id="sound-rain" loop src="https://www.soundjay.com/nature/sounds/rain-01.mp3"></audio>
-    <audio id="sound-cafe" loop src="https://www.soundjay.com/ambient/sounds/boarding-lounge-1.mp3"></audio>
-    <audio id="sound-fire" loop src="https://www.soundjay.com/nature/sounds/fire-1.mp3"></audio>
-    <audio id="sound-waves" loop src="https://www.soundjay.com/nature/sounds/ocean-wave-1.mp3"></audio>
+    <audio id="sound-rain" loop src="https://assets.mixkit.co/active_storage/sfx/2515/2515-preview.mp3"></audio>
+    <audio id="sound-waves" loop src="https://assets.mixkit.co/active_storage/sfx/1189/1189-preview.mp3"></audio>
+    <audio id="sound-birds" loop src="https://assets.mixkit.co/active_storage/sfx/2437/2437-preview.mp3"></audio>
+    <audio id="sound-night" loop src="https://assets.mixkit.co/active_storage/sfx/2438/2438-preview.mp3"></audio>
 
     <script>
-        // مدیریت صداها
+        function toggleZen() {
+            document.body.classList.toggle('zen-mode');
+            const btnText = document.getElementById('zenBtnText');
+            btnText.innerText = document.body.classList.contains('zen-mode') ? "خروج از حالت سکوت" : "حالت سکوتِ مطلق";
+        }
+
+        function setMood(type) {
+            const out = document.getElementById('moodOutput');
+            if(type === 'quiet') out.innerText = "🤫 سیستم تنظیم شد: حالت سکوت. هندزفری رو بزار و کلا بی‌خیال دنیا!";
+            if(type === 'tired') out.innerText = "🔋 سیستم تنظیم شد: بی‌محلی ۱۰۰٪ به آدم‌های رو اعصاب فعال شد!";
+            if(type === 'chill') out.innerText = "🎧 سیستم تنظیم شد: لوفای ریلکسیشن. فقط چای و آهنگ!";
+            if(type === 'happy') out.innerText = "✨ سیستم تنظیم شد: انرژی مثبت بالا! خنده‌هات دائمی پریا جان 😄";
+        }
+
+        function popBubble(b) {
+            b.classList.add('popped');
+        }
+        
+        function resetBubbles() {
+            document.querySelectorAll('.bubble').forEach(b => b.classList.remove('popped'));
+        }
+
+        let currentQ = 1;
+        function failAngel() {
+            const msg = document.getElementById('verifyMsg');
+            const qText = document.getElementById('questionText');
+            
+            if (currentQ === 1) {
+                msg.innerText = "❌ ارور سیستم: پرییی اذیت نکننن! بزن رو گزینه فرشته هستم 😅";
+                qText.innerText = "سوال ۲: سیستم داره داد میزنه کدهای این صفحه مال یک فرشته‌ست. بازم لجبازی میکنی؟";
+                currentQ = 2;
+            } else if (currentQ === 2) {
+                msg.innerText = "⚠️ سیستم قفل کرد! دکمه انسان بودن خرابه، فقط فرشته کار میکنه! 😎";
+                qText.innerText = "سوال ۳: کوتاه بیا دیگه، قبول داری فرشته‌ای؟";
+                currentQ = 3;
+            } else {
+                msg.innerText = "🚫 دکمه انسان بودن کار نمیکنه! سریع بزن فرشته‌ام تموم شه بره! 👼";
+            }
+        }
+
+        function answerAngel() {
+            const msg = document.getElementById('verifyMsg');
+            const qText = document.getElementById('questionText');
+            qText.innerText = "🎉 آفرین! بالاخره اعتراف کردی!";
+            msg.style.color = "#10b981";
+            msg.innerText = "✅ تایید شد! شما فرشته‌ی رسمی این سایتی ✨";
+        }
+
         function toggleSound(type, btn) {
             const audio = document.getElementById(`sound-${type}`);
             if (audio.paused) {
-                audio.play();
+                audio.play().catch(()=>{});
                 btn.classList.add('playing');
             } else {
                 audio.pause();
@@ -384,19 +618,37 @@
             }
         }
 
-        // فال کارت‌ها
-        const tarotMessages = [
-            "کارت ۱: «امروز قانون اینه که به هیچ چیزِ رو اعصابی اهمیت ندی. چای یا قهوه‌ت رو با آرامش بخور!» ☕",
-            "کارت ۲: «یک حس خوب یا یک اتفاق آروم تو راهه. انرژی درون‌گراییت رو ۱۰۰٪ حفظ کن!» ✨",
-            "کارت ۳: «فرمان سیستم: امروز وقتِ اینه که کارهای سخت رو تعطیل کنی و فقط آهنگ‌های مورد علاقه‌ت رو گوش بدی!» 🎧"
+        const fortunes = [
+            "پریا خانوم، توی دنیایی که خیلی‌ها شوآف می‌دن، این آروم بودن و باکیفیت بودنِ خودت تهِ خفنیه! امروز فقط چایت رو بنوش ☕✨",
+            "قانون امروز: هیچ‌کس حق نداره رو اعصابت بره. اگه کسی حرف بی‌ربط زد، تو دلت بگو «اصلا تو خوبی!» و رد شو 😎",
+            "فرکانس امروز: ارزش آدمی مثل تو به دلِ پاک و خونسردیته. امروز فقط هندزفری بذار و حالشو ببر 🎧",
+            "فرمان روز: امروز هیچ کارِ اعصاب‌خوردکنی انجام نده. تو کلاً برای آرامش آفریده شدی 🍃",
+            "پریا جان! همین که انقدر بی‌کلک و بامعرفتی باعث میشه رفاقتت باارزش‌ترین چیز باشه 🤍",
+            "ارزیابی هوشمند: سطح خفن بودن و باارزش بودنت ۱۰۰٪ تایید شد! 😄"
         ];
 
-        function drawTarot(index) {
+        function drawTarot() {
             const resultBox = document.getElementById('tarotText');
-            resultBox.innerText = "در حال تحلیل فرکانس کارت...";
+            resultBox.innerText = "در حال خواندن فرکانس...";
             setTimeout(() => {
-                resultBox.innerText = tarotMessages[index - 1];
-            }, 500);
+                const randomFortune = fortunes[Math.floor(Math.random() * fortunes.length)];
+                resultBox.innerText = randomFortune;
+            }, 250);
+        }
+
+        const capsuleMessages = [
+            "✨ یادآوری امروز: همیشه خودِ واقعیت بمون! همون پریا‌ی آروم، باکیفیت و بی‌کلک 🤍",
+            "✨ پیام کپسول: هیچ‌وقت اجازه نده حرف‌های رو اعصاب، آرامشت رو بهم بزنن! تو خفن‌تر از این حرفایی 😎",
+            "✨ راز امروز: دنیا به آدم‌های آروم و با معرفتی مثل تو بیشتر نیاز داره. دمت گرم که هستی! ☕"
+        ];
+
+        function openCapsule() {
+            const capsuleText = document.getElementById('capsuleText');
+            const btn = document.getElementById('capsuleBtn');
+            const randomCapsule = capsuleMessages[Math.floor(Math.random() * capsuleMessages.length)];
+            capsuleText.innerHTML = randomCapsule;
+            capsuleText.style.color = "#38bdf8";
+            btn.innerText = "یک پیام دیگه 🔄";
         }
     </script>
 </body>
