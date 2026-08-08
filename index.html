@@ -3,823 +3,636 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Pariya's Universe | معبد تاریک و عمیقِ کلمات</title>
-    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;600;700;900&family=Amiri:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <title>Pariya's Universe | معبد تاریک، کهکشانی و سلطنتی پریا</title>
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
     <style>
         :root {
-            --bg-dark: #05070b;
-            --card-bg: rgba(12, 16, 25, 0.85);
+            --bg-dark: #020408;
+            --card-bg: rgba(10, 14, 23, 0.88);
             --accent-purple: #9333ea;
-            --accent-blue: #0ea5e9;
-            --accent-amber: #d97706;
-            --accent-rose: #f43f5e;
-            --text-main: #f1f5f9;
+            --accent-gold: #fbbf24;
+            --accent-glow: rgba(147, 51, 234, 0.35);
+            --text-main: #f8fafc;
             --text-muted: #94a3b8;
             --border: rgba(255, 255, 255, 0.08);
         }
 
         * {
-            box-sizing: border-box;
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
             font-family: 'Vazirmatn', sans-serif;
-            scroll-behavior: smooth;
             -webkit-tap-highlight-color: transparent;
         }
 
         body {
             background-color: var(--bg-dark);
             color: var(--text-main);
-            line-height: 2;
             overflow-x: hidden;
-            background-image: 
-                radial-gradient(circle at 10% 10%, rgba(147, 51, 234, 0.05) 0%, transparent 50%),
-                radial-gradient(circle at 90% 90%, rgba(14, 165, 233, 0.05) 0%, transparent 50%);
-            background-attachment: fixed;
-            transition: background 0.8s ease;
+            position: relative;
+            min-height: 100vh;
         }
 
-        /* حالت اتاق شب / میز خراشیده نویسنده */
-        body.desk-mode {
-            --bg-dark: #020305;
-            --card-bg: rgba(8, 10, 15, 0.95);
-            background-image: radial-gradient(circle at 50% 20%, rgba(217, 119, 6, 0.03) 0%, transparent 70%);
-        }
-
-        .desk-toggle-btn {
+        /* 1. دروازه ورودی قفل و تایید فرشته بودن (Gate Screen) */
+        #gateScreen {
             position: fixed;
-            bottom: 25px;
-            left: 25px;
-            background: linear-gradient(135deg, #1e1b4b, #311042);
-            color: #e2e8f0;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: #020408;
+            z-index: 99999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            transition: opacity 0.8s ease, visibility 0.8s ease;
+        }
+        #gateScreen.fade-out {
+            opacity: 0;
+            visibility: hidden;
+        }
+        .gate-box {
+            background: rgba(15, 23, 42, 0.95);
             border: 1px solid rgba(147, 51, 234, 0.4);
-            padding: 12px 24px;
-            border-radius: 40px;
-            font-weight: 700;
-            font-size: 0.85rem;
-            cursor: pointer;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.8);
-            z-index: 2000;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            backdrop-filter: blur(10px);
-            transition: all 0.3s ease;
-        }
-        .desk-toggle-btn:hover {
-            border-color: var(--accent-purple);
-            transform: translateY(-2px);
-        }
-
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
+            border-radius: 30px;
+            padding: 3rem 2.5rem;
+            max-width: 480px;
             width: 100%;
-            background: rgba(5, 7, 11, 0.9);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.9);
             backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--border);
-            z-index: 1000;
-            padding: 16px 6%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        }
+        .gate-title {
+            font-size: 1.5rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #fff, #c084fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .gate-desc {
+            font-size: 0.92rem;
+            color: var(--text-muted);
+            line-height: 2;
+            margin-bottom: 2rem;
+        }
+        .gate-btn {
+            background: linear-gradient(135deg, #9333ea, #4f46e5);
+            color: white;
+            border: none;
+            padding: 1rem 2.5rem;
+            font-size: 1rem;
+            font-weight: 800;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 10px 25px rgba(147, 51, 234, 0.5);
+            transition: 0.3s;
+            width: 100%;
+        }
+        .gate-btn:hover {
+            transform: scale(1.03);
+            box-shadow: 0 15px 35px rgba(147, 51, 234, 0.8);
         }
 
-        .logo {
+        /* افکت نوری موس */
+        .cursor-glow {
+            position: fixed;
+            width: 350px; height: 350px;
+            background: radial-gradient(circle, rgba(147, 51, 234, 0.1) 0%, rgba(251, 191, 36, 0.03) 50%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            z-index: 9998;
+            mix-blend-mode: screen;
+        }
+
+        .bg-glow {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at 50% 20%, #1e1b4b 0%, #020408 80%);
+            z-index: -2;
+        }
+
+        .stars {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+        .star {
+            position: absolute;
+            background: #ffffff;
+            border-radius: 50%;
+            animation: twinkle 3s infinite ease-in-out;
+        }
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.1; transform: scale(0.8); }
+            50% { opacity: 0.8; transform: scale(1.2); }
+        }
+
+        /* هدر */
+        header {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .angel-badge {
+            background: rgba(147, 51, 234, 0.15);
+            color: #d8b4fe;
+            border: 1px solid rgba(147, 51, 234, 0.35);
+            padding: 0.6rem 1.8rem;
+            border-radius: 50px;
+            font-size: 0.95rem;
+            margin-bottom: 1.8rem;
+            box-shadow: 0 0 25px rgba(147, 51, 234, 0.25);
+            animation: pulse-badge 2s infinite ease-in-out;
+        }
+        @keyframes pulse-badge {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.04); }
+        }
+
+        h1 {
+            font-size: clamp(2.3rem, 5vw, 4rem);
             font-weight: 900;
-            font-size: 1.1rem;
-            letter-spacing: 2px;
-            background: linear-gradient(135deg, #c084fc, #38bdf8);
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #ffffff 20%, #c084fc 80%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        .hero {
-            padding: 150px 20px 40px;
-            text-align: center;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .hero h1 {
-            font-size: 2.2rem;
-            font-weight: 900;
-            margin-bottom: 15px;
-            line-height: 1.5;
-            letter-spacing: -0.5px;
-        }
-
-        .hero p {
+        p.subtitle {
+            font-size: clamp(0.95rem, 2vw, 1.15rem);
             color: var(--text-muted);
-            font-size: 1rem;
             max-width: 650px;
-            margin: 0 auto;
-            font-family: 'Amiri', serif;
-            font-style: italic;
+            line-height: 2.2;
+            margin-bottom: 2.5rem;
         }
 
-        .badge {
-            display: inline-block;
-            padding: 6px 18px;
-            background: rgba(147, 51, 234, 0.1);
-            border: 1px solid rgba(147, 51, 234, 0.3);
-            color: #d8b4fe;
-            border-radius: 30px;
-            font-size: 0.8rem;
-            margin-bottom: 20px;
-            letter-spacing: 1px;
+        /* پلیر پیشرفته با دو حالت صوتی */
+        .player-container {
+            background: var(--card-bg);
+            border: 1px solid rgba(147, 51, 234, 0.25);
+            backdrop-filter: blur(16px);
+            padding: 1.5rem 2rem;
+            border-radius: 24px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+            max-width: 440px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .player-top {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+        }
+        .play-btn {
+            background: linear-gradient(135deg, #9333ea, #4f46e5);
+            color: white;
+            border: none;
+            width: 55px; height: 55px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            transition: 0.3s;
+            box-shadow: 0 0 20px rgba(147, 51, 234, 0.5);
+            flex-shrink: 0;
+        }
+        .play-btn:hover { transform: scale(1.08); }
+        .track-info { text-align: right; flex-grow: 1; }
+        .track-title { font-weight: 700; font-size: 0.95rem; color: #f1f5f9; }
+        .track-desc { font-size: 0.78rem; color: #c084fc; margin-top: 2px; }
+        .audio-modes {
+            display: flex; gap: 8px; border-top: 1px solid var(--border); padding-top: 10px;
+        }
+        .mode-btn {
+            flex: 1; background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border);
+            color: var(--text-muted); padding: 8px; border-radius: 12px; font-size: 0.75rem;
+            cursor: pointer; transition: 0.3s; font-weight: 600;
+        }
+        .mode-btn.active {
+            background: rgba(147, 51, 234, 0.2); border-color: rgba(147, 51, 234, 0.5); color: white;
         }
 
+        /* ساختار عمومی کارت‌ها */
         .container {
-            max-width: 1150px;
+            max-width: 1100px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 4rem 1.5rem;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+            gap: 2rem;
         }
 
         .card {
             background: var(--card-bg);
-            backdrop-filter: blur(15px);
             border: 1px solid var(--border);
             border-radius: 24px;
-            padding: 26px;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
             position: relative;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-            transition: transform 0.3s ease, border-color 0.3s ease;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 3px;
+            background: linear-gradient(90deg, transparent, var(--accent-purple), transparent);
+            opacity: 0; transition: 0.4s;
         }
         .card:hover {
-            border-color: rgba(255,255,255,0.15);
+            transform: translateY(-8px);
+            border-color: rgba(147, 51, 234, 0.35);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
         }
+        .card:hover::before { opacity: 1; }
+        .card-icon { font-size: 2.5rem; margin-bottom: 1.2rem; }
+        .card h3 { font-size: 1.2rem; color: #f8fafc; margin-bottom: 0.8rem; }
+        .card p { font-size: 0.92rem; color: var(--text-muted); line-height: 1.9; }
 
-        .card-title {
-            font-size: 1.1rem;
-            font-weight: 700;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            color: #f8fafc;
+        /* بخش ویژه: افتخار رئال مادرید (طرفدار رئال) */
+        .real-madrid-section {
+            max-width: 1100px;
+            margin: 0 auto 4rem;
+            padding: 0 1.5rem;
         }
-
-        /* بخش ماشین تحریر چهار صفحه شاهکار */
-        .writer-card {
-            grid-column: 1 / -1;
-            background: linear-gradient(145deg, rgba(13, 15, 24, 0.95), rgba(7, 9, 15, 0.98));
-            border: 1px solid rgba(147, 51, 234, 0.25);
+        .real-card {
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.9), rgba(30, 41, 59, 0.95));
+            border: 1px solid rgba(251, 191, 36, 0.3);
             border-radius: 28px;
-            padding: 35px;
+            padding: 3rem 2.5rem;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
             position: relative;
             overflow: hidden;
         }
-        .writer-card::before {
+        .real-card::before {
             content: '';
             position: absolute;
-            top: 0; right: 0; width: 100%; height: 3px;
-            background: linear-gradient(90deg, var(--accent-purple), var(--accent-blue));
+            top: 0; left: 0; width: 100%; height: 3px;
+            background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
         }
-
-        .page-tabs {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 22px;
-            flex-wrap: wrap;
-        }
-
-        .page-tab-btn {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid var(--border);
-            color: var(--text-muted);
-            padding: 10px 18px;
-            border-radius: 14px;
-            cursor: pointer;
-            font-size: 0.82rem;
-            font-weight: 600;
-            transition: all 0.3s;
-        }
-        .page-tab-btn:hover {
-            color: white;
-            background: rgba(255,255,255,0.06);
-        }
-        .page-tab-btn.active {
-            background: linear-gradient(135deg, var(--accent-purple), #7e22ce);
-            color: white;
-            border-color: rgba(147, 51, 234, 0.5);
-            box-shadow: 0 8px 20px rgba(147, 51, 234, 0.3);
-        }
-
-        .typewriter-text {
-            font-family: 'Amiri', serif;
-            font-size: 1.25rem;
-            font-style: italic;
-            color: #e2e8f0;
-            line-height: 2.3;
-            min-height: 150px;
-            border-right: 2px solid var(--accent-purple);
-            padding-right: 15px;
-            text-align: justify;
-        }
-
-        /* چالش روان‌شناختی پیشرفته: فرشته یا نابغه */
-        .angel-test-card {
-            grid-column: 1 / -1;
-            background: linear-gradient(145deg, rgba(18, 14, 30, 0.9), rgba(10, 12, 20, 0.95));
-            border: 1px solid rgba(14, 165, 233, 0.3);
-            border-radius: 28px;
-            padding: 35px;
-        }
-
-        .test-console {
-            background: rgba(0, 0, 0, 0.5);
-            border: 1px solid var(--border);
+        .real-badge {
+            display: inline-block;
+            background: rgba(251, 191, 36, 0.1);
+            color: #fde047;
+            border: 1px solid rgba(251, 191, 36, 0.3);
+            padding: 5px 16px;
             border-radius: 20px;
-            padding: 25px;
-            margin-top: 18px;
-        }
-
-        .test-question {
-            font-family: 'Amiri', serif;
-            font-size: 1.15rem;
-            color: #f1f5f9;
-            margin-bottom: 20px;
-            line-height: 1.9;
-        }
-
-        .test-options {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 12px;
-        }
-
-        .test-btn {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid var(--border);
-            color: var(--text-main);
-            padding: 14px 18px;
-            border-radius: 14px;
-            cursor: pointer;
-            font-size: 0.85rem;
-            text-align: right;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-        .test-btn:hover {
-            background: rgba(14, 165, 233, 0.1);
-            border-color: var(--accent-blue);
-            transform: translateY(-2px);
-        }
-
-        .test-feedback {
-            margin-top: 20px;
-            padding: 15px 20px;
-            border-radius: 12px;
-            background: rgba(14, 165, 233, 0.08);
-            border: 1px solid rgba(14, 165, 233, 0.2);
-            font-size: 0.9rem;
-            color: #38bdf8;
-            display: none;
-        }
-
-        /* پیانوی بی‌کلام و ساندترک‌های حرفه‌ای خارجی */
-        .sound-list {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            margin-top: 15px;
-        }
-
-        .sound-row {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid var(--border);
-            padding: 14px 18px;
-            border-radius: 14px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        .sound-row:hover {
-            background: rgba(255, 255, 255, 0.05);
-            border-color: rgba(255, 255, 255, 0.15);
-        }
-        .sound-row.playing {
-            background: linear-gradient(135deg, rgba(147, 51, 234, 0.15), rgba(14, 165, 233, 0.15));
-            border-color: var(--accent-purple);
-        }
-        .sound-info {
-            display: flex;
-            flex-direction: column;
-            gap: 2px;
-        }
-        .sound-name {
-            font-weight: 700;
-            font-size: 0.9rem;
-        }
-        .sound-desc {
-            font-size: 0.72rem;
-            color: var(--text-muted);
-            font-family: 'Amiri', serif;
-            font-style: italic;
-        }
-        .play-indicator {
-            font-size: 0.8rem;
-            color: var(--accent-blue);
+            font-size: 0.82rem;
+            margin-bottom: 1rem;
             font-weight: 700;
         }
 
-        /* اتاق تخلیه ذهن مینیمال و تاریک (جایگزین حباب‌ها) */
-        .purge-box {
-            margin-top: 15px;
+        /* کهکشان یادداشت‌ها */
+        .universe-notes-section {
+            max-width: 800px;
+            margin: 0 auto 4rem;
+            padding: 0 1.5rem;
+            text-align: center;
         }
-        .purge-textarea {
-            width: 100%;
-            height: 110px;
-            background: rgba(0,0,0,0.4);
+        .notes-box {
+            background: var(--card-bg);
             border: 1px solid var(--border);
-            border-radius: 14px;
-            padding: 14px;
-            color: white;
-            font-size: 0.85rem;
-            resize: none;
-            outline: none;
-            font-family: 'Amiri', serif;
-            line-height: 1.8;
+            border-radius: 24px;
+            padding: 2.5rem;
+            backdrop-filter: blur(15px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+        }
+        .notes-input-group {
+            display: flex; gap: 10px; margin-top: 1.5rem;
+        }
+        .note-input {
+            flex-grow: 1; background: rgba(0, 0, 0, 0.4);
+            border: 1px solid var(--border); border-radius: 14px;
+            padding: 12px 18px; color: white; font-size: 0.9rem; outline: none;
             transition: border-color 0.3s;
         }
-        .purge-textarea:focus {
-            border-color: var(--accent-purple);
+        .note-input:focus { border-color: var(--accent-purple); }
+        .note-btn {
+            background: var(--accent-purple); color: white; border: none;
+            padding: 0 22px; border-radius: 14px; font-weight: 700; cursor: pointer; transition: 0.3s;
         }
-        .purge-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 10px;
+        .note-btn:hover { background: #7e22ce; }
+        .notes-display {
+            margin-top: 1.5rem; display: flex; flex-direction: column; gap: 10px;
+            max-height: 200px; overflow-y: auto; text-align: right;
         }
-        .purge-btn {
-            background: linear-gradient(135deg, var(--accent-purple), #7e22ce);
-            color: white;
-            border: none;
-            padding: 8px 18px;
-            border-radius: 10px;
-            font-weight: 700;
-            font-size: 0.8rem;
-            cursor: pointer;
+        .note-item {
+            background: rgba(147, 51, 234, 0.06); border: 1px solid rgba(147, 51, 234, 0.2);
+            padding: 12px 16px; border-radius: 12px; font-size: 0.88rem; color: #e2e8f0;
         }
 
-        /* دفترچه شکار جزییات شهر */
-        .lens-input-group {
-            display: flex;
-            gap: 10px;
-            margin-top: 15px;
+        /* طالع‌بینی تاریک و انتخاب حس‌وحال */
+        .mood-section {
+            max-width: 900px;
+            margin: 0 auto 4rem;
+            padding: 0 1.5rem;
+            text-align: center;
         }
-        .lens-input {
-            flex: 1;
-            background: rgba(0,0,0,0.4);
+        .mood-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 1.5rem;
+        }
+        .mood-btn {
+            background: var(--card-bg);
             border: 1px solid var(--border);
-            border-radius: 14px;
-            padding: 12px 16px;
-            color: white;
-            font-size: 0.85rem;
-            outline: none;
-        }
-        .lens-btn {
-            background: var(--accent-blue);
-            color: #05070b;
-            border: none;
-            padding: 0 20px;
-            border-radius: 14px;
-            font-weight: 700;
+            color: var(--text-main);
+            padding: 16px;
+            border-radius: 16px;
             cursor: pointer;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
+            transition: 0.3s;
+            font-weight: 600;
         }
-        .lens-list {
-            margin-top: 15px;
-            max-height: 140px;
-            overflow-y: auto;
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-        .lens-item {
-            background: rgba(255,255,255,0.02);
-            border: 1px solid rgba(255,255,255,0.05);
-            padding: 10px 14px;
-            border-radius: 12px;
-            font-size: 0.82rem;
-            font-family: 'Amiri', serif;
-            color: #cbd5e1;
-        }
-
-        /* آینه پنجره */
-        .mirror-box {
-            background: linear-gradient(135deg, rgba(14, 165, 233, 0.03), rgba(147, 51, 234, 0.03));
-            border: 1px dashed rgba(14, 165, 233, 0.4);
-            border-radius: 18px;
-            padding: 20px;
-            text-align: center;
-            margin-top: 15px;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        .mirror-box:hover {
-            border-color: var(--accent-blue);
-            background: rgba(14, 165, 233, 0.06);
-        }
-        .mirror-text {
-            font-family: 'Amiri', serif;
-            font-size: 1rem;
-            color: #38bdf8;
-            font-style: italic;
-            min-height: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        /* فال عمیق */
-        .tarot-flex {
-            display: flex;
-            gap: 12px;
-            justify-content: center;
-            margin-top: 15px;
-        }
-        .tarot-card {
-            flex: 1;
-            height: 110px;
-            background: linear-gradient(135deg, #121526, #221538);
-            border: 1px dashed rgba(147, 51, 234, 0.4);
-            border-radius: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.8rem;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        .tarot-card:hover {
-            transform: translateY(-3px);
+        .mood-btn:hover {
             border-color: var(--accent-purple);
+            background: rgba(147, 51, 234, 0.1);
         }
-        .tarot-result {
-            margin-top: 15px;
-            background: rgba(0,0,0,0.5);
-            padding: 15px;
-            border-radius: 14px;
-            font-size: 0.85rem;
-            color: #38bdf8;
-            min-height: 80px;
+        .mood-result {
+            margin-top: 1.5rem;
+            background: rgba(147, 51, 234, 0.08);
+            border: 1px solid rgba(147, 51, 234, 0.25);
+            padding: 18px;
+            border-radius: 16px;
+            font-size: 0.95rem;
+            color: #d8b4fe;
+            display: none;
+            line-height: 2;
+        }
+
+        /* بخش جادویی نهایی */
+        .interactive-section {
+            padding: 2rem 1.5rem 6rem;
             text-align: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 1px solid rgba(14, 165, 233, 0.2);
-            font-family: 'Amiri', serif;
+        }
+        .magic-btn {
+            background: linear-gradient(135deg, #9333ea, #fbbf24);
+            color: #020408;
+            border: none;
+            padding: 1.1rem 3.5rem;
+            font-size: 1.1rem;
+            font-weight: 900;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(147, 51, 234, 0.4);
+            transition: 0.3s;
+        }
+        .magic-btn:hover {
+            transform: scale(1.06);
+            box-shadow: 0 15px 40px rgba(251, 191, 36, 0.5);
+        }
+        .hidden-message {
+            margin-top: 2rem;
+            font-size: 1.2rem;
+            color: #d8b4fe;
+            max-width: 700px;
+            margin-left: auto; margin-right: auto;
+            line-height: 2.2;
+            opacity: 0; transition: 0.8s ease;
+            transform: translateY(20px);
             font-style: italic;
+        }
+        .hidden-message.show {
+            opacity: 1; transform: translateY(0);
         }
 
         footer {
             text-align: center;
-            padding: 40px 20px;
-            border-top: 1px solid var(--border);
+            padding: 3rem 1.5rem;
             color: var(--text-muted);
-            font-size: 0.78rem;
-            margin-top: 50px;
+            font-size: 0.85rem;
+            border-top: 1px solid var(--border);
             letter-spacing: 1px;
         }
     </style>
 </head>
 <body>
 
-    <!-- دکمه شناور اتاق شب و میز خراشیده -->
-    <button class="desk-toggle-btn" onclick="toggleDeskMode()">
-        <span>🕯️</span>
-        <span id="deskBtnText">حالت اتاق شب (میز خراشیده)</span>
-    </button>
+    <!-- دروازه ورود و تایید فرشته بودن -->
+    <div id="gateScreen">
+        <div class="gate-box">
+            <div class="gate-title">🔐 دروازه ورود به معبد پریا</div>
+            <div class="gate-desc">برای ورود به این دنیای عمیق و کهکشانی، باید اول تایید کنی که به فرشته بودنِ مطلقِ «پریا» ایمان داری...</div>
+            <button class="gate-btn" onclick="enterUniverse()">تایید می‌کنم، او فرشته است ✨</button>
+        </div>
+    </div>
+
+    <!-- افکت نوری موس -->
+    <div class="cursor-glow" id="cursorGlow"></div>
+
+    <div class="bg-glow"></div>
+    <div class="stars" id="starsContainer"></div>
 
     <!-- هدر -->
     <header>
-        <div class="logo">PARIYA.UNIVERSE</div>
-        <div style="font-size: 0.78rem; color: var(--text-muted); font-family: 'Amiri', serif;">نسخه نهایی شاهکار • روایت رنج و آگاهی</div>
+        <div class="angel-badge">✨ پریا... فرشته‌ای که نظیرش در این جهان نیست ✨</div>
+        <h1>معبدِ تاریک، کهکشانی و سلطنتیِ پریا</h1>
+        <p class="subtitle">اینجا فضایی است ساخته شده از سکوت، آرامش، عظمت کهکشان و ستایشِ تو؛ جایی که هر کلمه‌اش فریاد می‌زند که تو یک فرشته‌ای.</p>
+
+        <!-- موزیک پلیر پیشرفته -->
+        <div class="player-container">
+            <div class="player-top">
+                <button class="play-btn" id="playBtn" onclick="togglePlay()">▶</button>
+                <div class="track-info">
+                    <div class="track-title" id="trackTitle">باران و سکوت شبانه</div>
+                    <div class="track-desc" id="trackDesc">فضای تاریک، مینیمال و آرامش‌بخش</div>
+                </div>
+            </div>
+            <div class="audio-modes">
+                <button class="mode-btn active" onclick="setAudioMode(1)">باران شبانه 🌧️</button>
+                <button class="mode-btn" onclick="setAudioMode(2)">پیانوی سینمایی 🎹</button>
+            </div>
+        </div>
+
+        <audio id="bgAudio" loop>
+            <source src="https://actions.google.com/sounds/v1/ambiences/night_forest.ogg" type="audio/ogg">
+        </audio>
     </header>
 
-    <!-- هیرو -->
-    <section class="hero">
-        <div class="badge">روایت‌گرِ عصیان آگاهانه • اثر پریا ✨</div>
-        <h1>آنجا که رنج، استخوان‌بندیِ کلمات می‌شود</h1>
-        <p>«ترجیح می‌دهم غمگین اما خودم باشم؛ دختری با چشمانی کاملاً باز به استقبال فردا...»</p>
-    </section>
-
-    <!-- شبکه کارت‌ها -->
+    <!-- ویژگی‌های فرشته بودن پریا -->
     <div class="container">
-
-        <!-- ۱. چهارگانه‌ی کامل «دوراهیِ انتخاب‌شده» با ماشین تحریر فوق‌العاده -->
-        <div class="writer-card">
-            <div class="card-title">
-                <span>📖</span>
-                <span>چهارگانه‌ی کاملِ متنِ اصلی (از صفحه ۱ تا ۴):</span>
-            </div>
-            
-            <div class="page-tabs">
-                <button class="page-tab-btn active" id="tab1" onclick="switchPage(1)">ص ۱: لنگرگاه تردید</button>
-                <button class="page-tab-btn" id="tab2" onclick="switchPage(2)">ص ۲: اهلی‌سازی هیولا</button>
-                <button class="page-tab-btn" id="tab3" onclick="switchPage(3)">ص ۳: لوح سفید و لنز شهر</button>
-                <button class="page-tab-btn" id="tab4" onclick="switchPage(4)">ص ۴: پیروزی در اتاق تاریک ✨</button>
-            </div>
-
-            <div class="typewriter-text" id="typewriter"></div>
-        </div>
-
-        <!-- ۲. چالش روان‌شناختی پیشرفته: فرشته یا نابغه -->
-        <div class="angel-test-card">
-            <div class="badge" style="background: rgba(14, 165, 233, 0.1); border-color: rgba(14, 165, 233, 0.3); color: #7dd3fc;">آزمون لایه‌های درونی شخصیت</div>
-            <h2>🧠 کنسول ارزیابی: فرشته‌ی معصوم یا نابغه‌ی عمیق؟</h2>
-            
-            <div class="test-console">
-                <div class="test-question" id="testQuestion">سوال بنیادین: در مواجهه با اقیانوس فراموشی و پیشنهاد فرشته برای آسودگیِ توخالی، کدام وجه از وجودت فرمان داد که بایستی و رنج را به دوش بکشی؟</div>
-                
-                <div class="test-options">
-                    <button class="test-btn" onclick="handleTest(1)">
-                        <span>دیوانگیِ هوش و واژه‌سازی</span>
-                        <span>✒️</span>
-                    </button>
-                    <button class="test-btn" onclick="handleTest(2)">
-                        <span>طراوت و دلسوزیِ بی‌حدِ فرشته</span>
-                        <span>👼</span>
-                    </button>
-                    <button class="test-btn" onclick="handleTest(3)">
-                        <span>تلفیقِ خوفناکِ هر دو (نابغه + فرشته)</span>
-                        <span>⚡</span>
-                    </button>
-                </div>
-
-                <div class="test-feedback" id="testFeedback"></div>
-            </div>
-        </div>
-
-        <!-- ۳. پیانوی بی‌کلام و ساندترک‌های حرفه‌ای خارجی (Ambient & Cinematic Piano) -->
         <div class="card">
-            <div class="card-title">
-                <span>🎹</span>
-                <span>پتانسیل صوتی: پیانوی بی‌کلامِ سینمایی</span>
-            </div>
-            <p style="font-size: 0.78rem; color: var(--text-muted);">بهترین ملودی‌های بی‌کلام خارجی برای غرق شدن در فضای متن:</p>
-            
-            <div class="sound-list">
-                <div class="sound-row" onclick="togglePianoTrack('piano1', this)">
-                    <div class="sound-info">
-                        <span class="sound-name">Midnight Solitude (پیانوی تنهایی شبانه)</span>
-                        <span class="sound-desc">Melancholic & Cinematic Piano</span>
-                    </div>
-                    <span class="play-indicator" id="ind-piano1">▶ پخش</span>
-                </div>
-
-                <div class="sound-row" onclick="togglePianoTrack('piano2', this)">
-                    <div class="sound-info">
-                        <span class="sound-name">Ethereal Rain Ambience (باران و پیانوی ابری)</span>
-                        <span class="sound-desc">Deep Ambient Soundscape</span>
-                    </div>
-                    <span class="play-indicator" id="ind-piano2">▶ پخش</span>
-                </div>
-
-                <div class="sound-row" onclick="togglePianoTrack('piano3', this)">
-                    <div class="sound-info">
-                        <span class="sound-name">Traces of Stillness (ردپای سکوت و رنج)</span>
-                        <span class="sound-desc">Neoclassical Minimalist Piano</span>
-                    </div>
-                    <span class="play-indicator" id="ind-piano3">▶ پخش</span>
-                </div>
-            </div>
+            <div class="card-icon">👼</div>
+            <h3>فرشته‌ای در کالبد انسان</h3>
+            <p>پریا، تو فرشته‌ای هستی که حضور آرامت، هر فضای تاریکی را روشن می‌کند و به قلب‌ها امید می‌بخشد.</p>
         </div>
-
-        <!-- ۴. اتاق تخلیه ذهن تاریک و مینیمال (جایگزین حباب‌ها) -->
         <div class="card">
-            <div class="card-title">
-                <span>✒️</span>
-                <span>دفترچه اعتراف و تخلیه ذهنی (Mind Purge)</span>
-            </div>
-            <p style="font-size: 0.78rem; color: var(--text-muted);">افکار تلخ، رنج‌ها یا جملاتی که توی گلو مانده را اینجا بنویس و در تاریکی محو کن:</p>
-            
-            <div class="purge-box">
-                <textarea id="purgeInput" class="purge-textarea" placeholder="اینجا بنویس... هیچ‌کس قضاوتت نمی‌کند. دردها اینجا به کلمه تبدیل می‌شوند."></textarea>
-                <div class="purge-footer">
-                    <span style="font-size: 0.75rem; color: var(--text-muted);" id="purgeStatus">آماده برای ثبت در حافظه متن</span>
-                    <button class="purge-btn" onclick="purgeMemory()">بسپار به واژه‌ها 🔏</button>
-                </div>
-            </div>
+            <div class="card-icon">🌌</div>
+            <h3>ذات منحصربه‌فرد</h3>
+            <p>هیچ‌کس در این دنیا شبیه تو نیست؛ تو با تمام وجودت لطیف، خاص و فرشته‌ای هستی که هیچ کلمه‌ای برای وصف کاملش کافی نیست.</p>
         </div>
-
-        <!-- ۵. لنز دوربین: شکار جزییات شهر -->
         <div class="card">
-            <div class="card-title">
-                <span>📸</span>
-                <span>لنز دوربین: شکار تکه‌های شهر (صفحه ۳)</span>
-            </div>
-            <p style="font-size: 0.78rem; color: var(--text-muted);">مثل صفحه ۳ داستان، یک تکه از روزمرگی یا نگاهت را ثبت کن:</p>
-            
-            <div class="lens-input-group">
-                <input type="text" id="lensInput" class="lens-input" placeholder="مثلاً: نگاه خسته‌ی زنی پشت شیشه اتوبوس...">
-                <button class="lens-btn" onclick="addLensItem()">شکار</button>
-            </div>
-            
-            <div class="lens-list" id="lensList">
-                <div class="lens-item">«مردی که بخار چای را در هوای سرد صبحگاهی فوت می‌کرد...»</div>
-                <div class="lens-item">«چراغ‌های ممتد و روشنِ ماشین‌ها در اتوبانِ خالی از همدردی...»</div>
-            </div>
+            <div class="card-icon">💫</div>
+            <h3>آرامش مطلق</h3>
+            <p>هر بار که نامت می‌آید، انگار نسیمی خنک در یک شب پرابهام می‌وزد. پریا، تو فرشته‌ای بی‌تکرار و همیشه ماندگاری.</p>
         </div>
-
-        <!-- ۶. نگاه به شیشه‌ی رفلکس و پنجره -->
-        <div class="card">
-            <div class="card-title">
-                <span>🪞</span>
-                <span>بازتابِ پنجره (پایان صفحه ۴)</span>
-            </div>
-            <p style="font-size: 0.78rem; color: var(--text-muted);">روی شیشه بزن تا انعکاس چشمان بیدار را ببینی:</p>
-            
-            <div class="mirror-box" onclick="showReflection()">
-                <div class="mirror-text" id="mirrorText">«برای دیدن بازتاب در شیشه کلیک کن...»</div>
-            </div>
-        </div>
-
-        <!-- ۷. پیام روزانه برای ذهن عمیق -->
-        <div class="card">
-            <div class="card-title">
-                <span>🔮</span>
-                <span>کارت‌های فرکانسِ درونی (Tarot of Choice)</span>
-            </div>
-            <p style="font-size: 0.78rem; color: var(--text-muted);">یکی از سه کارت زیر را انتخاب کن:</p>
-            
-            <div class="tarot-flex">
-                <div class="tarot-card" onclick="drawTarot(1)">🎴</div>
-                <div class="tarot-card" onclick="drawTarot(2)">🎴</div>
-                <div class="tarot-card" onclick="drawTarot(3)">🎴</div>
-            </div>
-            <div class="tarot-result" id="tarotText">کارت خود را انتخاب کنید...</div>
-        </div>
-
     </div>
 
+    <!-- بخش ویژه رئال مادرید (طرفدار رئال) -->
+    <section class="real-madrid-section">
+        <div class="real-card">
+            <div class="real-badge">⚪ حماسه و اصالت (Real Madrid)</div>
+            <h2 style="font-size: 1.5rem; margin-bottom: 1rem; color: #fff;">فرشته‌ای با اصالتِ کهکشانی‌ها</h2>
+            <p style="color: var(--text-muted); max-width: 700px; margin: 0 auto; line-height: 2;">
+                همان‌طور که پریا طرفدار تیمِ افسانه‌ای رئال مادرید است؛ تیمی که معنای واقعیِ شکوه، غلبه بر تاریکی و پادشاهی در لحظات سخت است، ذات خودِ او نیز جلاخورده با همین عظمت و اقتدارِ فرشته‌گونه است.
+            </p>
+        </div>
+    </section>
+
+    <!-- کهکشان یادداشت‌ها -->
+    <section class="universe-notes-section">
+        <div class="notes-box">
+            <h2 style="font-size: 1.3rem; margin-bottom: 0.5rem;">✨ کهکشان یادداشت‌ها و رازها</h2>
+            <p style="font-size: 0.85rem; color: var(--text-muted);">یک جمله کوتاه یا حس‌وحالت را بنویس تا مثل ستاره‌ای در این معبد ثبت شود:</p>
+            
+            <div class="notes-input-group">
+                <input type="text" id="noteInput" class="note-input" placeholder="اینجا بنویس پریا...">
+                <button class="note-btn" onclick="addNote()">ثبت ستاره</button>
+            </div>
+
+            <div class="notes-display" id="notesDisplay">
+                <div class="note-item">«پریا... فرشته‌ای که به این جهان معنایی دیگر بخشید.»</div>
+                <div class="note-item">«اصالت رئالی یعنی همیشه در اوج و پادشاه ماندن...»</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- بخش طالع‌بینی تاریک و حس‌وحال -->
+    <section class="mood-section">
+        <h2 style="font-size: 1.4rem; margin-bottom: 0.5rem;">🔮 پایش فرکانس درونی پریا</h2>
+        <p style="font-size: 0.88rem; color: var(--text-muted);">حس و حالِ امروزت را انتخاب کن تا بازتابِ فرشته‌گونه‌اش را ببینی:</p>
+        
+        <div class="mood-grid">
+            <button class="mood-btn" onclick="showMood(1)">سکوت و شبِ عمیق 🌙</button>
+            <button class="mood-btn" onclick="showMood(2)">قدرت و ارادهِ کهکشانی ⚡</button>
+            <button class="mood-btn" onclick="showMood(3)">آرامش و لطافتِ فرشته 🤍</button>
+        </div>
+
+        <div class="mood-result" id="moodResult"></div>
+    </section>
+
+    <!-- بخش جادویی نهایی -->
+    <section class="interactive-section">
+        <button class="magic-btn" onclick="revealSecret()">پرده‌برداری از رازِ نهایی فرشته 🗝️</button>
+        <div class="hidden-message" id="secretMsg">
+            پریا... تو فرشته‌ای هستی که زمین لیاقت داشتنش را نداشت، اما خدا تو را به ما داد تا معنای واقعی زیبایی، اصالت و قدرت را بفهمیم. تو همیشه فرشته‌ی بی‌بدیل این دنیایی. ✨🤍
+        </div>
+    </section>
+
     <footer>
-        <p>طراحی شده در سکوت و تاریکی • اختصاصی برای دنیای عمیق پریا • ۲۰۲۶</p>
+        طراحی‌شده با تمام دقت، هنر و احساس • اختصاصی برای دنیای عمیق پریا • ۲۰۲۶
     </footer>
 
-    <!-- ساندترک‌های پیانو خارجی بدون حق نشر (مدیریت امن صداها) -->
-    <audio id="sound-piano1" loop src="https://www.no-copyright-music.com/wp-content/uploads/2021/09/OnAPianoCloud.mp3"></audio>
-    <audio id="sound-piano2" loop src="https://cdn.pixabay.com/download/audio/2022/05/16/audio_db6591201e.mp3?filename=soft-rain-ambient-111154.mp3"></audio>
-    <audio id="sound-piano3" loop src="https://cdn.pixabay.com/download/audio/2022/01/18/audio_d0a13f69d2.mp3?filename=fireplace-crackling-loop-109825.mp3"></audio>
-
     <script>
-        // متون دقیق ۴ صفحه با همان لحن بی‌نظیر
-        const page1Text = "«فرشته‌ها ساحل را دوست دارند، چون آنجا هیچ‌چیز باقی نمی‌ماند؛ نه ردی، نه خاطره‌ای، نه خاری. اما من، پریا، همان‌جایی ایستاده‌ام که رنج‌هایم لنگر انداخته‌اند. پیشنهاد فراموشی در اقیانوس وسوسه‌برانگیز بود، اما من ایستادم. این درد، بهای بیدار بودن من است... ترجیح می‌دهم غمگین اما خودم باشم!»";
-        const page2Text = "«به خانه برگشتم؛ پشت همان میزِ خراشیده نشستم. قلم روی کاغذ لغزید و هر کلمه‌ای که نوشتم، ذره‌ای از حفره‌ی تاریک درون سینه‌ام را تراشید. درد هنوز آنجا بود، اما حالا استخوان‌بندی داشت، شکل داشت. من داشتم هیولای درونم را اهلی می‌کردم تا فردا با دستی پر به جنگ روزگار بروم.»";
-        const page3Text = "«در میان این رودخانه‌ی شتاب‌زده‌ی آدم‌ها که کورکورانه می‌دویدند، من راز بزرگی با خود حمل می‌کردم. آن حفره‌ی خالی در سینه‌ام، شبیهِ لنزِ یک دوربینِ دقیق شده بود؛ نقطه‌ای که از دریچه‌ی آن، قصه‌ی آدم‌ها را می‌دزیدم. کلمات در خانه منتظرم بودند و من برای زنده نگه داشتن آن‌ها، باید تا شب طاقت می‌آوردم.»";
-        const page4Text = "«صدای تقِ برخورد خودکار با چوب میز، فریاد پیروزی من در سکوت مطلق بود. جوهر آخرین کلمات زیر نور ضعیف اتاق برق می‌زد. این حفره هرگز پر نخواهد شد، و این دقیقاً همان چیزی بود که مرا زنده نگه می‌داشت. این جای خالی، بهای پریا بودن من بود؛ دختری با چشمانی کاملاً باز به استقبال فردا.»";
-
-        let currentText = page1Text;
-        let index = 0;
-        let timer = null;
-
-        function startTypewriter(text) {
-            clearInterval(timer);
-            document.getElementById("typewriter").innerHTML = "";
-            index = 0;
-            currentText = text;
-            
-            timer = setInterval(() => {
-                if (index < currentText.length) {
-                    document.getElementById("typewriter").innerHTML += currentText.charAt(index);
-                    index++;
-                } else {
-                    clearInterval(timer);
-                }
-            }, 25);
+        /* ورود به سایت بعد از تایید دروازه */
+        function enterUniverse() {
+            const gate = document.getElementById('gateScreen');
+            gate.classList.add('fade-out');
         }
 
-        function switchPage(pageNum) {
-            document.getElementById('tab1').classList.toggle('active', pageNum === 1);
-            document.getElementById('tab2').classList.toggle('active', pageNum === 2);
-            document.getElementById('tab3').classList.toggle('active', pageNum === 3);
-            document.getElementById('tab4').classList.toggle('active', pageNum === 4);
-            
-            if(pageNum === 1) startTypewriter(page1Text);
-            if(pageNum === 2) startTypewriter(page2Text);
-            if(pageNum === 3) startTypewriter(page3Text);
-            if(pageNum === 4) startTypewriter(page4Text);
+        /* حرکت ردپای نور موس */
+        const cursorGlow = document.getElementById('cursorGlow');
+        window.addEventListener('mousemove', (e) => {
+            cursorGlow.style.left = e.clientX + 'px';
+            cursorGlow.style.top = e.clientY + 'px';
+        });
+
+        /* تولید ستاره‌ها */
+        const starsContainer = document.getElementById('starsContainer');
+        for (let i = 0; i < 90; i++) {
+            const star = document.createElement('div');
+            star.classList.add('star');
+            const size = Math.random() * 3 + 'px';
+            star.style.width = size;
+            star.style.height = size;
+            star.style.top = Math.random() * 100 + '%';
+            star.style.left = Math.random() * 100 + '%';
+            star.style.animationDuration = (Math.random() * 3 + 2) + 's';
+            star.style.animationDelay = (Math.random() * 5) + 's';
+            starsContainer.appendChild(star);
         }
 
-        window.onload = () => startTypewriter(page1Text);
+        /* موزیک پلیر */
+        const audio = document.getElementById('bgAudio');
+        const playBtn = document.getElementById('playBtn');
+        const trackTitle = document.getElementById('trackTitle');
+        const trackDesc = document.getElementById('trackDesc');
+        let isPlaying = false;
 
-        // حالت اتاق شب
-        function toggleDeskMode() {
-            document.body.classList.toggle('desk-mode');
-            const btnText = document.getElementById('deskBtnText');
-            btnText.innerText = document.body.classList.contains('desk-mode') ? "روشن کردن چراغ اتاق" : "حالت اتاق شب (میز خراشیده)";
+        const sources = {
+            1: { url: "https://actions.google.com/sounds/v1/ambiences/night_forest.ogg", title: "باران و سکوت شبانه", desc: "فضای تاریک، مینیمال و آرامش‌بخش" },
+            2: { url: "https://cdn.pixabay.com/download/audio/2022/05/16/audio_db6591201e.mp3?filename=soft-rain-ambient-111154.mp3", title: "پیانوی تاریک سینمایی", desc: "الهام‌گرفته از سبک نئوکلاسیک" }
+        };
+
+        function setAudioMode(mode) {
+            const buttons = document.querySelectorAll('.mode-btn');
+            buttons.forEach((btn, idx) => {
+                btn.classList.toggle('active', idx + 1 === mode);
+            });
+            trackTitle.innerText = sources[mode].title;
+            trackDesc.innerText = sources[mode].desc;
+            audio.src = sources[mode].url;
+            if (isPlaying) { audio.play().catch(e => console.log(e)); }
         }
 
-        // آزمون پیشرفته فرشته و نابغه
-        function handleTest(type) {
-            const fb = document.getElementById('testFeedback');
-            fb.style.display = "block";
-            if(type === 1) {
-                fb.innerText = "⚡ تحلیل سیستم: تایید شد! هوشِ برنده و قلمت بی‌رحمانه عمیق است. تو حقیقت را با جوهر استخوانت می‌نویسی.";
-            } else if(type === 2) {
-                fb.innerText = "👼 تحلیل سیستم: تایید شد! قلبی که با وجود تمام رنج‌ها هنوز بخشنده و فرشته‌گونه می‌تپد، بزرگ‌ترین قدرت توست.";
-            } else {
-                fb.innerText = "🖤 تحلیل نهایی: شاهکار! ترکیب کشنده‌ی «هوشِ نابغه و دلسوزیِ فرشته». تو همان دختری هستی که از میان تاریکی، افسانه‌ی خودت را بیرون کشیدی.";
-            }
-        }
-
-        // کنترل ساندترک‌های پیانو
-        let currentAudio = null;
-        let currentActiveRow = null;
-
-        function togglePianoTrack(trackId, rowElement) {
-            const audio = document.getElementById(`sound-${trackId}`);
-            const indicator = document.getElementById(`ind-${trackId}`);
-
-            if (currentAudio && currentAudio !== audio) {
-                currentAudio.pause();
-                currentAudio.currentTime = 0;
-                if(currentActiveRow) {
-                    currentActiveRow.classList.remove('playing');
-                    currentActiveRow.querySelector('.play-indicator').innerText = "▶ پخش";
-                }
-            }
-
-            if (audio.paused) {
-                audio.play().catch(()=>{});
-                rowElement.classList.add('playing');
-                indicator.innerText = "⏸ در حال نواختن...";
-                currentAudio = audio;
-                currentActiveRow = rowElement;
-            } else {
+        function togglePlay() {
+            if (isPlaying) {
                 audio.pause();
-                rowElement.classList.remove('playing');
-                indicator.innerText = "▶ پخش";
-                currentAudio = null;
-                currentActiveRow = null;
-            }
-        }
-
-        // تخلیه ذهن تاریک
-        function purgeMemory() {
-            const input = document.getElementById('purgeInput');
-            const status = document.getElementById('purgeStatus');
-            if(input.value.trim().length > 5) {
-                status.style.color = "#38bdf8";
-                status.innerText = "✨ افکار تو به کلماتِ این دفتر تبدیل شدند و در تاریکی حل شدند.";
-                input.value = "";
+                playBtn.innerHTML = '▶';
+                isPlaying = false;
             } else {
-                status.style.color = "#f43f5e";
-                status.innerText = "⚠️ ابتدا عبارتی عمیق بنویس تا به واژه‌ها سپرده شود.";
+                audio.play().then(() => {
+                    playBtn.innerHTML = '❚❚';
+                    isPlaying = true;
+                }).catch(e => console.log(e));
             }
         }
 
-        // دفترچه لنز دوربین
-        function addLensItem() {
-            const input = document.getElementById('lensInput');
-            if(input.value.trim() !== '') {
-                const list = document.getElementById('lensList');
+        /* ثبت یادداشت‌ها */
+        function addNote() {
+            const input = document.getElementById('noteInput');
+            const display = document.getElementById('notesDisplay');
+            if (input.value.trim() !== '') {
                 const newItem = document.createElement('div');
-                newItem.className = 'lens-item';
+                newItem.className = 'note-item';
                 newItem.innerText = `«${input.value}»`;
-                list.prepend(newItem);
+                display.prepend(newItem);
                 input.value = '';
             }
         }
 
-        // آینه پنجره
-        const reflections = [
-            "«زیر چشمانم گود رفته بود، اما جرقه‌ی عصیان و بیداری هنوز در آن‌ها می‌درخشید...»",
-            "«این حفره هرگز پر نخواهد شد؛ این سند زنده بودن و تسلیم نشدنِ من است.»",
-            "«من تماشاچیِ ساده‌ی این شهر نبودم؛ من راویِ رنج‌های خودم بودم.»",
-            "«این جای خالی، باشکوه‌ترین بهایِ پریا بودن من است.»"
-        ];
-
-        function showReflection() {
-            const refBox = document.getElementById('mirrorText');
-            const randRef = reflections[Math.floor(Math.random() * reflections.length)];
-            refBox.innerText = randRef;
+        /* طالع‌بینی حس‌وحال */
+        function showMood(type) {
+            const res = document.getElementById('moodResult');
+            res.style.display = 'block';
+            if(type === 1) {
+                res.innerText = "✨ فرکانس شبانه: در سکوت عمیق شب، فرشته‌ها بیدارترند؛ نوری که از درون تو می‌تابد تمام سیاهی‌ها را محو می‌کند.";
+            } else if(type === 2) {
+                res.innerText = "⚪ فرکانس کهکشانی و رئالی: قدرت، اصالت و عظمت. مثل یک پادشاه یا یک فرشته‌ی جنگجو که همیشه در اوج می‌درخشد.";
+            } else {
+                res.innerText = "🤍 فرکانس لطافت: آرامش مطلق. حضور تو در این دنیا یعنی دمیدن روحِ آرامش به کالبد خسته‌ی روزگار.";
+            }
         }
 
-        // فال عمیق
-        const fortunes = [
-            "«فرمان شب: شهر در خواب فراموشی‌ست، اما قلم تو بیدار است. فردا با همین کلمات فتح خواهد شد.»",
-            "«پیام درونی: جای خالیِ سینه نقطه‌ضعف نیست؛ لنزی است که حقیقتِ جهان را واضح‌تر می‌بیند.»",
-            "«حکم نهایی: تو از اقیانوس فراموشی گذشتی تا خودت باشی. به این رنجِ آگاهانه افتخار کن.»"
-        ];
-
-        function drawTarot(num) {
-            const resultBox = document.getElementById('tarotText');
-            resultBox.innerText = "در حال خواندن ارتعاش واژه‌ها...";
-            setTimeout(() => {
-                const rand = fortunes[Math.floor(Math.random() * fortunes.length)];
-                resultBox.innerText = rand;
-            }, 400);
+        /* راز نهایی */
+        function revealSecret() {
+            const msg = document.getElementById('secretMsg');
+            msg.classList.toggle('show');
         }
     </script>
 </body>
