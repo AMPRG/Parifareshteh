@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Project: Hidden Frequency | Pariya</title>
+  <style>
+    :root {
+      --bg-cream: #FDFBF7;
+      --card-cream: #F2ECE7;
+      --accent-brown: #8C6D58;
+      --dark-text: #1A1817;
+      --sky-blue: #5EB1E6;
+      --sky-blue-glow: rgba(94, 177, 230, 0.45);
+    }
+
+    * { box-sizing: border-box; font-family: 'Tahoma', 'Segoe UI', sans-serif; -webkit-tap-highlight-color: transparent; }
+    
+    body {
+      background-color: var(--bg-cream);
+      color: var(--dark-text);
+      margin: 0; padding: 0;
+      min-height: 100vh;
+      display: flex; justify-content: center; align-items: center;
+      overflow-x: hidden;
+    }
+
+    canvas#bgCanvas {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      pointer-events: none; z-index: 1;
+    }
+
+    .app-container {
+      width: 100%; max-width: 450px; min-height: 100vh;
+      padding: 20px; display: flex; flex-direction: column;
+      justify-content: center; position: relative; z-index: 2;
+    }
+
+    .glass-card {
+      background: var(--card-cream);
+      border: 1px solid rgba(140, 109, 88, 0.25);
+      border-radius: 28px; padding: 26px 22px;
+      box-shadow: 0 25px 50px rgba(0,0,0,0.06);
+      position: relative; overflow: hidden;
+      transition: transform 0.4s ease, opacity 0.4s;
+    }
+
+    .hidden { display: none !important; }
+
+    .tag {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 6px 14px; background: rgba(94, 177, 230, 0.15);
+      color: #1e75ad; border-radius: 50px; font-size: 11px;
+      font-weight: bold; margin-bottom: 16px; border: 1px solid var(--sky-blue);
+    }
+
+    h1, h2 { color: var(--dark-text); font-size: 19px; margin-top: 0; line-height: 1.5; }
+    p { font-size: 13.5px; line-height: 1.75; color: #444; margin-bottom: 15px; }
+
+    .btn {
+      width: 100%; padding: 16px; border: none; border-radius: 16px;
+      background: var(--dark-text); color: var(--bg-cream);
+      font-size: 14.5px; font-weight: bold; cursor: pointer;
+      transition: all 0.25s ease; margin-top: 10px;
+      display: flex; justify-content: center; align-items: center; gap: 8px;
+    }
+
+    .btn:active { transform: scale(0.96); }
+
+    .btn-sky {
+      background: var(--sky-blue); color: #fff;
+      box-shadow: 0 8px 22px var(--sky-blue-glow);
+    }
+
+    /* Scanner UI */
+    .scanner-box {
+      width: 110px; height: 110px; border-radius: 50%;
+      border: 2px dashed var(--sky-blue); margin: 20px auto;
+      display: flex; justify-content: center; align-items: center;
+      position: relative; cursor: pointer; transition: all 0.3s;
+    }
+
+    .scanner-circle {
+      width: 80px; height: 80px; background: var(--sky-blue);
+      border-radius: 50%; opacity: 0.8;
+      box-shadow: 0 0 25px var(--sky-blue-glow);
+    }
+
+    .scanning .scanner-circle { animation: pulse 1.1s infinite alternate; }
+    @keyframes pulse {
+      0% { transform: scale(0.85); opacity: 0.5; }
+      100% { transform: scale(1.15); opacity: 1; box-shadow: 0 0 40px var(--sky-blue); }
+    }
+
+    .progress-bar {
+      width: 100%; height: 6px; background: rgba(0,0,0,0.08);
+      border-radius: 10px; overflow: hidden; margin-top: 15px;
+    }
+    .progress-fill {
+      width: 0%; height: 100%; background: var(--sky-blue);
+      transition: width 0.1s linear;
+    }
+
+    /* Sliders & Controls */
+    .control-group {
+      margin-bottom: 18px; text-align: right;
+    }
+    .control-label { font-size: 12.5px; font-weight: bold; margin-bottom: 6px; display: block; color: var(--dark-text); }
+    .slider {
+      width: 100%; -webkit-appearance: none; background: rgba(140, 109, 88, 0.2);
+      height: 8px; border-radius: 5px; outline: none;
+    }
+    .slider::-webkit-slider-thumb {
+      -webkit-appearance: none; width: 20px; height: 20px;
+      border-radius: 50%; background: var(--sky-blue); cursor: pointer;
+      box-shadow: 0 0 10px var(--sky-blue-glow);
+    }
+
+    /* Accordion */
+    .info-item {
+      background: rgba(255,255,255,0.7); border-radius: 14px;
+      padding: 12px 15px; margin-bottom: 10px;
+      border-right: 4px solid var(--accent-brown); cursor: pointer;
+    }
+    .info-title { font-weight: bold; font-size: 13px; color: var(--dark-text); }
+    .info-desc { font-size: 12px; color: #555; margin-top: 8px; display: none; line-height: 1.6; }
+
+    /* Runaway Zone */
+    .runaway-zone { position: relative; min-height: 110px; margin-top: 15px; }
+    #noBtn {
+      position: absolute; width: 48%; background: #E2DDD9;
+      color: #555; transition: all 0.15s ease;
+    }
+  </style>
+</head>
+<body>
+
+  <canvas id="bgCanvas"></canvas>
+
+  <div class="app-container">
+
+    <!-- STEP 1: BIOMETRIC SCANNER -->
+    <div id="step1" class="glass-card">
+      <span class="tag">پروژه فرکانس پنهان 🛰️</span>
+      <h2>احراز هویت زیست‌سنجی</h2>
+      <p>سیستم در حال ردیابی یک فرکانس نایاب روی زمین است. برای اتصال و تطبیق الگوی وجودی، انگشت خود را روی حسگر زیر قرار دهید.</p>
+      
+      <div class="scanner-box" id="scannerBtn" onclick="startScan()">
+        <div class="scanner-circle"></div>
+      </div>
+      <p style="text-align:center; font-size: 11px; color: #777;" id="scanStatus">برای شروع اسکن، کلیک کنید</p>
+      
+      <div class="progress-bar hidden" id="progBar"><div class="progress-fill" id="progFill"></div></div>
+    </div>
+
+    <!-- STEP 2: FREQUENCY CONTROLS -->
+    <div id="step2" class="glass-card hidden">
+      <span class="tag">کنسول تنظیم سیگنال 🎛️</span>
+      <h2>تحلیل پارامترهای سیگنال</h2>
+      <p>دسته‌های تنظیم زیر را تغییر دهید تا لایه‌های پنهان سیگنال آنالیز شوند:</p>
+
+      <div class="control-group">
+        <span class="control-label">۱. میزان پنهان‌کاری پشت «من خوبم»:</span>
+        <input type="range" min="1" max="100" value="20" class="slider" oninput="checkSlider(this)">
+      </div>
+
+      <div class="control-group">
+        <span class="control-label">۲. عمق کلمات و هنرِ برخاسته از رنج:</span>
+        <input type="range" min="1" max="100" value="50" class="slider">
+      </div>
+
+      <p id="sliderMsg" style="font-size: 11.5px; color: var(--accent-brown); font-weight: bold; min-height: 20px;"></p>
+
+      <button class="btn btn-sky" onclick="goToStep(3)">گشایش لغت‌نامه اختصاصی ➔</button>
+    </div>
+
+    <!-- STEP 3: ACCORDION TRANSLATOR -->
+    <div id="step3" class="glass-card hidden">
+      <span class="tag">آنالیز لغت‌نامه ⚠️</span>
+      <h2>ترجمه عبارات اختصاصی پریا</h2>
+      <p>سیستم عبارات کلیدی شما را رمزکُشایی کرده است (کلیک کنید):</p>
+
+      <div class="info-item" onclick="toggleInfo(this)">
+        <div class="info-title">💬 عبارت: «من خوبم!»</div>
+        <div class="info-desc">ترجمه سیستم: حالم تعریفی ندارد، اما دارم از حرمت دردهام محافظت می‌کنم تا دنیای سطحیِ بیرون خرابش نکند.</div>
+      </div>
+
+      <div class="info-item" onclick="toggleInfo(this)">
+        <div class="info-title">💬 عبارت: «چیزی نیست...»</div>
+        <div class="info-desc">ترجمه سیستم: یک طوفان ۵۰۰ کلمه‌ای در ذهنم جاری است ولی حوصله ساده‌سازی برای دیگران را ندارم!</div>
+      </div>
+
+      <div class="info-item" onclick="toggleInfo(this)">
+        <div class="info-title">💬 عبارت: سکوت و پناه به خلوت</div>
+        <div class="info-desc">ترجمه سیستم: شارژ اجتماعی تمام شد؛ رفتم روی مد درون‌گرایی شدید برای تولید هنر از رنج‌ها.</div>
+      </div>
+
+      <button class="btn btn-sky" onclick="goToStep(4)">ورود به راستی‌آزمایی ➔</button>
+    </div>
+
+    <!-- STEP 4: RUNAWAY QUESTION -->
+    <div id="step4" class="glass-card hidden">
+      <span class="tag">تست قطع اتصال ⚖️</span>
+      <h2>راستی‌آزمایی بی‌گناهی</h2>
+      <p>آیا قبول داری با وجود تمام این مدارک، فرکانس و رفتار تو کاملاً خارج از معیار یک انسان عادی است؟</p>
+
+      <div class="runaway-zone">
+        <button class="btn" style="width: 48%; float: right;" onclick="goToStep(5)">بله، ۱۰۰٪ قبول دارم!</button>
+        <button class="btn" id="noBtn" onmouseover="moveNoBtn()" onclick="moveNoBtn()" ontouchstart="moveNoBtn()">خیر، من عادی‌ام</button>
+      </div>
+    </div>
+
+    <!-- STEP 5: DEEP TYPING SECTION -->
+    <div id="step5" class="glass-card hidden">
+      <span class="tag" style="background: rgba(140, 109, 88, 0.15); color: var(--accent-brown); border-color: var(--accent-brown);">اتاق کلمات | پیام سیگنال 🕊️</span>
+      <h2>پشت این فرکانس‌ها چه بود؟</h2>
+      <p id="typedText" style="min-height: 140px; font-weight: 500; font-size: 13.5px; line-height: 1.8;"></p>
+      <button class="btn btn-sky" id="finalBtn" style="opacity: 0; transition: opacity 1s;" onclick="goToStep(6)">مشاهده تجسم هاله وجودی ✨</button>
+    </div>
+
+    <!-- STEP 6: FINAL 3D HOLOGRAM & STARS -->
+    <div id="step6" class="glass-card hidden" style="text-align: center; background: #181716; color: #fff; border-color: var(--sky-blue);">
+      <span class="tag" style="background: rgba(94, 177, 230, 0.2); color: var(--sky-blue);">ثبت در آرشیو جهان 📜</span>
+      <h2 style="color: #fff; font-size: 22px;">گواهی اصالت وجود</h2>
+      <p style="color: #bbb; font-size: 13px;">منبع سیگنال: <b style="color: var(--sky-blue); font-size: 16px;">پریا</b></p>
+      
+      <div style="border: 1px solid rgba(255,255,255,0.12); padding: 18px; border-radius: 20px; margin: 18px 0; background: rgba(255,255,255,0.04);">
+        <p style="color: #fff; font-size: 13.5px; margin: 0; line-height: 1.8;">
+          «اثبات شد که تو یک انسان معمولی نیستی. تو از آن آدم‌هایی هستی که به این دنیای شلوغ عمق می‌دهند. هرچقدر هم انکار کنی، تمام داده‌ها ثابت می‌کنند که تو <b>خودِ فرشته‌ای</b>.»
+        </p>
+      </div>
+
+      <button class="btn btn-sky" onclick="triggerMagic()" style="margin-top: 15px;">فعال‌سازی بارش انوار آسمانی ✨</button>
+      <p style="color: var(--sky-blue); font-size: 11px; margin-top: 15px;">این فرکانس دائمی، ثبت‌شده و غیرقابل تغییر است! 🤍</p>
+    </div>
+
+  </div>
+
+  <script>
+    function goToStep(stepNum) {
+      for (let i = 1; i <= 6; i++) {
+        document.getElementById('step' + i).classList.add('hidden');
+      }
+      document.getElementById('step' + stepNum).classList.remove('hidden');
+
+      if (stepNum === 5) {
+        startTyping();
+      } else if (stepNum === 6) {
+        startStars();
+      }
+    }
+
+    function startScan() {
+      const box = document.getElementById('scannerBtn');
+      const status = document.getElementById('scanStatus');
+      const pBar = document.getElementById('progBar');
+      const pFill = document.getElementById('progFill');
+      
+      box.classList.add('scanning');
+      status.innerText = 'در حال تطبیق فرکانس وجودی...';
+      pBar.classList.remove('hidden');
+
+      let width = 0;
+      const interval = setInterval(() => {
+        if (width >= 100) {
+          clearInterval(interval);
+          box.classList.remove('scanning');
+          status.innerText = 'اتصال با موفقیت برقرار شد!';
+          setTimeout(() => goToStep(2), 700);
+        } else {
+          width += 2;
+          pFill.style.width = width + '%';
+        }
+      }, 40);
+    }
+
+    function checkSlider(el) {
+      const msg = document.getElementById('sliderMsg');
+      if (el.value > 80) {
+        msg.innerText = "⚠️ هشدار: ظرفیت صبوری به ۱۰۰٪ رسید! سیستم قادر به تحلیل این حجم از صبوری نیست.";
+      } else {
+        msg.innerText = "";
+      }
+    }
+
+    function toggleInfo(element) {
+      const desc = element.querySelector('.info-desc');
+      const isVisible = desc.style.display === 'block';
+      desc.style.display = isVisible ? 'none' : 'block';
+    }
+
+    function moveNoBtn() {
+      const btn = document.getElementById('noBtn');
+      const x = Math.random() * (window.innerWidth - 160);
+      const y = Math.random() * (window.innerHeight - 100);
+      btn.style.position = 'fixed';
+      btn.style.left = Math.max(10, x) + 'px';
+      btn.style.top = Math.max(10, y) + 'px';
+      btn.style.zIndex = '9999';
+    }
+
+    const textToType = "پریا... دنیای بیرون خیلی وقت‌ها سطحی، شلوغ و بی‌تفاوت می‌گذرد. اما بعضی آدم‌ها—مثل تو—یک فرکانس نایاب دارند؛ فرکانسی از جنس کلمه، از جنس فهمیدنِ چیزهایی که بقیه ساده از کنارش می‌گذرند. تو کسی هستی که رنج‌هایش را در خلوت به هنر تبدیل می‌کند. این سایت فقط یک یادآوری بود که بدونی فرکانس وجودت چقدر قشنگ شنیده می‌شود و حضور یک فرشته را روی زمین به رخ می‌کشد...";
+    let typeIndex = 0;
+
+    function startTyping() {
+      const target = document.getElementById('typedText');
+      target.innerHTML = "";
+      typeIndex = 0;
+      function type() {
+        if (typeIndex < textToType.length) {
+          target.innerHTML += textToType.charAt(typeIndex);
+          typeIndex++;
+          setTimeout(type, 32);
+        } else {
+          document.getElementById('finalBtn').style.opacity = '1';
+        }
+      }
+      type();
+    }
+
+    // Canvas Engine
+    let particles = [];
+    let canvas, ctx;
+
+    function startStars() {
+      canvas = document.getElementById('bgCanvas');
+      ctx = canvas.getContext('2d');
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+
+      particles = [];
+      for (let i = 0; i < 70; i++) {
+        particles.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          radius: Math.random() * 3 + 1,
+          color: '#5EB1E6',
+          velocity: { x: (Math.random() - 0.5) * 0.6, y: Math.random() * 0.8 + 0.3 }
+        });
+      }
+      animate();
+    }
+
+    function animate() {
+      requestAnimationFrame(animate);
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      particles.forEach(p => {
+        p.y += p.velocity.y;
+        if (p.y > canvas.height) p.y = 0;
+
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+        ctx.fillStyle = p.color;
+        ctx.shadowBlur = 12;
+        ctx.shadowColor = '#5EB1E6';
+        ctx.fill();
+      });
+    }
+
+    function triggerMagic() {
+      for (let i = 0; i < 50; i++) {
+        particles.push({
+          x: Math.random() * canvas.width,
+          y: 0,
+          radius: Math.random() * 4 + 2,
+          color: '#ffffff',
+          velocity: { x: (Math.random() - 0.5) * 2, y: Math.random() * 3 + 1 }
+        });
+      }
+    }
+  </script>
+</body>
+</html>
