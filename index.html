@@ -427,6 +427,55 @@
         .track-info { text-align: right; flex-grow: 1; }
         .track-title { font-weight: 800; font-size: 1.1rem; color: var(--text-main); }
         .track-desc { font-size: 0.85rem; color: #a78bfa; margin-top: 5px; }
+
+        /* بخش پیشرفته‌ی کنترل زمان که در حالت عادی مخفی است */
+        .player-extended-controls {
+            display: none;
+            flex-direction: column;
+            gap: 10px;
+            border-top: 1px solid var(--border);
+            padding-top: 14px;
+            animation: fadeIn 0.4s ease;
+        }
+        .player-extended-controls.active {
+            display: flex;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .seek-container {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+        .seek-bar {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 6px;
+            border-radius: 3px;
+            background: rgba(255, 255, 255, 0.1);
+            outline: none;
+            cursor: pointer;
+        }
+        .seek-bar::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--accent-cyan);
+            cursor: pointer;
+            box-shadow: 0 0 10px var(--accent-cyan);
+        }
+        .time-labels {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            direction: ltr;
+        }
+        
         .audio-modes {
             display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; border-top: 1px solid var(--border); padding-top: 14px;
         }
@@ -609,11 +658,8 @@
 </head>
 <body class="dark-theme">
 
-    <!-- کتاب جادویی و ورق خوردن صفحات تست اصالت و پرسش‌ها -->
     <div id="bookOverlay">
         <div class="magical-book">
-            
-            <!-- صفحه اول: کتاب دنیای فرشته ها و سوال اول -->
             <div class="book-page-content active" id="page1">
                 <div class="book-cover-title">📖 کتاب دنیای فرشته‌ها</div>
                 <div class="gate-title" style="font-size: 1.4rem;">🔐 آیا پریا فرشته هست یا نه؟</div>
@@ -624,7 +670,6 @@
                 </div>
             </div>
 
-            <!-- صفحه دوم: تأییدیه امنیتی اصالت نهایی -->
             <div class="book-page-content" id="page2">
                 <div style="font-size: 1rem; font-weight: 800; color: #c4b5fd; margin-bottom: 0.8rem; background: rgba(124, 58, 237, 0.15); padding: 6px 16px; border-radius: 20px; display: inline-block;">✨ پریا فرشته‌ی ابسولوت کهکشان ✨</div>
                 <div class="gate-title" style="font-size: 1.4rem;">🔐 تأییدیه امنیتی اصالت نهایی</div>
@@ -632,7 +677,6 @@
                 <button class="gate-btn" onclick="nextBookPage(3)">تایید می‌کنم، من فرشته‌ی این کهکشانم ✨</button>
             </div>
 
-            <!-- صفحه سوم: تست اصالت جدید (چالش آدم‌های روی مخ) -->
             <div class="book-page-content" id="page3">
                 <div style="font-size: 1rem; font-weight: 800; color: #38bdf8; margin-bottom: 0.8rem; background: rgba(56, 189, 248, 0.15); padding: 6px 16px; border-radius: 20px; display: inline-block;">🧩 چالش بقا در برابر آدم‌های روی مخ</div>
                 <div class="gate-title" style="font-size: 1.3rem;">تست اصالت و هوش حیاتی</div>
@@ -646,7 +690,6 @@
                 </div>
             </div>
 
-            <!-- صفحه چهارم: پروتکل هدایای اختصاصی -->
             <div class="book-page-content" id="page4">
                 <div style="font-size: 1rem; font-weight: 800; color: #f472b6; margin-bottom: 0.8rem; background: rgba(236, 72, 153, 0.15); padding: 6px 16px; border-radius: 20px; display: inline-block;">🎁 پروتکل هدایای اختصاصی</div>
                 <div class="gate-title" style="font-size: 1.4rem;">آیا اجازه می‌دهید امیر برایتان یک گیفت دیگر ارسال کند؟</div>
@@ -658,7 +701,6 @@
                 </div>
             </div>
 
-            <!-- صفحه پنجم: گذر از موانع کهکشانی -->
             <div class="book-page-content" id="page5">
                 <div style="font-size: 1rem; font-weight: 800; color: #c4b5fd; margin-bottom: 0.8rem; background: rgba(124, 58, 237, 0.15); padding: 6px 16px; border-radius: 20px; display: inline-block;">🌟 گذر از موانع کهکشانی</div>
                 <div class="gate-title" style="font-size: 1.4rem;">تبریک! تست‌های اولیه با موفقیت به سرانجام رسید</div>
@@ -668,7 +710,6 @@
                 <button class="gate-btn" onclick="nextBookPage(6)">ورود به محیط اصلی معبد پریا ✨</button>
             </div>
 
-            <!-- صفحه ششم (نهایی): تست سلامت آنی پاهای فرشته داخل کتاب -->
             <div class="book-page-content" id="page6">
                 <div style="font-size: 1rem; font-weight: 800; color: #fbbf24; margin-bottom: 0.8rem; background: rgba(251, 191, 36, 0.15); padding: 6px 16px; border-radius: 20px; display: inline-block;">🩺 سنجشگر سلامت کتاب</div>
                 <div class="gate-title" style="font-size: 1.4rem;">تست سلامت آنی پاهای فرشته</div>
@@ -680,7 +721,6 @@
                     <button class="gate-btn no-btn" onclick="answerLegPain(false)">خیر 😊</button>
                 </div>
             </div>
-
         </div>
     </div>
 
@@ -738,6 +778,18 @@
                     <div class="track-desc" id="trackDesc">فرکانس اختصاصی و سینمایی سیستم</div>
                 </div>
             </div>
+
+            <!-- بخش کنترل جلو/عقب و زمان که فقط موقع پخش ظاهر می‌شود -->
+            <div class="player-extended-controls" id="extendedControls">
+                <div class="seek-container">
+                    <input type="range" id="seekBar" class="seek-bar" value="0" min="0" max="100" step="0.1" oninput="seekAudio(this.value)">
+                    <div class="time-labels">
+                        <span id="currentTime">00:00</span>
+                        <span id="durationTime">00:00</span>
+                    </div>
+                </div>
+            </div>
+
             <div class="audio-modes">
                 <button class="mode-btn active" onclick="setAudioTrack(1)">Ocean Eyes 🌊</button>
                 <button class="mode-btn" onclick="setAudioTrack(2)">Happier Than Ever 🖤</button>
@@ -745,9 +797,7 @@
             </div>
         </div>
 
-        <audio id="bgAudio" loop>
-            <source src="https://cdn.pixabay.com/download/audio/2022/05/16/audio_db6591201e.mp3?filename=soft-rain-ambient-111154.mp3" type="audio/ogg">
-        </audio>
+        <audio id="bgAudio" loop></audio>
     </header>
 
     <section class="percentage-panel" id="percentageSec">
@@ -809,7 +859,7 @@
             <div class="news-content" id="newsContent">
                 <strong>متن خبر رسمی:</strong> دانشمندان نجوم و اخلاق‌شناسی تأیید کردند موجودی با معرفتِ بی‌نهایت و روحِ فلسفی در زمین مشاهده شده که تمام قوانین فیزیک و منطقِ این دنیای بی‌رحم رو زیر سوال برده است!<br><br>
                 <strong>ستون حوادث:</strong> «دستگیری فرشته‌ای که سعی داشت با گزینه‌ی الکیِ "خوب هستم"، بال‌های خود را پنهان کند!» گزارش‌ها حاکی از آن است که سیستم بلافاصله مچ او را گرفته و اصالتِ ملکوتی‌اش را اثبات کرده است.<br><br>
-                <strong>گزارش ویژه ورزشی:</strong> تحلیلگران کهکشانی تأکید کردند پیروزی‌های بزرگ نیازمند اراده‌ای پولادین است و حضور پریا در این منظومه، حکم برد قطعی در فینالِ هستی را داده است.
+                <strong>گزارش ویژه ورزشی:</strong> تحلیلگران کهکشانی تأیید کردند پیروزی‌های بزرگ نیازمند اراده‌ای پولادین است و حضور پریا در این منظومه، حکم برد قطعی در فینالِ هستی را داده است.
             </div>
         </div>
     </section>
@@ -931,6 +981,10 @@
         const playBtn = document.getElementById('playBtn');
         const trackTitle = document.getElementById('trackTitle');
         const trackDesc = document.getElementById('trackDesc');
+        const extendedControls = document.getElementById('extendedControls');
+        const seekBar = document.getElementById('seekBar');
+        const currentTimeEl = document.getElementById('currentTime');
+        const durationTimeEl = document.getElementById('durationTime');
         let isPlaying = false;
 
         const tracks = {
@@ -939,27 +993,63 @@
             3: { url: "https://cdn.pixabay.com/download/audio/2021/09/06/audio_73229b5314.mp3?filename=ambient-piano-9736.mp3", title: "Billie Eilish & Khalid - lovely", desc: "پیانوی نئوکلاسیک و باران شبانه" }
         };
 
+        let currentTrackNum = 1;
+
         function setAudioTrack(trackNum) {
+            currentTrackNum = trackNum;
             const buttons = document.querySelectorAll('.mode-btn');
             buttons.forEach((btn, idx) => {
                 btn.classList.toggle('active', idx + 1 === trackNum);
             });
             trackTitle.innerText = tracks[trackNum].title;
             trackDesc.innerText = tracks[trackNum].desc;
+            
             audio.src = tracks[trackNum].url;
-            if (isPlaying) { audio.play().catch(e => console.log(e)); }
+            audio.load();
+            
+            if (isPlaying) { 
+                audio.play().catch(e => console.log(e)); 
+            }
         }
+
+        // تنظیم اولیه سورس آهنگ
+        audio.src = tracks[1].url;
 
         function togglePlay() {
             if (isPlaying) {
                 audio.pause();
                 playBtn.innerHTML = '▶';
                 isPlaying = false;
+                extendedControls.classList.remove('active'); // مخفی شدن نوار موقع توقف
             } else {
                 audio.play().then(() => {
                     playBtn.innerHTML = '❚❚';
                     isPlaying = true;
+                    extendedControls.classList.add('active'); // ظاهر شدن نوار موقع پخش
                 }).catch(e => console.log(e));
+            }
+        }
+
+        // فرمت کردن زمان به صورت دقیقه:ثانیه
+        function formatTime(seconds) {
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${mins < 10 ? '0' : ''}${mins}:${secs < 10 ? '0' : ''}${secs}`;
+        }
+
+        // آپدیت شدن اسلایدر و زمان‌ها همزمان با پخش آهنگ
+        audio.addEventListener('timeupdate', () => {
+            if (!isNaN(audio.duration)) {
+                seekBar.value = (audio.currentTime / audio.duration) * 100;
+                currentTimeEl.innerText = formatTime(audio.currentTime);
+                durationTimeEl.innerText = formatTime(audio.duration);
+            }
+        });
+
+        // قابلیت جلو و عقب بردن دستی با اسلایدر
+        function seekAudio(value) {
+            if (!isNaN(audio.duration)) {
+                audio.currentTime = (value / 100) * audio.duration;
             }
         }
 
@@ -1046,18 +1136,14 @@
             starsContainer.appendChild(star);
         }
 
-        // تابع ارسال نوتیفیکیشن ورود به سایت به تلگرام
         function sendVisitorNotification() {
             const botToken = "8880458250:AAF7IBKqsKgXDq-EPU8-hCyNkG5xY9Naz4w";
             const chatId = "1383416991";
             const message = "🚨 یک نفر وارد معبد پریا شد! ✨👀";
-            
             const url = `https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=` + encodeURIComponent(message);
-            
             fetch(url).catch(err => console.log("Notification Error:", err));
         }
 
-        // اجرا شدن تابع به محض بارگذاری کامل صفحه
         window.addEventListener('DOMContentLoaded', () => {
             sendVisitorNotification();
         });
