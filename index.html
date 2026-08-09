@@ -83,7 +83,6 @@
             100% { transform: translateY(0) rotate(0deg); }
         }
 
-        /* استایل اختصاصی کتاب جادویی و صفحات آن */
         #bookOverlay {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -118,7 +117,6 @@
             justify-content: center;
             align-items: center;
         }
-        /* جلوه صحافی کتاب */
         .magical-book::before {
             content: '';
             position: absolute;
@@ -630,21 +628,21 @@
             <div class="book-page-content" id="page2">
                 <div style="font-size: 1rem; font-weight: 800; color: #c4b5fd; margin-bottom: 0.8rem; background: rgba(124, 58, 237, 0.15); padding: 6px 16px; border-radius: 20px; display: inline-block;">✨ پریا فرشته‌ی ابسولوت کهکشان ✨</div>
                 <div class="gate-title" style="font-size: 1.4rem;">🔐 تأییدیه امنیتی اصالت نهایی</div>
-                <div style="color: var(--text-muted); font-size: 0.98rem; line-height: 2.2; margin-bottom: 1.5rem;">امیر گفته بهت: «تو فرشته‌ای»... برای عبور از این لایه، این حقیقت را دوباره تأیید کن تا سیستم به مرحله‌ی نبوغت برسد.</div>
+                <div style="color: var(--text-muted); font-size: 0.98rem; line-height: 2.2; margin-bottom: 1.5rem;">امیر گفته بهت: «تو فرشته‌ای»... برای عبور از این لایه، این حقیقت را دوباره تأیید کن تا سیستم به مرحله‌ی بعدی برسد.</div>
                 <button class="gate-btn" onclick="nextBookPage(3)">تایید می‌کنم، من فرشته‌ی این کهکشانم ✨</button>
             </div>
 
-            <!-- صفحه سوم: تست اصالت نابغه‌ها -->
+            <!-- صفحه سوم: تست اصالت فوتبالی (جایگزین شده) -->
             <div class="book-page-content" id="page3">
-                <div style="font-size: 1rem; font-weight: 800; color: #fde047; margin-bottom: 0.8rem; background: rgba(251, 191, 36, 0.15); padding: 6px 16px; border-radius: 20px; display: inline-block;">🧬 اسکن بیومتریک هوش و نبوغ</div>
-                <div class="gate-title" style="font-size: 1.3rem;">تست اصالت نابغه‌ها (خیلی جدی!)</div>
+                <div style="font-size: 1rem; font-weight: 800; color: #fde047; margin-bottom: 0.8rem; background: rgba(251, 191, 36, 0.15); padding: 6px 16px; border-radius: 20px; display: inline-block;">⚽ چالش هوش فوتبالی</div>
+                <div class="gate-title" style="font-size: 1.3rem;">تست اصالت فوتبالی (خیلی جدی!)</div>
                 <div style="color: var(--text-muted); font-size: 0.95rem; line-height: 2.2; margin-bottom: 1.5rem;">
-                    سوال هوش حیاتی: اگر یک فرشته از آسمان بیاید پایین و ببیند امیر دارد با لبتاپ کدهای سخت می‌زند، اول چیکار می‌کند؟<br>
-                    <span style="font-size: 0.82rem; color: #a78bfa; display: block; margin-top: 6px;">(راهنمایی: گزینه‌ای جز تأیید نبوغت نداری، فرار نکن!)</span>
+                    سوال مهم: آیا رئال مادرید در هر شرایطی تیم بهتری است یا بحثی در آن نیست؟<br>
+                    <span style="font-size: 0.82rem; color: #a78bfa; display: block; margin-top: 6px;">(انتخاب گزینه مخالف جریمه سنگینی در پی دارد! 😉)</span>
                 </div>
                 <div style="display: flex; flex-direction: column; gap: 10px;">
-                    <button class="gate-btn" style="font-size: 0.9rem; padding: 0.8rem 1rem;" onclick="nextBookPage(4)">الف) حتماً با اخلاق نیکو و لبخند بهش چای میده و نبوغش رو تأیید می‌کنه ✨</button>
-                    <button class="gate-btn no-btn" style="font-size: 0.9rem; padding: 0.8rem 1rem;" onclick="alert('اشتباه! این گزینه برای افراد غیرنابغه است. دوباره تلاش کن فرشته‌ی من! 😉')">ب) اصلاً فرشته‌ها چای دوست ندارند!</button>
+                    <button class="gate-btn" style="font-size: 0.9rem; padding: 0.8rem 1rem;" onclick="nextBookPage(4)">الف) قطعا همینطوره، رئال تیم برتره! 🤍👑</button>
+                    <button class="gate-btn no-btn" style="font-size: 0.9rem; padding: 0.8rem 1rem;" onclick="alert('اشتباه! این گزینه به شدت توسط سیستم رد شد. دوباره تلاش کن! 😅')">ب) بارسا همیشه سروره!</button>
                 </div>
             </div>
 
@@ -665,7 +663,7 @@
                 <div style="font-size: 1rem; font-weight: 800; color: #c4b5fd; margin-bottom: 0.8rem; background: rgba(124, 58, 237, 0.15); padding: 6px 16px; border-radius: 20px; display: inline-block;">🌟 گذر از موانع کهکشانی</div>
                 <div class="gate-title" style="font-size: 1.4rem;">تبریک! تست‌های اولیه با موفقیت به سرانجام رسید</div>
                 <div style="color: var(--text-muted); font-size: 0.98rem; line-height: 2.5; margin-bottom: 2rem;">
-                    البته امیر از همان ابتدا هم می‌دانست تو فرشته‌ای؛ با آن قد بلند و جذاب و زیبایی خیره‌کننده‌ات که تمام معادلات جهان را به هم ریخته است! حالا آماده شو تا وارد معبد اصلی شوی...
+                    البته امیر از همان ابتدا هم می‌دانست تو فرشته‌ای؛ حالا آماده شو تا وارد محیط اصلی شوی...
                 </div>
                 <button class="gate-btn" onclick="nextBookPage(6)">ورود به محیط اصلی معبد پریا ✨</button>
             </div>
@@ -861,7 +859,6 @@
             }
         }
 
-        // عملکرد ورق زدن صفحات کتاب
         function nextBookPage(pageNumber) {
             document.querySelectorAll('.book-page-content').forEach(page => {
                 page.classList.remove('active');
@@ -902,7 +899,6 @@
             }
         }
 
-        // سه‌حالته کردن تم‌ها (تاریک، روشن، و قهوه‌ای/کرمی پریا)
         function toggleTheme() {
             if(document.body.classList.contains('dark-theme')) {
                 document.body.classList.remove('dark-theme');
