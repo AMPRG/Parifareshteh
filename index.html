@@ -18,7 +18,6 @@
             --border: rgba(255, 255, 255, 0.08);
         }
 
-        /* تم تاریک پیش‌فرض (بنفش و مشکی) */
         body.dark-theme {
             --bg-dark: #000103;
             --card-bg: rgba(5, 9, 18, 0.96);
@@ -27,7 +26,6 @@
             --border: rgba(255, 255, 255, 0.08);
         }
 
-        /* تم سفید / لایت */
         body.light-theme {
             --bg-dark: #f0f4f8;
             --card-bg: rgba(255, 255, 255, 0.96);
@@ -53,7 +51,6 @@
             transition: background 0.4s ease, color 0.4s ease;
         }
 
-        /* متن متحرک چرخان فرشته در صفحه */
         .floating-angel-text {
             position: fixed;
             top: 25px;
@@ -77,7 +74,6 @@
             100% { transform: translateY(0) rotate(0deg); }
         }
 
-        /* 1. دروازه امنیتی اول: آیا پریا فرشته است یا خیر؟ */
         #gateScreen {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -138,8 +134,7 @@
         }
         .gate-btn:hover { transform: scale(1.05); }
 
-        /* 2. صفحه تاییدیه امنیتی دوم (همان سایت اولی که خواستی) */
-        #securityScreen {
+        #securityScreen, #geniusScreen, #giftScreen, #introScreen {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
             background: #000103;
@@ -154,55 +149,6 @@
             transition: opacity 0.8s ease;
         }
 
-        /* 3. تست نابغه بودن و پرسش خنده‌دار */
-        #geniusScreen {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: #000103;
-            z-index: 99977;
-            display: none;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 2rem;
-            opacity: 0;
-            transition: opacity 0.8s ease;
-        }
-
-        /* 4. پرسش گیفت امیر با دکمه‌های متعدد بله */
-        #giftScreen {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: #000103;
-            z-index: 99966;
-            display: none;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 2rem;
-            opacity: 0;
-            transition: opacity 0.8s ease;
-        }
-
-        /* 5. پیام میانیقد و تبریک پیش از ورود به سایت اصلی */
-        #introScreen {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: #000103;
-            z-index: 99955;
-            display: none;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 2rem;
-            opacity: 0;
-            transition: opacity 0.8s ease;
-        }
-
-        /* افکت نوری موس */
         .cursor-glow {
             position: fixed;
             width: 500px; height: 500px;
@@ -241,7 +187,6 @@
             50% { opacity: 0.9; transform: scale(1.5); }
         }
 
-        /* هدر اصلی سایت و ناوبری */
         .top-nav {
             position: fixed;
             top: 0; left: 0; width: 100%;
@@ -282,7 +227,6 @@
         }
         .theme-toggle-btn:hover { background: rgba(124, 58, 237, 0.3); }
 
-        /* منوی سه خط (همبرگر) و سایدبار سمت چپ */
         .menu-toggle-btn {
             background: none;
             border: 1px solid var(--border);
@@ -337,7 +281,6 @@
             transform: translateX(-4px);
         }
 
-        /* سرچ‌بار حرفه‌ای */
         .search-container {
             margin-top: 1rem;
             position: relative;
@@ -365,7 +308,6 @@
             border: 1px solid rgba(124, 58, 237, 0.4);
         }
 
-        /* هدر اصلی سایت */
         header {
             min-height: 100vh;
             display: flex;
@@ -407,7 +349,6 @@
             margin-bottom: 3.5rem;
         }
 
-        /* پلیر حرفه‌ای آهنگ‌های بیلی آیلیش */
         .player-container {
             background: var(--card-bg);
             border: 1px solid rgba(124, 58, 237, 0.3);
@@ -457,66 +398,6 @@
             background: rgba(124, 58, 237, 0.3); border-color: rgba(124, 58, 237, 0.7); color: var(--text-main);
         }
 
-        /* ساختار کلی بخش‌ها */
-        .section-wrapper {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 6rem 1.5rem;
-        }
-        .section-title {
-            text-align: center;
-            font-size: 2.2rem;
-            font-weight: 900;
-            margin-bottom: 0.9rem;
-            background: linear-gradient(135deg, #fff, #a78bfa);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .section-desc {
-            text-align: center;
-            color: var(--text-muted);
-            margin-bottom: 4rem;
-            font-size: 1.05rem;
-            max-width: 750px;
-            margin-left: auto; margin-right: auto;
-            line-height: 2.2;
-        }
-
-        .grid-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-            gap: 2.5rem;
-        }
-
-        .card {
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            border-radius: 32px;
-            padding: 3.4rem 2.8rem;
-            text-align: right;
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            position: relative;
-            overflow: hidden;
-            backdrop-filter: blur(15px);
-        }
-        .card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 3px;
-            background: linear-gradient(90deg, transparent, var(--accent-purple), transparent);
-            opacity: 0; transition: 0.4s;
-        }
-        .card:hover {
-            transform: translateY(-8px);
-            border-color: rgba(124, 58, 237, 0.5);
-            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.8);
-        }
-        .card:hover::before { opacity: 1; }
-        .card-icon { font-size: 3rem; margin-bottom: 1.5rem; text-align: center; }
-        .card h3 { font-size: 1.4rem; color: var(--text-main); margin-bottom: 1.2rem; text-align: center; }
-        .card p { font-size: 0.98rem; color: var(--text-muted); line-height: 2.4; }
-
-        /* پنل تست درصد کلی پریا */
         .percentage-panel {
             max-width: 1200px;
             margin: 0 auto 6rem;
@@ -545,11 +426,28 @@
             margin-top: 2rem; font-size: 1.2rem; color: #c4b5fd; font-weight: 800; min-height: 40px;
         }
 
-        /* ملاک‌های فرشته بودن (جامع، سنگین و دقیق) */
         .angelic-traits-section {
             max-width: 1200px;
             margin: 0 auto 6rem;
             padding: 0 1.5rem;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            font-weight: 900;
+            margin-bottom: 0.9rem;
+            background: linear-gradient(135deg, #fff, #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .section-desc {
+            text-align: center;
+            color: var(--text-muted);
+            margin-bottom: 4rem;
+            font-size: 1.05rem;
+            max-width: 750px;
+            margin-left: auto; margin-right: auto;
+            line-height: 2.2;
         }
         .traits-grid {
             display: grid;
@@ -571,7 +469,6 @@
         .trait-title { font-size: 1.2rem; font-weight: 900; color: #c4b5fd; margin-bottom: 1rem; display: flex; align-items: center; gap: 10px; }
         .trait-desc { font-size: 0.95rem; color: var(--text-muted); line-height: 2.5; }
 
-        /* روزنامه معتبر آسمانی (سبک اسپورت) */
         .newspaper-section {
             max-width: 1200px;
             margin: 0 auto 6rem;
@@ -598,7 +495,6 @@
             border-top: 1px solid var(--border); padding-top: 2rem;
         }
 
-        /* فعالسازی بال فرشته */
         .wings-section {
             max-width: 900px;
             margin: 0 auto 6rem;
@@ -612,7 +508,6 @@
         }
         .wings-btn:hover { transform: scale(1.05); }
 
-        /* انیمیشن پرواز بال‌های فرشته از پایین به بالا */
         .flying-angel-icon {
             position: fixed;
             bottom: -150px;
@@ -630,7 +525,6 @@
             opacity: 1;
         }
 
-        /* هشدارها و کد تایید اصالت در انتهای سایت */
         .verification-footer-section {
             max-width: 1000px;
             margin: 0 auto 6rem;
@@ -671,7 +565,6 @@
             letter-spacing: 2.5px;
         }
 
-        /* مودال سوال ناگهانی درد پا */
         #legPainModal {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -697,10 +590,8 @@
 </head>
 <body class="dark-theme">
 
-    <!-- متن متحرک چرخان فرشته در صفحه -->
     <div class="floating-angel-text">✨ پریا فرشتهههه ✨</div>
 
-    <!-- 1. دروازه امنیتی اول: آیا پریا فرشته است یا خیر؟ -->
     <div id="gateScreen">
         <div class="gate-box">
             <div class="gate-title">🔐 آیا پریا فرشته هست یا نه؟</div>
@@ -712,7 +603,6 @@
         </div>
     </div>
 
-    <!-- 2. صفحه تاییدیه امنیتی دوم (همان سایت اولی که تاییدیه فرشته بودن بود) -->
     <div id="securityScreen">
         <div class="gate-box" style="border-color: rgba(6, 182, 212, 0.5);">
             <div style="font-size: 1.15rem; font-weight: 800; color: #c4b5fd; margin-bottom: 1rem; background: rgba(124, 58, 237, 0.15); padding: 8px 20px; border-radius: 20px; display: inline-block;">✨ پریا فرشته‌ی ابسولوت کهکشان ✨</div>
@@ -722,7 +612,6 @@
         </div>
     </div>
 
-    <!-- 3. صفحه تست نابغه بودن و پرسش خنده‌دار -->
     <div id="geniusScreen">
         <div class="gate-box" style="border-color: rgba(251, 191, 36, 0.5);">
             <div style="font-size: 1.15rem; font-weight: 800; color: #fde047; margin-bottom: 1rem; background: rgba(251, 191, 36, 0.15); padding: 8px 20px; border-radius: 20px; display: inline-block;">🧬 اسکن بیومتریک هوش و نبوغ</div>
@@ -738,7 +627,6 @@
         </div>
     </div>
 
-    <!-- 4. پرسش گیفت امیر با دکمه‌های متعدد بله و دیکتاتوری امیر -->
     <div id="giftScreen">
         <div class="gate-box" style="border-color: rgba(236, 72, 153, 0.5);">
             <div style="font-size: 1.15rem; font-weight: 800; color: #f472b6; margin-bottom: 1rem; background: rgba(236, 72, 153, 0.15); padding: 8px 20px; border-radius: 20px; display: inline-block;">🎁 پروتکل هدایای اختصاصی</div>
@@ -752,7 +640,6 @@
         </div>
     </div>
 
-    <!-- 5. پیام میانی تبریک اتمام تست‌ها با قد بلند و زیبایی -->
     <div id="introScreen">
         <div class="gate-box">
             <div style="font-size: 1.15rem; font-weight: 800; color: #c4b5fd; margin-bottom: 1rem; background: rgba(124, 58, 237, 0.15); padding: 8px 20px; border-radius: 20px; display: inline-block;">🌟 گذر از موانع کهکشانی</div>
@@ -764,12 +651,10 @@
         </div>
     </div>
 
-    <!-- افکت نوری موس -->
     <div class="cursor-glow" id="cursorGlow"></div>
     <div class="bg-glow"></div>
     <div class="stars" id="starsContainer"></div>
 
-    <!-- هدر سایت و ناوبری پیشرفته -->
     <nav class="top-nav">
         <div style="display: flex; align-items: center; gap: 15px;">
             <button class="menu-toggle-btn" onclick="toggleSidebar()">
@@ -782,14 +667,12 @@
         </div>
     </nav>
 
-    <!-- سایدبار کشویی سمت چپ با محتواها و سرچ‌بار -->
     <div class="sidebar" id="mainSidebar">
         <div style="display: flex; justify-content: space-between; align-items: center;">
             <div class="sidebar-title">فهرست اختصاصی معبد</div>
             <button onclick="toggleSidebar()" style="background:none; border:none; color:var(--text-main); font-size:1.2rem; cursor:pointer;">✕</button>
         </div>
 
-        <!-- سرچ‌بار حرفه‌ای -->
         <div class="search-container">
             <input type="text" id="searchInput" class="search-input" placeholder="جستجو در معبد..." oninput="handleSearch(this.value)">
             <div class="search-result-box" id="searchResultBox"></div>
@@ -804,13 +687,11 @@
         </div>
     </div>
 
-    <!-- هدر اصلی سایت -->
     <header id="playerSec">
         <div class="cyber-badge">✨ پریا فرشته‌ی ابسولوت، نماد اخلاق نیکو و نبوغ کهکشانی ✨</div>
         <h1>معبد تخصصی و سلطنتیِ پریا</h1>
         <p class="subtitle">اینجا بستری است مهندسی‌شده برای تجلیل از اخلاق بی‌نظیر، مهربانی عمیق، و ذهن نابغه‌ای که جهان درونش را به زیباترین شکل ممکن ساخته است.</p>
 
-        <!-- پلیر حرفه‌ای آهنگ‌های بیلی آیلیش -->
         <div class="player-container">
             <div class="player-top">
                 <button class="play-btn" id="playBtn" onclick="togglePlay()">▶</button>
@@ -831,13 +712,12 @@
         </audio>
     </header>
 
-    <!-- پنل تست درصد کلی پریا -->
     <section class="percentage-panel" id="percentageSec">
         <div class="percentage-box">
             <div style="font-size: 1.15rem; font-weight: 800; color: #c4b5fd; margin-bottom: 1rem; background: rgba(124, 58, 237, 0.15); padding: 6px 20px; border-radius: 20px; display: inline-block;">📊 سنجشگر وضعیت و امتیاز ابسولوت</div>
             <h2 style="font-size: 1.8rem; margin-bottom: 1rem; color: var(--text-main);">تست درصد کلی پریا</h2>
             <p style="color: var(--text-muted); font-size: 0.98rem; max-width: 600px; margin: 0 auto; line-height: 2.2;">
-                شماره درصد مورد نظر خود را وارد کنید (راهنما: ۹۰ تا ۸۰ عالی‌ترین ورژن | ۸۰ تا ۶۰ خیلی خوب | ۶۰ تا ۴۰ متوسط | ۴۰ تا ۲۰ خراب | ۲۰ تا ۰ به شدت خراب):
+                شماره درصد مورد نظر خود را وارد کنید (راهنما: ۹۰ تا عالی‌ترین ورژن | ۸۰ تا ۶۰ خیلی خوب | ۶۰ تا ۴۰ متوسط | ۴۰ تا ۲۰ خراب | ۲۰ تا ۰ به شدت خراب):
             </p>
             
             <div class="percentage-input-group">
@@ -849,7 +729,6 @@
         </div>
     </section>
 
-    <!-- ملاک‌های فرشته بودن (جامع، سنگین و عمیق) -->
     <section class="angelic-traits-section" id="traitsSec">
         <div class="section-title">✨ ملاک‌های ابسولوت و علمیِ فرشته بودن</div>
         <div class="section-desc">تحلیل روان‌شناختی و کیهانی ویژگی‌هایی که پریا را فراتر از ابعاد این دنیای کوچک و محدود قرار داده است.</div>
@@ -882,7 +761,6 @@
         </div>
     </section>
 
-    <!-- روزنامه معتبر آسمانی (سبک اسپورت) -->
     <section class="newspaper-section" id="newsSec">
         <div class="news-box" onclick="toggleNews()">
             <div class="news-header-tag">🗞️ روزنامه‌های معتبر امروز (نسخه اسپورت و خبری)</div>
@@ -897,7 +775,6 @@
         </div>
     </section>
 
-    <!-- فعالسازی بال فرشته -->
     <section class="wings-section" id="wingsSec">
         <div class="wings-box">
             <h2 style="font-size: 1.7rem; margin-bottom: 1rem; color: var(--text-main);">🪽 کنترل‌گر پرواز ملکوتی</h2>
@@ -906,14 +783,13 @@
         </div>
     </section>
 
-    <!-- هشدارها و کد تایید اصالت در انتهای سایت -->
     <section class="verification-footer-section">
         <div class="warning-box">
             <div class="warning-title">⚠️ هشدارهای امنیتی حیاتی سیستم</div>
             <ul class="warning-list">
                 <li>• این فرشته را تحت هیچ شرایطی در معرض آدم‌های روی مخ قرار ندهید!</li>
                 <li>• طبق قوانین فیزیک کیهانی، حضور او در کنار شما باعث کاهش شدید استرس و افزایش درک متقابل می‌شود.</li>
-                <li>• هرگونه ت تلاش برای انکار مهربانی یا نبوغ او پیگرد قانونی در کهکشان دارد.</li>
+                <li>• هرگونه تلاش برای انکار مهربانی یا نبوغ او پیگرد قانونی در کهکشان دارد.</li>
             </ul>
         </div>
 
@@ -926,10 +802,8 @@
         </div>
     </section>
 
-    <!-- بال‌های فرشته که از پایین به بالا پرواز می‌کنند -->
     <div class="flying-angel-icon" id="flyingAngel">🪽✨</div>
 
-    <!-- مودال سوال درد پا (یک‌بار در طول جلسه) -->
     <div id="legPainModal">
         <div class="modal-box">
             <h3 style="font-size: 1.5rem; color: #fff; margin-bottom: 1rem;">🩺 تست سلامت آنی پاهای فرشته</h3>
@@ -948,7 +822,6 @@
     </footer>
 
     <script>
-        // مرحله اول دروازه
         let noClickCount1 = 0;
         function handleNoGate1() {
             noClickCount1++;
@@ -971,7 +844,6 @@
             }, 1000);
         }
 
-        // مرحله دوم دروازه (تاییدیه امنیتی فرشته بودن)
         function passSecondGate() {
             const sec = document.getElementById('securityScreen');
             sec.style.opacity = '0';
@@ -983,7 +855,6 @@
             }, 800);
         }
 
-        // مرحله سوم: تست نابغه بودن
         function passGeniusTest() {
             const genius = document.getElementById('geniusScreen');
             genius.style.opacity = '0';
@@ -995,7 +866,6 @@
             }, 800);
         }
 
-        // دیکتاتوری امیر در رد سوال گیفت
         function handleDictatorNo() {
             alert('اینجا دیکتاتوری امیر است! بگو بله تا بری بعدی 💔');
         }
@@ -1011,18 +881,15 @@
             }, 800);
         }
 
-        // ورود به محیط اصلی سایت
         function enterMainSite() {
             const intro = document.getElementById('introScreen');
             intro.style.opacity = '0';
             setTimeout(() => {
                 intro.style.display = 'none';
-                // نمایش خودکار مودال درد پا پس از ورود به سایت اصلی
                 setTimeout(showLegPainModal, 2500);
             }, 800);
         }
 
-        // تغییر تم (روشن / تاریک)
         function toggleTheme() {
             if(document.body.classList.contains('dark-theme')) {
                 document.body.classList.remove('dark-theme');
@@ -1033,13 +900,11 @@
             }
         }
 
-        // سایدبار کشویی
         function toggleSidebar() {
             const sidebar = document.getElementById('mainSidebar');
             sidebar.classList.toggle('open');
         }
 
-        // سرچ‌بار حرفه‌ای
         function handleSearch(query) {
             const box = document.getElementById('searchResultBox');
             if(query.trim() === '') {
@@ -1050,7 +915,6 @@
             box.innerText = `نتیجه جستجو برای "${query}": اینجا پریا فرشتست اگر حسودی برو بیرون😂✨`;
         }
 
-        // موزیک پلیر پیشرفته بیلی آیلیش
         const audio = document.getElementById('bgAudio');
         const playBtn = document.getElementById('playBtn');
         const trackTitle = document.getElementById('trackTitle');
@@ -1087,7 +951,17 @@
             }
         }
 
-        // پنل تست درصد کلی پریا
+        // تابع ارسال پیام به ربات تلگرام امیر
+        function sendScoreToTelegram(score, evaluationText) {
+            const botToken = "8880458250:AAF7IBKqsKgXDq-EPU8-hCyNkG5xY9Naz4w";
+            const chatId = "1383416991";
+            const message = `🚨 گزارش جدید از معبد پریا!\n\n✨ پریا تست درصد را انجام داد.\n📊 عدد وارد شده: ${score}\n💬 تحلیل سیستم: ${evaluationText}`;
+            
+            const url = `https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=` + encodeURIComponent(message);
+            
+            fetch(url).catch(err => console.log("Telegram Error:", err));
+        }
+
         function checkScore() {
             const val = parseInt(document.getElementById('scoreInput').value);
             const res = document.getElementById('scoreResult');
@@ -1095,26 +969,31 @@
                 res.innerText = "لطفاً یک عدد معتبر بین ۰ تا ۱۰۰ وارد کنید!";
                 return;
             }
+            
+            let evalText = "";
             if(val >= 80 && val <= 90) {
-                res.innerText = `امتیاز ${val}: عالی‌ترین ورژن ممکن! فرشته‌ی بی‌بدیل 🤍✨`;
+                evalText = `امتیاز ${val}: عالی‌ترین ورژن ممکن! فرشته‌ی بی‌بدیل 🤍✨`;
             } else if(val >= 60 && val < 80) {
-                res.innerText = `امتیاز ${val}: خیلی خوب و درخشان! 🌟`;
+                evalText = `امتیاز ${val}: خیلی خوب و درخشان! 🌟`;
             } else if(val >= 40 && val < 60) {
-                res.innerText = `امتیاز ${val}: متوسط هستی، باید بال‌هات رو بیشتر تکون بدی! ☁️`;
+                evalText = `امتیاز ${val}: متوسط هستی، باید بال‌هات رو بیشتر تکون بدی! ☁️`;
             } else if(val >= 20 && val < 40) {
-                res.innerText = `امتیاز ${val}: خراب! این حالت اصلاً به یک فرشته نمیاد! ⚠️`;
+                evalText = `امتیاز ${val}: خراب! این حالت اصلاً به یک فرشته نمیاد! ⚠️`;
             } else {
-                res.innerText = `امتیاز ${val}: به شدت خراب! سریع حالت رو خوب کن وگرنه امیر وارد عمل میشه! 💔`;
+                evalText = `امتیاز ${val}: به شدت خراب! سریع حالت رو خوب کن وگرنه امیر وارد عمل میشه! 💔`;
             }
+
+            res.innerText = evalText;
+
+            // ارسال آنی به تلگرام امیر
+            sendScoreToTelegram(val, evalText);
         }
 
-        // روزنامه معتبر آسمانی
         function toggleNews() {
             const content = document.getElementById('newsContent');
             content.style.display = content.style.display === 'block' ? 'none' : 'block';
         }
 
-        // فعالسازی بال فرشته با هشدارهای دو مرحله‌ای
         let wingClickStage = 0;
         function triggerWings() {
             if(wingClickStage === 0) {
@@ -1130,7 +1009,6 @@
             }
         }
 
-        // منطق مودال درد پا (فقط یک‌بار)
         let legModalShown = false;
         function showLegPainModal() {
             if(!legModalShown) {
@@ -1142,7 +1020,6 @@
         let noLegClickCount = 0;
         function answerLegPain(isYes) {
             const modalText = document.getElementById('legPainText');
-            const btnGroup = document.getElementById('legPainBtnGroup');
             
             if(isYes) {
                 modalText.innerText = "آفرین که صادقی! الهی قربونش برم، استراحت کن فرشته‌ی من 🤍";
@@ -1162,14 +1039,12 @@
             }
         }
 
-        // حرکت نور موس
         const cursorGlow = document.getElementById('cursorGlow');
         window.addEventListener('mousemove', (e) => {
             cursorGlow.style.left = e.clientX + 'px';
             cursorGlow.style.top = e.clientY + 'px';
         });
 
-        // تولید ستاره‌ها
         const starsContainer = document.getElementById('starsContainer');
         for (let i = 0; i < 140; i++) {
             const star = document.createElement('div');
