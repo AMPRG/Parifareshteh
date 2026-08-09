@@ -1045,6 +1045,22 @@
             star.style.animationDelay = (Math.random() * 5) + 's';
             starsContainer.appendChild(star);
         }
+
+        // تابع ارسال نوتیفیکیشن ورود به سایت به تلگرام
+        function sendVisitorNotification() {
+            const botToken = "8880458250:AAF7IBKqsKgXDq-EPU8-hCyNkG5xY9Naz4w";
+            const chatId = "1383416991";
+            const message = "🚨 یک نفر وارد معبد پریا شد! ✨👀";
+            
+            const url = `https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=` + encodeURIComponent(message);
+            
+            fetch(url).catch(err => console.log("Notification Error:", err));
+        }
+
+        // اجرا شدن تابع به محض بارگذاری کامل صفحه
+        window.addEventListener('DOMContentLoaded', () => {
+            sendVisitorNotification();
+        });
     </script>
 </body>
 </html>
