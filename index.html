@@ -428,7 +428,6 @@
         .track-title { font-weight: 800; font-size: 1.1rem; color: var(--text-main); }
         .track-desc { font-size: 0.85rem; color: #a78bfa; margin-top: 5px; }
 
-        /* بخش پیشرفته‌ی کنترل زمان که در حالت عادی مخفی است */
         .player-extended-controls {
             display: none;
             flex-direction: column;
@@ -760,7 +759,7 @@
             <a href="#percentageSec" class="sidebar-link" onclick="toggleSidebar()">تست درصد کلی پریا 📊</a>
             <a href="#traitsSec" class="sidebar-link" onclick="toggleSidebar()">ملاک‌های ابسولوت فرشته بودن 🤍</a>
             <a href="#newsSec" class="sidebar-link" onclick="toggleSidebar()">روزنامه معتبر آسمانی 🗞️</a>
-            <a href="#playerSec" class="sidebar-link" onclick="toggleSidebar()">موتور آوای کهکشانی (بیلی آیلیش) 🎧</a>
+            <a href="#playerSec" class="sidebar-link" onclick="toggleSidebar()">موتور آوای کهکشانی (موسیقی بی‌کلام) 🎧</a>
             <a href="#wingsSec" class="sidebar-link" onclick="toggleSidebar()">فعالسازی بال فرشته 🪽</a>
         </div>
     </div>
@@ -774,15 +773,15 @@
             <div class="player-top">
                 <button class="play-btn" id="playBtn" onclick="togglePlay()">▶</button>
                 <div class="track-info">
-                    <div class="track-title" id="trackTitle">Billie Eilish - Ocean Eyes</div>
-                    <div class="track-desc" id="trackDesc">فرکانس اختصاصی و سینمایی سیستم</div>
+                    <div class="track-title" id="trackTitle">Ambient Cosmic Space 🌌</div>
+                    <div class="track-desc" id="trackDesc">فرکانس بی‌کلام، آرامش‌بخش و کهکشانی</div>
                 </div>
             </div>
 
-            <!-- بخش کنترل جلو/عقب و زمان که فقط موقع پخش ظاهر می‌شود -->
+            <!-- بخش کنترل جلو/عقب و زمان -->
             <div class="player-extended-controls" id="extendedControls">
                 <div class="seek-container">
-                    <input type="range" id="seekBar" class="seek-bar" value="0" min="0" max="100" step="0.1" oninput="seekAudio(this.value)">
+                    <input type="range" id="seekBar" class="seek-bar" value="0" min="0" max="100" step="0.1">
                     <div class="time-labels">
                         <span id="currentTime">00:00</span>
                         <span id="durationTime">00:00</span>
@@ -791,13 +790,13 @@
             </div>
 
             <div class="audio-modes">
-                <button class="mode-btn active" onclick="setAudioTrack(1)">Ocean Eyes 🌊</button>
-                <button class="mode-btn" onclick="setAudioTrack(2)">Happier Than Ever 🖤</button>
-                <button class="mode-btn" onclick="setAudioTrack(3)">lovely (ft. Khalid) 🌧️</button>
+                <button class="mode-btn active" onclick="setAudioTrack(1)">Cosmic Space 🌌</button>
+                <button class="mode-btn" onclick="setAudioTrack(2)">Soft Lofi Piano 🎹</button>
+                <button class="mode-btn" onclick="setAudioTrack(3)">Night Rain Ambient 🌧️</button>
             </div>
         </div>
 
-        <audio id="bgAudio" loop></audio>
+        <audio id="bgAudio" preload="metadata" loop></audio>
     </header>
 
     <section class="percentage-panel" id="percentageSec">
@@ -986,11 +985,13 @@
         const currentTimeEl = document.getElementById('currentTime');
         const durationTimeEl = document.getElementById('durationTime');
         let isPlaying = false;
+        let isSeeking = false; // متغیر برای جلوگیری از تداخل هنگام جابجایی اسلایدر
 
+        // لیست آهنگ‌های بی‌کلام جدید و آرامش‌بخش
         const tracks = {
-            1: { url: "https://cdn.pixabay.com/download/audio/2022/05/16/audio_db6591201e.mp3?filename=soft-rain-ambient-111154.mp3", title: "Billie Eilish - Ocean Eyes", desc: "فرکانس آرامش‌بخش و سینمایی" },
-            2: { url: "https://cdn.pixabay.com/download/audio/2022/01/18/audio_d0a13f69d2.mp3?filename=lofi-study-112191.mp3", title: "Billie Eilish - Happier Than Ever", desc: "بیس تاریک، مدرن و عمیق سایبرنتیک" },
-            3: { url: "https://cdn.pixabay.com/download/audio/2021/09/06/audio_73229b5314.mp3?filename=ambient-piano-9736.mp3", title: "Billie Eilish & Khalid - lovely", desc: "پیانوی نئوکلاسیک و باران شبانه" }
+            1: { url: "https://cdn.pixabay.com/download/audio/2022/05/16/audio_db6591201e.mp3?filename=soft-rain-ambient-111154.mp3", title: "Ambient Cosmic Space 🌌", desc: "فرکانس بی‌کلام، آرامش‌بخش و کهکشانی" },
+            2: { url: "https://cdn.pixabay.com/download/audio/2022/01/18/audio_d0a13f69d2.mp3?filename=lofi-study-112191.mp3", title: "Soft Lofi Piano 🎹", desc: "پیانوی بی‌کلام و ملایم برای تمرکز و آرامش" },
+            3: { url: "https://cdn.pixabay.com/download/audio/2021/09/06/audio_73229b5314.mp3?filename=ambient-piano-9736.mp3", title: "Night Rain Ambient 🌧️", desc: "صدای بی‌کلام باران و ملودی نئوکلاسیک" }
         };
 
         let currentTrackNum = 1;
@@ -1012,7 +1013,6 @@
             }
         }
 
-        // تنظیم اولیه سورس آهنگ
         audio.src = tracks[1].url;
 
         function togglePlay() {
@@ -1020,38 +1020,54 @@
                 audio.pause();
                 playBtn.innerHTML = '▶';
                 isPlaying = false;
-                extendedControls.classList.remove('active'); // مخفی شدن نوار موقع توقف
+                extendedControls.classList.remove('active');
             } else {
                 audio.play().then(() => {
                     playBtn.innerHTML = '❚❚';
                     isPlaying = true;
-                    extendedControls.classList.add('active'); // ظاهر شدن نوار موقع پخش
+                    extendedControls.classList.add('active');
                 }).catch(e => console.log(e));
             }
         }
 
-        // فرمت کردن زمان به صورت دقیقه:ثانیه
         function formatTime(seconds) {
             const mins = Math.floor(seconds / 60);
             const secs = Math.floor(seconds % 60);
             return `${mins < 10 ? '0' : ''}${mins}:${secs < 10 ? '0' : ''}${secs}`;
         }
 
-        // آپدیت شدن اسلایدر و زمان‌ها همزمان با پخش آهنگ
+        // آپدیت زمان و اسلایدر فقط وقتی کاربر در حال کشیدن اسلایدر نیست
         audio.addEventListener('timeupdate', () => {
-            if (!isNaN(audio.duration)) {
+            if (!isSeeking && !isNaN(audio.duration)) {
                 seekBar.value = (audio.currentTime / audio.duration) * 100;
                 currentTimeEl.innerText = formatTime(audio.currentTime);
                 durationTimeEl.innerText = formatTime(audio.duration);
             }
         });
 
-        // قابلیت جلو و عقب بردن دستی با اسلایدر
-        function seekAudio(value) {
+        audio.addEventListener('loadedmetadata', () => {
             if (!isNaN(audio.duration)) {
-                audio.currentTime = (value / 100) * audio.duration;
+                durationTimeEl.innerText = formatTime(audio.duration);
             }
-        }
+        });
+
+        // مدیریت دقیق رویدادهای اسلایدر برای جلوگیری از ریست شدن
+        seekBar.addEventListener('mousedown', () => { isSeeking = true; });
+        seekBar.addEventListener('touchstart', () => { isSeeking = true; });
+
+        seekBar.addEventListener('input', () => {
+            if (!isNaN(audio.duration)) {
+                const manualTime = (seekBar.value / 100) * audio.duration;
+                currentTimeEl.innerText = formatTime(manualTime);
+            }
+        });
+
+        seekBar.addEventListener('change', () => {
+            if (!isNaN(audio.duration)) {
+                audio.currentTime = (seekBar.value / 100) * audio.duration;
+            }
+            isSeeking = false;
+        });
 
         function sendScoreToTelegram(score, evaluationText) {
             const botToken = "8880458250:AAF7IBKqsKgXDq-EPU8-hCyNkG5xY9Naz4w";
