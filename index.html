@@ -985,7 +985,6 @@
             sidebar.classList.toggle('open');
         }
 
-        // --- متن جدید و بسیار شیک‌تر برای بخش جستجو ---
         function handleSearch(query) {
             const box = document.getElementById('searchResultBox');
             if(query.trim() === '') {
@@ -996,7 +995,6 @@
             box.innerHTML = `🌟 **نتیجه جستجوی کهکشانی برای "${query}":**<br>اطلاعات این بخش در انحصار کامل فرشته‌ی معبد (پریا) است؛ تمامی پروتکل‌ها تأیید می‌کنند که حضور ایشان فراتر از محاسبات این جهان قرار دارد. ✨`;
         }
 
-        // --- منطق پیشرفته و تعاملی داشبورد جهان‌های موازی ---
         const universes = {
             1: {
                 title: "جهان اصلی پریا: آرامش مطلق، عدم حضور آدم‌های روی مخ و حاکمیت مهربانی.",
@@ -1027,11 +1025,8 @@
             document.getElementById('universeDesc').innerText = universes[uniNum].title;
             document.getElementById('universeSubText').innerText = universes[uniNum].sub;
             document.getElementById('hubStatus').innerText = universes[uniNum].status;
-            
-            // تغییر داینامیک رنگ پس‌زمینه با انتخاب هر جهان
             document.getElementById('bgGlowLayer').style.background = universes[uniNum].bgGradient;
         }
-        // --------------------------------------------------------
 
         function sendScoreToTelegram(score, evaluationText) {
             const botToken = "8880458250:AAF7IBKqsKgXDq-EPU8-hCyNkG5xY9Naz4w";
