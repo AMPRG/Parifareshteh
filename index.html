@@ -34,7 +34,7 @@
             --border: rgba(0, 0, 0, 0.1);
         }
 
-        /* تم قهوه ای / کرمی (رنگ مورد علاقه پریا) */
+        /* تم قهوه‌ای / کرمی (رنگ مورد علاقه پریا) */
         body.cream-theme {
             --bg-dark: #1e1612;
             --card-bg: rgba(43, 33, 27, 0.96);
@@ -63,28 +63,25 @@
             transition: background 0.4s ease, color 0.4s ease;
         }
 
-        /* کوچک‌تر کردن و تنظیم جایگاه برای جلوگیری از تداخل با منوی 3 خط */
+        /* اصلاح کامل جایگاه متن متحرک برای جلوگیری از تداخل */
         .floating-angel-text {
-            position: fixed;
-            top: 18px;
-            right: 120px;
+            display: inline-block;
             background: linear-gradient(135deg, rgba(124, 58, 237, 0.25), rgba(6, 182, 212, 0.25));
             border: 1px solid rgba(124, 58, 237, 0.5);
             padding: 4px 14px;
             border-radius: 50px;
-            font-size: 0.78rem;
+            font-size: 0.75rem;
             font-weight: 800;
             color: #c4b5fd;
-            z-index: 999;
             backdrop-filter: blur(10px);
             animation: float-rotate 6s infinite ease-in-out;
             box-shadow: 0 0 15px rgba(124, 58, 237, 0.3);
-            pointer-events: none;
             white-space: nowrap;
+            margin: 0 15px;
         }
         @keyframes float-rotate {
             0% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-5px) rotate(1deg); }
+            50% { transform: translateY(-3px) rotate(0.5deg); }
             100% { transform: translateY(0) rotate(0deg); }
         }
 
@@ -210,17 +207,17 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem 2rem;
+            padding: 0.8rem 1.5rem;
             z-index: 990;
-            background: rgba(0, 1, 3, 0.7);
+            background: rgba(0, 1, 3, 0.85);
             backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--border);
         }
-        body.light-theme .top-nav { background: rgba(255, 255, 255, 0.7); }
-        body.cream-theme .top-nav { background: rgba(30, 22, 18, 0.7); }
+        body.light-theme .top-nav { background: rgba(255, 255, 255, 0.85); }
+        body.cream-theme .top-nav { background: rgba(30, 22, 18, 0.85); }
 
         .nav-brand {
-            font-size: 1.15rem;
+            font-size: 1.05rem;
             font-weight: 900;
             background: linear-gradient(135deg, #fff, #a78bfa);
             -webkit-background-clip: text;
@@ -229,15 +226,15 @@
         .nav-controls {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
         }
         .theme-toggle-btn {
             background: rgba(124, 58, 237, 0.15);
             border: 1px solid rgba(124, 58, 237, 0.4);
             color: #c4b5fd;
-            padding: 7px 14px;
+            padding: 6px 12px;
             border-radius: 12px;
-            font-size: 0.8rem;
+            font-size: 0.78rem;
             font-weight: 800;
             cursor: pointer;
             transition: 0.3s;
@@ -248,7 +245,7 @@
             background: none;
             border: 1px solid var(--border);
             color: var(--text-main);
-            width: 40px; height: 40px;
+            width: 38px; height: 38px;
             border-radius: 12px;
             display: flex;
             flex-direction: column;
@@ -257,9 +254,10 @@
             gap: 5px;
             cursor: pointer;
             transition: 0.3s;
+            flex-shrink: 0;
         }
         .menu-toggle-btn span {
-            display: block; width: 18px; height: 2px; background: currentColor; border-radius: 2px;
+            display: block; width: 16px; height: 2px; background: currentColor; border-radius: 2px;
         }
         .menu-toggle-btn:hover { border-color: var(--accent-purple); }
 
@@ -607,8 +605,6 @@
 </head>
 <body class="dark-theme">
 
-    <div class="floating-angel-text">✨ پریا فرشتهههه ✨</div>
-
     <div id="gateScreen">
         <div class="gate-box">
             <div class="gate-title">🔐 آیا پریا فرشته هست یا نه؟</div>
@@ -673,13 +669,18 @@
     <div class="stars" id="starsContainer"></div>
 
     <nav class="top-nav">
-        <div style="display: flex; align-items: center; gap: 15px;">
+        <div style="display: flex; align-items: center; gap: 10px; flex-shrink: 0;">
             <button class="menu-toggle-btn" onclick="toggleSidebar()">
                 <span></span><span></span><span></span>
             </button>
-            <div class="nav-brand">Pari Kind ✨</div>
+            <div class="nav-brand">Pari Kind</div>
         </div>
-        <div class="nav-controls">
+
+        <div style="overflow: hidden; flex-grow: 1; text-align: center;">
+            <div class="floating-angel-text">✨ پریا فرشتهههه ✨</div>
+        </div>
+
+        <div class="nav-controls" style="flex-shrink: 0;">
             <button class="theme-toggle-btn" onclick="toggleTheme()">تغییر تم 🌓</button>
         </div>
     </nav>
