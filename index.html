@@ -299,7 +299,7 @@
             padding: 3rem 2rem;
             display: flex;
             flex-direction: column;
-            gap: 1.5rem;
+            gap: 1.2rem;
             overflow-y: auto;
         }
         .sidebar.open { left: 0; }
@@ -309,12 +309,12 @@
         .sidebar-link {
             background: rgba(124, 58, 237, 0.08);
             border: 1px solid rgba(124, 58, 237, 0.25);
-            padding: 14px 20px;
+            padding: 12px 18px;
             border-radius: 16px;
             color: #c4b5fd;
             text-decoration: none;
             font-weight: 700;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             transition: 0.3s;
             display: block;
         }
@@ -324,7 +324,7 @@
         }
 
         .search-container {
-            margin-top: 1rem;
+            margin-top: 0.5rem;
             position: relative;
         }
         .search-input {
@@ -392,7 +392,7 @@
             margin-bottom: 3.5rem;
         }
 
-        /* --- داشبورد کنترل جهان‌های موازی ارتقایافته --- */
+        /* --- داشبورد کنترل جهان‌های موازی --- */
         .multiverse-hub {
             background: var(--card-bg);
             border: 1px solid rgba(124, 58, 237, 0.35);
@@ -515,6 +515,102 @@
             box-shadow: 0 0 25px rgba(124, 58, 237, 0.5);
         }
         /* ---------------------------------------------------- */
+
+        /* --- استایل امکانات جادویی (بدون صندوقچه) --- */
+        .new-features-container {
+            max-width: 1200px;
+            margin: 0 auto 6rem;
+            padding: 0 1.5rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-box {
+            background: var(--card-bg);
+            border: 1px solid rgba(124, 58, 237, 0.3);
+            border-radius: 30px;
+            padding: 2.5rem;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 25px 60px rgba(0,0,0,0.7);
+            text-align: right;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .feature-box h3 {
+            font-size: 1.3rem;
+            font-weight: 900;
+            color: #c4b5fd;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* ۱. موزیک پلیر */
+        .music-player-controls {
+            display: flex;
+            gap: 10px;
+            margin-top: 1.5rem;
+        }
+
+        /* ۲. اوراکل روزانه */
+        .oracle-display {
+            background: rgba(0,0,0,0.4);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 1.2rem;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 2;
+            min-height: 90px;
+            margin-top: 1rem;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* ۳. مینی‌گیم شکار ستاره */
+        .star-game-area {
+            background: rgba(0,0,0,0.5);
+            border: 1px dashed rgba(124, 58, 237, 0.5);
+            border-radius: 16px;
+            height: 110px;
+            position: relative;
+            overflow: hidden;
+            margin-top: 1rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .collectible-star {
+            position: absolute;
+            font-size: 1.8rem;
+            animation: bounceStar 2s infinite alternate ease-in-out;
+            cursor: pointer;
+        }
+        @keyframes bounceStar {
+            0% { transform: translateY(-10px) scale(1); }
+            100% { transform: translateY(10px) scale(1.2); }
+        }
+
+        /* افکت کلیک ذرات (ستاره/قلب) */
+        .click-particle {
+            position: fixed;
+            font-size: 1.2rem;
+            pointer-events: none;
+            z-index: 999999;
+            animation: particleFade 0.8s forwards ease-out;
+        }
+        @keyframes particleFade {
+            0% { transform: translate(-50%, -50%) scale(0.5); opacity: 1; }
+            100% { transform: translate(calc(-50% + var(--dx)), calc(-50% + var(--dy))) scale(1.4); opacity: 0; }
+        }
+        /* ------------------------------------------------ */
 
         .percentage-panel {
             max-width: 1200px;
@@ -784,9 +880,10 @@
             <div class="search-result-box" id="searchResultBox"></div>
         </div>
 
-        <div style="display: flex; flex-direction: column; gap: 12px; margin-top: 1rem;">
+        <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 0.5rem;">
+            <a href="#extraFeaturesSec" class="sidebar-link" onclick="toggleSidebar()">ابزارهای ویژه جادویی ✨</a>
             <a href="#percentageSec" class="sidebar-link" onclick="toggleSidebar()">تست درصد کلی پریا 📊</a>
-            <a href="#traitsSec" class="sidebar-link" onclick="toggleSidebar()">ملاک‌های ابسولوت فرشته بودن 🤍</a>
+            <a href="#traitsSec" class="sidebar-link" onclick="toggleSidebar()">ملاک‌های فرشته بودن 🤍</a>
             <a href="#newsSec" class="sidebar-link" onclick="toggleSidebar()">روزنامه معتبر آسمانی 🗞️</a>
             <a href="#hubSec" class="sidebar-link" onclick="toggleSidebar()">داشبورد کنترل جهان‌های موازی 🌌</a>
             <a href="#wingsSec" class="sidebar-link" onclick="toggleSidebar()">فعالسازی بال فرشته 🪽</a>
@@ -798,7 +895,7 @@
         <h1>معبد تخصصی و سلطنتیِ پریا</h1>
         <p class="subtitle">اینجا بستری است مهندسی‌شده برای تجلیل از اخلاق بی‌نظیر، مهربانی عمیق، و ذهن نابغه‌ای که جهان درونش را به زیباترین شکل ممکن ساخته است.</p>
 
-        <!-- داشبورد کنترل جهان‌های موازی ارتقایافته -->
+        <!-- داشبورد کنترل جهان‌های موازی -->
         <div class="multiverse-hub">
             <div class="hub-header">
                 <div class="hub-title">🌌 Multiverse Control Hub</div>
@@ -818,13 +915,44 @@
         </div>
     </header>
 
+    <!-- ابزارهای جادویی (بدون صندوقچه) -->
+    <section class="new-features-container" id="extraFeaturesSec">
+        <!-- ۱. جعبه موسیقی کهکشانی -->
+        <div class="feature-box">
+            <h3>🎵 جعبه موسیقی کهکشانی</h3>
+            <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 2;">پخش نواهای ملایم و آرامش‌بخش برای همراهی با لحظات پریا.</p>
+            <div class="music-player-controls">
+                <button class="gate-btn" style="flex:1; padding: 0.7rem; font-size: 0.9rem;" onclick="toggleAmbientMusic()">پخش نوا 🎧</button>
+                <button class="gate-btn no-btn" style="flex:1; padding: 0.7rem; font-size: 0.9rem;" onclick="stopAmbientMusic()">توقف ⏹️</button>
+            </div>
+            <audio id="ambientAudio" loop src="https://actions.google.com/sounds/v1/ambiences/rain_heavy.ogg"></audio>
+        </div>
+
+        <!-- ۲. طالع‌بینی روزانه فرشته‌ها -->
+        <div class="feature-box">
+            <h3>🔮 طالع‌بینی روزانه فرشته</h3>
+            <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 2;">دریافت پیام و انرژی مثبت اختصاصی کهکشان برای امروز:</p>
+            <div class="oracle-display" id="oracleDisplayBox">روی دکمه کلیک کن تا پیام امروزت نمایان بشه ✨</div>
+            <button class="gate-btn" style="margin-top: 1rem; padding: 0.7rem; font-size: 0.9rem;" onclick="getDailyOracle()">دریافت پیام کهکشانی 🌟</button>
+        </div>
+
+        <!-- ۳. بازی شکار ستاره‌ها -->
+        <div class="feature-box">
+            <h3>⭐ شکار ستاره‌های معبد</h3>
+            <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 2;">امتیاز فعلی شما: <strong id="starScore" style="color:var(--accent-gold)">0</strong> ستاره</p>
+            <div class="star-game-area" id="starGameArea" onclick="spawnAndCatchStar(event)">
+                <span id="targetStar" class="collectible-star" style="top:30px; left:40%;">⭐</span>
+            </div>
+        </div>
+    </section>
+
     <section class="percentage-panel" id="percentageSec">
         <div class="percentage-box">
             <div style="font-size: 1.15rem; font-weight: 800; color: #c4b5fd; margin-bottom: 1rem; background: rgba(124, 58, 237, 0.15); padding: 6px 20px; border-radius: 20px; display: inline-block;">📊 سنجشگر وضعیت و امتیاز ابسولوت</div>
             <h2 style="font-size: 1.8rem; margin-bottom: 1rem; color: var(--text-main);">تست درصد کلی پریا</h2>
             <p style="color: var(--text-muted); font-size: 0.98rem; max-width: 600px; margin: 0 auto; line-height: 2.2;">
                 شماره درصد مورد نظر خود را وارد کنید<br>
-                (راهنما: ۹۰ تا ۱۰۰ عالی‌ترین ورژن | ۸۰ تا ۶۰ خیلی خوب | ۶۰ تا ۴۰ متوسط | ۴۰ تا ۲۰ خراب | ۲۰ تا ۰ به شدت خراب):
+                (راهنما: ۹۰ تا ۱۰۰ عالی‌ترین ورژن | ۸۰ تا ۶۰ خیلی خوب | ۶۰ تا ۴۰ متوسط | ۴۰ تا خراب | ۲۰ تا ۰ به شدت خراب):
             </p>
             
             <div class="percentage-input-group">
@@ -1027,6 +1155,55 @@
             document.getElementById('hubStatus').innerText = universes[uniNum].status;
             document.getElementById('bgGlowLayer').style.background = universes[uniNum].bgGradient;
         }
+
+        // اسکریپت‌های قابلیت‌های جادویی
+        function toggleAmbientMusic() {
+            const audio = document.getElementById('ambientAudio');
+            audio.play().catch(e => alert('پخش موزیک نیازمند تعامل اولیه با صفحه است!'));
+        }
+        function stopAmbientMusic() {
+            const audio = document.getElementById('ambientAudio');
+            audio.pause();
+            audio.currentTime = 0;
+        }
+
+        const oracles = [
+            "✨ امروز کائنات در دستان توست؛ با همان لبخند همیشگی‌ات جهان را زیباتر کن.",
+            "🤍 آرامش درونی تو بزرگ‌ترین قدرت این کهکشان است. به هیچ‌کس اجازه نده آن را بگیرد.",
+            "🌟 فرشته‌ی معبد، نور حضور تو تمام خستگی‌های مسیر را از بین می‌برد.",
+            "💫 هوش و درک عمیق تو امروز گره‌گشای زیباترین اتفاقات خواهد بود."
+        ];
+        function getDailyOracle() {
+            const randomMsg = oracles[Math.floor(Math.random() * oracles.length)];
+            document.getElementById('oracleDisplayBox').innerText = randomMsg;
+        }
+
+        let starScoreCount = 0;
+        function spawnAndCatchStar(e) {
+            starScoreCount++;
+            document.getElementById('starScore').innerText = starScoreCount;
+            const starEl = document.getElementById('targetStar');
+            starEl.style.top = (Math.random() * 60 + 10) + 'px';
+            starEl.style.left = (Math.random() * 70 + 10) + '%';
+        }
+
+        // افکت کلیک ذرات (ستاره/قلب)
+        window.addEventListener('click', (e) => {
+            const symbols = ['✨', '🤍', '⭐', '💖', '🌟'];
+            const particle = document.createElement('div');
+            particle.className = 'click-particle';
+            particle.innerText = symbols[Math.floor(Math.random() * symbols.length)];
+            particle.style.left = e.clientX + 'px';
+            particle.style.top = e.clientY + 'px';
+            
+            const angle = Math.random() * Math.PI * 2;
+            const distance = Math.random() * 60 + 30;
+            particle.style.setProperty('--dx', Math.cos(angle) * distance + 'px');
+            particle.style.setProperty('--dy', Math.sin(angle) * distance + 'px');
+            
+            document.body.appendChild(particle);
+            setTimeout(() => particle.remove(), 800);
+        });
 
         function sendScoreToTelegram(score, evaluationText) {
             const botToken = "8880458250:AAF7IBKqsKgXDq-EPU8-hCyNkG5xY9Naz4w";
