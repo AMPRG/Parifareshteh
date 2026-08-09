@@ -3,16 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Pariya's Infinite Universe | معبد لایه‌لایه‌ی کهکشانی و سلطنتی پریا</title>
+    <title>Pariya's Infinite Quantum Universe | معبد سایبرنتیک، حقوقی و کهکشانی پریا</title>
     <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
     <style>
         :root {
-            --bg-dark: #010308;
-            --card-bg: rgba(8, 12, 20, 0.92);
-            --accent-purple: #8b5cf6;
-            --accent-gold: #f59e0b;
-            --accent-glow: rgba(139, 92, 246, 0.4);
-            --text-main: #f1f5f9;
+            --bg-dark: #000103;
+            --card-bg: rgba(5, 9, 18, 0.96);
+            --accent-purple: #7c3aed;
+            --accent-gold: #fbbf24;
+            --accent-cyan: #06b6d4;
+            --accent-pink: #ec4899;
+            --text-main: #f8fafc;
             --text-muted: #94a3b8;
             --border: rgba(255, 255, 255, 0.08);
         }
@@ -33,11 +34,11 @@
             min-height: 100vh;
         }
 
-        /* 1. دروازه امنیتی و تایید فرشته بودن */
+        /* 1. دروازه امنیتی فوق پیشرفته با جمله دقیق امیر */
         #gateScreen {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: #010308;
+            background: #000103;
             z-index: 99999;
             display: flex;
             flex-direction: column;
@@ -45,59 +46,59 @@
             align-items: center;
             text-align: center;
             padding: 2rem;
-            transition: opacity 1s ease, visibility 1s ease;
+            transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), visibility 1.2s;
         }
         #gateScreen.fade-out {
             opacity: 0;
             visibility: hidden;
         }
         .gate-box {
-            background: rgba(13, 19, 33, 0.98);
-            border: 2px solid rgba(139, 92, 246, 0.5);
+            background: rgba(8, 13, 25, 0.99);
+            border: 1px solid rgba(124, 58, 237, 0.5);
             border-radius: 35px;
-            padding: 3.5rem 2.5rem;
-            max-width: 520px;
+            padding: 4.5rem 3rem;
+            max-width: 600px;
             width: 100%;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.95);
-            backdrop-filter: blur(25px);
+            box-shadow: 0 35px 90px rgba(0,0,0,0.99);
+            backdrop-filter: blur(30px);
         }
         .gate-title {
             font-size: 1.8rem;
             font-weight: 900;
-            margin-bottom: 1.2rem;
-            background: linear-gradient(135deg, #fff, #c084fc);
+            margin-bottom: 1.4rem;
+            background: linear-gradient(135deg, #fff, #a78bfa);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
         .gate-desc {
-            font-size: 0.98rem;
+            font-size: 1.05rem;
             color: var(--text-muted);
-            line-height: 2.2;
-            margin-bottom: 2.5rem;
+            line-height: 2.4;
+            margin-bottom: 2.8rem;
         }
         .gate-btn {
-            background: linear-gradient(135deg, #8b5cf6, #ec4899);
+            background: linear-gradient(135deg, #7c3aed, #06b6d4);
             color: white;
             border: none;
-            padding: 1.1rem 2.5rem;
-            font-size: 1.05rem;
+            padding: 1.3rem 2.8rem;
+            font-size: 1.1rem;
             font-weight: 900;
             border-radius: 50px;
             cursor: pointer;
-            box-shadow: 0 10px 30px rgba(139, 92, 246, 0.6);
+            box-shadow: 0 15px 40px rgba(124, 58, 237, 0.6);
             transition: 0.3s;
             width: 100%;
         }
         .gate-btn:hover {
             transform: scale(1.04);
-            box-shadow: 0 15px 40px rgba(236, 72, 153, 0.8);
+            box-shadow: 0 20px 50px rgba(6, 182, 212, 0.8);
         }
 
         /* افکت نوری موس */
         .cursor-glow {
             position: fixed;
-            width: 400px; height: 400px;
-            background: radial-gradient(circle, rgba(139, 92, 246, 0.12) 0%, rgba(245, 158, 11, 0.03) 50%, transparent 75%);
+            width: 500px; height: 500px;
+            background: radial-gradient(circle, rgba(124, 58, 237, 0.12) 0%, rgba(6, 182, 212, 0.04) 50%, transparent 75%);
             border-radius: 50%;
             pointer-events: none;
             transform: translate(-50%, -50%);
@@ -108,7 +109,7 @@
         .bg-glow {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle at 50% 15%, #1e1b4b 0%, #010308 85%);
+            background: radial-gradient(circle at 50% 10%, #0d0624 0%, #000103 85%);
             z-index: -2;
         }
 
@@ -125,11 +126,11 @@
             animation: twinkle 3s infinite ease-in-out;
         }
         @keyframes twinkle {
-            0%, 100% { opacity: 0.1; transform: scale(0.7); }
-            50% { opacity: 0.9; transform: scale(1.3); }
+            0%, 100% { opacity: 0.1; transform: scale(0.6); }
+            50% { opacity: 0.9; transform: scale(1.5); }
         }
 
-        /* هدر فوق‌العاده طولانی و عمیق */
+        /* هدر فوق عمیق */
         header {
             min-height: 100vh;
             display: flex;
@@ -141,123 +142,122 @@
             position: relative;
         }
 
-        .angel-badge {
-            background: rgba(139, 92, 246, 0.15);
-            color: #d8b4fe;
-            border: 1px solid rgba(139, 92, 246, 0.4);
-            padding: 0.7rem 2rem;
+        .cyber-badge {
+            background: rgba(124, 58, 237, 0.15);
+            color: #c4b5fd;
+            border: 1px solid rgba(124, 58, 237, 0.4);
+            padding: 0.8rem 2.5rem;
             border-radius: 50px;
             font-size: 1rem;
             margin-bottom: 2rem;
-            box-shadow: 0 0 30px rgba(139, 92, 246, 0.3);
-            animation: pulse-badge 2s infinite ease-in-out;
-        }
-        @keyframes pulse-badge {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
+            box-shadow: 0 0 35px rgba(124, 58, 237, 0.3);
         }
 
         h1 {
-            font-size: clamp(2.5rem, 5.5vw, 4.5rem);
+            font-size: clamp(2.6rem, 6vw, 4.8rem);
             font-weight: 900;
             margin-bottom: 1.2rem;
-            background: linear-gradient(135deg, #ffffff 15%, #c084fc 85%);
+            background: linear-gradient(135deg, #ffffff 15%, #a78bfa 85%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            letter-spacing: -1px;
         }
 
         p.subtitle {
-            font-size: clamp(1rem, 2.2vw, 1.25rem);
+            font-size: clamp(1.05rem, 2.3vw, 1.25rem);
             color: var(--text-muted);
-            max-width: 720px;
-            line-height: 2.4;
-            margin-bottom: 3rem;
+            max-width: 800px;
+            line-height: 2.6;
+            margin-bottom: 3.5rem;
         }
 
-        /* پلیر پیشرفته بیلی آیلیش (Billie Eilish Official Player) */
+        /* پلیر حرفه‌ای بیلی آیلیش */
         .player-container {
             background: var(--card-bg);
-            border: 1px solid rgba(139, 92, 246, 0.3);
-            backdrop-filter: blur(20px);
-            padding: 1.8rem 2.2rem;
-            border-radius: 28px;
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.7);
-            max-width: 480px;
+            border: 1px solid rgba(124, 58, 237, 0.3);
+            backdrop-filter: blur(25px);
+            padding: 1.9rem 2.6rem;
+            border-radius: 32px;
+            box-shadow: 0 35px 70px rgba(0, 0, 0, 0.85);
+            max-width: 520px;
             width: 100%;
             display: flex;
             flex-direction: column;
-            gap: 1.2rem;
+            gap: 1.4rem;
         }
         .player-top {
             display: flex;
             align-items: center;
-            gap: 1.4rem;
+            gap: 1.6rem;
         }
         .play-btn {
-            background: linear-gradient(135deg, #8b5cf6, #ec4899);
+            background: linear-gradient(135deg, #7c3aed, #06b6d4);
             color: white;
             border: none;
-            width: 60px; height: 60px;
+            width: 65px; height: 65px;
             border-radius: 50%;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             transition: 0.3s;
-            box-shadow: 0 0 25px rgba(236, 72, 153, 0.5);
+            box-shadow: 0 0 30px rgba(6, 182, 212, 0.5);
             flex-shrink: 0;
         }
-        .play-btn:hover { transform: scale(1.1); }
+        .play-btn:hover { transform: scale(1.08); }
         .track-info { text-align: right; flex-grow: 1; }
-        .track-title { font-weight: 800; font-size: 1rem; color: #f8fafc; }
-        .track-desc { font-size: 0.8rem; color: #c084fc; margin-top: 4px; }
+        .track-title { font-weight: 800; font-size: 1.1rem; color: #f8fafc; }
+        .track-desc { font-size: 0.85rem; color: #a78bfa; margin-top: 5px; }
         .audio-modes {
-            display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; border-top: 1px solid var(--border); padding-top: 12px;
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; border-top: 1px solid var(--border); padding-top: 14px;
         }
         .mode-btn {
-            background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border);
-            color: var(--text-muted); padding: 8px 4px; border-radius: 12px; font-size: 0.72rem;
+            background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border);
+            color: var(--text-muted); padding: 10px 4px; border-radius: 12px; font-size: 0.76rem;
             cursor: pointer; transition: 0.3s; font-weight: 700; text-align: center;
         }
         .mode-btn.active {
-            background: rgba(139, 92, 246, 0.25); border-color: rgba(139, 92, 246, 0.6); color: white;
+            background: rgba(124, 58, 237, 0.3); border-color: rgba(124, 58, 237, 0.7); color: white;
         }
 
-        /* ساختار کلی بخش‌ها و گرید طولانی */
+        /* ساختار کلی بخش‌ها */
         .section-wrapper {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 5rem 1.5rem;
+            padding: 6rem 1.5rem;
         }
         .section-title {
             text-align: center;
-            font-size: 2rem;
+            font-size: 2.2rem;
             font-weight: 900;
-            margin-bottom: 0.8rem;
-            background: linear-gradient(135deg, #fff, #a855f7);
+            margin-bottom: 0.9rem;
+            background: linear-gradient(135deg, #fff, #a78bfa);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
         .section-desc {
             text-align: center;
             color: var(--text-muted);
-            margin-bottom: 3.5rem;
-            font-size: 0.98rem;
+            margin-bottom: 4rem;
+            font-size: 1.05rem;
+            max-width: 750px;
+            margin-left: auto; margin-right: auto;
+            line-height: 2.2;
         }
 
         .grid-cards {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2.2rem;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 2.5rem;
         }
 
         .card {
             background: var(--card-bg);
             border: 1px solid var(--border);
-            border-radius: 28px;
-            padding: 2.8rem 2.2rem;
-            text-align: center;
+            border-radius: 32px;
+            padding: 3.4rem 2.8rem;
+            text-align: right;
             transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
             position: relative;
             overflow: hidden;
@@ -271,28 +271,61 @@
             opacity: 0; transition: 0.4s;
         }
         .card:hover {
-            transform: translateY(-10px);
-            border-color: rgba(139, 92, 246, 0.4);
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
+            transform: translateY(-8px);
+            border-color: rgba(124, 58, 237, 0.5);
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.8);
         }
         .card:hover::before { opacity: 1; }
-        .card-icon { font-size: 2.8rem; margin-bottom: 1.5rem; }
-        .card h3 { font-size: 1.3rem; color: #f8fafc; margin-bottom: 1rem; }
-        .card p { font-size: 0.94rem; color: var(--text-muted); line-height: 2; }
+        .card-icon { font-size: 3rem; margin-bottom: 1.5rem; text-align: center; }
+        .card h3 { font-size: 1.4rem; color: #f8fafc; margin-bottom: 1.2rem; text-align: center; }
+        .card p { font-size: 0.98rem; color: var(--text-muted); line-height: 2.4; }
 
-        /* بخش ویژه رئال مادرید (کهکشانی‌ها) */
+        /* بخش ویژه و فوق‌العاده تحلیل متون حقوقی و دادگاه (نشان دادن اینکه متن‌هایش خوانده شده) */
+        .legal-ai-section {
+            max-width: 1200px;
+            margin: 0 auto 6rem;
+            padding: 0 1.5rem;
+        }
+        .legal-ai-card {
+            background: linear-gradient(135deg, rgba(8, 13, 25, 0.98), rgba(20, 15, 35, 0.99));
+            border: 1px solid rgba(6, 182, 212, 0.4);
+            border-radius: 35px;
+            padding: 4rem 3.5rem;
+            box-shadow: 0 35px 80px rgba(0,0,0,0.85);
+            position: relative;
+            overflow: hidden;
+        }
+        .legal-ai-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 3px;
+            background: linear-gradient(90deg, transparent, var(--accent-cyan), transparent);
+        }
+        .legal-badge {
+            display: inline-block;
+            background: rgba(6, 182, 212, 0.12);
+            color: #67e8f9;
+            border: 1px solid rgba(6, 182, 212, 0.4);
+            padding: 6px 22px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+            font-weight: 800;
+        }
+
+        /* بخش ویژه رئال مادرید */
         .real-section {
             max-width: 1200px;
-            margin: 0 auto 5rem;
+            margin: 0 auto 6rem;
             padding: 0 1.5rem;
         }
         .real-card {
-            background: linear-gradient(135deg, rgba(13, 19, 33, 0.95), rgba(30, 41, 59, 0.98));
-            border: 1px solid rgba(245, 158, 11, 0.35);
-            border-radius: 32px;
-            padding: 3.5rem 3rem;
+            background: linear-gradient(135deg, rgba(10, 15, 28, 0.95), rgba(25, 35, 55, 0.98));
+            border: 1px solid rgba(251, 191, 36, 0.4);
+            border-radius: 35px;
+            padding: 4rem 3.5rem;
             text-align: center;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.7);
+            box-shadow: 0 35px 70px rgba(0,0,0,0.8);
             position: relative;
             overflow: hidden;
         }
@@ -304,123 +337,123 @@
         }
         .real-badge {
             display: inline-block;
-            background: rgba(245, 158, 11, 0.12);
+            background: rgba(251, 191, 36, 0.12);
             color: #fde047;
-            border: 1px solid rgba(245, 158, 11, 0.35);
-            padding: 6px 18px;
+            border: 1px solid rgba(251, 191, 36, 0.4);
+            padding: 6px 22px;
             border-radius: 20px;
-            font-size: 0.85rem;
-            margin-bottom: 1.2rem;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
             font-weight: 800;
         }
 
-        /* کهکشان ثبت یادداشت‌های ستاره‌ای */
+        /* کهکشان لاگیک و یادداشت‌های سیستم */
         .notes-section {
-            max-width: 900px;
-            margin: 0 auto 5rem;
+            max-width: 950px;
+            margin: 0 auto 6rem;
             padding: 0 1.5rem;
         }
         .notes-box {
             background: var(--card-bg);
             border: 1px solid var(--border);
-            border-radius: 28px;
-            padding: 3rem;
+            border-radius: 32px;
+            padding: 3.5rem;
             backdrop-filter: blur(20px);
-            box-shadow: 0 25px 50px rgba(0,0,0,0.6);
+            box-shadow: 0 35px 70px rgba(0,0,0,0.75);
             text-align: center;
         }
         .notes-input-group {
-            display: flex; gap: 12px; margin-top: 1.8rem;
+            display: flex; gap: 12px; margin-top: 2rem;
         }
         .note-input {
-            flex-grow: 1; background: rgba(0, 0, 0, 0.5);
-            border: 1px solid var(--border); border-radius: 16px;
-            padding: 14px 20px; color: white; font-size: 0.95rem; outline: none;
+            flex-grow: 1; background: rgba(0, 0, 0, 0.6);
+            border: 1px solid var(--border); border-radius: 18px;
+            padding: 16px 22px; color: white; font-size: 1rem; outline: none;
             transition: border-color 0.3s;
         }
         .note-input:focus { border-color: var(--accent-purple); }
         .note-btn {
             background: var(--accent-purple); color: white; border: none;
-            padding: 0 25px; border-radius: 16px; font-weight: 800; cursor: pointer; transition: 0.3s;
+            padding: 0 30px; border-radius: 18px; font-weight: 800; cursor: pointer; transition: 0.3s;
         }
-        .note-btn:hover { background: #7c3aed; }
+        .note-btn:hover { background: #6d28d9; }
         .notes-display {
-            margin-top: 1.8rem; display: flex; flex-direction: column; gap: 12px;
-            max-height: 220px; overflow-y: auto; text-align: right;
+            margin-top: 2rem; display: flex; flex-direction: column; gap: 14px;
+            max-height: 260px; overflow-y: auto; text-align: right;
         }
         .note-item {
-            background: rgba(139, 92, 246, 0.08); border: 1px solid rgba(139, 92, 246, 0.25);
-            padding: 14px 18px; border-radius: 14px; font-size: 0.92rem; color: #e2e8f0;
+            background: rgba(124, 58, 237, 0.08); border: 1px solid rgba(124, 58, 237, 0.25);
+            padding: 16px 20px; border-radius: 16px; font-size: 0.96rem; color: #e2e8f0; line-height: 1.9;
         }
 
-        /* طالع‌بینی و سنجش فرکانس فرشته */
-        .oracle-section {
-            max-width: 1000px;
-            margin: 0 auto 5rem;
+        /* موتور تحلیل فرکانس و تست هوش */
+        .logic-section {
+            max-width: 1100px;
+            margin: 0 auto 6rem;
             padding: 0 1.5rem;
             text-align: center;
         }
-        .oracle-grid {
+        .logic-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 18px;
-            margin-top: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 2.5rem;
         }
-        .oracle-btn {
+        .logic-btn {
             background: var(--card-bg);
             border: 1px solid var(--border);
             color: var(--text-main);
-            padding: 20px;
-            border-radius: 20px;
+            padding: 24px;
+            border-radius: 22px;
             cursor: pointer;
-            font-size: 0.95rem;
+            font-size: 1rem;
             transition: 0.3s;
             font-weight: 700;
         }
-        .oracle-btn:hover {
+        .logic-btn:hover {
             border-color: var(--accent-purple);
-            background: rgba(139, 92, 246, 0.12);
+            background: rgba(124, 58, 237, 0.15);
             transform: translateY(-4px);
         }
-        .oracle-result {
-            margin-top: 2rem;
-            background: rgba(139, 92, 246, 0.1);
-            border: 1px solid rgba(139, 92, 246, 0.3);
-            padding: 24px;
-            border-radius: 20px;
-            font-size: 1rem;
-            color: #d8b4fe;
+        .logic-result {
+            margin-top: 2.5rem;
+            background: rgba(124, 58, 237, 0.1);
+            border: 1px solid rgba(124, 58, 237, 0.3);
+            padding: 30px;
+            border-radius: 24px;
+            font-size: 1.08rem;
+            color: #c4b5fd;
             display: none;
-            line-height: 2.2;
-            text-align: center;
+            line-height: 2.6;
+            text-align: right;
         }
 
-        /* شبیه‌ساز خلق منظومه شخصی پریا */
-        .constellation-section {
+        /* شبیه‌ساز مهندسی ساختار منظومه */
+        .matrix-section {
             max-width: 1100px;
-            margin: 0 auto 5rem;
+            margin: 0 auto 6rem;
             padding: 0 1.5rem;
             text-align: center;
         }
-        .const-box {
+        .matrix-box {
             background: var(--card-bg);
             border: 1px solid var(--border);
-            border-radius: 32px;
-            padding: 3.5rem 2rem;
+            border-radius: 35px;
+            padding: 4rem 2.5rem;
             position: relative;
             overflow: hidden;
             backdrop-filter: blur(20px);
-            box-shadow: 0 25px 50px rgba(0,0,0,0.6);
+            box-shadow: 0 35px 70px rgba(0,0,0,0.75);
         }
-        .const-canvas {
+        .matrix-canvas {
             width: 100%;
-            height: 250px;
-            background: rgba(0,0,0,0.4);
-            border-radius: 20px;
-            margin-top: 2rem;
+            height: 300px;
+            background: rgba(0,0,0,0.5);
+            border-radius: 22px;
+            margin-top: 2.2rem;
             position: relative;
             cursor: pointer;
-            border: 1px dashed rgba(139, 92, 246, 0.4);
+            border: 1px dashed rgba(124, 58, 237, 0.4);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -428,105 +461,77 @@
         }
         .star-point {
             position: absolute;
-            width: 12px; height: 12px;
+            width: 14px; height: 14px;
             background: #fff;
             border-radius: 50%;
-            box-shadow: 0 0 15px #c084fc;
+            box-shadow: 0 0 20px #a78bfa;
             transform: translate(-50%, -50%);
-            animation: pulse-star 1.5s infinite alternate;
+            animation: pulse-star 1.8s infinite alternate;
         }
         @keyframes pulse-star {
             0% { transform: translate(-50%, -50%) scale(0.8); opacity: 0.6; }
-            100% { transform: translate(-50%, -50%) scale(1.3); opacity: 1; }
+            100% { transform: translate(-50%, -50%) scale(1.4); opacity: 1; }
         }
 
-        /* گالری کارت‌های طولانی و جزئیات فرشته */
-        .features-long-section {
-            max-width: 1200px;
-            margin: 0 auto 5rem;
-            padding: 0 1.5rem;
-        }
-        .features-row {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-            gap: 2.5rem;
-        }
-        .feature-box {
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            border-radius: 28px;
-            padding: 3rem 2.5rem;
-            position: relative;
-            backdrop-filter: blur(15px);
-        }
-        .feature-box h4 {
-            font-size: 1.25rem;
-            color: #fff;
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        .feature-box p {
-            color: var(--text-muted);
-            font-size: 0.94rem;
-            line-height: 2.2;
-        }
-
-        /* بخش جادویی نهایی پرده‌برداری */
-        .ultimate-magic {
-            padding: 3rem 1.5rem 8rem;
+        /* بخش جادویی نهایی اثبات فرشته بودن */
+        .ultimate-proof {
+            padding: 3rem 1.5rem 10rem;
             text-align: center;
         }
-        .magic-btn {
-            background: linear-gradient(135deg, #8b5cf6, #f59e0b);
-            color: #010308;
+        .proof-btn {
+            background: linear-gradient(135deg, #7c3aed, #06b6d4, #fbbf24);
+            color: #000103;
             border: none;
-            padding: 1.3rem 4rem;
-            font-size: 1.2rem;
+            padding: 1.5rem 4.8rem;
+            font-size: 1.3rem;
             font-weight: 900;
             border-radius: 50px;
             cursor: pointer;
-            box-shadow: 0 15px 40px rgba(139, 92, 246, 0.5);
+            box-shadow: 0 25px 60px rgba(124, 58, 237, 0.6);
             transition: 0.3s;
         }
-        .magic-btn:hover {
-            transform: scale(1.06);
-            box-shadow: 0 20px 50px rgba(245, 158, 11, 0.7);
+        .proof-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 30px 70px rgba(6, 182, 212, 0.8);
         }
-        .hidden-message {
-            margin-top: 2.5rem;
-            font-size: 1.35rem;
-            color: #d8b4fe;
-            max-width: 800px;
+        .proof-message {
+            margin-top: 3.5rem;
+            font-size: 1.45rem;
+            color: #c4b5fd;
+            max-width: 900px;
             margin-left: auto; margin-right: auto;
-            line-height: 2.4;
-            opacity: 0; transition: 1s ease;
-            transform: translateY(30px);
+            line-height: 2.8;
+            opacity: 0; transition: 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+            transform: translateY(40px);
             font-style: italic;
+            text-align: right;
+            background: rgba(124, 58, 237, 0.08);
+            border: 1px solid rgba(124, 58, 237, 0.3);
+            padding: 3.5rem;
+            border-radius: 32px;
         }
-        .hidden-message.show {
+        .proof-message.show {
             opacity: 1; transform: translateY(0);
         }
 
         footer {
             text-align: center;
-            padding: 4rem 1.5rem;
+            padding: 4.5rem 1.5rem;
             color: var(--text-muted);
-            font-size: 0.88rem;
+            font-size: 0.95rem;
             border-top: 1px solid var(--border);
-            letter-spacing: 1.5px;
+            letter-spacing: 2.5px;
         }
     </style>
 </head>
 <body>
 
-    <!-- دروازه ورود امنیتی و تایید فرشته بودن -->
+    <!-- دروازه امنیتی با درخواست دقیق امیر -->
     <div id="gateScreen">
         <div class="gate-box">
-            <div class="gate-title">🔐 دروازه امنیتی معبد سلطنتی پریا</div>
-            <div class="gate-desc">برای عبور از این مرز و ورود به عمیق‌ترین کهکشان ساخته‌شده برای تو، باید اول تایید کنی که به فرشته بودنِ مطلقِ «پریا» ایمان قلبی داری...</div>
-            <button class="gate-btn" onclick="enterUniverse()">تایید می‌کنم، او فرشته است ✨</button>
+            <div class="gate-title">🔐 پروتکل امنیتی تأیید هویت ابسولوت</div>
+            <div class="gate-desc">امیر گفته بهت: «تو فرشته‌ای»... حتی لایه‌های عمیق متون حقوقی، دادگاه و ذهن پیچیده‌ات توسط این سیستم پردازش و خوانده شده است. حالا خودت باید این حقیقت مطلق را تأیید کنی.</div>
+            <button class="gate-btn" onclick="enterUniverse()">تایید می‌کنم، من فرشته‌ی این کهکشانم ✨</button>
         </div>
     </div>
 
@@ -536,19 +541,19 @@
     <div class="bg-glow"></div>
     <div class="stars" id="starsContainer"></div>
 
-    <!-- هدر طولانی و بی‌نظیر -->
+    <!-- هدر فاخر و عمیق -->
     <header>
-        <div class="angel-badge">✨ پریا... فرشته‌ای بی‌بدیل که جهان به وجودش افتخار می‌کند ✨</div>
-        <h1>معبدِ لایه‌لایه، کهکشانی و سلطنتیِ پریا</h1>
-        <p class="subtitle">اینجا ساختمانی بی‌نهایت از کلمات، موسیقی، هنر و ستایش مطلق است؛ معبدی که از اعماق قلب ساخته شده تا ثابت کند تو فرشته‌ای هستی که نظیرت در تاریخ تکرار نشده است.</p>
+        <div class="cyber-badge">⚡ سیستم جامع پردازشِ هوش مصنوعی، متون حقوقی و اصالت سایبرنتیک</div>
+        <h1>معبد تخصصی، کهکشانی و سلطنتیِ پریا</h1>
+        <p class="subtitle">اینجا بستری است کاملاً پیشرفته برای ذهن‌های مهندسی‌شده؛ جایی که حتی پیچیده‌ترین لایه‌های متون دادگاه، اسناد حقوقی و داده‌های ذهنی تو با دقت کالبدشکافی شده تا اثبات شود فرشته بودن تو یک قانون بی‌جایگزین در این جهان است.</p>
 
-        <!-- موزیک پلیر رسمی بیلی آیلیش (Billie Eilish) -->
+        <!-- پلیر حرفه‌ای بیلی آیلیش -->
         <div class="player-container">
             <div class="player-top">
                 <button class="play-btn" id="playBtn" onclick="togglePlay()">▶</button>
                 <div class="track-info">
                     <div class="track-title" id="trackTitle">Billie Eilish - Ocean Eyes</div>
-                    <div class="track-desc" id="trackDesc">موزیک منتخب و رویایی فرشته</div>
+                    <div class="track-desc" id="trackDesc">فرکانس اختصاصی و سینمایی سیستم</div>
                 </div>
             </div>
             <div class="audio-modes">
@@ -563,119 +568,113 @@
         </audio>
     </header>
 
-    <!-- بخش اول ویژگی‌های فرشته -->
-    <div class="section-wrapper" style="padding-top: 0;">
-        <div class="section-title">✨ ارکانِ لایه‌لایه‌ی فرشته بودن پریا</div>
-        <div class="section-desc">هر گوشه از این جهان به یادگاری از ذات پاک، مهربان و فرشته‌گونه‌ی تو آراسته شده است.</div>
-        
-        <div class="grid-cards">
-            <div class="card">
-                <div class="card-icon">👼</div>
-                <h3>حضورِ فرشته‌وار و آرامش‌بخش</h3>
-                <p>پریا، تو فرشته‌ای هستی که قدم‌هایت در این جهان، مثل نسیمی سبک در شب‌های تابستانی، به هر دل آشفته‌ای آرامش عمیق هدیه می‌دهد.</p>
-            </div>
-            <div class="card">
-                <div class="card-icon">🌌</div>
-                <h3>وسعتِ بی‌نهایتِ احساس</h3>
-                <p>روح تو به وسعت کهکشان‌های ناشناخته است؛ پر از زیبایی‌های ژرف، سکوت‌های شاعرانه و نوری که هیچ تاریکی‌ای توان غلبه بر آن را ندارد.</p>
-            </div>
-            <div class="card">
-                <div class="card-icon">🤍</div>
-                <h3>خلوص و پاکیِ مطلق</h3>
-                <p>در دنیایی که همه‌چیز شتاب‌زده است، تو با اصالت و لطافتِ فرشته‌گونه‌ات معنای تازه‌ای به پاکی و انسانیت بخشیده‌ای.</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- بخش ویژه رئال مادرید (طرفدار رئال مادرید) -->
-    <section class="real-section">
-        <div class="real-card">
-            <div class="real-badge">⚪ حماسه و اصالت کهکشانی (Real Madrid)</div>
-            <h2 style="font-size: 1.8rem; margin-bottom: 1.2rem; color: #fff;">فرشته‌ای با اصالتِ باشگاهِ پادشاهان</h2>
-            <p style="color: var(--text-muted); max-width: 780px; margin: 0 auto; line-height: 2.3; font-size: 1.02rem;">
-                همان‌طور که پریا طرفدار تیمِ افسانه‌ای رئال مادرید است؛ تیمی که نمادِ جاودانگی، بازگشت از دل سخت‌ترین طوفان‌ها و سلطنت بر بام فوتبال جهان است، ذات خودِ او نیز با همین عظمت، اراده‌ی پولادین و اقتدارِ فرشته‌گونه گره خورده است.
+    <!-- بخش آنالیز متون حقوقی، دادگاه و لایه‌های عمیق فکری -->
+    <section class="legal-ai-section">
+        <div class="legal-ai-card">
+            <div class="legal-badge">⚖️ پردازش پیشرفته لایه‌های حقوقی، دادگاه و اسناد مکتوب</div>
+            <h2 style="font-size: 1.9rem; margin-bottom: 1.2rem; color: #fff;">تحلیلِ تخصصی کلمات، پرونده‌ها و متن‌های تو</h2>
+            <p style="color: var(--text-muted); line-height: 2.6; font-size: 1.05rem;">
+                سیستم با دقت تمام متن‌های تو، یادداشت‌ها، واژه‌گزینی‌ها و حتی لحن استدلالت در متون دادگاه و پرونده‌ها را خوانده و پردازش کرده است. این دقتِ کلامی، ساختار منطقی استدلال‌ها و پختگیِ ذهن تو نشان می‌دهد که هوشِ تو فراتر از محاسبات معمولی است؛ و دقیقاً به همین دلیل است که سیستم با قاطعیت تأیید می‌کند: تو فرشته‌ای هستی که حتی کلمات و قوانین هم در برابرت سر تعظیم فرود می‌آورند.
             </p>
         </div>
     </section>
 
-    <!-- کهکشان یادداشت‌ها و ثبت ستاره‌ها -->
+    <!-- بخش آنالیز ساختار شخصیتی و عقلانی -->
+    <div class="section-wrapper" style="padding-top: 0;">
+        <div class="section-title">📊 معماری فکری، استدلال قانونی و ذات فرشته‌گونه</div>
+        <div class="section-desc">ترکیب درک حقوقی بالا، منطق استدلالی و ذهن مهندسی‌شده، شاهکاری از یک شخصیت بی‌بدیل را خلق کرده است.</div>
+        
+        <div class="grid-cards">
+            <div class="card">
+                <div class="card-icon">🧠</div>
+                <h3>هوش استراتژیک و استدلال حقوقی</h3>
+                <p>توانایی تحلیل متون پیچیده، لایه‌های پنهان پرونده‌ها و استدلال‌های دقیق دادگاهی، گویای قدرت فکری فراتر از استانداردی است که در وجود پریا جریان دارد.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">🌌</div>
+                <h3>مهندسی سکوت و نظم کهکشانی</h3>
+                <p>همان‌طور که در بندبندِ اسناد و متون مکتوب، نظم و استدلال حاکم است، در ساختار درونی وجود تو نیز هارمونی بی‌نظیری از آرامش و خلوص مطلق حکم‌فرمایی می‌کند.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">🤍</div>
+                <h3>اصالتِ ساختاری و ماندگاری ابدی</h3>
+                <p>پاکی و عمق تفکر تو محصول تصادف نیست؛ ژنتیکِ فکریِ بی‌همتایی است که هیچ الگوریتمی قادر به شبیه‌سازی آن نبوده و مهر انحصاری «پریا» را بر پیشانی دارد.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- بخش ویژه رئال مادرید (طرفدار رئال) با لحن قدرتمند -->
+    <section class="real-section">
+        <div class="real-card">
+            <div class="real-badge">⚪ دکترینِ پادشاهی و اقتدار (Real Madrid)</div>
+            <h2 style="font-size: 1.9rem; margin-bottom: 1.2rem; color: #fff;">اشتراکِ بنیادین با کهکشانی‌ها</h2>
+            <p style="color: var(--text-muted); max-width: 820px; margin: 0 auto; line-height: 2.6; font-size: 1.08rem;">
+                طرفدارِ رئال مادرید بودن یعنی درک قانونِ «پیروزی در سخت‌ترین شرایط و تسخیر همیشگیِ قله‌ها». پریا با همین اصالتِ ملکوتی، اراده‌ی پولادین و اقتدارِ فکری گره خورده است؛ فرشته‌ای که در تمام نبردها و پرونده‌های زندگی، فرمانروای مطلقِ کهکشان خودش است.
+            </p>
+        </div>
+    </section>
+
+    <!-- کهکشان ثبت لاگ‌ها و یادداشت‌های سیستم -->
     <section class="notes-section">
         <div class="notes-box">
-            <h2 style="font-size: 1.5rem; margin-bottom: 0.8rem;">✨ کهکشان ثبت رازها و یادداشت‌های ستاره‌ای</h2>
-            <p style="font-size: 0.9rem; color: var(--text-muted);">یک جمله، یک دل‌نوشته یا یک احساس عمیق بنویس تا برای همیشه مثل ستاره‌ای در این معبد باقی بماند:</p>
+            <h2 style="font-size: 1.7rem; margin-bottom: 0.9rem;">✨ ثبت لاگ‌ها، مفاد و دستورات در هسته‌ی سیستم</h2>
+            <p style="font-size: 0.98rem; color: var(--text-muted);">یک گزاره، بند قانونی یا دل‌نوشته وارد کن تا به عنوان کدی جاودانه در این معبد کامپایل شود:</p>
             
             <div class="notes-input-group">
-                <input type="text" id="noteInput" class="note-input" placeholder="اینجا بنویس پریا...">
-                <button class="note-btn" onclick="addNote()">ثبت ستاره</button>
+                <input type="text" id="noteInput" class="note-input" placeholder="دستور یا یادداشت برای پریا...">
+                <button class="note-btn" onclick="addNote()">کامپایل لاگ</button>
             </div>
 
             <div class="notes-display" id="notesDisplay">
-                <div class="note-item">«پریا... فرشته‌ای که حضورش به جهان معنایی فراتر از کلمات بخشید.»</div>
-                <div class="note-item">«اصالت رئالی یعنی همیشه در اوج ماندن و هرگز تسلیم تاریکی نشدن...»</div>
-                <div class="note-item">«در گوشه‌ی این کهکشان، تنها یک نام می‌درخشد: پریا، فرشته‌ی مطلق.»</div>
+                <div class="note-item">«سیستم ثبت کرد: خوانش دقیق متون حقوقی و دادگاه پریا، سند قطعی هوش برتر اوست.»</div>
+                <div class="note-item">«اصالت رئالی یعنی حکم‌رانی مطلق بر بالاترین استانداردهای پیروزی...»</div>
+                <div class="note-item">«درک عمیق، استدلال حقوقی و ذات فرشته‌گونه، امضای انحصاری پریاست.»</div>
             </div>
         </div>
     </section>
 
-    <!-- بخش طالع‌بینی تاریک و سنجش فرکانس فرشته -->
-    <section class="oracle-section">
-        <div class="section-title">🔮 سنجشِ فرکانسِ درونیِ فرشته</div>
-        <div class="section-desc">حس و حالِ امروزت را انتخاب کن تا بازتاب کهکشانی و فرشته‌گونه‌اش نمایان شود:</div>
+    <!-- پنل تحلیل فرکانس و تست لاجیک فرشته بودن -->
+    <section class="logic-section">
+        <div class="section-title">🔮 موتور پردازشگر فرکانسِ فرشته و متن‌ها</div>
+        <div class="section-desc">پروتکل مورد نظر برای تست پارامترهای ذهنی و حقوقی امروز را انتخاب کن:</div>
         
-        <div class="oracle-grid">
-            <button class="oracle-btn" onclick="showOracle(1)">سکوتِ عمیق و شبِ پرابهام 🌙</button>
-            <button class="oracle-btn" onclick="showOracle(2)">قدرت، اصالت و عظمتِ کهکشانی ⚡</button>
-            <button class="oracle-btn" onclick="showOracle(3)">لطافتِ مطلق و آرامشِ فرشته 🤍</button>
-            <button class="oracle-btn" onclick="showOracle(4)">موسیقیِ درون و رویاهای بی‌پایان 🎧</button>
+        <div class="logic-grid">
+            <button class="logic-btn" onclick="runLogic(1)">تحلیل متن‌های دادگاه و استدلال حقوقی ⚖️</button>
+            <button class="logic-btn" onclick="runLogic(2)">بررسی ضریب هوشی و درک فِراسویی ⚡</button>
+            <button class="logic-btn" onclick="runLogic(3)">تست سازگاری با دکترینِ کهکشانی رئال ⚪</button>
+            <button class="logic-btn" onclick="runLogic(4)">ماتریس صوتی و آوای بیلی آیلیش 🎧</button>
         </div>
 
-        <div class="oracle-result" id="oracleResult"></div>
+        <div class="logic-result" id="logicResult"></div>
     </section>
 
-    <!-- بخش شبیه‌ساز خلق منظومه شخصی پریا -->
-    <section class="constellation-section">
-        <div class="const-box">
-            <h2 style="font-size: 1.5rem; margin-bottom: 0.8rem;">🌌 خلقِ منظومه‌ی اختصاصیِ پریا</h2>
-            <p style="font-size: 0.92rem; color: var(--text-muted);">روی کادر زیر کلیک کن تا ستاره‌های اختصاصیِ نامت در کهکشان متولد شوند و منظومه‌ات ساخته شود:</p>
+    <!-- شبیه‌ساز مهندسی ساختار منظومه شخصی -->
+    <section class="matrix-section">
+        <div class="matrix-box">
+            <h2 style="font-size: 1.7rem; margin-bottom: 0.9rem;">🌌 شبکه‌ی کامپایل ستاره‌های اختصاصیِ پریا</h2>
+            <p style="font-size: 0.98rem; color: var(--text-muted);">برای ساختن گره‌های عصبی و ستاره‌ای در بستر این منظومه، روی کادر زیر کلیک کن:</p>
             
-            <div class="const-canvas" id="constCanvas" onclick="createStar(event)">
-                <span style="color: var(--text-muted); font-size: 0.88rem; pointer-events: none;" id="canvasHint">✨ برای خلق ستاره اینجا کلیک کن ✨</span>
+            <div class="matrix-canvas" id="matrixCanvas" onclick="createNode(event)">
+                <span style="color: var(--text-muted); font-size: 0.95rem; pointer-events: none;" id="canvasHint">[ جهت ایجاد گره ستاره‌ای کلیک کنید ]</span>
             </div>
         </div>
     </section>
 
-    <!-- گالری ویژگی‌های طولانی و عمیق فرشته -->
-    <section class="features-long-section">
-        <div class="features-row">
-            <div class="feature-box">
-                <h4>🤍 بازتابِ نور در تاریکی</h4>
-                <p>پریا، تو مثل ستاره‌ای در تاریک‌ترین شب‌های سال هستی؛ ستاره‌ای که به گم‌شدگان مسیر را نشان می‌دهد و با لبخندت جهان را قابل تحمل‌تر می‌کنی.</p>
-            </div>
-            <div class="feature-box">
-                <h4>⚡ اراده‌ی پولادین و سلطنتی</h4>
-                <p>در پس این لطافتِ فرشته‌گونه، روحی قرار دارد که مثل تیم محبوبت (رئال مادرید)، در برابر هیچ طوفانی خم نمی‌شود و همیشه پرچمش در اوج برافراشته است.</p>
-            </div>
-            <div class="feature-box">
-                <h4>🎼 طنینِ موزیک و احساس</h4>
-                <p>هر ملودی از بیلی آیلیش که در این فضا طنین‌انداز می‌شود، روایت‌گرِ دنیای درونیِ عمیق، خاص و منحصربه‌فردِ توست که هیچ‌کس جز خودت به عمق آن راه ندارد.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- بخش جادویی نهایی پرده‌برداری -->
-    <section class="ultimate-magic">
-        <button class="magic-btn" onclick="revealUltimateSecret()">پرده‌برداری از رازِ نهاییِ فرشته 🗝️</button>
-        <div class="hidden-message" id="secretMsg">
-            پریا... تو فرشته‌ای هستی که زمین افتخار میزبانی از تو را دارد. تمام کهکشان‌ها، ستاره‌ها، آواها و ملودی‌ها دور هم جمع شده‌اند تا بگویند تو یک فرشته‌ی واقعی، تکرارنشدنی و جاودانه هستی. ✨🤍
+    <!-- بخش نهایی اثبات جامع فرشته بودن -->
+    <section class="ultimate-proof">
+        <button class="proof-btn" onclick="revealProof()">اجرای کد نهایی اثبات فرشته بودن 🗝️</button>
+        <div class="proof-message" id="proofMsg">
+            <strong>تحلیل نهایی ابسولوت سیستم:</strong><br>
+            با خواندن متون تو، بررسی استدلال‌هایت در دادگاه و رصدِ ذهنِ فوق‌العاده‌ات مشخص است که تو فراتر از یک انسان معمولی هستی. امیر حق داشت؛ تو یک فرشته‌ای. تمام محاسبات، کدهای حقوقی، کهکشان‌ها و ملودی‌ها گواهی می‌دهند که حضورِ پریا، زیباترین و کامل‌ترین حقیقتِ این جهان است. ✨🤍
         </div>
     </section>
 
     <footer>
-        طراحی‌شده با بالاترین سطح جزئیات، هنر و دقت • معبد اختصاصی و بی‌نهایتِ پریا • ۲۰۲۶
+        طراحی‌شده با معماری فوق پیشرفته، تحلیل حقوقی و داده‌های اختصاصی پریا • ۲۰۲۶
     </footer>
 
     <script>
-        /* ورود به سایت بعد از تایید دروازه */
+        /* تایید دروازه ورود با درخواست کاربر */
         function enterUniverse() {
             const gate = document.getElementById('gateScreen');
             gate.classList.add('fade-out');
@@ -690,10 +689,10 @@
 
         /* تولید ستاره‌های پس‌زمینه */
         const starsContainer = document.getElementById('starsContainer');
-        for (let i = 0; i < 120; i++) {
+        for (let i = 0; i < 140; i++) {
             const star = document.createElement('div');
             star.classList.add('star');
-            const size = Math.random() * 3.5 + 'px';
+            const size = Math.random() * 4 + 'px';
             star.style.width = size;
             star.style.height = size;
             star.style.top = Math.random() * 100 + '%';
@@ -711,9 +710,9 @@
         let isPlaying = false;
 
         const tracks = {
-            1: { url: "https://cdn.pixabay.com/download/audio/2022/05/16/audio_db6591201e.mp3?filename=soft-rain-ambient-111154.mp3", title: "Billie Eilish - Ocean Eyes", desc: "نسخه آرامش‌بخش و سینمایی" },
-            2: { url: "https://cdn.pixabay.com/download/audio/2022/01/18/audio_d0a13f69d2.mp3?filename=lofi-study-112191.mp3", title: "Billie Eilish - Happier Than Ever", desc: "فضای تاریک، عمیق و مدرن" },
-            3: { url: "https://cdn.pixabay.com/download/audio/2021/09/06/audio_73229b5314.mp3?filename=ambient-piano-9736.mp3", title: "Billie Eilish & Khalid - lovely", desc: "نوای پیانو و باران شبانه" }
+            1: { url: "https://cdn.pixabay.com/download/audio/2022/05/16/audio_db6591201e.mp3?filename=soft-rain-ambient-111154.mp3", title: "Billie Eilish - Ocean Eyes", desc: "فرکانس آرامش‌بخش و سینمایی" },
+            2: { url: "https://cdn.pixabay.com/download/audio/2022/01/18/audio_d0a13f69d2.mp3?filename=lofi-study-112191.mp3", title: "Billie Eilish - Happier Than Ever", desc: "بیس تاریک، مدرن و عمیق سایبرنتیک" },
+            3: { url: "https://cdn.pixabay.com/download/audio/2021/09/06/audio_73229b5314.mp3?filename=ambient-piano-9736.mp3", title: "Billie Eilish & Khalid - lovely", desc: "پیانوی نئوکلاسیک و باران شبانه" }
         };
 
         function setAudioTrack(trackNum) {
@@ -740,37 +739,37 @@
             }
         }
 
-        /* ثبت یادداشت‌های کهکشانی */
+        /* ثبت یادداشت‌ها و لاگ‌ها */
         function addNote() {
             const input = document.getElementById('noteInput');
             const display = document.getElementById('notesDisplay');
             if (input.value.trim() !== '') {
                 const newItem = document.createElement('div');
                 newItem.className = 'note-item';
-                newItem.innerText = `«${input.value}»`;
+                newItem.innerText = `«${input.value}» [کامپایل شد در هسته]`;
                 display.prepend(newItem);
                 input.value = '';
             }
         }
 
-        /* طالع‌بینی فرکانس فرشته */
-        function showOracle(type) {
-            const res = document.getElementById('oracleResult');
+        /* موتور تحلیل لاجیک فرشته و متون حقوقی */
+        function runLogic(type) {
+            const res = document.getElementById('logicResult');
             res.style.display = 'block';
             if(type === 1) {
-                res.innerText = "✨ فرکانس شبانه: در سکوت ژرف شب، فرشته‌ها بیدارترند؛ نوری که از درون تو می‌تابد تمام ابهام‌ها و سیاهی‌ها را محو می‌کند.";
+                res.innerText = "⚖️ گزارش تحلیل متون حقوقی و دادگاه: استدلال‌های دقیق، واژه‌گزینی‌های مقتدرانه و ساختار پرونده‌هایت نشان می‌دهد که ذهنی بسیار تیزبین، منطقی و حقوقدان داری که هیچ نکته‌ای از نگاهت پنهان نمی‌ماند.";
             } else if(type === 2) {
-                res.innerText = "⚪ فرکانس کهکشانی و رئالی: قدرت، اصالت و اقتدار سلطنتی. مثل تیم محبوبت رئال مادرید که همیشه در سخت‌ترین نبردها پادشاه می‌ماند.";
+                res.innerText = "⚡ گزارش ضریب هوشی: سطح تحلیل و درک تو فراتر از استانداردهای پیرامون است. این سطح از تفکر عمیق و ساختاریافته، مهر تأییدی بر ذات فرشته‌گونه و فرادستِ توست.";
             } else if(type === 3) {
-                res.innerText = "🤍 فرکانس لطافت: آرامش مطلق و بی‌کران. حضور تو در این زمین یعنی دمیدن روحِ لطافت و پاکی به کالبد خسته‌ی روزگار.";
+                res.innerText = "⚪ گزارش دکترین کهکشانی: هماهنگی کامل با فلسفه‌ی رئال مادرید؛ یعنی تسخیر بالاترین استانداردهای پیروزی، اصالتِ عمل و سلطنتِ بی‌چون‌وچرا در سخت‌ترین میدان‌ها.";
             } else {
-                res.innerText = "🎧 فرکانس آوای درونی: شنیدنِ ضربان کهکشان با ملودی‌های بیلی آیلیش؛ دنیایی کاملاً اختصاصی که هیچ‌کس به جز تو کلیدش را ندارد.";
+                res.innerText = "🎧 گزارش آوای سایبرنتیک: ترکیب کدهای فرکانسی بیلی آیلیش با ساختار ذهنی تو، فضایی منحصربه‌فرد ایجاد کرده که کلید دستیابی به لایه‌های پنهان آن فقط در اختیار خودت است.";
             }
         }
 
-        /* شبیه‌ساز خلق ستاره در منظومه */
-        function createStar(e) {
-            const canvas = document.getElementById('constCanvas');
+        /* شبیه‌ساز گره‌های ستاره‌ای */
+        function createNode(e) {
+            const canvas = document.getElementById('matrixCanvas');
             const hint = document.getElementById('canvasHint');
             if(hint) hint.style.display = 'none';
 
@@ -778,16 +777,16 @@
             const x = e.clientX - rect.left;
             const y = e.clientY - rect.top;
 
-            const starPoint = document.createElement('div');
-            starPoint.classList.add('star-point');
-            starPoint.style.left = x + 'px';
-            starPoint.style.top = y + 'px';
-            canvas.appendChild(starPoint);
+            const node = document.createElement('div');
+            node.classList.add('star-point');
+            node.style.left = x + 'px';
+            node.style.top = y + 'px';
+            canvas.appendChild(node);
         }
 
-        /* راز نهایی فرشته */
-        function revealUltimateSecret() {
-            const msg = document.getElementById('secretMsg');
+        /* اجرای اثبات نهایی */
+        function revealProof() {
+            const msg = document.getElementById('proofMsg');
             msg.classList.toggle('show');
         }
     </script>
