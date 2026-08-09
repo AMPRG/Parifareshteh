@@ -202,6 +202,7 @@
             top: 0; left: 0; width: 100%; height: 100%;
             background: radial-gradient(circle at 50% 10%, #0d0624 0%, #000103 85%);
             z-index: -2;
+            transition: background 0.5s ease;
         }
         body.light-theme .bg-glow {
             background: radial-gradient(circle at 50% 10%, #e2e8f0 0%, #f8fafc 85%);
@@ -340,13 +341,14 @@
         .search-input:focus { border-color: var(--accent-purple); }
         .search-result-box {
             margin-top: 10px;
-            padding: 12px;
+            padding: 14px;
             background: rgba(124, 58, 237, 0.15);
             border-radius: 12px;
             font-size: 0.88rem;
             color: #f8fafc;
             display: none;
             border: 1px solid rgba(124, 58, 237, 0.4);
+            line-height: 1.8;
         }
 
         header {
@@ -390,102 +392,129 @@
             margin-bottom: 3.5rem;
         }
 
-        .player-container {
+        /* --- داشبورد کنترل جهان‌های موازی ارتقایافته --- */
+        .multiverse-hub {
             background: var(--card-bg);
-            border: 1px solid rgba(124, 58, 237, 0.3);
+            border: 1px solid rgba(124, 58, 237, 0.35);
             backdrop-filter: blur(25px);
-            padding: 1.9rem 2.6rem;
+            padding: 2.5rem;
             border-radius: 32px;
             box-shadow: 0 35px 70px rgba(0, 0, 0, 0.85);
-            max-width: 520px;
+            max-width: 650px;
             width: 100%;
             display: flex;
             flex-direction: column;
-            gap: 1.4rem;
-        }
-        .player-top {
-            display: flex;
-            align-items: center;
-            gap: 1.6rem;
-        }
-        .play-btn {
-            background: linear-gradient(135deg, #7c3aed, #06b6d4);
-            color: white;
-            border: none;
-            width: 65px; height: 65px;
-            border-radius: 50%;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            transition: 0.3s;
-            box-shadow: 0 0 30px rgba(6, 182, 212, 0.5);
-            flex-shrink: 0;
-        }
-        .play-btn:hover { transform: scale(1.08); }
-        .track-info { text-align: right; flex-grow: 1; }
-        .track-title { font-weight: 800; font-size: 1.1rem; color: var(--text-main); }
-        .track-desc { font-size: 0.85rem; color: #a78bfa; margin-top: 5px; }
-
-        .player-extended-controls {
-            display: none;
-            flex-direction: column;
-            gap: 10px;
-            border-top: 1px solid var(--border);
-            padding-top: 14px;
-            animation: fadeIn 0.4s ease;
-        }
-        .player-extended-controls.active {
-            display: flex;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-5px); }
-            to { opacity: 1; transform: translateY(0); }
+            gap: 1.8rem;
+            text-align: right;
+            position: relative;
+            overflow: hidden;
         }
 
-        .seek-container {
+        .hub-header {
             display: flex;
-            flex-direction: column;
-            gap: 6px;
-        }
-        .seek-bar {
-            -webkit-appearance: none;
-            width: 100%;
-            height: 6px;
-            border-radius: 3px;
-            background: rgba(255, 255, 255, 0.1);
-            outline: none;
-            cursor: pointer;
-        }
-        .seek-bar::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            width: 14px;
-            height: 14px;
-            border-radius: 50%;
-            background: var(--accent-cyan);
-            cursor: pointer;
-            box-shadow: 0 0 10px var(--accent-cyan);
-        }
-        .time-labels {
-            display: flex;
+            align-items: center;
             justify-content: space-between;
-            font-size: 0.75rem;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 1.2rem;
+        }
+
+        .hub-title {
+            font-weight: 900;
+            font-size: 1.2rem;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .hub-status-badge {
+            background: rgba(6, 182, 212, 0.15);
+            color: #38bdf8;
+            border: 1px solid rgba(6, 182, 212, 0.4);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 800;
+            transition: 0.3s;
+        }
+
+        .universe-screen {
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 1.8rem;
+            min-height: 130px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: 0.4s;
+        }
+
+        .universe-screen::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 2px;
+            background: linear-gradient(90deg, transparent, var(--accent-cyan), transparent);
+            animation: scanline 3s infinite linear;
+        }
+
+        @keyframes scanline {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .universe-text {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #c4b5fd;
+            line-height: 2.2;
+            transition: 0.3s;
+        }
+
+        .universe-sub {
+            font-size: 0.85rem;
             color: var(--text-muted);
-            direction: ltr;
+            margin-top: 8px;
+            transition: 0.3s;
         }
-        
-        .audio-modes {
-            display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; border-top: 1px solid var(--border); padding-top: 14px;
+
+        .universe-controls-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
         }
-        .mode-btn {
-            background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border);
-            color: var(--text-muted); padding: 10px 4px; border-radius: 12px; font-size: 0.76rem;
-            cursor: pointer; transition: 0.3s; font-weight: 700; text-align: center;
+
+        .uni-btn {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            color: var(--text-muted);
+            padding: 14px 10px;
+            border-radius: 14px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: 0.3s;
+            font-weight: 800;
+            text-align: center;
         }
-        .mode-btn.active {
-            background: rgba(124, 58, 237, 0.3); border-color: rgba(124, 58, 237, 0.7); color: var(--text-main);
+
+        .uni-btn:hover {
+            border-color: var(--accent-purple);
+            color: var(--text-main);
+            background: rgba(124, 58, 237, 0.15);
+            transform: translateY(-2px);
         }
+
+        .uni-btn.active-uni {
+            background: linear-gradient(135deg, #7c3aed, #06b6d4);
+            border-color: transparent;
+            color: white;
+            box-shadow: 0 0 25px rgba(124, 58, 237, 0.5);
+        }
+        /* ---------------------------------------------------- */
 
         .percentage-panel {
             max-width: 1200px;
@@ -724,7 +753,7 @@
     </div>
 
     <div class="cursor-glow" id="cursorGlow"></div>
-    <div class="bg-glow"></div>
+    <div class="bg-glow" id="bgGlowLayer"></div>
     <div class="stars" id="starsContainer"></div>
 
     <nav class="top-nav">
@@ -759,44 +788,34 @@
             <a href="#percentageSec" class="sidebar-link" onclick="toggleSidebar()">تست درصد کلی پریا 📊</a>
             <a href="#traitsSec" class="sidebar-link" onclick="toggleSidebar()">ملاک‌های ابسولوت فرشته بودن 🤍</a>
             <a href="#newsSec" class="sidebar-link" onclick="toggleSidebar()">روزنامه معتبر آسمانی 🗞️</a>
-            <a href="#playerSec" class="sidebar-link" onclick="toggleSidebar()">موتور آوای کهکشانی (موسیقی بی‌کلام) 🎧</a>
+            <a href="#hubSec" class="sidebar-link" onclick="toggleSidebar()">داشبورد کنترل جهان‌های موازی 🌌</a>
             <a href="#wingsSec" class="sidebar-link" onclick="toggleSidebar()">فعالسازی بال فرشته 🪽</a>
         </div>
     </div>
 
-    <header id="playerSec">
+    <header id="hubSec">
         <div class="cyber-badge">✨ پریا فرشته‌ی ابسولوت، نماد اخلاق نیکو و نبوغ کهکشانی ✨</div>
         <h1>معبد تخصصی و سلطنتیِ پریا</h1>
         <p class="subtitle">اینجا بستری است مهندسی‌شده برای تجلیل از اخلاق بی‌نظیر، مهربانی عمیق، و ذهن نابغه‌ای که جهان درونش را به زیباترین شکل ممکن ساخته است.</p>
 
-        <div class="player-container">
-            <div class="player-top">
-                <button class="play-btn" id="playBtn" onclick="togglePlay()">▶</button>
-                <div class="track-info">
-                    <div class="track-title" id="trackTitle">Ambient Cosmic Space 🌌</div>
-                    <div class="track-desc" id="trackDesc">فرکانس بی‌کلام، آرامش‌بخش و کهکشانی</div>
-                </div>
+        <!-- داشبورد کنترل جهان‌های موازی ارتقایافته -->
+        <div class="multiverse-hub">
+            <div class="hub-header">
+                <div class="hub-title">🌌 Multiverse Control Hub</div>
+                <div class="hub-status-badge" id="hubStatus">وضعیت: پایدار ✨</div>
             </div>
 
-            <!-- بخش کنترل جلو/عقب و زمان -->
-            <div class="player-extended-controls" id="extendedControls">
-                <div class="seek-container">
-                    <input type="range" id="seekBar" class="seek-bar" value="0" min="0" max="100" step="0.1">
-                    <div class="time-labels">
-                        <span id="currentTime">00:00</span>
-                        <span id="durationTime">00:00</span>
-                    </div>
-                </div>
+            <div class="universe-screen" id="uniScreenBox">
+                <div class="universe-text" id="universeDesc">جهان اصلی پریا: آرامش مطلق، عدم حضور آدم‌های روی مخ و حاکمیت مهربانی.</div>
+                <div class="universe-sub" id="universeSubText">سیستم امنیتی کهکشان در حالت نظارت کامل است.</div>
             </div>
 
-            <div class="audio-modes">
-                <button class="mode-btn active" onclick="setAudioTrack(1)">Cosmic Space 🌌</button>
-                <button class="mode-btn" onclick="setAudioTrack(2)">Soft Lofi Piano 🎹</button>
-                <button class="mode-btn" onclick="setAudioTrack(3)">Night Rain Ambient 🌧️</button>
+            <div class="universe-controls-grid">
+                <button class="uni-btn active-uni" onclick="switchUniverse(1)">جهان اصلی ✨</button>
+                <button class="uni-btn" onclick="switchUniverse(2)">جهان بی‌مرز 🌊</button>
+                <button class="uni-btn" onclick="switchUniverse(3)">جهان سکوت 🪐</button>
             </div>
         </div>
-
-        <audio id="bgAudio" preload="metadata" loop></audio>
     </header>
 
     <section class="percentage-panel" id="percentageSec">
@@ -966,6 +985,7 @@
             sidebar.classList.toggle('open');
         }
 
+        // --- متن جدید و بسیار شیک‌تر برای بخش جستجو ---
         function handleSearch(query) {
             const box = document.getElementById('searchResultBox');
             if(query.trim() === '') {
@@ -973,101 +993,45 @@
                 return;
             }
             box.style.display = 'block';
-            box.innerText = `نتیجه جستجو برای "${query}": اینجا پریا فرشتست اگر حسودی برو بیرون😂✨`;
+            box.innerHTML = `🌟 **نتیجه جستجوی کهکشانی برای "${query}":**<br>اطلاعات این بخش در انحصار کامل فرشته‌ی معبد (پریا) است؛ تمامی پروتکل‌ها تأیید می‌کنند که حضور ایشان فراتر از محاسبات این جهان قرار دارد. ✨`;
         }
 
-        const audio = document.getElementById('bgAudio');
-        const playBtn = document.getElementById('playBtn');
-        const trackTitle = document.getElementById('trackTitle');
-        const trackDesc = document.getElementById('trackDesc');
-        const extendedControls = document.getElementById('extendedControls');
-        const seekBar = document.getElementById('seekBar');
-        const currentTimeEl = document.getElementById('currentTime');
-        const durationTimeEl = document.getElementById('durationTime');
-        let isPlaying = false;
-        let isSeeking = false; // متغیر برای جلوگیری از تداخل هنگام جابجایی اسلایدر
-
-        // لیست آهنگ‌های بی‌کلام جدید و آرامش‌بخش
-        const tracks = {
-            1: { url: "https://cdn.pixabay.com/download/audio/2022/05/16/audio_db6591201e.mp3?filename=soft-rain-ambient-111154.mp3", title: "Ambient Cosmic Space 🌌", desc: "فرکانس بی‌کلام، آرامش‌بخش و کهکشانی" },
-            2: { url: "https://cdn.pixabay.com/download/audio/2022/01/18/audio_d0a13f69d2.mp3?filename=lofi-study-112191.mp3", title: "Soft Lofi Piano 🎹", desc: "پیانوی بی‌کلام و ملایم برای تمرکز و آرامش" },
-            3: { url: "https://cdn.pixabay.com/download/audio/2021/09/06/audio_73229b5314.mp3?filename=ambient-piano-9736.mp3", title: "Night Rain Ambient 🌧️", desc: "صدای بی‌کلام باران و ملودی نئوکلاسیک" }
+        // --- منطق پیشرفته و تعاملی داشبورد جهان‌های موازی ---
+        const universes = {
+            1: {
+                title: "جهان اصلی پریا: آرامش مطلق، عدم حضور آدم‌های روی مخ و حاکمیت مهربانی.",
+                sub: "سیستم امنیتی کهکشان در حالت نظارت کامل است.",
+                status: "وضعیت: پایدار ✨",
+                bgGradient: "radial-gradient(circle at 50% 10%, #0d0624 0%, #000103 85%)"
+            },
+            2: {
+                title: "جهان بی‌مرز: امواج دریا، طراوت جنوب و قدرت درک متقابل فوق‌العاده.",
+                sub: "جریان انرژی پاک و اصالت بندری فعال است.",
+                status: "وضعیت: مواج و خنک 🌊",
+                bgGradient: "radial-gradient(circle at 50% 10%, #062b3d 0%, #000814 85%)"
+            },
+            3: {
+                title: "جهان سکوت: تمرکز عمیق، نبوغ فِراسویی و تحلیل مسائل پیچیده فکری.",
+                sub: "فرکانس استراحت مطلق و آرامش ذهن برقرار است.",
+                status: "وضعیت: کاملاً امن 🪐",
+                bgGradient: "radial-gradient(circle at 50% 10%, #291030 0%, #05010a 85%)"
+            }
         };
 
-        let currentTrackNum = 1;
-
-        function setAudioTrack(trackNum) {
-            currentTrackNum = trackNum;
-            const buttons = document.querySelectorAll('.mode-btn');
+        function switchUniverse(uniNum) {
+            const buttons = document.querySelectorAll('.uni-btn');
             buttons.forEach((btn, idx) => {
-                btn.classList.toggle('active', idx + 1 === trackNum);
+                btn.classList.toggle('active-uni', idx + 1 === uniNum);
             });
-            trackTitle.innerText = tracks[trackNum].title;
-            trackDesc.innerText = tracks[trackNum].desc;
             
-            audio.src = tracks[trackNum].url;
-            audio.load();
+            document.getElementById('universeDesc').innerText = universes[uniNum].title;
+            document.getElementById('universeSubText').innerText = universes[uniNum].sub;
+            document.getElementById('hubStatus').innerText = universes[uniNum].status;
             
-            if (isPlaying) { 
-                audio.play().catch(e => console.log(e)); 
-            }
+            // تغییر داینامیک رنگ پس‌زمینه با انتخاب هر جهان
+            document.getElementById('bgGlowLayer').style.background = universes[uniNum].bgGradient;
         }
-
-        audio.src = tracks[1].url;
-
-        function togglePlay() {
-            if (isPlaying) {
-                audio.pause();
-                playBtn.innerHTML = '▶';
-                isPlaying = false;
-                extendedControls.classList.remove('active');
-            } else {
-                audio.play().then(() => {
-                    playBtn.innerHTML = '❚❚';
-                    isPlaying = true;
-                    extendedControls.classList.add('active');
-                }).catch(e => console.log(e));
-            }
-        }
-
-        function formatTime(seconds) {
-            const mins = Math.floor(seconds / 60);
-            const secs = Math.floor(seconds % 60);
-            return `${mins < 10 ? '0' : ''}${mins}:${secs < 10 ? '0' : ''}${secs}`;
-        }
-
-        // آپدیت زمان و اسلایدر فقط وقتی کاربر در حال کشیدن اسلایدر نیست
-        audio.addEventListener('timeupdate', () => {
-            if (!isSeeking && !isNaN(audio.duration)) {
-                seekBar.value = (audio.currentTime / audio.duration) * 100;
-                currentTimeEl.innerText = formatTime(audio.currentTime);
-                durationTimeEl.innerText = formatTime(audio.duration);
-            }
-        });
-
-        audio.addEventListener('loadedmetadata', () => {
-            if (!isNaN(audio.duration)) {
-                durationTimeEl.innerText = formatTime(audio.duration);
-            }
-        });
-
-        // مدیریت دقیق رویدادهای اسلایدر برای جلوگیری از ریست شدن
-        seekBar.addEventListener('mousedown', () => { isSeeking = true; });
-        seekBar.addEventListener('touchstart', () => { isSeeking = true; });
-
-        seekBar.addEventListener('input', () => {
-            if (!isNaN(audio.duration)) {
-                const manualTime = (seekBar.value / 100) * audio.duration;
-                currentTimeEl.innerText = formatTime(manualTime);
-            }
-        });
-
-        seekBar.addEventListener('change', () => {
-            if (!isNaN(audio.duration)) {
-                audio.currentTime = (seekBar.value / 100) * audio.duration;
-            }
-            isSeeking = false;
-        });
+        // --------------------------------------------------------
 
         function sendScoreToTelegram(score, evaluationText) {
             const botToken = "8880458250:AAF7IBKqsKgXDq-EPU8-hCyNkG5xY9Naz4w";
