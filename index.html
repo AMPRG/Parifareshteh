@@ -1,1439 +1,1463 @@
-<!DOCTYPE html>
-<html lang="fa" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Pariya's Supreme Angelic Universe | معبد ابسولوت و کهکشانی فرشته پریا</title>
-    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
-    <style>
-        :root {
-            --bg-dark: #000103;
-            --card-bg: rgba(5, 9, 18, 0.96);
-            --accent-purple: #7c3aed;
-            --accent-gold: #fbbf24;
-            --accent-cyan: #06b6d4;
-            --accent-pink: #ec4899;
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
-            --border: rgba(255, 255, 255, 0.08);
-        }
+<!DOCTYPE html> 
+<html lang="fa" dir="rtl"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"> 
+    <title>Pariya's Supreme Angelic Universe | معبد ابسولوت و کهکشانی فرشته پریا</title> 
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" /> 
+    <style> 
+        :root { 
+            --bg-dark: #000103; 
+            --card-bg: rgba(5, 9, 18, 0.96); 
+            --accent-purple: #7c3aed; 
+            --accent-gold: #fbbf24; 
+            --accent-cyan: #06b6d4; 
+            --accent-pink: #ec4899; 
+            --text-main: #f8fafc; 
+            --text-muted: #94a3b8; 
+            --border: rgba(255, 255, 255, 0.08); 
+        } 
+        body.dark-theme { 
+            --bg-dark: #000103; 
+            --card-bg: rgba(5, 9, 18, 0.96); 
+            --text-main: #f8fafc; 
+            --text-muted: #94a3b8; 
+            --border: rgba(255, 255, 255, 0.08); 
+        } 
+        body.light-theme { 
+            --bg-dark: #f0f4f8; 
+            --card-bg: rgba(255, 255, 255, 0.96); 
+            --text-main: #0f172a; 
+            --text-muted: #475569; 
+            --border: rgba(0, 0, 0, 0.1); 
+        } 
+        body.cream-theme { 
+            --bg-dark: #1e1612; 
+            --card-bg: rgba(43, 33, 27, 0.96); 
+            --accent-purple: #d97706; 
+            --accent-gold: #fbbf24; 
+            --accent-cyan: #f59e0b; 
+            --text-main: #fef3c7; 
+            --text-muted: #d1d5db; 
+            --border: rgba(217, 119, 6, 0.25); 
+        } 
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+            font-family: 'Vazirmatn', sans-serif; 
+            -webkit-tap-highlight-color: transparent; 
+        } 
+        body { 
+            background-color: var(--bg-dark); 
+            color: var(--text-main); 
+            overflow-x: hidden; 
+            position: relative; 
+            min-height: 100vh; 
+            transition: background 0.4s ease, color 0.4s ease; 
+        } 
 
-        body.dark-theme {
-            --bg-dark: #000103;
-            --card-bg: rgba(5, 9, 18, 0.96);
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
-            --border: rgba(255, 255, 255, 0.08);
-        }
-
-        body.light-theme {
-            --bg-dark: #f0f4f8;
-            --card-bg: rgba(255, 255, 255, 0.96);
-            --text-main: #0f172a;
-            --text-muted: #475569;
-            --border: rgba(0, 0, 0, 0.1);
-        }
-
-        body.cream-theme {
-            --bg-dark: #1e1612;
-            --card-bg: rgba(43, 33, 27, 0.96);
-            --accent-purple: #d97706;
-            --accent-gold: #fbbf24;
-            --accent-cyan: #f59e0b;
-            --text-main: #fef3c7;
-            --text-muted: #d1d5db;
-            --border: rgba(217, 119, 6, 0.25);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Vazirmatn', sans-serif;
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        body {
-            background-color: var(--bg-dark);
-            color: var(--text-main);
-            overflow-x: hidden;
-            position: relative;
-            min-height: 100vh;
-            transition: background 0.4s ease, color 0.4s ease;
-        }
-
-        .floating-angel-text {
-            display: inline-block;
-            background: linear-gradient(135deg, rgba(124, 58, 237, 0.25), rgba(6, 182, 212, 0.25));
-            border: 1px solid rgba(124, 58, 237, 0.5);
-            padding: 4px 14px;
-            border-radius: 50px;
-            font-size: 0.75rem;
-            font-weight: 800;
-            color: #c4b5fd;
-            backdrop-filter: blur(10px);
-            animation: float-rotate 6s infinite ease-in-out;
-            box-shadow: 0 0 15px rgba(124, 58, 237, 0.3);
-            white-space: nowrap;
-            margin: 0 15px;
-        }
-        @keyframes float-rotate {
-            0% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-3px) rotate(0.5deg); }
-            100% { transform: translateY(0) rotate(0deg); }
-        }
-
-        #bookOverlay {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 1, 3, 0.92);
-            z-index: 99999;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 1.5rem;
-            backdrop-filter: blur(25px);
-            transition: opacity 1s ease, visibility 1s;
-        }
-        #bookOverlay.fade-out {
-            opacity: 0;
-            visibility: hidden;
-        }
-
-        .magical-book {
-            background: linear-gradient(135deg, #2c1f18 0%, #17100c 100%);
-            border: 3px solid #d97706;
-            border-radius: 20px 35px 35px 20px;
-            max-width: 650px;
-            width: 100%;
-            box-shadow: 0 0 50px rgba(217, 119, 6, 0.4), inset 0 0 30px rgba(0,0,0,0.8);
-            position: relative;
-            padding: 3.5rem 3rem;
-            text-align: center;
-            box-sizing: border-box;
-            min-height: 480px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-        .magical-book::before {
-            content: '';
-            position: absolute;
-            top: 0; bottom: 0; right: 25px;
-            width: 15px;
-            background: linear-gradient(90deg, #0d0806, #2c1f18, #0d0806);
-            border-radius: 5px;
-            box-shadow: inset 0 0 10px rgba(0,0,0,0.9);
-        }
-
-        .book-page-content {
-            display: none;
-            width: 100%;
-            animation: pageTurn 0.6s ease;
-        }
-        .book-page-content.active {
-            display: block;
-        }
-        @keyframes pageTurn {
-            from { opacity: 0; transform: scale(0.97); }
-            to { opacity: 1; transform: scale(1); }
-        }
-
-        .book-cover-title {
-            font-size: 2.2rem;
-            font-weight: 900;
-            margin-bottom: 1.2rem;
-            background: linear-gradient(135deg, #fef3c7, #fbbf24);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 0 5px 15px rgba(0,0,0,0.5);
-        }
-
-        .gate-title {
-            font-size: 1.6rem;
-            font-weight: 900;
-            margin-bottom: 1.2rem;
-            background: linear-gradient(135deg, #fff, #a78bfa);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .gate-btn-group {
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-            margin-top: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .gate-btn {
-            background: linear-gradient(135deg, #7c3aed, #06b6d4);
-            color: white;
-            border: none;
-            padding: 0.9rem 2.2rem;
-            font-size: 1rem;
-            font-weight: 900;
-            border-radius: 50px;
-            cursor: pointer;
-            box-shadow: 0 10px 25px rgba(124, 58, 237, 0.4);
-            transition: 0.3s;
-        }
-        .gate-btn.no-btn {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid var(--border);
-            color: var(--text-muted);
-        }
-        .gate-btn:hover { transform: scale(1.05); }
-
-        .cursor-glow {
-            position: fixed;
-            width: 500px; height: 500px;
-            background: radial-gradient(circle, rgba(124, 58, 237, 0.12) 0%, rgba(6, 182, 212, 0.04) 50%, transparent 75%);
-            border-radius: 50%;
-            pointer-events: none;
-            transform: translate(-50%, -50%);
-            z-index: 9998;
-            mix-blend-mode: screen;
-        }
-
-        .bg-glow {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle at 50% 10%, #0d0624 0%, #000103 85%);
-            z-index: -2;
-            transition: background 0.5s ease;
-        }
-        body.light-theme .bg-glow {
-            background: radial-gradient(circle at 50% 10%, #e2e8f0 0%, #f8fafc 85%);
-        }
-        body.cream-theme .bg-glow {
-            background: radial-gradient(circle at 50% 10%, #2c1f18 0%, #1e1612 85%);
-        }
-
-        .stars {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            z-index: -1;
-            pointer-events: none;
-        }
-        .star {
-            position: absolute;
-            background: #ffffff;
-            border-radius: 50%;
-            animation: twinkle 3s infinite ease-in-out;
-        }
-        @keyframes twinkle {
-            0%, 100% { opacity: 0.1; transform: scale(0.6); }
-            50% { opacity: 0.9; transform: scale(1.5); }
-        }
-
-        .top-nav {
-            position: fixed;
-            top: 0; left: 0; width: 100%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0.8rem 1.5rem;
-            z-index: 990;
-            background: rgba(0, 1, 3, 0.85);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--border);
-        }
-        body.light-theme .top-nav { background: rgba(255, 255, 255, 0.85); }
-        body.cream-theme .top-nav { background: rgba(30, 22, 18, 0.85); }
-
-        .nav-brand {
-            font-size: 1.05rem;
-            font-weight: 900;
-            background: linear-gradient(135deg, #fff, #a78bfa);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .nav-controls {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .theme-toggle-btn {
-            background: rgba(124, 58, 237, 0.15);
-            border: 1px solid rgba(124, 58, 237, 0.4);
-            color: #c4b5fd;
-            padding: 6px 12px;
-            border-radius: 12px;
-            font-size: 0.78rem;
-            font-weight: 800;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-        .theme-toggle-btn:hover { background: rgba(124, 58, 237, 0.3); }
-
-        .menu-toggle-btn {
-            background: none;
-            border: 1px solid var(--border);
-            color: var(--text-main);
-            width: 38px; height: 38px;
-            border-radius: 12px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            gap: 5px;
-            cursor: pointer;
-            transition: 0.3s;
-            flex-shrink: 0;
-        }
-        .menu-toggle-btn span {
-            display: block; width: 16px; height: 2px; background: currentColor; border-radius: 2px;
-        }
-        .menu-toggle-btn:hover { border-color: var(--accent-purple); }
-
-        .sidebar {
-            position: fixed;
-            top: 0; left: -360px; width: 350px; height: 100%;
-            background: var(--card-bg);
-            border-right: 1px solid var(--border);
-            z-index: 9999;
-            box-shadow: 20px 0 50px rgba(0,0,0,0.8);
-            transition: left 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            padding: 3rem 2rem;
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-            overflow-y: auto;
-        }
-        .sidebar.open { left: 0; }
-        .sidebar-title {
-            font-size: 1.3rem; font-weight: 900; color: var(--text-main); margin-bottom: 0.5rem;
-        }
-        .sidebar-link {
-            background: rgba(124, 58, 237, 0.08);
-            border: 1px solid rgba(124, 58, 237, 0.25);
-            padding: 14px 20px;
-            border-radius: 16px;
-            color: #c4b5fd;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 0.95rem;
-            transition: 0.3s;
-            display: block;
-        }
-        .sidebar-link:hover {
-            background: rgba(124, 58, 237, 0.25);
-            transform: translateX(-4px);
-        }
-
-        .search-container {
-            margin-top: 1rem;
-            position: relative;
-        }
-        .search-input {
-            width: 100%;
-            background: rgba(0,0,0,0.4);
-            border: 1px solid var(--border);
-            border-radius: 14px;
-            padding: 12px 18px;
-            color: var(--text-main);
-            font-size: 0.9rem;
-            outline: none;
-            transition: 0.3s;
-        }
-        .search-input:focus { border-color: var(--accent-purple); }
-        .search-result-box {
-            margin-top: 10px;
-            padding: 14px;
-            background: rgba(124, 58, 237, 0.15);
-            border-radius: 12px;
-            font-size: 0.88rem;
-            color: #f8fafc;
-            display: none;
-            border: 1px solid rgba(124, 58, 237, 0.4);
-            line-height: 1.8;
-        }
-
-        header {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 6rem 1.5rem 3rem;
-            position: relative;
-        }
-
-        .cyber-badge {
-            background: rgba(124, 58, 237, 0.18);
-            color: #c4b5fd;
-            border: 1px solid rgba(124, 58, 237, 0.45);
-            padding: 0.8rem 2.8rem;
-            border-radius: 50px;
-            font-size: 1.05rem;
-            margin-bottom: 2rem;
-            box-shadow: 0 0 40px rgba(124, 58, 237, 0.35);
-            font-weight: 800;
-        }
-
-        h1 {
-            font-size: clamp(2.6rem, 6vw, 4.8rem);
-            font-weight: 900;
-            margin-bottom: 1.2rem;
-            background: linear-gradient(135deg, #ffffff 15%, #a78bfa 85%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            letter-spacing: -1px;
-        }
-
-        p.subtitle {
-            font-size: clamp(1.05rem, 2.3vw, 1.25rem);
-            color: var(--text-muted);
-            max-width: 800px;
-            line-height: 2.6;
-            margin-bottom: 3.5rem;
-        }
-
-        /* --- آرشیو متن‌های فرشته --- */
-        .pariya-writings-section {
+        /* --- استایل‌های بخش جدید موضوع (مقدمه و تبیین هدف) --- */
+        .intro-topic-section {
             max-width: 1200px;
-            margin: 0 auto 6rem;
+            margin: 6rem auto 3rem;
             padding: 0 1.5rem;
         }
-        .writings-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-        .writing-card {
-            background: var(--card-bg);
-            border: 1px solid rgba(124, 58, 237, 0.3);
-            border-radius: 28px;
-            padding: 2.5rem 2rem;
-            text-align: center;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.6);
-            backdrop-filter: blur(15px);
-            transition: 0.4s;
-            cursor: pointer;
+        .intro-topic-box {
+            background: linear-gradient(135deg, rgba(12, 18, 32, 0.95), rgba(35, 15, 55, 0.95));
+            border: 2px solid rgba(124, 58, 237, 0.4);
+            border-radius: 32px;
+            padding: 3rem 2.5rem;
+            box-shadow: 0 30px 70px rgba(0,0,0,0.8);
+            text-align: right;
+            backdrop-filter: blur(20px);
             position: relative;
             overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            min-height: 240px;
         }
-        .writing-card::before {
+        .intro-topic-box::before {
             content: '';
             position: absolute;
-            top: 0; left: 0; width: 100%; height: 4px;
-            background: linear-gradient(90deg, #7c3aed, #06b6d4);
-            opacity: 0.7;
-            transition: 0.3s;
+            top: 0;
+            right: 0;
+            width: 6px;
+            height: 100%;
+            background: linear-gradient(180deg, #7c3aed, #06b6d4);
         }
-        .writing-card:hover {
-            border-color: var(--accent-purple);
-            transform: translateY(-8px);
-            box-shadow: 0 30px 70px rgba(124, 58, 237, 0.25);
-        }
-        .writing-card:hover::before { opacity: 1; }
-        .writing-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-        .writing-title {
-            font-size: 1.15rem;
-            font-weight: 900;
-            color: #fff;
-            margin-bottom: 0.5rem;
-        }
-        .writing-theme-desc {
-            font-size: 0.8rem;
-            color: #a78bfa;
-            font-weight: 800;
-            margin-bottom: 0.8rem;
-            background: rgba(124, 58, 237, 0.12);
-            padding: 3px 10px;
-            border-radius: 12px;
-            display: inline-block;
-        }
-        .writing-snippet {
-            font-size: 0.88rem;
-            color: var(--text-muted);
-            line-height: 2;
-            margin-bottom: 1.5rem;
-        }
-        .writing-btn-view {
-            background: rgba(124, 58, 237, 0.15);
-            border: 1px solid rgba(124, 58, 237, 0.4);
+        .intro-topic-tag {
+            background: rgba(124, 58, 237, 0.18);
             color: #c4b5fd;
-            padding: 10px 20px;
-            border-radius: 50px;
+            border: 1px solid rgba(124, 58, 237, 0.4);
+            padding: 6px 18px;
+            border-radius: 20px;
             font-size: 0.85rem;
             font-weight: 800;
-            transition: 0.3s;
+            display: inline-block;
+            margin-bottom: 1.2rem;
         }
-        .writing-card:hover .writing-btn-view {
-            background: var(--accent-purple);
-            color: #fff;
-        }
-
-        /* --- مودال نمایش متن کامل --- */
-        .writing-modal {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 1, 3, 0.88);
-            z-index: 99999;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 1.5rem;
-            backdrop-filter: blur(20px);
-            opacity: 0;
-            visibility: hidden;
-            transition: 0.4s ease;
-        }
-        .writing-modal.open {
-            opacity: 1;
-            visibility: visible;
-        }
-        .modal-box {
-            background: linear-gradient(135deg, rgba(12, 18, 32, 0.98), rgba(25, 12, 42, 0.99));
-            border: 2px solid rgba(124, 58, 237, 0.5);
-            border-radius: 32px;
-            max-width: 800px;
-            width: 100%;
-            max-height: 85vh;
-            overflow-y: auto;
-            padding: 3rem 2.5rem;
-            box-shadow: 0 40px 90px rgba(0,0,0,0.9);
-            position: relative;
-            text-align: right;
-        }
-        .modal-close-btn {
-            position: absolute;
-            top: 25px; left: 25px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid var(--border);
-            color: var(--text-main);
-            width: 40px; height: 40px;
-            border-radius: 50%;
-            font-size: 1.1rem;
-            cursor: pointer;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            transition: 0.3s;
-        }
-        .modal-close-btn:hover { background: rgba(239, 68, 68, 0.2); border-color: #ef4444; color: #f87171; }
-        .modal-story-title {
-            font-size: 1.5rem;
+        .intro-topic-title {
+            font-size: clamp(1.6rem, 3.5vw, 2.2rem);
             font-weight: 900;
-            color: #fff;
-            margin-bottom: 0.5rem;
+            margin-bottom: 1rem;
             background: linear-gradient(135deg, #fff, #a78bfa);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            line-height: 1.5;
         }
-        .modal-story-subtitle {
-            font-size: 0.85rem;
-            color: #c4b5fd;
-            font-weight: 800;
-            margin-bottom: 2rem;
-            background: rgba(124, 58, 237, 0.15);
-            padding: 4px 14px;
-            border-radius: 20px;
-            display: inline-block;
-        }
-        .modal-story-body {
+        .intro-topic-desc {
             font-size: 1.05rem;
             color: var(--text-muted);
             line-height: 2.8;
-            white-space: pre-line;
-            border-top: 1px solid var(--border);
-            padding-top: 2rem;
         }
 
-        /* --- داشبورد کنترل جهان‌های موازی ارتقایافته --- */
-        .multiverse-hub {
-            background: var(--card-bg);
-            border: 1px solid rgba(124, 58, 237, 0.35);
-            backdrop-filter: blur(25px);
-            padding: 2.5rem;
-            border-radius: 32px;
-            box-shadow: 0 35px 70px rgba(0, 0, 0, 0.85);
-            max-width: 650px;
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            gap: 1.8rem;
-            text-align: right;
-            position: relative;
-            overflow: hidden;
-        }
+        .floating-angel-text { 
+            display: inline-block; 
+            background: linear-gradient(135deg, rgba(124, 58, 237, 0.25), rgba(6, 182, 212, 0.25)); 
+            border: 1px solid rgba(124, 58, 237, 0.5); 
+            padding: 4px 14px; 
+            border-radius: 50px; 
+            font-size: 0.75rem; 
+            font-weight: 800; 
+            color: #c4b5fd; 
+            backdrop-filter: blur(10px); 
+            animation: float-rotate 6s infinite ease-in-out; 
+            box-shadow: 0 0 15px rgba(124, 58, 237, 0.3); 
+            white-space: nowrap; 
+            margin: 0 15px; 
+        } 
+        @keyframes float-rotate { 
+            0% { transform: translateY(0) rotate(0deg); } 
+            50% { transform: translateY(-3px) rotate(0.5deg); } 
+            100% { transform: translateY(0) rotate(0deg); } 
+        } 
+        #bookOverlay { 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%; 
+            background: rgba(0, 1, 3, 0.92); 
+            z-index: 99999; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            padding: 1.5rem; 
+            backdrop-filter: blur(25px); 
+            transition: opacity 1s ease, visibility 1s; 
+        } 
+        #bookOverlay.fade-out { 
+            opacity: 0; 
+            visibility: hidden; 
+        } 
+        .magical-book { 
+            background: linear-gradient(135deg, #2c1f18 0%, #17100c 100%); 
+            border: 3px solid #d97706; 
+            border-radius: 20px 35px 35px 20px; 
+            max-width: 650px; 
+            width: 100%; 
+            box-shadow: 0 0 50px rgba(217, 119, 6, 0.4), inset 0 0 30px rgba(0,0,0,0.8); 
+            position: relative; 
+            padding: 3.5rem 3rem; 
+            text-align: center; 
+            box-sizing: border-box; 
+            min-height: 480px; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center; 
+            align-items: center; 
+        } 
+        .magical-book::before { 
+            content: ''; 
+            position: absolute; 
+            top: 0; 
+            bottom: 0; 
+            right: 25px; 
+            width: 15px; 
+            background: linear-gradient(90deg, #0d0806, #2c1f18, #0d0806); 
+            border-radius: 5px; 
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.9); 
+        } 
+        .book-page-content { 
+            display: none; 
+            width: 100%; 
+            animation: pageTurn 0.6s ease; 
+        } 
+        .book-page-content.active { 
+            display: block; 
+        } 
+        @keyframes pageTurn { 
+            from { opacity: 0; transform: scale(0.97); } 
+            to { opacity: 1; transform: scale(1); } 
+        } 
+        .book-cover-title { 
+            font-size: 2.2rem; 
+            font-weight: 900; 
+            margin-bottom: 1.2rem; 
+            background: linear-gradient(135deg, #fef3c7, #fbbf24); 
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent; 
+            text-shadow: 0 5px 15px rgba(0,0,0,0.5); 
+        } 
+        .gate-title { 
+            font-size: 1.6rem; 
+            font-weight: 900; 
+            margin-bottom: 1.2rem; 
+            background: linear-gradient(135deg, #fff, #a78bfa); 
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent; 
+        } 
+        .gate-btn-group { 
+            display: flex; 
+            gap: 15px; 
+            justify-content: center; 
+            margin-top: 2rem; 
+            flex-wrap: wrap; 
+        } 
+        .gate-btn { 
+            background: linear-gradient(135deg, #7c3aed, #06b6d4); 
+            color: white; 
+            border: none; 
+            padding: 0.9rem 2.2rem; 
+            font-size: 1rem; 
+            font-weight: 900; 
+            border-radius: 50px; 
+            cursor: pointer; 
+            box-shadow: 0 10px 25px rgba(124, 58, 237, 0.4); 
+            transition: 0.3s; 
+        } 
+        .gate-btn.no-btn { 
+            background: rgba(255, 255, 255, 0.05); 
+            border: 1px solid var(--border); 
+            color: var(--text-muted); 
+        } 
+        .gate-btn:hover { 
+            transform: scale(1.05); 
+        } 
+        .cursor-glow { 
+            position: fixed; 
+            width: 500px; 
+            height: 500px; 
+            background: radial-gradient(circle, rgba(124, 58, 237, 0.12) 0%, rgba(6, 182, 212, 0.04) 50%, transparent 75%); 
+            border-radius: 50%; 
+            pointer-events: none; 
+            transform: translate(-50%, -50%); 
+            z-index: 9998; 
+            mix-blend-mode: screen; 
+        } 
+        .bg-glow { 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%; 
+            background: radial-gradient(circle at 50% 10%, #0d0624 0%, #000103 85%); 
+            z-index: -2; 
+            transition: background 0.5s ease; 
+        } 
+        body.light-theme .bg-glow { 
+            background: radial-gradient(circle at 50% 10%, #e2e8f0 0%, #f8fafc 85%); 
+        } 
+        body.cream-theme .bg-glow { 
+            background: radial-gradient(circle at 50% 10%, #2c1f18 0%, #1e1612 85%); 
+        } 
+        .stars { 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%; 
+            z-index: -1; 
+            pointer-events: none; 
+        } 
+        .star { 
+            position: absolute; 
+            background: #ffffff; 
+            border-radius: 50%; 
+            animation: twinkle 3s infinite ease-in-out; 
+        } 
+        @keyframes twinkle { 
+            0%, 100% { opacity: 0.1; transform: scale(0.6); } 
+            50% { opacity: 0.9; transform: scale(1.5); } 
+        } 
+        .top-nav { 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            padding: 0.8rem 1.5rem; 
+            z-index: 990; 
+            background: rgba(0, 1, 3, 0.85); 
+            backdrop-filter: blur(20px); 
+            border-bottom: 1px solid var(--border); 
+        } 
+        body.light-theme .top-nav { 
+            background: rgba(255, 255, 255, 0.85); 
+        } 
+        body.cream-theme .top-nav { 
+            background: rgba(30, 22, 18, 0.85); 
+        } 
+        .nav-brand { 
+            font-size: 1.05rem; 
+            font-weight: 900; 
+            background: linear-gradient(135deg, #fff, #a78bfa); 
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent; 
+        } 
+        .nav-controls { 
+            display: flex; 
+            align-items: center; 
+            gap: 10px; 
+        } 
+        .theme-toggle-btn { 
+            background: rgba(124, 58, 237, 0.15); 
+            border: 1px solid rgba(124, 58, 237, 0.4); 
+            color: #c4b5fd; 
+            padding: 6px 12px; 
+            border-radius: 12px; 
+            font-size: 0.78rem; 
+            font-weight: 800; 
+            cursor: pointer; 
+            transition: 0.3s; 
+        } 
+        .theme-toggle-btn:hover { 
+            background: rgba(124, 58, 237, 0.3); 
+        } 
+        .menu-toggle-btn { 
+            background: none; 
+            border: 1px solid var(--border); 
+            color: var(--text-main); 
+            width: 38px; 
+            height: 38px; 
+            border-radius: 12px; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center; 
+            align-items: center; 
+            gap: 5px; 
+            cursor: pointer; 
+            transition: 0.3s; 
+            flex-shrink: 0; 
+        } 
+        .menu-toggle-btn span { 
+            display: block; 
+            width: 16px; 
+            height: 2px; 
+            background: currentColor; 
+            border-radius: 2px; 
+        } 
+        .menu-toggle-btn:hover { 
+            border-color: var(--accent-purple); 
+        } 
+        .sidebar { 
+            position: fixed; 
+            top: 0; 
+            left: -360px; 
+            width: 350px; 
+            height: 100%; 
+            background: var(--card-bg); 
+            border-right: 1px solid var(--border); 
+            z-index: 9999; 
+            box-shadow: 20px 0 50px rgba(0,0,0,0.8); 
+            transition: left 0.4s cubic-bezier(0.16, 1, 0.3, 1); 
+            padding: 3rem 2rem; 
+            display: flex; 
+            flex-direction: column; 
+            gap: 1.5rem; 
+            overflow-y: auto; 
+        } 
+        .sidebar.open { 
+            left: 0; 
+        } 
+        .sidebar-title { 
+            font-size: 1.3rem; 
+            font-weight: 900; 
+            color: var(--text-main); 
+            margin-bottom: 0.5rem; 
+        } 
+        .sidebar-link { 
+            background: rgba(124, 58, 237, 0.08); 
+            border: 1px solid rgba(124, 58, 237, 0.25); 
+            padding: 14px 20px; 
+            border-radius: 16px; 
+            color: #c4b5fd; 
+            text-decoration: none; 
+            font-weight: 700; 
+            font-size: 0.95rem; 
+            transition: 0.3s; 
+            display: block; 
+        } 
+        .sidebar-link:hover { 
+            background: rgba(124, 58, 237, 0.25); 
+            transform: translateX(-4px); 
+        } 
+        .search-container { 
+            margin-top: 1rem; 
+            position: relative; 
+        } 
+        .search-input { 
+            width: 100%; 
+            background: rgba(0,0,0,0.4); 
+            border: 1px solid var(--border); 
+            border-radius: 14px; 
+            padding: 12px 18px; 
+            color: var(--text-main); 
+            font-size: 0.9rem; 
+            outline: none; 
+            transition: 0.3s; 
+        } 
+        .search-input:focus { 
+            border-color: var(--accent-purple); 
+        } 
+        .search-result-box { 
+            margin-top: 10px; 
+            padding: 14px; 
+            background: rgba(124, 58, 237, 0.15); 
+            border-radius: 12px; 
+            font-size: 0.88rem; 
+            color: #f8fafc; 
+            display: none; 
+            border: 1px solid rgba(124, 58, 237, 0.4); 
+            line-height: 1.8; 
+        } 
+        header { 
+            min-height: 90vh; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center; 
+            align-items: center; 
+            text-align: center; 
+            padding: 4rem 1.5rem 3rem; 
+            position: relative; 
+        } 
+        .cyber-badge { 
+            background: rgba(124, 58, 237, 0.18); 
+            color: #c4b5fd; 
+            border: 1px solid rgba(124, 58, 237, 0.45); 
+            padding: 0.8rem 2.8rem; 
+            border-radius: 50px; 
+            font-size: 1.05rem; 
+            margin-bottom: 2rem; 
+            box-shadow: 0 0 40px rgba(124, 58, 237, 0.35); 
+            font-weight: 800; 
+        } 
+        h1 { 
+            font-size: clamp(2.6rem, 6vw, 4.8rem); 
+            font-weight: 900; 
+            margin-bottom: 1.2rem; 
+            background: linear-gradient(135deg, #ffffff 15%, #a78bfa 85%); 
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent; 
+            letter-spacing: -1px; 
+        } 
+        p.subtitle { 
+            font-size: clamp(1.05rem, 2.3vw, 1.25rem); 
+            color: var(--text-muted); 
+            max-width: 800px; 
+            line-height: 2.6; 
+            margin-bottom: 3.5rem; 
+        } 
+        /* --- آرشیو متن‌های فرشته --- */ 
+        .pariya-writings-section { 
+            max-width: 1200px; 
+            margin: 0 auto 6rem; 
+            padding: 0 1.5rem; 
+        } 
+        .writings-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); 
+            gap: 2rem; 
+            margin-top: 3rem; 
+        } 
+        .writing-card { 
+            background: var(--card-bg); 
+            border: 1px solid rgba(124, 58, 237, 0.3); 
+            border-radius: 28px; 
+            padding: 2.5rem 2rem; 
+            text-align: center; 
+            box-shadow: 0 20px 50px rgba(0,0,0,0.6); 
+            backdrop-filter: blur(15px); 
+            transition: 0.4s; 
+            cursor: pointer; 
+            position: relative; 
+            overflow: hidden; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: space-between; 
+            min-height: 240px; 
+        } 
+        .writing-card::before { 
+            content: ''; 
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 4px; 
+            background: linear-gradient(90deg, #7c3aed, #06b6d4); 
+            opacity: 0.7; 
+            transition: 0.3s; 
+        } 
+        .writing-card:hover { 
+            border-color: var(--accent-purple); 
+            transform: translateY(-8px); 
+            box-shadow: 0 30px 70px rgba(124, 58, 237, 0.25); 
+        } 
+        .writing-card:hover::before { 
+            opacity: 1; 
+        } 
+        .writing-icon { 
+            font-size: 2.5rem; 
+            margin-bottom: 1rem; 
+        } 
+        .writing-title { 
+            font-size: 1.15rem; 
+            font-weight: 900; 
+            color: #fff; 
+            margin-bottom: 0.5rem; 
+        } 
+        .writing-theme-desc { 
+            font-size: 0.8rem; 
+            color: #a78bfa; 
+            font-weight: 800; 
+            margin-bottom: 0.8rem; 
+            background: rgba(124, 58, 237, 0.12); 
+            padding: 3px 10px; 
+            border-radius: 12px; 
+            display: inline-block; 
+        } 
+        .writing-snippet { 
+            font-size: 0.88rem; 
+            color: var(--text-muted); 
+            line-height: 2; 
+            margin-bottom: 1.5rem; 
+        } 
+        .writing-btn-view { 
+            background: rgba(124, 58, 237, 0.15); 
+            border: 1px solid rgba(124, 58, 237, 0.4); 
+            color: #c4b5fd; 
+            padding: 10px 20px; 
+            border-radius: 50px; 
+            font-size: 0.85rem; 
+            font-weight: 800; 
+            transition: 0.3s; 
+        } 
+        .writing-card:hover .writing-btn-view { 
+            background: var(--accent-purple); 
+            color: #fff; 
+        } 
+        /* --- مودال نمایش متن کامل --- */ 
+        .writing-modal { 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%; 
+            background: rgba(0, 1, 3, 0.88); 
+            z-index: 99999; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            padding: 1.5rem; 
+            backdrop-filter: blur(20px); 
+            opacity: 0; 
+            visibility: hidden; 
+            transition: 0.4s ease; 
+        } 
+        .writing-modal.open { 
+            opacity: 1; 
+            visibility: visible; 
+        } 
+        .modal-box { 
+            background: linear-gradient(135deg, rgba(12, 18, 32, 0.98), rgba(25, 12, 42, 0.99)); 
+            border: 2px solid rgba(124, 58, 237, 0.5); 
+            border-radius: 32px; 
+            max-width: 800px; 
+            width: 100%; 
+            max-height: 85vh; 
+            overflow-y: auto; 
+            padding: 3rem 2.5rem; 
+            box-shadow: 0 40px 90px rgba(0,0,0,0.9); 
+            position: relative; 
+            text-align: right; 
+        } 
+        .modal-close-btn { 
+            position: absolute; 
+            top: 25px; 
+            left: 25px; 
+            background: rgba(255, 255, 255, 0.05); 
+            border: 1px solid var(--border); 
+            color: var(--text-main); 
+            width: 40px; 
+            height: 40px; 
+            border-radius: 50%; 
+            font-size: 1.1rem; 
+            cursor: pointer; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            transition: 0.3s; 
+        } 
+        .modal-close-btn:hover { 
+            background: rgba(239, 68, 68, 0.2); 
+            border-color: #ef4444; 
+            color: #f87171; 
+        } 
+        .modal-story-title { 
+            font-size: 1.5rem; 
+            font-weight: 900; 
+            color: #fff; 
+            margin-bottom: 0.5rem; 
+            background: linear-gradient(135deg, #fff, #a78bfa); 
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent; 
+        } 
+        .modal-story-subtitle { 
+            font-size: 0.85rem; 
+            color: #c4b5fd; 
+            font-weight: 800; 
+            margin-bottom: 2rem; 
+            background: rgba(124, 58, 237, 0.15); 
+            padding: 4px 14px; 
+            border-radius: 20px; 
+            display: inline-block; 
+        } 
+        .modal-story-body { 
+            font-size: 1.05rem; 
+            color: var(--text-muted); 
+            line-height: 2.8; 
+            white-space: pre-line; 
+            border-top: 1px solid var(--border); 
+            padding-top: 2rem; 
+        } 
+        /* --- داشبورد کنترل جهان‌های موازی ارتقایافته --- */ 
+        .multiverse-hub { 
+            background: var(--card-bg); 
+            border: 1px solid rgba(124, 58, 237, 0.35); 
+            backdrop-filter: blur(25px); 
+            padding: 2.5rem; 
+            border-radius: 32px; 
+            box-shadow: 0 35px 70px rgba(0, 0, 0, 0.85); 
+            max-width: 650px; 
+            width: 100%; 
+            display: flex; 
+            flex-direction: column; 
+            gap: 1.8rem; 
+            text-align: right; 
+            position: relative; 
+            overflow: hidden; 
+        } 
+        .hub-header { 
+            display: flex; 
+            align-items: center; 
+            justify-content: space-between; 
+            border-bottom: 1px solid var(--border); 
+            padding-bottom: 1.2rem; 
+        } 
+        .hub-title { 
+            font-weight: 900; 
+            font-size: 1.2rem; 
+            color: var(--text-main); 
+            display: flex; 
+            align-items: center; 
+            gap: 10px; 
+        } 
+        .hub-status-badge { 
+            background: rgba(6, 182, 212, 0.15); 
+            color: #38bdf8; 
+            border: 1px solid rgba(6, 182, 212, 0.4); 
+            padding: 6px 14px; 
+            border-radius: 20px; 
+            font-size: 0.8rem; 
+            font-weight: 800; 
+            transition: 0.3s; 
+        } 
+        .universe-screen { 
+            background: rgba(0, 0, 0, 0.5); 
+            border: 1px solid var(--border); 
+            border-radius: 20px; 
+            padding: 1.8rem; 
+            min-height: 130px; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center; 
+            align-items: center; 
+            text-align: center; 
+            position: relative; 
+            overflow: hidden; 
+            transition: 0.4s; 
+        } 
+        .universe-screen::before { 
+            content: ''; 
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 2px; 
+            background: linear-gradient(90deg, transparent, var(--accent-cyan), transparent); 
+            animation: scanline 3s infinite linear; 
+        } 
+        @keyframes scanline { 
+            0% { transform: translateX(-100%); } 
+            100% { transform: translateX(100%); } 
+        } 
+        .universe-text { 
+            font-size: 1.05rem; 
+            font-weight: 700; 
+            color: #c4b5fd; 
+            line-height: 2.2; 
+            transition: 0.3s; 
+        } 
+        .universe-sub { 
+            font-size: 0.85rem; 
+            color: var(--text-muted); 
+            margin-top: 8px; 
+            transition: 0.3s; 
+        } 
+        .universe-controls-grid { 
+            display: grid; 
+            grid-template-columns: repeat(3, 1fr); 
+            gap: 12px; 
+        } 
+        .uni-btn { 
+            background: rgba(255, 255, 255, 0.03); 
+            border: 1px solid var(--border); 
+            color: var(--text-muted); 
+            padding: 14px 10px; 
+            border-radius: 14px; 
+            font-size: 0.85rem; 
+            cursor: pointer; 
+            transition: 0.3s; 
+            font-weight: 800; 
+            text-align: center; 
+        } 
+        .uni-btn:hover { 
+            border-color: var(--accent-purple); 
+            color: var(--text-main); 
+            background: rgba(124, 58, 237, 0.15); 
+            transform: translateY(-2px); 
+        } 
+        .uni-btn.active-uni { 
+            background: linear-gradient(135deg, #7c3aed, #06b6d4); 
+            border-color: transparent; 
+            color: white; 
+            box-shadow: 0 0 25px rgba(124, 58, 237, 0.5); 
+        } 
+        .percentage-panel { 
+            max-width: 1200px; 
+            margin: 0 auto 6rem; 
+            padding: 0 1.5rem; 
+        } 
+        .percentage-box { 
+            background: linear-gradient(135deg, rgba(8, 13, 25, 0.98), rgba(30, 15, 45, 0.99)); 
+            border: 1px solid rgba(124, 58, 237, 0.45); 
+            border-radius: 35px; 
+            padding: 4rem 3.5rem; 
+            box-shadow: 0 35px 80px rgba(0,0,0,0.85); 
+            text-align: center; 
+        } 
+        .percentage-input-group { 
+            display: flex; 
+            gap: 15px; 
+            max-width: 450px; 
+            margin: 2rem auto 0; 
+        } 
+        .score-input { 
+            flex-grow: 1; 
+            background: rgba(0,0,0,0.6); 
+            border: 1px solid var(--border); 
+            border-radius: 16px; 
+            padding: 14px 20px; 
+            color: #fff; 
+            font-size: 1.1rem; 
+            text-align: center; 
+            outline: none; 
+        } 
+        .score-btn { 
+            background: var(--accent-purple); 
+            color: white; 
+            border: none; 
+            padding: 0 28px; 
+            border-radius: 16px; 
+            font-weight: 800; 
+            cursor: pointer; 
+            transition: 0.3s; 
+        } 
+        .score-result { 
+            margin-top: 2rem; 
+            font-size: 1.15rem; 
+            color: #c4b5fd; 
+            font-weight: 800; 
+            min-height: 40px; 
+            line-height: 2; 
+        } 
+        .angelic-traits-section { 
+            max-width: 1200px; 
+            margin: 0 auto 6rem; 
+            padding: 0 1.5rem; 
+        } 
+        .section-title { 
+            text-align: center; 
+            font-size: 2.2rem; 
+            font-weight: 900; 
+            margin-bottom: 0.9rem; 
+            background: linear-gradient(135deg, #fff, #a78bfa); 
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent; 
+        } 
+        .section-desc { 
+            text-align: center; 
+            color: var(--text-muted); 
+            margin-bottom: 4rem; 
+            font-size: 1.05rem; 
+            max-width: 750px; 
+            margin-left: auto; 
+            margin-right: auto; 
+            line-height: 2.2; 
+        } 
+        .traits-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
+            gap: 2rem; 
+            margin-top: 3rem; 
+        } 
+        .trait-card { 
+            background: var(--card-bg); 
+            border: 1px solid var(--border); 
+            border-radius: 28px; 
+            padding: 2.5rem; 
+            text-align: right; 
+            box-shadow: 0 20px 50px rgba(0,0,0,0.6); 
+            backdrop-filter: blur(15px); 
+            transition: 0.3s; 
+        } 
+        .trait-card:hover { 
+            border-color: rgba(124, 58, 237, 0.5); 
+            transform: translateY(-5px); 
+        } 
+        .trait-title { 
+            font-size: 1.2rem; 
+            font-weight: 900; 
+            color: #c4b5fd; 
+            margin-bottom: 1rem; 
+            display: flex; 
+            align-items: center; 
+            gap: 10px; 
+        } 
+        .trait-desc { 
+            font-size: 0.95rem; 
+            color: var(--text-muted); 
+            line-height: 2.5; 
+        } 
+        .newspaper-section { 
+            max-width: 1200px; 
+            margin: 0 auto 6rem; 
+            padding: 0 1.5rem; 
+        } 
+        .news-box { 
+            background: linear-gradient(135deg, rgba(12, 18, 32, 0.98), rgba(20, 10, 35, 0.99)); 
+            border: 2px solid rgba(251, 191, 36, 0.4); 
+            border-radius: 35px; 
+            padding: 4rem 3.5rem; 
+            box-shadow: 0 40px 90px rgba(0,0,0,0.9); 
+            cursor: pointer; 
+            transition: 0.4s; 
+            position: relative; 
+            overflow: hidden; 
+        } 
+        .news-box:hover { 
+            border-color: var(--accent-gold); 
+            transform: scale(1.01); 
+        } 
+        .news-header-tag { 
+            background: rgba(251, 191, 36, 0.15); 
+            color: #fde047; 
+            border: 1px solid rgba(251, 191, 36, 0.4); 
+            padding: 6px 20px; 
+            border-radius: 20px; 
+            font-size: 0.85rem; 
+            font-weight: 800; 
+            display: inline-block; 
+            margin-bottom: 1.2rem; 
+        } 
+        .news-content { 
+            margin-top: 1.5rem; 
+            display: none; 
+            line-height: 2.8; 
+            color: var(--text-muted); 
+            font-size: 1.05rem; 
+            text-align: right; 
+            border-top: 1px solid var(--border); 
+            padding-top: 2rem; 
+        } 
+        .wings-section { 
+            max-width: 900px; 
+            margin: 0 auto 6rem; 
+            padding: 0 1.5rem; 
+            text-align: center; 
+        } 
+        .wings-btn { 
+            background: linear-gradient(135deg, #7c3aed, #06b6d4); 
+            color: white; 
+            border: none; 
+            padding: 1.4rem 4rem; 
+            font-size: 1.2rem; 
+            font-weight: 900; 
+            border-radius: 50px; 
+            cursor: pointer; 
+            box-shadow: 0 20px 50px rgba(124, 58, 237, 0.5); 
+            transition: 0.3s; 
+        } 
+        .wings-btn:hover { 
+            transform: scale(1.05); 
+        } 
+        .flying-angel-icon { 
+            position: fixed; 
+            bottom: -150px; 
+            left: 50%; 
+            transform: translateX(-50%); 
+            font-size: 6rem; 
+            z-index: 99999; 
+            transition: bottom 2.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 2.5s; 
+            pointer-events: none; 
+            opacity: 0; 
+            filter: drop-shadow(0 0 35px rgba(255, 255, 255, 0.9)); 
+        } 
+        .flying-angel-icon.fly { 
+            bottom: 105vh; 
+            opacity: 1; 
+        } 
+        .verification-footer-section { 
+            max-width: 1000px; 
+            margin: 0 auto 6rem; 
+            padding: 0 1.5rem; 
+            text-align: center; 
+        } 
+        .warning-box { 
+            background: rgba(239, 68, 68, 0.08); 
+            border: 1px solid rgba(239, 68, 68, 0.35); 
+            border-radius: 28px; 
+            padding: 3rem; 
+            margin-bottom: 3rem; 
+            text-align: right; 
+            box-shadow: 0 25px 60px rgba(0,0,0,0.6); 
+        } 
+        .warning-title { 
+            color: #f87171; 
+            font-size: 1.2rem; 
+            font-weight: 900; 
+            margin-bottom: 1rem; 
+            display: flex; 
+            align-items: center; 
+            gap: 10px; 
+        } 
+        .warning-list { 
+            list-style: none; 
+            display: flex; 
+            flex-direction: column; 
+            gap: 12px; 
+            color: #fca5a5; 
+            font-size: 0.98rem; 
+            line-height: 2.2; 
+        } 
+        .authenticity-badge { 
+            background: var(--card-bg); 
+            border: 1px solid rgba(124, 58, 237, 0.4); 
+            border-radius: 30px; 
+            padding: 3rem; 
+            backdrop-filter: blur(20px); 
+            box-shadow: 0 30px 70px rgba(0,0,0,0.8); 
+        } 
+        footer { 
+            text-align: center; 
+            padding: 4.5rem 1.5rem; 
+            color: var(--text-muted); 
+            font-size: 0.95rem; 
+            border-top: 1px solid var(--border); 
+            letter-spacing: 2.5px; 
+        } 
+    </style> 
+</head> 
+<body class="dark-theme"> 
+    <div id="bookOverlay"> 
+        <div class="magical-book"> 
+            <div class="book-page-content active" id="page1"> 
+                <div class="book-cover-title">📖 کتاب دنیای فرشته‌ها</div> 
+                <div class="gate-title" style="font-size: 1.4rem;">🔐 آیا پریا فرشته هست یا نه؟</div> 
+                <div style="color: var(--text-muted); font-size: 1rem; line-height: 2.2;">برای ورود به این جهان اختصاصی، اصالت این حقیقت را تعیین کنید:</div> 
+                <div class="gate-btn-group"> 
+                    <button class="gate-btn" onclick="nextBookPage(2)">بله ✨</button> 
+                    <button class="gate-btn no-btn" id="noBtn1" onclick="handleNoGate1()">خیر ❌</button> 
+                </div> 
+            </div> 
+            <div class="book-page-content" id="page2"> 
+                <div style="font-size: 1rem; font-weight: 800; color: #c4b5fd; margin-bottom: 0.8rem; background: rgba(124, 58, 237, 0.15); padding: 6px 16px; border-radius: 20px; display: inline-block;">✨ پریا فرشته‌ی ابسولوت کهکشان ✨</div> 
+                <div class="gate-title" style="font-size: 1.4rem;">🔐 تأییدیه امنیتی اصالت نهایی</div> 
+                <div style="color: var(--text-muted); font-size: 0.98rem; line-height: 2.2; margin-bottom: 1.5rem;">امیر گفته بهت: «تو فرشته‌ای»... برای عبور از این لایه، این حقیقت را دوباره تأیید کن تا سیستم به مرحله‌ی بعدی برسد.</div> 
+                <button class="gate-btn" onclick="nextBookPage(3)">تایید می‌کنم، من فرشته‌ی این کهکشانم ✨</button> 
+            </div> 
+            <div class="book-page-content" id="page3"> 
+                <div style="font-size: 1rem; font-weight: 800; color: #38bdf8; margin-bottom: 0.8rem; background: rgba(56, 189, 248, 0.15); padding: 6px 16px; border-radius: 20px; display: inline-block;">🧩 چالش بقا در برابر آدم‌های روی مخ</div> 
+                <div class="gate-title" style="font-size: 1.3rem;">تست اصالت و هوش حیاتی</div> 
+                <div style="color: var(--text-muted); font-size: 0.95rem; line-height: 2.2; margin-bottom: 1.5rem;"> اگر یک آدمِ به شدت روی مخ پیدا بشه و بخواد اعصابتو خورد کنه، اول چیکار می‌کنی؟<br> <span style="font-size: 0.82rem; color: #a78bfa; display: block; margin-top: 6px;">(راهنما: گزینه‌ای که اعصاب تورو نجات بده انتخاب کن!)</span> </div> 
+                <div style="display: flex; flex-direction: column; gap: 10px;"> 
+                    <button class="gate-btn" style="font-size: 0.9rem; padding: 0.8rem 1rem;" onclick="nextBookPage(4)">الف) رد کردن از زندگی، بلاک، و حفظ آرامش مطلق 🧘‍♀️✨</button> 
+                    <button class="gate-btn no-btn" style="font-size: 0.9rem; padding: 0.8rem 1rem;" onclick="alert('اشتباه! تحمل آدم روی مخ ممنوع است! دوباره تلاش کن! 😅')">ب) باهاش بحث می‌کنم تا قانع بشه!</button> 
+                </div> 
+            </div> 
+            <div class="book-page-content" id="page4"> 
+                <div style="font-size: 1rem; font-weight: 800; color: #f472b6; margin-bottom: 0.8rem; background: rgba(236, 72, 153, 0.15); padding: 6px 16px; border-radius: 20px; display: inline-block;">🎁 پروتکل هدایای اختصاصی</div> 
+                <div class="gate-title" style="font-size: 1.4rem;">آیا اجازه می‌دهید امیر برایتان یک گیفت دیگر ارسال کند؟</div> 
+                <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 1.5rem;"> 
+                    <button class="gate-btn" style="padding: 0.7rem;" onclick="nextBookPage(5)">بله، حتماً! ✨</button> 
+                    <button class="gate-btn" style="padding: 0.7rem;" onclick="nextBookPage(5)">بله صد در صد! 🤍</button> 
+                    <button class="gate-btn" style="padding: 0.7rem;" onclick="nextBookPage(5)">بله، با کمال میل! 🎁</button> 
+                    <button class="gate-btn no-btn" style="padding: 0.7rem;" onclick="handleDictatorNo()">رد کردن سوال (کلیک کن)</button> 
+                </div> 
+            </div> 
+            <div class="book-page-content" id="page5"> 
+                <div style="font-size: 1rem; font-weight: 800; color: #c4b5fd; margin-bottom: 0.8rem; background: rgba(124, 58, 237, 0.15); padding: 6px 16px; border-radius: 20px; display: inline-block;">🌟 گذر از موانع کهکشانی</div> 
+                <div class="gate-title" style="font-size: 1.4rem;">تبریک! تست‌های اولیه با موفقیت به سرانجام رسید</div> 
+                <div style="color: var(--text-muted); font-size: 0.98rem; line-height: 2.5; margin-bottom: 2rem;"> البته امیر از همان ابتدا هم می‌دانست تو فرشته‌ای؛ حالا آماده شو تا وارد محیط اصلی شوی... </div> 
+                <button class="gate-btn" onclick="nextBookPage(6)">ورود به محیط اصلی معبد پریا ✨</button> 
+            </div> 
+            <div class="book-page-content" id="page6"> 
+                <div style="font-size: 1rem; font-weight: 800; color: #fbbf24; margin-bottom: 0.8rem; background: rgba(251, 191, 36, 0.15); padding: 6px 16px; border-radius: 20px; display: inline-block;">🩺 سنجشگر سلامت کتاب</div> 
+                <div class="gate-title" style="font-size: 1.4rem;">تست سلامت آنی پاهای فرشته</div> 
+                <div style="color: var(--text-muted); font-size: 1.05rem; line-height: 2.5; margin-bottom: 2rem;" id="legPainText"> پریا، پات درد می‌کنه؟ راستشو بگو! </div> 
+                <div class="gate-btn-group" id="legPainBtnGroup"> 
+                    <button class="gate-btn" onclick="answerLegPain(true)">بله 😔</button> 
+                    <button class="gate-btn no-btn" onclick="answerLegPain(false)">خیر 😊</button> 
+                </div> 
+            </div> 
+        </div> 
+    </div> 
+    <div class="cursor-glow" id="cursorGlow"></div> 
+    <div class="bg-glow" id="bgGlowLayer"></div> 
+    <div class="stars" id="starsContainer"></div> 
+    <nav class="top-nav"> 
+        <div style="display: flex; align-items: center; gap: 10px; flex-shrink: 0;"> 
+            <button class="menu-toggle-btn" onclick="toggleSidebar()"> 
+                <span></span><span></span><span></span> 
+            </button> 
+            <div class="nav-brand">Pari Kind</div> </div> 
+        <div style="overflow: hidden; flex-grow: 1; text-align: center;"> 
+            <div class="floating-angel-text">✨ پریا فرشتهههه ✨</div> 
+        </div> 
+        <div class="nav-controls" style="flex-shrink: 0;"> 
+            <button class="theme-toggle-btn" onclick="toggleTheme()">تغییر تم 🌓</button> 
+        </div> 
+    </nav> 
+    <div class="sidebar" id="mainSidebar"> 
+        <div style="display: flex; justify-content: space-between; align-items: center;"> 
+            <div class="sidebar-title">فهرست اختصاصی معبد</div> 
+            <button onclick="toggleSidebar()" style="background:none; border:none; color:var(--text-main); font-size:1.2rem; cursor:pointer;">✕</button> 
+        </div> 
+        <div class="search-container"> 
+            <input type="text" id="searchInput" class="search-input" placeholder="جستجو در معبد..." oninput="handleSearch(this.value)"> 
+            <div class="search-result-box" id="searchResultBox"></div> 
+        </div> 
+        <div style="display: flex; flex-direction: column; gap: 12px; margin-top: 1rem;"> 
+            <a href="#topicSec" class="sidebar-link" onclick="toggleSidebar()">موضوع و هدف معبد 🎯</a>
+            <a href="#writingsSec" class="sidebar-link" onclick="toggleSidebar()">نوشته‌ها و داستان‌های پریا 🖋️</a> 
+            <a href="#percentageSec" class="sidebar-link" onclick="toggleSidebar()">تست درصد کلی پریا 📊</a> 
+            <a href="#traitsSec" class="sidebar-link" onclick="toggleSidebar()">ملاک‌های ابسولوت فرشته بودن 🤍</a> 
+            <a href="#newsSec" class="sidebar-link" onclick="sidebarLinkClick()">روزنامه معتبر آسمانی 🗞️</a> 
+            <a href="#hubSec" class="sidebar-link" onclick="toggleSidebar()">داشبورد کنترل جهان‌های موازی 🌌</a> 
+            <a href="#wingsSec" class="sidebar-link" onclick="toggleSidebar()">فعالسازی بال فرشته 🪽</a> 
+        </div> 
+    </div> 
 
-        .hub-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            border-bottom: 1px solid var(--border);
-            padding-bottom: 1.2rem;
-        }
-
-        .hub-title {
-            font-weight: 900;
-            font-size: 1.2rem;
-            color: var(--text-main);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .hub-status-badge {
-            background: rgba(6, 182, 212, 0.15);
-            color: #38bdf8;
-            border: 1px solid rgba(6, 182, 212, 0.4);
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 800;
-            transition: 0.3s;
-        }
-
-        .universe-screen {
-            background: rgba(0, 0, 0, 0.5);
-            border: 1px solid var(--border);
-            border-radius: 20px;
-            padding: 1.8rem;
-            min-height: 130px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            transition: 0.4s;
-        }
-
-        .universe-screen::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 2px;
-            background: linear-gradient(90deg, transparent, var(--accent-cyan), transparent);
-            animation: scanline 3s infinite linear;
-        }
-
-        @keyframes scanline {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
-        }
-
-        .universe-text {
-            font-size: 1.05rem;
-            font-weight: 700;
-            color: #c4b5fd;
-            line-height: 2.2;
-            transition: 0.3s;
-        }
-
-        .universe-sub {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            margin-top: 8px;
-            transition: 0.3s;
-        }
-
-        .universe-controls-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 12px;
-        }
-
-        .uni-btn {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid var(--border);
-            color: var(--text-muted);
-            padding: 14px 10px;
-            border-radius: 14px;
-            font-size: 0.85rem;
-            cursor: pointer;
-            transition: 0.3s;
-            font-weight: 800;
-            text-align: center;
-        }
-
-        .uni-btn:hover {
-            border-color: var(--accent-purple);
-            color: var(--text-main);
-            background: rgba(124, 58, 237, 0.15);
-            transform: translateY(-2px);
-        }
-
-        .uni-btn.active-uni {
-            background: linear-gradient(135deg, #7c3aed, #06b6d4);
-            border-color: transparent;
-            color: white;
-            box-shadow: 0 0 25px rgba(124, 58, 237, 0.5);
-        }
-
-        .percentage-panel {
-            max-width: 1200px;
-            margin: 0 auto 6rem;
-            padding: 0 1.5rem;
-        }
-        .percentage-box {
-            background: linear-gradient(135deg, rgba(8, 13, 25, 0.98), rgba(30, 15, 45, 0.99));
-            border: 1px solid rgba(124, 58, 237, 0.45);
-            border-radius: 35px;
-            padding: 4rem 3.5rem;
-            box-shadow: 0 35px 80px rgba(0,0,0,0.85);
-            text-align: center;
-        }
-        .percentage-input-group {
-            display: flex; gap: 15px; max-width: 450px; margin: 2rem auto 0;
-        }
-        .score-input {
-            flex-grow: 1; background: rgba(0,0,0,0.6); border: 1px solid var(--border);
-            border-radius: 16px; padding: 14px 20px; color: #fff; font-size: 1.1rem; text-align: center; outline: none;
-        }
-        .score-btn {
-            background: var(--accent-purple); color: white; border: none; padding: 0 28px;
-            border-radius: 16px; font-weight: 800; cursor: pointer; transition: 0.3s;
-        }
-        .score-result {
-            margin-top: 2rem; font-size: 1.15rem; color: #c4b5fd; font-weight: 800; min-height: 40px; line-height: 2;
-        }
-
-        .angelic-traits-section {
-            max-width: 1200px;
-            margin: 0 auto 6rem;
-            padding: 0 1.5rem;
-        }
-        .section-title {
-            text-align: center;
-            font-size: 2.2rem;
-            font-weight: 900;
-            margin-bottom: 0.9rem;
-            background: linear-gradient(135deg, #fff, #a78bfa);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .section-desc {
-            text-align: center;
-            color: var(--text-muted);
-            margin-bottom: 4rem;
-            font-size: 1.05rem;
-            max-width: 750px;
-            margin-left: auto; margin-right: auto;
-            line-height: 2.2;
-        }
-        .traits-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-        .trait-card {
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            border-radius: 28px;
-            padding: 2.5rem;
-            text-align: right;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.6);
-            backdrop-filter: blur(15px);
-            transition: 0.3s;
-        }
-        .trait-card:hover { border-color: rgba(124, 58, 237, 0.5); transform: translateY(-5px); }
-        .trait-title { font-size: 1.2rem; font-weight: 900; color: #c4b5fd; margin-bottom: 1rem; display: flex; align-items: center; gap: 10px; }
-        .trait-desc { font-size: 0.95rem; color: var(--text-muted); line-height: 2.5; }
-
-        .newspaper-section {
-            max-width: 1200px;
-            margin: 0 auto 6rem;
-            padding: 0 1.5rem;
-        }
-        .news-box {
-            background: linear-gradient(135deg, rgba(12, 18, 32, 0.98), rgba(20, 10, 35, 0.99));
-            border: 2px solid rgba(251, 191, 36, 0.4);
-            border-radius: 35px;
-            padding: 4rem 3.5rem;
-            box-shadow: 0 40px 90px rgba(0,0,0,0.9);
-            cursor: pointer;
-            transition: 0.4s;
-            position: relative;
-            overflow: hidden;
-        }
-        .news-box:hover { border-color: var(--accent-gold); transform: scale(1.01); }
-        .news-header-tag {
-            background: rgba(251, 191, 36, 0.15); color: #fde047; border: 1px solid rgba(251, 191, 36, 0.4);
-            padding: 6px 20px; border-radius: 20px; font-size: 0.85rem; font-weight: 800; display: inline-block; margin-bottom: 1.2rem;
-        }
-        .news-content {
-            margin-top: 1.5rem; display: none; line-height: 2.8; color: var(--text-muted); font-size: 1.05rem; text-align: right;
-            border-top: 1px solid var(--border); padding-top: 2rem;
-        }
-
-        .wings-section {
-            max-width: 900px;
-            margin: 0 auto 6rem;
-            padding: 0 1.5rem;
-            text-align: center;
-        }
-        .wings-btn {
-            background: linear-gradient(135deg, #7c3aed, #06b6d4);
-            color: white; border: none; padding: 1.4rem 4rem; font-size: 1.2rem; font-weight: 900;
-            border-radius: 50px; cursor: pointer; box-shadow: 0 20px 50px rgba(124, 58, 237, 0.5); transition: 0.3s;
-        }
-        .wings-btn:hover { transform: scale(1.05); }
-
-        .flying-angel-icon {
-            position: fixed;
-            bottom: -150px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 6rem;
-            z-index: 99999;
-            transition: bottom 2.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 2.5s;
-            pointer-events: none;
-            opacity: 0;
-            filter: drop-shadow(0 0 35px rgba(255, 255, 255, 0.9));
-        }
-        .flying-angel-icon.fly {
-            bottom: 105vh;
-            opacity: 1;
-        }
-
-        .verification-footer-section {
-            max-width: 1000px;
-            margin: 0 auto 6rem;
-            padding: 0 1.5rem;
-            text-align: center;
-        }
-        .warning-box {
-            background: rgba(239, 68, 68, 0.08);
-            border: 1px solid rgba(239, 68, 68, 0.35);
-            border-radius: 28px;
-            padding: 3rem;
-            margin-bottom: 3rem;
-            text-align: right;
-            box-shadow: 0 25px 60px rgba(0,0,0,0.6);
-        }
-        .warning-title {
-            color: #f87171; font-size: 1.2rem; font-weight: 900; margin-bottom: 1rem; display: flex; align-items: center; gap: 10px;
-        }
-        .warning-list {
-            list-style: none; display: flex; flex-direction: column; gap: 12px; color: #fca5a5; font-size: 0.98rem; line-height: 2.2;
-        }
-
-        .authenticity-badge {
-            background: var(--card-bg);
-            border: 1px solid rgba(124, 58, 237, 0.4);
-            border-radius: 30px;
-            padding: 3rem;
-            backdrop-filter: blur(20px);
-            box-shadow: 0 30px 70px rgba(0,0,0,0.8);
-        }
-
-        footer {
-            text-align: center;
-            padding: 4.5rem 1.5rem;
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            border-top: 1px solid var(--border);
-            letter-spacing: 2.5px;
-        }
-    </style>
-</head>
-<body class="dark-theme">
-
-    <div id="bookOverlay">
-        <div class="magical-book">
-            <div class="book-page-content active" id="page1">
-                <div class="book-cover-title">📖 کتاب دنیای فرشته‌ها</div>
-                <div class="gate-title" style="font-size: 1.4rem;">🔐 آیا پریا فرشته هست یا نه؟</div>
-                <div style="color: var(--text-muted); font-size: 1rem; line-height: 2.2;">برای ورود به این جهان اختصاصی، اصالت این حقیقت را تعیین کنید:</div>
-                <div class="gate-btn-group">
-                    <button class="gate-btn" onclick="nextBookPage(2)">بله ✨</button>
-                    <button class="gate-btn no-btn" id="noBtn1" onclick="handleNoGate1()">خیر ❌</button>
-                </div>
-            </div>
-
-            <div class="book-page-content" id="page2">
-                <div style="font-size: 1rem; font-weight: 800; color: #c4b5fd; margin-bottom: 0.8rem; background: rgba(124, 58, 237, 0.15); padding: 6px 16px; border-radius: 20px; display: inline-block;">✨ پریا فرشته‌ی ابسولوت کهکشان ✨</div>
-                <div class="gate-title" style="font-size: 1.4rem;">🔐 تأییدیه امنیتی اصالت نهایی</div>
-                <div style="color: var(--text-muted); font-size: 0.98rem; line-height: 2.2; margin-bottom: 1.5rem;">امیر گفته بهت: «تو فرشته‌ای»... برای عبور از این لایه، این حقیقت را دوباره تأیید کن تا سیستم به مرحله‌ی بعدی برسد.</div>
-                <button class="gate-btn" onclick="nextBookPage(3)">تایید می‌کنم، من فرشته‌ی این کهکشانم ✨</button>
-            </div>
-
-            <div class="book-page-content" id="page3">
-                <div style="font-size: 1rem; font-weight: 800; color: #38bdf8; margin-bottom: 0.8rem; background: rgba(56, 189, 248, 0.15); padding: 6px 16px; border-radius: 20px; display: inline-block;">🧩 چالش بقا در برابر آدم‌های روی مخ</div>
-                <div class="gate-title" style="font-size: 1.3rem;">تست اصالت و هوش حیاتی</div>
-                <div style="color: var(--text-muted); font-size: 0.95rem; line-height: 2.2; margin-bottom: 1.5rem;">
-                    اگر یک آدمِ به شدت روی مخ پیدا بشه و بخواد اعصابتو خورد کنه، اول چیکار می‌کنی؟<br>
-                    <span style="font-size: 0.82rem; color: #a78bfa; display: block; margin-top: 6px;">(راهنما: گزینه‌ای که اعصاب تورو نجات بده انتخاب کن!)</span>
-                </div>
-                <div style="display: flex; flex-direction: column; gap: 10px;">
-                    <button class="gate-btn" style="font-size: 0.9rem; padding: 0.8rem 1rem;" onclick="nextBookPage(4)">الف) رد کردن از زندگی، بلاک، و حفظ آرامش مطلق 🧘‍♀️✨</button>
-                    <button class="gate-btn no-btn" style="font-size: 0.9rem; padding: 0.8rem 1rem;" onclick="alert('اشتباه! تحمل آدم روی مخ ممنوع است! دوباره تلاش کن! 😅')">ب) باهاش بحث می‌کنم تا قانع بشه!</button>
-                </div>
-            </div>
-
-            <div class="book-page-content" id="page4">
-                <div style="font-size: 1rem; font-weight: 800; color: #f472b6; margin-bottom: 0.8rem; background: rgba(236, 72, 153, 0.15); padding: 6px 16px; border-radius: 20px; display: inline-block;">🎁 پروتکل هدایای اختصاصی</div>
-                <div class="gate-title" style="font-size: 1.4rem;">آیا اجازه می‌دهید امیر برایتان یک گیفت دیگر ارسال کند؟</div>
-                <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 1.5rem;">
-                    <button class="gate-btn" style="padding: 0.7rem;" onclick="nextBookPage(5)">بله، حتماً! ✨</button>
-                    <button class="gate-btn" style="padding: 0.7rem;" onclick="nextBookPage(5)">بله صد در صد! 🤍</button>
-                    <button class="gate-btn" style="padding: 0.7rem;" onclick="nextBookPage(5)">بله، با کمال میل! 🎁</button>
-                    <button class="gate-btn no-btn" style="padding: 0.7rem;" onclick="handleDictatorNo()">رد کردن سوال (کلیک کن)</button>
-                </div>
-            </div>
-
-            <div class="book-page-content" id="page5">
-                <div style="font-size: 1rem; font-weight: 800; color: #c4b5fd; margin-bottom: 0.8rem; background: rgba(124, 58, 237, 0.15); padding: 6px 16px; border-radius: 20px; display: inline-block;">🌟 گذر از موانع کهکشانی</div>
-                <div class="gate-title" style="font-size: 1.4rem;">تبریک! تست‌های اولیه با موفقیت به سرانجام رسید</div>
-                <div style="color: var(--text-muted); font-size: 0.98rem; line-height: 2.5; margin-bottom: 2rem;">
-                    البته امیر از همان ابتدا هم می‌دانست تو فرشته‌ای؛ حالا آماده شو تا وارد محیط اصلی شوی...
-                </div>
-                <button class="gate-btn" onclick="nextBookPage(6)">ورود به محیط اصلی معبد پریا ✨</button>
-            </div>
-
-            <div class="book-page-content" id="page6">
-                <div style="font-size: 1rem; font-weight: 800; color: #fbbf24; margin-bottom: 0.8rem; background: rgba(251, 191, 36, 0.15); padding: 6px 16px; border-radius: 20px; display: inline-block;">🩺 سنجشگر سلامت کتاب</div>
-                <div class="gate-title" style="font-size: 1.4rem;">تست سلامت آنی پاهای فرشته</div>
-                <div style="color: var(--text-muted); font-size: 1.05rem; line-height: 2.5; margin-bottom: 2rem;" id="legPainText">
-                    پریا، پات درد می‌کنه؟ راستشو بگو!
-                </div>
-                <div class="gate-btn-group" id="legPainBtnGroup">
-                    <button class="gate-btn" onclick="answerLegPain(true)">بله 😔</button>
-                    <button class="gate-btn no-btn" onclick="answerLegPain(false)">خیر 😊</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="cursor-glow" id="cursorGlow"></div>
-    <div class="bg-glow" id="bgGlowLayer"></div>
-    <div class="stars" id="starsContainer"></div>
-
-    <nav class="top-nav">
-        <div style="display: flex; align-items: center; gap: 10px; flex-shrink: 0;">
-            <button class="menu-toggle-btn" onclick="toggleSidebar()">
-                <span></span><span></span><span></span>
-            </button>
-            <div class="nav-brand">Pari Kind</div>
-        </div>
-
-        <div style="overflow: hidden; flex-grow: 1; text-align: center;">
-            <div class="floating-angel-text">✨ پریا فرشتهههه ✨</div>
-        </div>
-
-        <div class="nav-controls" style="flex-shrink: 0;">
-            <button class="theme-toggle-btn" onclick="toggleTheme()">تغییر تم 🌓</button>
-        </div>
-    </nav>
-
-    <div class="sidebar" id="mainSidebar">
-        <div style="display: flex; justify-content: space-between; align-items: center;">
-            <div class="sidebar-title">فهرست اختصاصی معبد</div>
-            <button onclick="toggleSidebar()" style="background:none; border:none; color:var(--text-main); font-size:1.2rem; cursor:pointer;">✕</button>
-        </div>
-
-        <div class="search-container">
-            <input type="text" id="searchInput" class="search-input" placeholder="جستجو در معبد..." oninput="handleSearch(this.value)">
-            <div class="search-result-box" id="searchResultBox"></div>
-        </div>
-
-        <div style="display: flex; flex-direction: column; gap: 12px; margin-top: 1rem;">
-            <a href="#writingsSec" class="sidebar-link" onclick="toggleSidebar()">نوشته‌ها و داستان‌های پریا 🖋️</a>
-            <a href="#percentageSec" class="sidebar-link" onclick="toggleSidebar()">تست درصد کلی پریا 📊</a>
-            <a href="#traitsSec" class="sidebar-link" onclick="toggleSidebar()">ملاک‌های ابسولوت فرشته بودن 🤍</a>
-            <a href="#newsSec" class="sidebar-link" onclick="sidebarLinkClick()">روزنامه معتبر آسمانی 🗞️</a>
-            <a href="#hubSec" class="sidebar-link" onclick="toggleSidebar()">داشبورد کنترل جهان‌های موازی 🌌</a>
-            <a href="#wingsSec" class="sidebar-link" onclick="toggleSidebar()">فعالسازی بال فرشته 🪽</a>
-        </div>
-    </div>
-
-    <header id="hubSec">
-        <div class="cyber-badge">✨ پریا فرشته‌ی ابسولوت، نماد اخلاق نیکو و نبوغ کهکشانی ✨</div>
-        <h1>معبد تخصصی و سلطنتیِ پریا</h1>
-        <p class="subtitle">اینجا بستری است مهندسی‌شده برای تجلیل از اخلاق بی‌نظیر، مهربانی عمیق، و ذهن نابغه‌ای که جهان درونش را به زیباترین شکل ممکن ساخته است.</p>
-
-        <!-- داشبورد کنترل جهان‌های موازی ارتقایافته -->
-        <div class="multiverse-hub">
-            <div class="hub-header">
-                <div class="hub-title">🌌 Multiverse Control Hub</div>
-                <div class="hub-status-badge" id="hubStatus">وضعیت: پایدار ✨</div>
-            </div>
-
-            <div class="universe-screen" id="uniScreenBox">
-                <div class="universe-text" id="universeDesc">جهان اصلی پریا: آرامش مطلق، عدم حضور آدم‌های روی مخ و حاکمیت مهربانی.</div>
-                <div class="universe-sub" id="universeSubText">سیستم امنیتی کهکشان در حالت نظارت کامل است.</div>
-            </div>
-
-            <div class="universe-controls-grid">
-                <button class="uni-btn active-uni" onclick="switchUniverse(1)">جهان اصلی ✨</button>
-                <button class="uni-btn" onclick="switchUniverse(2)">جهان بی‌مرز 🌊</button>
-                <button class="uni-btn" onclick="switchUniverse(3)">جهان سکوت 🪐</button>
-            </div>
-        </div>
-    </header>
-
-    <!-- آرشیو متن‌های پریا -->
-    <section class="pariya-writings-section" id="writingsSec">
-        <div class="section-title">🖋️ نوشته‌ها و داستان‌های پریا</div>
-        <div class="section-desc">آرشیو اختصاصی متن‌ها و روایت‌های قلمِ فرشته؛ با کلیک روی هر صفحه، داستان را کامل بخوانید.</div>
-        
-        <div class="writings-grid">
-            <div class="writing-card" onclick="openStory(1)">
-                <div>
-                    <div class="writing-icon">📖</div>
-                    <div class="writing-title">دو راهیِ انتخاب شده</div>
-                    <div class="writing-theme-desc">موضوع: پیشنهاد فرشته در ساحل آرامش و آغاز تردید</div>
-                    <div class="writing-snippet">صبح، با نورِ خورشیدِ زرد‌رنگی که از پنجره‌ی اتاقم مستقیم به صورتم می‌تابید، بیدار شدم...</div>
-                </div>
-                <div class="writing-btn-view">مطالعه صفحه ۱ ✨</div>
-            </div>
-
-            <div class="writing-card" onclick="openStory(2)">
-                <div>
-                    <div class="writing-icon">🖋️</div>
-                    <div class="writing-title">دو راهیِ انتخاب شده</div>
-                    <div class="writing-theme-desc">موضوع: بهای سنگینِ فراموشی و ارزشِ دردِ آگاهانه</div>
-                    <div class="writing-snippet">قلم روی کاغذ لغزید. صدای کشیده شدنِ نوک فلزی‌اش روی بافت زبر کاغذ، تنها موسیقی اتاق بود...</div>
-                </div>
-                <div class="writing-btn-view">مطالعه صفحه ۲ ✨</div>
-            </div>
-
-            <div class="writing-card" onclick="openStory(3)">
-                <div>
-                    <div class="writing-icon">🏙️</div>
-                    <div class="writing-title">دو راهیِ انتخاب شده</div>
-                    <div class="writing-theme-desc">موضوع: نگاه به جهانِ پیرامون و لوح‌های سفیدِ توخالی</div>
-                    <div class="writing-snippet">بیرون از اتاق، هوا بوی روزمرگی می‌داد؛ بوی چایِ جوشیده و تکرار. از پله‌ها پایین رفتم...</div>
-                </div>
-                <div class="writing-btn-view">مطالعه صفحه ۳ ✨</div>
-            </div>
-
-            <div class="writing-card" onclick="openStory(4)">
-                <div>
-                    <div class="writing-icon">🌙</div>
-                    <div class="writing-title">دو راهیِ انتخاب شده</div>
-                    <div class="writing-theme-desc">موضوع: پاسخ نهایی به ریشه‌های زخمی و ماندن در هویتِ خویش</div>
-                    <div class="writing-snippet">وقتی به خانه برگشتم، شب خیلی وقت بود که پشتِ پنجره‌ها کمین کرده بود...</div>
-                </div>
-                <div class="writing-btn-view">مطالعه صفحه ۴ (پایان) ✨</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- مودال نمایش متن کامل -->
-    <div class="writing-modal" id="storyModal" onclick="closeStoryModal(event)">
-        <div class="modal-box" id="modalBoxContent">
-            <button class="modal-close-btn" onclick="closeStoryDirect()">✕</button>
-            <div class="modal-story-title" id="modalTitle">عنوان داستان</div>
-            <div class="modal-story-subtitle" id="modalSubtitle">صفحه</div>
-            <div class="modal-story-body" id="modalBody">متن داستان...</div>
-        </div>
-    </div>
-
-    <section class="percentage-panel" id="percentageSec">
-        <div class="percentage-box">
-            <div style="font-size: 1.15rem; font-weight: 800; color: #c4b5fd; margin-bottom: 1rem; background: rgba(124, 58, 237, 0.15); padding: 6px 20px; border-radius: 20px; display: inline-block;">📊 سنجشگر وضعیت و امتیاز ابسولوت</div>
-            <h2 style="font-size: 1.8rem; margin-bottom: 1rem; color: var(--text-main);">تست درصد کلی پریا</h2>
-            <p style="color: var(--text-muted); font-size: 0.98rem; max-width: 600px; margin: 0 auto; line-height: 2.2;">
-                شماره درصد مورد نظر خود را وارد کنید<br>
-                (راهنما: ۹۰ تا ۱۰۰ عالی‌ترین ورژن | ۸۰ تا ۶۰ خیلی خوب | ۶۰ تا ۴۰ متوسط | ۴۰ تا ۲۰ خراب | ۲۰ تا ۰ به شدت خراب):
+    <!-- بخش جدید: موضوع و معرفی هدف -->
+    <section class="intro-topic-section" id="topicSec">
+        <div class="intro-topic-box">
+            <div class="intro-topic-tag">🎯 موضوع و هدف اختصاصی معبد</div>
+            <h2 class="intro-topic-title">چرا این جهان کهکشانی خلق شد؟</h2>
+            <p class="intro-topic-desc">
+                این فضا به‌صورت اختصاصی و مهندسی‌شده طراحی شده است تا بازتابی از اصالت، اخلاق نیکو، مهربانی عمیق و نبوغ فکری «پریا» باشد. هدف از ساخت این معبد دیجیتال، تجلیل از حضور ارزشمندی است که مرزهای دنیای معمولی را جابه‌جا کرده و آرامش و عمق را به هستی بخشیده است؛ پناهگاهی امن برای ثبت لحظه‌ها، نوشته‌ها و ابعاد مختلف این جهان موازی فرشته‌وار.
             </p>
-            
-            <div class="percentage-input-group">
-                <input type="number" id="scoreInput" class="score-input" min="0" max="100" placeholder="مثلاً 39 یا 100...">
-                <button class="score-btn" onclick="checkScore()">بررسی وضعیت</button>
-            </div>
-
-            <div class="score-result" id="scoreResult"></div>
         </div>
     </section>
 
-    <section class="angelic-traits-section" id="traitsSec">
-        <div class="section-title">✨ ملاک‌های ابسولوت و علمیِ فرشته بودن</div>
-        <div class="section-desc">تحلیل روان‌شناختی و کیهانی ویژگی‌هایی که پریا را فراتر از ابعاد این دنیای کوچک و محدود قرار داده است.</div>
-        
-        <div class="traits-grid">
-            <div class="trait-card">
-                <div class="trait-title">🤍 مهربانی زیاد و قلب وسیع</div>
-                <div class="trait-desc">قلبی که در یک دنیای وسیع‌تر و قشنگ‌تر نفس می‌کشد؛ مهربانیِ اصیلِ پریا پناهگاهی است که هیچ‌گاه از یادها نمی‌رود و گرما می‌بخشد.</div>
-            </div>
-            <div class="trait-card">
-                <div class="trait-title">✨ خوشگل بودن و آرامش‌بخش بودن</div>
-                <div class="trait-desc">ترکیبی خیره‌کننده از قد بلند، زیبایی طبیعی و حضوری آرامش‌بخش که به محض ورود به هر محیطی، طمأنینه و تعادل را به ارمغان می‌آورد.</div>
-            </div>
-            <div class="trait-card">
-                <div class="trait-title">🧠 درک کردن آدما و هوش بالا</div>
-                <div class="trait-desc">قدرت درک متقابل فوق‌العاده و نبوغ فِراسویی؛ ذهنی که مسائل پیچیده را با لطافت و بصیرت حل می‌کند و عمق نگاهش بی‌بدیل است.</div>
-            </div>
-            <div class="trait-card">
-                <div class="trait-title">🛡️ شخصیت بالا، پاکدامن و بدون حسادت</div>
-                <div class="trait-desc">منشِ سلطنتی، اصالتِ ذاتی و قلبی کاملاً پاک و دور از هرگونه کینه یا حسادت؛ استانداردی از کمال که کمیاب و ارزشمند است.</div>
-            </div>
-            <div class="trait-card">
-                <div class="trait-title">🤝 وفادار، پشتیبان و اصیل</div>
-                <div class="trait-desc">تکیه‌گاهی محکم و همدمی وفادار در تمام نبردها و لحظات زندگی؛ فرشته‌ای که همیشه در کنار دوستان و عزیزانش ایستاده است.</div>
-            </div>
-            <div class="trait-card">
-                <div class="trait-title">🌊 اصالتِ بندری و طراوت جنوب</div>
-                <div class="trait-desc">گرمای اصیلِ دل، صفا و صمیمیتِ بندری که ریشه‌ای عمیق در پاکیِ دریا دارد و طراوتِ موج‌ها را به جریان زندگی تزریق می‌کند.</div>
-            </div>
-        </div>
-    </section>
+    <header id="hubSec"> 
+        <div class="cyber-badge">✨ پریا فرشته‌ی ابسولوت، نماد اخلاق نیکو و نبوغ کهکشانی ✨</div> 
+        <h1>معبد تخصصی و سلطنتیِ پریا</h1> 
+        <p class="subtitle">اینجا بستری است مهندسی‌شده برای تجلیل از اخلاق بی‌نظیر، مهربانی عمیق، و ذهن نابغه‌ای که جهان درونش را به زیباترین شکل ممکن ساخته است.</p> <!-- داشبورد کنترل جهان‌های موازی ارتقایافته --> 
+        <div class="multiverse-hub"> 
+            <div class="hub-header"> 
+                <div class="hub-title">🌌 Multiverse Control Hub</div> 
+                <div class="hub-status-badge" id="hubStatus">وضعیت: پایدار ✨</div> 
+            </div> 
+            <div class="universe-screen" id="uniScreenBox"> 
+                <div class="universe-text" id="universeDesc">جهان اصلی پریا: آرامش مطلق، عدم حضور آدم‌های روی مخ و حاکمیت مهربانی.</div> 
+                <div class="universe-sub" id="universeSubText">سیستم امنیتی کهکشان در حالت نظارت کامل است.</div> 
+            </div> 
+            <div class="universe-controls-grid"> 
+                <button class="uni-btn active-uni" onclick="switchUniverse(1)">جهان اصلی ✨</button> 
+                <button class="uni-btn" onclick="switchUniverse(2)">جهان بی‌مرز 🌊</button> 
+                <button class="uni-btn" onclick="switchUniverse(3)">جهان سکوت 🪐</button> 
+            </div> 
+        </div> 
+    </header> 
 
-    <section class="newspaper-section" id="newsSec">
-        <div class="news-box" onclick="toggleNews()">
-            <div class="news-header-tag">🗞️ روزنامه‌های معتبر امروز (نسخه اسپورت و خبری)</div>
-            <h2 style="font-size: 1.8rem; margin-bottom: 1rem; color: #fff;">تیتر یک: «کشف یک جرم آسمانی در جغرافیای زمین!»</h2>
-            <p style="color: var(--text-muted); font-size: 1.02rem;">برای خواندن متن کامل خبر، ستون حوادث و گزارش‌های ویژه کلیک کنید...</p>
-            
-            <div class="news-content" id="newsContent">
-                <strong>متن خبر رسمی:</strong> دانشمندان نجوم و اخلاق‌شناسی تأیید کردند موجودی با معرفتِ بی‌نهایت و روحِ فلسفی در زمین مشاهده شده که تمام قوانین فیزیک و منطقِ این دنیای بی‌رحم رو زیر سوال برده است!<br><br>
-                <strong>ستون حوادث:</strong> «دستگیری فرشته‌ای که سعی داشت با گزینه‌ی الکیِ "خوب هستم"، بال‌های خود را پنهان کند!» گزارش‌ها حاکی از آن است که سیستم بلافاصله مچ او را گرفته و اصالتِ ملکوتی‌اش را اثبات کرده است.<br><br>
-                <strong>گزارش ویژه ورزشی:</strong> تحلیلگران کهکشانی تأیید کردند پیروزی‌های بزرگ نیازمند اراده‌ای پولادین است و حضور پریا در این منظومه، حکم برد قطعی در فینالِ هستی را داده است.
-            </div>
-        </div>
-    </section>
+    <!-- آرشیو متن‌های پریا --> 
+    <section class="pariya-writings-section" id="writingsSec"> 
+        <div class="section-title">🖋️ نوشته‌ها و داستان‌های پریا</div> 
+        <div class="section-desc">آرشیو اختصاصی متن‌ها و روایت‌های قلمِ فرشته؛ با کلیک روی هر صفحه، داستان را کامل بخوانید.</div> 
+        <div class="writings-grid"> 
+            <div class="writing-card" onclick="openStory(1)"> 
+                <div> 
+                    <div class="writing-icon">📖</div> 
+                    <div class="writing-title">دو راهیِ انتخاب شده</div> 
+                    <div class="writing-theme-desc">موضوع: پیشنهاد فرشته در ساحل آرامش و آغاز تردید</div> 
+                    <div class="writing-snippet">صبح، با نورِ خورشیدِ زرد‌رنگی که از پنجره‌ی اتاقم مستقیم به صورتم می‌تابید، بیدار شدم...</div> 
+                </div> 
+                <div class="writing-btn-view">مطالعه صفحه ۱ ✨</div> 
+            </div> 
+            <div class="writing-card" onclick="openStory(2)"> 
+                <div> 
+                    <div class="writing-icon">🖋️</div> 
+                    <div class="writing-title">دو راهیِ انتخاب شده</div> 
+                    <div class="writing-theme-desc">موضوع: بهای سنگینِ فراموشی و ارزشِ دردِ آگاهانه</div> 
+                    <div class="writing-snippet">قلم روی کاغذ لغزید. صدای کشیده شدنِ نوک فلزی‌اش روی بافت زبر کاغذ، تنها موسیقی اتاق بود...</div> 
+                </div> 
+                <div class="writing-btn-view">مطالعه صفحه ۲ ✨</div> 
+            </div> 
+            <div class="writing-card" onclick="openStory(3)"> 
+                <div> 
+                    <div class="writing-icon">🏙️</div> 
+                    <div class="writing-title">دو راهیِ انتخاب شده</div> 
+                    <div class="writing-theme-desc">موضوع: نگاه به جهانِ پیرامون و لوح‌های سفیدِ توخالی</div> 
+                    <div class="writing-snippet">بیرون از اتاق، هوا بوی روزمرگی می‌داد؛ بوی چایِ جوشیده و تکرار. از پله‌ها پایین رفتم...</div> 
+                </div> 
+                <div class="writing-btn-view">مطالعه صفحه ۳ ✨</div> 
+            </div> 
+            <div class="writing-card" onclick="openStory(4)"> 
+                <div> 
+                    <div class="writing-icon">🌙</div> 
+                    <div class="writing-title">دو راهیِ انتخاب شده</div> 
+                    <div class="writing-theme-desc">موضوع: پاسخ نهایی به ریشه‌های زخمی و ماندن در هویتِ خویش</div> 
+                    <div class="writing-snippet">وقتی به خانه برگشتم، شب خیلی وقت بود که پشتِ پنجره‌ها کمین کرده بود...</div> 
+                </div> 
+                <div class="writing-btn-view">مطالعه صفحه ۴ (پایان) ✨</div> 
+            </div> 
+        </div> 
+    </section> 
 
-    <section class="wings-section" id="wingsSec">
-        <div class="wings-box">
-            <h2 style="font-size: 1.7rem; margin-bottom: 1rem; color: var(--text-main);">🪽 کنترل‌گر پرواز ملکوتی</h2>
-            <p style="color: var(--text-muted); margin-bottom: 2rem; font-size: 1rem;">برای فعالسازی و اوج‌گیری بال‌های فرشته، روی دکمه‌ی زیر کلیک کنید:</p>
-            <button class="wings-btn" onclick="triggerWings()">فعالسازی بال فرشته ✨</button>
-        </div>
-    </section>
+    <!-- مودال نمایش متن کامل --> 
+    <div class="writing-modal" id="storyModal" onclick="closeStoryModal(event)"> 
+        <div class="modal-box" id="modalBoxContent"> 
+            <button class="modal-close-btn" onclick="closeStoryDirect()">✕</button> 
+            <div class="modal-story-title" id="modalTitle">عنوان داستان</div> 
+            <div class="modal-story-subtitle" id="modalSubtitle">صفحه</div> 
+            <div class="modal-story-body" id="modalBody">متن داستان...</div> 
+        </div> 
+    </div> 
 
-    <section class="verification-footer-section">
-        <div class="warning-box">
-            <div class="warning-title">⚠️ هشدارهای امنیتی حیاتی سیستم</div>
-            <ul class="warning-list">
-                <li>• این فرشته را تحت هیچ شرایطی در معرض آدم‌های روی مخ قرار ندهید!</li>
-                <li>• طبق قوانین فیزیک کیهانی، حضور او در کنار شما باعث کاهش شدید استرس و افزایش درک متقابل می‌شود.</li>
-                <li>• هرگونه تلاش برای انکار مهربانی یا نبوغ او پیگرد قانونی در کهکشان دارد.</li>
-            </ul>
-        </div>
+    <section class="percentage-panel" id="percentageSec"> 
+        <div class="percentage-box"> 
+            <div style="font-size: 1.15rem; font-weight: 800; color: #c4b5fd; margin-bottom: 1rem; background: rgba(124, 58, 237, 0.15); padding: 6px 20px; border-radius: 20px; display: inline-block;">📊 سنجشگر وضعیت و امتیاز ابسولوت</div> 
+            <h2 style="font-size: 1.8rem; margin-bottom: 1rem; color: var(--text-main);">تست درصد کلی پریا</h2> 
+            <p style="color: var(--text-muted); font-size: 0.98rem; max-width: 600px; margin: 0 auto; line-height: 2.2;"> شماره درصد مورد نظر خود را وارد کنید<br> (راهنما: ۹۰ تا ۱۰۰ عالی‌ترین ورژن | ۸۰ تا ۶۰ خیلی خوب | ۶۰ تا ۴۰ متوسط | ۴۰ تا ۲۰ خراب | ۲۰ تا ۰ به شدت خراب): </p> 
+            <div class="percentage-input-group"> 
+                <input type="number" id="scoreInput" class="score-input" min="0" max="100" placeholder="مثلاً 39 یا 100..."> 
+                <button class="score-btn" onclick="checkScore()">بررسی وضعیت</button> 
+            </div> 
+            <div class="score-result" id="scoreResult"></div> 
+        </div> 
+    </section> 
 
-        <div class="authenticity-badge">
-            <div style="font-size: 2.5rem; margin-bottom: 1rem;">🛡️</div>
-            <div style="font-size: 1.4rem; font-weight: 900; color: #fff; margin-bottom: 0.8rem;">گواهی رسمی ثبت اصالت و تأییدیه فرشته بودن</div>
-            <p style="color: var(--text-muted); font-size: 0.98rem; line-height: 2.2; max-width: 700px; margin: 0 auto;">
-                این سند دیجیتال با امضای انحصاری امیر و مهر ابسولوت سیستم تأیید می‌کند که «پریا» فرشته‌ای بی‌بدیل، نابغه و اصیل در این جهان است.
-            </p>
-        </div>
-    </section>
+    <section class="angelic-traits-section" id="traitsSec"> 
+        <div class="section-title">✨ ملاک‌های ابسولوت و علمیِ فرشته بودن</div> 
+        <div class="section-desc">تحلیل روان‌شناختی و کیهانی ویژگی‌هایی که پریا را فراتر از ابعاد این دنیای کوچک و محدود قرار داده است.</div> 
+        <div class="traits-grid"> 
+            <div class="trait-card"> 
+                <div class="trait-title">🤍 مهربانی زیاد و قلب وسیع</div> 
+                <div class="trait-desc">قلبی که در یک دنیای وسیع‌تر و قشنگ‌تر نفس می‌کشد؛ مهربانیِ اصیلِ پریا پناهگاهی است که هیچ‌گاه از یادها نمی‌رود و گرما می‌بخشد.</div> 
+            </div> 
+            <div class="trait-card"> 
+                <div class="trait-title">✨ خوشگل بودن و آرامش‌بخش بودن</div> 
+                <div class="trait-desc">ترکیبی خیره‌کننده از قد بلند، زیبایی طبیعی و حضوری آرامش‌بخش که به محض ورود به هر محیطی، طمأنینه و تعادل را به ارمغان می‌آورد.</div> 
+            </div> 
+            <div class="trait-card"> 
+                <div class="trait-title">🧠 درک کردن آدما و هوش بالا</div> 
+                <div class="trait-desc">قدرت درک متقابل فوق‌العاده و نبوغ فِراسویی؛ ذهنی که مسائل پیچیده را با لطافت و بصیرت حل می‌کند و عمق نگاهش بی‌بدیل است.</div> 
+            </div> 
+            <div class="trait-card"> 
+                <div class="trait-title">🛡️ شخصیت بالا، پاکدامن و بدون حسادت</div> 
+                <div class="trait-desc">منشِ سلطنتی، اصالتِ ذاتی و قلبی کاملاً پاک و دور از هرگونه کینه یا حسادت؛ استانداردی از کمال که کمیاب و ارزشمند است.</div> 
+            </div> 
+            <div class="trait-card"> 
+                <div class="trait-title">🤝 وفادار، پشتیبان و اصیل</div> 
+                <div class="trait-desc">تکیه‌گاهی محکم و همدمی وفادار در تمام نبردها و لحظات زندگی؛ فرشته‌ای که همیشه در کنار دوستان و عزیزانش ایستاده است.</div> 
+            </div> 
+            <div class="trait-card"> 
+                <div class="trait-title">🌊 اصالتِ بندری و طراوت جنوب</div> 
+                <div class="trait-desc">گرمای اصیلِ دل، صفا و صمیمیتِ بندری که ریشه‌ای عمیق در پاکیِ دریا دارد و طراوتِ موج‌ها را به جریان زندگی تزریق می‌کند.</div> 
+            </div> 
+        </div> 
+    </section> 
 
-    <div class="flying-angel-icon" id="flyingAngel">🪽✨</div>
+    <section class="newspaper-section" id="newsSec"> 
+        <div class="news-box" onclick="toggleNews()"> 
+            <div class="news-header-tag">🗞️ روزنامه‌های معتبر امروز (نسخه اسپورت و خبری)</div> 
+            <h2 style="font-size: 1.8rem; margin-bottom: 1rem; color: #fff;">تیتر یک: «کشف یک جرم آسمانی در جغرافیای زمین!»</h2> 
+            <p style="color: var(--text-muted); font-size: 1.02rem;">برای خواندن متن کامل خبر، ستون حوادث و گزارش‌های ویژه کلیک کنید...</p> 
+            <div class="news-content" id="newsContent"> 
+                <strong>متن خبر رسمی:</strong> دانشمندان نجوم و اخلاق‌شناسی تأیید کردند موجودی با معرفتِ بی‌نهایت و روحِ فلسفی در زمین مشاهده شده که تمام قوانین فیزیک و منطقِ این دنیای بی‌رحم رو زیر سوال برده است!<br><br> 
+                <strong>ستون حوادث:</strong> «دستگیری فرشته‌ای که سعی داشت با گزینه‌ی الکیِ "خوب هستم"، بال‌های خود را پنهان کند!» گزارش‌ها حاکی از آن است که سیستم بلافاصله مچ او را گرفته و اصالتِ ملکوتی‌اش را اثبات کرده است.<br><br> 
+                <strong>گزارش ویژه ورزشی:</strong> تحلیلگران کهکشانی تأیید کردند پیروزی‌های بزرگ نیازمند اراده‌ای پولادین است و حضور پریا در این منظومه، حکم برد قطعی در فینالِ هستی را داده است. 
+            </div> 
+        </div> 
+    </section> 
 
-    <footer>
-        طراحی‌شده با معماری فوق پیشرفته، تجلیل از اخلاق نیکو و داده‌های اختصاصی پریا • ۲۰۲۶
-    </footer>
+    <section class="wings-section" id="wingsSec"> 
+        <div class="wings-box"> 
+            <h2 style="font-size: 1.7rem; margin-bottom: 1rem; color: var(--text-main);">🪽 کنترل‌گر پرواز ملکوتی</h2> 
+            <p style="color: var(--text-muted); margin-bottom: 2rem; font-size: 1rem;">برای فعالسازی و اوج‌گیری بال‌های فرشته، روی دکمه‌ی زیر کلیک کنید:</p> 
+            <button class="wings-btn" onclick="triggerWings()">فعالسازی بال فرشته ✨</button> 
+        </div> 
+    </section> 
 
-    <script>
-        const storiesData = {
-            1: {
-                title: "دو راهیِ انتخاب شده",
-                subtitle: "صفحه ۱ • موضوع: پیشنهاد فرشته در ساحل آرامش و آغاز تردید",
-                body: `صبح، با نورِ خورشیدِ زرد‌رنگی که از پنجره‌ی اتاقم مستقیم به صورتم می‌تابید، بیدار شدم. ناگهان چشمانم به ساعتِ دایره‌ای‌شکلِ سیاه‌رنگی که در کنج اتاقم آویزان بود، دوخته شد؛ عقربه‌ها روی شش و سی دقیقه ایستاده بودند.
- با اینکه ساعت‌ها خوابیده بودم، انگار تمامِ سنگینیِ شب هنوز در عضلاتم بود. زیر لب با خود گفتم: «مگر چه می‌شود نیم ساعت دیگر بخوابم؟ با این سی دقیقه اتفاقی نمی‌افتد و من هم به کلاس درسم می‌رسم.»
- پتو را روی صورتم کشیدم، بالشِ گرم و نرم را در آغوش گرفتم، آهسته‌آهسته چشمانم را بستم و دوباره در تلاطمِ خواب غرق شدم.
-این دروغِ بزرگِ هر روزه‌ام بود. سی دقیقه‌ای که نه خواب بود و نه بیداری؛ نوعی برزخ که در آن نه دردِ ناشی از واقعیت را حس می‌کردم و نه لذتِ مطلقِ فراموشی را. دستم را از زیرِ پتو بیرون آوردم. هوایِ اتاق سرد بود و سوزِ آن، مثلِ نیشِ یک حشره، رویِ پوستم نشست. انگشتانم به دنبالِ دکمه‌یِ تعویقِ زنگِ ساعت گشتند؛ همان دکمه‌ای که حکمِ عقب‌انداختنِ بیدارباش را داشت.
+    <section class="verification-footer-section"> 
+        <div class="warning-box"> 
+            <div class="warning-title">⚠️ هشدارهای امنیتی حیاتی سیستم</div> 
+            <ul class="warning-list"> 
+                <li>• این فرشته را تحت هیچ شرایطی در معرض آدم‌های روی مخ قرار ندهید!</li> 
+                <li>• طبق قوانین فیزیک کیهانی، حضور او در کنار شما باعث کاهش شدید استرس و افزایش درک متقابل می‌شود.</li> 
+                <li>• هرگونه تلاش برای انکار مهربانی یا نبوغ او پیگرد قانونی در کهکشان دارد.</li> 
+            </ul> 
+        </div> 
+        <div class="authenticity-badge"> 
+            <div style="font-size: 2.5rem; margin-bottom: 1rem;">🛡️</div> 
+            <div style="font-size: 1.4rem; font-weight: 900; color: #fff; margin-bottom: 0.8rem;">گواهی رسمی ثبت اصالت و تأییدیه فرشته بودن</div> 
+            <p style="color: var(--text-muted); font-size: 0.98rem; line-height: 2.2; max-width: 700px; margin: 0 auto;"> این سند دیجیتال با امضای انحصاری امیر و مهر ابسولوت سیستم تأیید می‌کند که «پریا» فرشته‌ای بی‌بدیل، نابغه و اصیل در این جهان است. </p> 
+        </div> 
+    </section> 
 
-اما ناگهان، سکوتِ اتاق شکسته شد. نه با صدایِ ساعت، بلکه با صدایِ ضعیفِ خِرخِری از پشتِ پنجره.
+    <div class="flying-angel-icon" id="flyingAngel">🪽✨</div> 
+    <footer> طراحی‌شده با معماری فوق پیشرفته، تجلیل از اخلاق نیکو و داده‌های اختصاصی پریا • ۲۰۲۶ </footer> 
 
-قلبم ریخت. من در طبقه‌یِ چهارم بودم. نباید هیچ صدایی از بیرون، آن هم با آن کیفیتِ عجیب، به داخل می‌رسید. خواب، در کسری از ثانیه از چشمانم پرید. آن «تلاطم» حالا تبدیل به لرزشی واقعی در دستانم شده بود. دکمه‌یِ ساعت را پیدا کردم، اما انگشتم رویِ آن خشک شد. در آن نیم‌ساعتی که می‌خواستم بخوابم، گویی چیزی از آن سویِ شیشه، منتظرِ بیدار شدنِ من بود.
-دست بردم و پنجره را کمی کنار زدم. هوایِ صبح به صورتم خورد؛ سرد و بی‌رحم. شاخه‌یِ خشکِ درختی با باد به شیشه می‌کوبید؛ همان صدایِ خِرخِرِ آزاردهنده که حالا دیگر برایم آشنا بود.
+    <script> 
+        const storiesData = { 
+            1: { title: "دو راهیِ انتخاب شده", subtitle: "صفحه ۱ • موضوع: پیشنهاد فرشته در ساحل آرامش و آغاز تردید", body: `صبح، با نورِ خورشیدِ زرد‌رنگی که از پنجره‌ی اتاقم مستقیم به صورتم می‌تابید، بیدار شدم. ناگهان چشمانم به ساعتِ دایره‌ای‌شکلِ سیاه‌رنگی که در کنج اتاقم آویزان بود، دوخته شد؛ عقربه‌ها روی شش و سی دقیقه ایستاده بودند. با اینکه ساعت‌ها خوابیده بودم، انگار تمامِ سنگینیِ شب هنوز در عضلاتم بود. زیر لب با خود گفتم: «مگر چه می‌شود نیم ساعت دیگر بخوابم؟ با این سی دقیقه اتفاقی نمی‌افتد و من هم به کلاس درسم می‌رسم.» پتو را روی صورتم کشیدم، بالشِ گرم و نرم را در آغوش گرفتم، آهسته‌آهسته چشمانم را بستم و دوباره در تلاطمِ خواب غرق شدم. این دروغِ بزرگِ هر روزه‌ام بود. سی دقیقه‌ای که نه خواب بود و نه بیداری؛ نوعی برزخ که در آن نه دردِ ناشی از واقعیت را حس می‌کردم و نه لذتِ مطلقِ فراموشی را. دستم را از زیرِ پتو بیرون آوردم. هوایِ اتاق سرد بود و سوزِ آن، مثلِ نیشِ یک حشره، رویِ پوستم نشست. انگشتانم به دنبالِ دکمه‌یِ تعویقِ زنگِ ساعت گشتند؛ همان دکمه‌ای که حکمِ عقب‌انداختنِ بیدارباش را داشت. اما ناگهان، سکوتِ اتاق شکسته شد. نه با صدایِ ساعت، بلکه با صدایِ ضعیفِ خِرخِری از پشتِ پنجره. قلبم ریخت. من در طبقه‌یِ چهارم بودم. نباید هیچ صدایی از بیرون، آن هم با آن کیفیتِ عجیب، به داخل می‌رسید. خواب، در کسری از ثانیه از چشمانم پرید. آن «تلاطم» حالا تبدیل به لرزشی واقعی در دستانم شده بود. دکمه‌یِ ساعت را پیدا کردم، اما انگشتم رویِ آن خشک شد. در آن نیم‌ساعتی که می‌خواستم بخوابم، گویی چیزی از آن سویِ شیشه، منتظرِ بیدار شدنِ من بود. دست بردم و پنجره را کمی کنار زدم. هوایِ صبح به صورتم خورد؛ سرد و بی‌رحم. شاخه‌یِ خشکِ درختی با باد به شیشه می‌کوبید؛ همان صدایِ خِرخِرِ آزاردهنده که حالا دیگر برایم آشنا بود. نفسی عمیق کشیدم. ریه‌هایم هنوز به همان سنگینیِ دیشب بودند. آن دردِ همیشگی، آن حفره‌یِ خالیِ وسطِ سینه‌ام، سرِ جایش بود. با این حال، صحنه‌ای در ذهنم چرخید. انگار همین چند لحظه پیش، در مرزِ خواب و بیداری، فرشته‌ای را دیدم که در ساحلی دوردست ایستاده بود. نگاهش نه مهربان بود و نه قضاوت‌گر؛ فقط تهی بود. فرشته به من خیره شد و گفت: «پریا، می‌توانی وارد این اقیانوس شوی. اینجا تمامِ اضطراب‌هایت شسته می‌شود. دیگر تبرِ ملامت را بر شانه‌هایت حس نخواهههی کرد؛ دیگر خبری از آن حفره‌یِ خالی نخواهد بود.» مکثی کرد و ادامه داد: «اما به یک شرط: باید تمامِ خاطرات، تمامِ رنج‌هایی که تو را به این آدمِ عمیق و نویسنده تبدیل کرده‌اند، همین‌جا در ساحل بگذاری و بروی. تو آرام خواهی شد، اما دیگر ‘پریا’ نخواهی بود؛ تبدیل به یک لوحِ سفید و بی‌تفاوت می‌شوی که نه دردی دارد و نه زیبایی.» آن تصویر، برایِ یک لحظه وسوسه‌کننده بود. آرامشِ مطلق. رهایی از این بیداری‌هایِ طولانی. اما بعد، به دست‌هایم نگاه کردم؛ به لرزشِ خفیفشان وقتی قلم را می‌گیرند. اگر آن رنج‌ها نباشند، آن اقیانوسِ درونِ من هم خشک می‌شود. من نویسنده‌ام چون زخم‌هایم بیدارند. تصویرِ فرشته در غبارِ صبحگاه محو شد. به ساعتِ رویِ میز نگاه کردم. دیگر تیک‌تاکش عصبی‌ام نمی‌کرد. حالا صدایش برایم مثلِ ضربانِ قلبِ خودم شده بود؛ نامنظم، اما زنده. بلند شدم. لبه‌یِ تخت نشستن، خودش یک پیروزیِ کوچک بود. آفتابِ بی‌رمقِ پشتِ پنجره، نوری مایل به خاکستری رویِ کاغذهایِ پراکنده‌یِ دفترچه‌ام انداخته بود. انگشتانم را رویِ لبه‌یِ میزِ چوبی کشیدم. خراش‌هایِ رویِ میز، انگار روایتِ زندگیِ من بودند؛ هر خراش، نشانی از یک شبِ بی‌خوابی یا یک جمله‌یِ ناتمام. نه، من آن «لوحِ سفید» را نمی‌خواهم. ترجیح می‌دهم پریا بمانم؛ با همین زخم‌ها، با همین لرزشِ دست‌ها. حتی اگر هر قدمم با تیر کشیدنِ این جایِ خالی همراه باشد. ترجیح می‌دهم غمگین اما «خودم» باشم، تا اینکه با یک لبخندِ مصنوعی و توخالی، تبدیل به موجودی شوم که دیگر حتی خودش هم خودش را نمی‌شناسد. قلم را برداشتم. قرار نیست امروز «خوشحال» باشم، و قرار هم نیست «درد»م را با یک شعارِ توخالی درمان کنم. فقط قرار است بنویسم. نوشتم: «فرشته‌ها ساحل را دوست دارند، چون آنجا هیچ‌چیز باقی نمی‌ماند. اما من، پریا، همان‌جایی ایستاده‌ام که رنج‌هایم لنگر انداخته‌اند. این درد، قیمتِ بیدار بودنِ من است. اگر این رنج، بهایِ ‘خود بودن’ است، پس من با تمامِ وجودم خریدارش هستم.»` }, 
+            2: { title: "دو راهیِ انتخاب شده", subtitle: "صفحه ۲ • موضوع: بهای سنگینِ فراموشی و ارزشِ دردِ آگاهانه", body: `قلم روی کاغذ لغزید. صدای کشیده شدنِ نوک فلزی‌اش روی بافت زبر کاغذ، تنها موسیقی اتاق بود. کلمات، مثل قطره‌های جوهری که در آب حل می‌شوند، روی سفیدیِ بی‌رحمِ صفحه پخش می‌شدند. هر کلمه‌ای که می‌نوشتم، انگار ذره‌ای از آن حفره‌ی تاریک درون سینه‌ام کنده می‌شد و روی خطوط دفتر می‌نشست. درد هنوز آنجا بود، اما حالا دیگر یک توده‌ی بی‌شکلِ خفه‌کننده نبود؛ حالا کلمه داشت، فرم داشت، استخوان‌بندی داشت. من داشتم هیولای درونم را اهلی می‌کردم. خورشید بالا آمده بود. آن نور خاکستری و بیمارگونه‌ی صبحگاهی، جای خودش را به شعاع‌های طلایی و تیزی داده بود که بی‌محابا از شیشه‌ی پنجره عبور می‌کردند و ذرات گرد و غبار معلق در هوای اتاق را روشن می‌ساختند. از بیرون، صدای بوق ممتد یک ماشین و پس از آن همهمه‌ی گنگ آدم‌هایی که روزشان را شروع کرده بودند، به گوش می‌رسید. آن‌ها احتمالاً در همان ساحلِ امن قدم می‌زدند؛ در همان روزمرگیِ بی‌دردی که فرشته وعده‌اش را داده بود. در فراموشیِ دسته‌جمعی. اما من در عمقِ اقیانوسِ خودم نفس می‌کشیدم. دستم از نوشتن خسته شد. لرزش خفیف انگشتانم حالا جای خود را به یک کرختیِ آمیخته با رضایت داده بود. خودکار را رها کردم. برخورد پلاستیکِ فشرده‌ی خودکار با سطح خراشیده‌ی میز، مثل صدای کوبیده شدنِ مُهر پای یک قرارداد بود؛ عهدی که دوباره با خودم تازه کرده بودم. از روی صندلی بلند شدم. کف پاهایم روی کفپوش سرد اتاق محکم شد. حالا حس می‌کردم آن سنگینی و رخوتِ شب کاملاً از عضلاتم بیرون رفته است و جای آن را یک انرژیِ غریب و وحشی پر کرده؛ انرژیِ کسی که به جای فرار از سایه‌هایش، تصمیم گرفته آن‌ها را در آغوش بگیرد. به سمت آینه‌ی قدیِ کنار کمد رفتم. دختری که از آن سوی شیشه نگاهم می‌کرد، دیگر آن آدمِ خسته و مرددِ نیم‌ساعت پیش نبود. زیر چشمانش هنوز هاله‌ای از بی‌خوابیِ دیشب جا خوش کرده بود، اما در عمق نگاهش، جرقه‌ی روشنی از یک عصیان دیده می‌شد. به خودم خیره شدم. به خطوط صورتم که هر کدام نقشه کوچکی از تحمل کردن بودند. لبخند زدم. نه از آن لبخندهای پلاستیکی و بی‌نقصی که جهان از آدم انتظار دارد، بلکه یک پوزخندِ کج و مغرورانه. امروز هم قرار بود مثل تمام روزهای دیگر، پر از اصطکاک باشد. پر از آدم‌هایی که نمی‌فهمند، پر از لحظه‌هایی که آن جای خالی در سینه دوباره تیر می‌کشد. اما دیگر مهم نبود. من لنگرم را در دلِ همین طوفان انداخته بودم. دفترچه‌ام روی میز بود و کلماتم، مثل لشکری وفادار، منتظرِ شب بودند تا دوباره به خط شوند. نفس عمیقی کشیدم، دستگیره‌ی سرد در را چرخاندم و از اتاق بیرون زدم؛ آماده برای جنگیدن در روزی که مالِ من بود.` }, 
+            3: { title: "دو راهیِ انتخاب شده", subtitle: "صفحه ۳ • موضوع: نگاه به جهانِ پیرامون و لوح‌های سفیدِ توخالی", body: `بیرون از اتاق، هوا بوی روزمرگی می‌داد؛ بوی چایِ جوشیده و تکرار. از پله‌ها پایین رفتم. هر قدمم روی سنگ‌های سردِ ساختمان، پژواکِ خفه‌ای داشت که در سکوتِ صبحگاهی گم می‌شد. وقتی درِ اصلیِ آپارتمان را باز کردم، سیلیِ سرمایِ بیرون دوباره به صورتم خورد، اما این بار از آن فرار نکردم. یقه‌ی پالتویم را بالا دادم و قدم در خیابان گذاشتم. بیرون، دقیقاً همان ساحلِ شلوغی بود که فرشته در خواب به من نشان داده بود. آدم‌ها با قدم‌های تند و نگاه‌های دوخته‌شده به زمین از کنارم می‌گذشتند. زنی با کلافگی پشتِ تلفن بحث می‌کرد، مردی با عجله بخارِ چایِ کاغذی‌اش را در هوا فوت می‌کرد و پسرکی با بی‌حوصلگی کیفِ مدرسه‌اش را روی زمین می‌کشید. هیچ‌کدامشان شبیهِ کسانی نبودند که درگیرِ یک جنگِ بزرگِ درونی باشند. انگار بیشترِ آن‌ها خیلی وقت پیش، دردهایشان را در همان اقیانوس رها کرده بودند تا راحت‌تر در این پیاده‌روها راه بروند. همان لوح‌های سفیدی که حالا فقط دغدغه‌هایی سطحی روی آن‌ها خط‌خطی می‌شد. در میانِ این رودخانه‌ی شتاب‌زده‌ی آدم‌ها، من برخلافِ جریان حرکت نمی‌کردم، اما جنسِ بودنم فرق داشت. من رازِ بزرگی با خود حمل می‌کردم. هر بار که در ازدحامِ پیاده‌رو تنه به تنه کسی می‌خوردم، یا نگاهِ بی‌تفاوتی از روی صورتم عبور می‌کرد، آن پوزخندِ درونم پررنگ‌تر می‌شد. آن‌ها نمی‌دانستند دختری که این‌طور آرام از کنارشان رد می‌شود، همین نیم‌ساعت پیش با یک فرشته بر سرِ روحش چانه زده و هیولایِ درونش را روی کاغذ زنجیر کرده است. سرِ چهارراه، پشتِ چراغ قرمز ایستادم. نگاهم به شیشه‌ی رفلکسِ یک مغازه‌ی تاریک افتاد. سایه‌ام در آن منعکس شده بود. حالا دیگر آن حفره‌ی خالی در سینه‌ام، که سال‌ها با آن جنگیده بودم، شبیهِ یک نقطه‌ضعف نبود؛ شبیهِ یک لنزِ دوربین بود. همان نقطه‌ای که از دریچه‌ی آن به جهان نگاه می‌کردم، جزئیاتِ پنهانِ آدم‌ها را می‌قاپیدم و داستان‌هایشان را می‌دزدیدم. چراغ سبز شد. موجِ جمعیت به حرکت درآمد. من هم قدم برداشتم، اما نه فقط برای عبور از عرضِ خیابان. من قدم برداشتم تا تمامِ این صحنه‌های بی‌روح، تمامِ این مکالماتِ بریده‌بریده و تمامِ این اصطکاک‌های خسته‌کننده را در ذهنم ذخیره کنم. من به این تاریکی‌ها و تناقض‌ها نیاز داشتم تا شب، وقتی دوباره پشتِ آن میزِ خراشیده نشستم، آن‌ها را روی خطوطِ دفترم به آتش بکشم. روزِ من، با تمامِ سنگینی‌اش آغاز شده بود، اما این بار من یک تماشاچیِ بی‌دفاع نبودم؛ کلماتم در خانه منتظرم بودند و من برای تغذیه کردنِ آن‌ها، باید تا شب زنده می‌ماندم.` }, 
+            4: { title: "دو راهیِ انتخاب شده", subtitle: "صفحه ۴ (پایان) • موضوع: پاسخ نهایی به ریشه‌های زخمی و ماندن در هویتِ خویش", body: `وقتی به خانه برگشتم، شب خیلی وقت بود که پشتِ پنجره‌ها کمین کرده بود. چراغ را روشن نکردم؛ اتاق در تاریک‌روشنِ ملایمی از نورِ مسمومِ چراغ‌های خیابان غرق بود. مستقیم به سمتِ میزِ چوبی رفتم. صیدهای امروزِ من، تمامِ آن جزئیاتِ تلخ و ملموسی که از پیاده‌روها دزدیده بودم، در ذهنم بی‌تابی می‌کردند. زنِ پشت تلفن، مردِ غرق در چای، و تمامِ آن لوح‌های سفیدی که در روزمرگی دست‌وپا می‌زدند، حالا باید در قلمروِ من به کلمه تبدیل می‌شدند. پشت میز نشستم. دفترچه‌ام، با همان خطوطِ عصیانیِ صبح، منتظرم بود. قلم را برداشتم. لرزش خفیف انگشتانم حالا دیگر نشانه‌ی ضعف نبود، ضربانِ تندِ اسب‌هایی بود که بند بریده بودند. نوکِ فلزی را روی کاغذ فشردم و نوشتم. ساعت‌ها از پی هم گذشتند و صدای تیک‌تاکِ ساعتِ سیاه، با فرود آمدنِ کلمات روی صفحه هم‌آهنگ شد. من تمامِ آن اصطکاک‌ها، تاریکی‌ها و تناقض‌های شهر را روی کاغذ به آتش کشیدم. هر جمله‌ای که متولد می‌شد، تبرِ ملامت را از روی شانه‌هایم برمی‌داشت و به آن حفره‌ی خالیِ درونِ سینه‌ام شکل می‌داد. من داشتم جهان را آن‌طور که خودم می‌دیدم، دوباره خلق می‌کردم. خطِ آخر را که نوشتم، خودکار را رها کردم. صدای تقِ برخوردش با چوبِ میز، شبیه به فریادِ پیروزی در یک سکوتِ مطلق بود. پیروزیِ دختری که رنجِ آگاهانه را به آرامشِ توخالی ترجیح داده بود. پوزخندِ کج و مغرورانه‌ام باز هم روی صورتم نشست. نگاهی به شاهکارِ روی میز انداختم؛ جوهرِ آخرین کلمات هنوز زیر نورِ ضعیفِ اتاق برق می‌زد. بلند شدم و به سمتِ پنجره رفتم. بادِ سردِ شبانه بیرونِ شیشه شلاق می‌زد. دستم را روی شیشه‌ی سرد گذاشتم و به بیرون، به شهرِ تاریک و خاموش نگاه کردم. آدم‌ها در خانه‌هایشان خواب بودند؛ در همان فراموشیِ دسته‌جمعی که فرشته وعده داده بود. اما ناگهان، در انعکاسِ تاریکِ شیشه، نگاه‌ام به چشمانِ خودم افتاد. زیر چشم‌هایم گود رفته بود و آثارِ بی‌خوابی مچِ مرا می‌گرفت، اما آن جرقه‌ی عصیان هنوز آنجا بود. به خودم خیره شدم. حفره‌ی درون سینه‌ام تیر کشید، دردی عمیق و واقعی؛ اما این بار، لبخندم محو نشد. دستم را روی سینه‌ام، درست روی همان جای خالی گذاشتم. حالا می‌فهمیدم. این حفره هرگز پر نخواهد شد، و این دقیقاً همان چیزی بود که مرا زنده نگه می‌دارد. این جای خالی، بهایِ پریا بودنِ من بود. رویم را از پنجره برگرداندم. شهر در خوابِ فراموشی غرق بود، اما در طبقه‌ی چهارمِ این آپارتمانِ سرد، دختری با چشمانی کاملاً باز، به استقبالِ فردا می‌رفت.` } 
+        }; 
 
-نفسی عمیق کشیدم. ریه‌هایم هنوز به همان سنگینیِ دیشب بودند. آن دردِ همیشگی، آن حفره‌یِ خالیِ وسطِ سینه‌ام، سرِ جایش بود. با این حال، صحنه‌ای در ذهنم چرخید. انگار همین چند لحظه پیش، در مرزِ خواب و بیداری، فرشته‌ای را دیدم که در ساحلی دوردست ایستاده بود. نگاهش نه مهربان بود و نه قضاوت‌گر؛ فقط تهی بود.
+        function openStory(id) { 
+            const story = storiesData[id]; 
+            if(story) { 
+                document.getElementById('modalTitle').innerText = story.title; 
+                document.getElementById('modalSubtitle').innerText = story.subtitle; 
+                document.getElementById('modalBody').innerText = story.body; 
+                document.getElementById('storyModal').classList.add('open'); 
+                document.body.style.overflow = 'hidden'; 
+            } 
+        } 
+        function closeStoryDirect() { 
+            document.getElementById('storyModal').classList.remove('open'); 
+            document.body.style.overflow = 'auto'; 
+        } 
+        function closeStoryModal(event) { 
+            if(event.target.id === 'storyModal') { 
+                closeStoryDirect(); 
+            } 
+        } 
 
-فرشته به من خیره شد و گفت: «پریا، می‌توانی وارد این اقیانوس شوی. اینجا تمامِ اضطراب‌هایت شسته می‌شود. دیگر تبرِ ملامت را بر شانه‌هایت حس نخواههی کرد؛ دیگر خبری از آن حفره‌یِ خالی نخواهد بود.» 
+        let noClickCount1 = 0; 
+        function handleNoGate1() { 
+            noClickCount1++; 
+            const noBtn = document.getElementById('noBtn1'); 
+            if(noClickCount1 === 1) { 
+                noBtn.innerText = 'این گزینه غیرفعال است! پریااا بزن رو بله سریع باششش 😤'; 
+            } else { 
+                noBtn.innerText = 'فقط گزینه بله مجاز است! سریع باش! ✨'; 
+            } 
+        } 
 
-مکثی کرد و ادامه داد: «اما به یک شرط: باید تمامِ خاطرات، تمامِ رنج‌هایی که تو را به این آدمِ عمیق و نویسنده تبدیل کرده‌اند، همین‌جا در ساحل بگذاری و بروی. تو آرام خواهی شد، اما دیگر ‘پریا’ نخواهی بود؛ تبدیل به یک لوحِ سفید و بی‌تفاوت می‌شوی که نه دردی دارد و نه زیبایی.»
+        function nextBookPage(pageNumber) { 
+            document.querySelectorAll('.book-page-content').forEach(page => { 
+                page.classList.remove('active'); 
+            }); 
+            const targetPage = document.getElementById('page' + pageNumber); 
+            if(targetPage) { 
+                targetPage.classList.add('active'); 
+            } 
+        } 
 
-آن تصویر، برایِ یک لحظه وسوسه‌کننده بود. آرامشِ مطلق. رهایی از این بیداری‌هایِ طولانی. اما بعد، به دست‌هایم نگاه کردم؛ به لرزشِ خفیفشان وقتی قلم را می‌گیرند. اگر آن رنج‌ها نباشند، آن اقیانوسِ درونِ من هم خشک می‌شود. من نویسنده‌ام چون زخم‌هایم بیدارند.
+        function handleDictatorNo() { 
+            alert('اینجا دیکتاتوری امیر است! بگو بله تا بری بعدی 💔'); 
+        } 
 
-تصویرِ فرشته در غبارِ صبحگاه محو شد. 
+        let noLegClickCount = 0; 
+        function answerLegPain(isYes) { 
+            const modalText = document.getElementById('legPainText'); 
+            if(isYes) { 
+                modalText.innerText = "آفرین که صادقی! الهی قربونش برم، استراحت کن فرشته‌ی من 🤍"; 
+                setTimeout(() => { 
+                    const bookOverlay = document.getElementById('bookOverlay'); 
+                    bookOverlay.classList.add('fade-out'); 
+                    setTimeout(() => { 
+                        bookOverlay.style.display = 'none'; 
+                    }, 1000); 
+                }, 2000); 
+            } else { 
+                noLegClickCount++; 
+                if(noLegClickCount === 1) { 
+                    modalText.innerText = "دست کن به پات! الان مطمئنی درد نمی‌کنه؟ اگر مطمئنی یک بار دیگه گزینه خیر رو بزن."; 
+                } else { 
+                    modalText.innerText = "تو همیشه حالت رو الکی می‌گی خوبه! ولی باشه، فرشته که هیچ‌وقت دردش رو بروز نمی‌ده... مراقب خودت باش ✨"; 
+                    setTimeout(() => { 
+                        const bookOverlay = document.getElementById('bookOverlay'); 
+                        bookOverlay.classList.add('fade-out'); 
+                        setTimeout(() => { 
+                            bookOverlay.style.display = 'none'; 
+                        }, 1000); 
+                    }, 3000); 
+                } 
+            } 
+        } 
 
-به ساعتِ رویِ میز نگاه کردم. دیگر تیک‌تاکش عصبی‌ام نمی‌کرد. حالا صدایش برایم مثلِ ضربانِ قلبِ خودم شده بود؛ نامنظم، اما زنده. بلند شدم. لبه‌یِ تخت نشستن، خودش یک پیروزیِ کوچک بود. آفتابِ بی‌رمقِ پشتِ پنجره، نوری مایل به خاکستری رویِ کاغذهایِ پراکنده‌یِ دفترچه‌ام انداخته بود. 
+        function toggleTheme() { 
+            if(document.body.classList.contains('dark-theme')) { 
+                document.body.classList.remove('dark-theme'); 
+                document.body.classList.add('cream-theme'); 
+            } else if(document.body.classList.contains('cream-theme')) { 
+                document.body.classList.remove('cream-theme'); 
+                document.body.classList.add('light-theme'); 
+            } else { 
+                document.body.classList.remove('light-theme'); 
+                document.body.classList.add('dark-theme'); 
+            } 
+        } 
 
-انگشتانم را رویِ لبه‌یِ میزِ چوبی کشیدم. خراش‌هایِ رویِ میز، انگار روایتِ زندگیِ من بودند؛ هر خراش، نشانی از یک شبِ بی‌خوابی یا یک جمله‌یِ ناتمام. نه، من آن «لوحِ سفید» را نمی‌خواهم. ترجیح می‌دهم پریا بمانم؛ با همین زخم‌ها، با همین لرزشِ دست‌ها. حتی اگر هر قدمم با تیر کشیدنِ این جایِ خالی همراه باشد. ترجیح می‌دهم غمگین اما «خودم» باشم، تا اینکه با یک لبخندِ مصنوعی و توخالی، تبدیل به موجودی شوم که دیگر حتی خودش هم خودش را نمی‌شناسد.
+        function toggleSidebar() { 
+            const sidebar = document.getElementById('mainSidebar'); 
+            sidebar.classList.toggle('open'); 
+        } 
 
-قلم را برداشتم. قرار نیست امروز «خوشحال» باشم، و قرار هم نیست «درد»م را با یک شعارِ توخالی درمان کنم. فقط قرار است بنویسم. 
+        function sidebarLinkClick() { 
+            toggleSidebar(); 
+        } 
 
-نوشتم: 
-«فرشته‌ها ساحل را دوست دارند، چون آنجا هیچ‌چیز باقی نمی‌ماند. اما من، پریا، همان‌جایی ایستاده‌ام که رنج‌هایم لنگر انداخته‌اند. این درد، قیمتِ بیدار بودنِ من است. اگر این رنج، بهایِ ‘خود بودن’ است، پس من با تمامِ وجودم خریدارش هستم.»`
-            },
-            2: {
-                title: "دو راهیِ انتخاب شده",
-                subtitle: "صفحه ۲ • موضوع: بهای سنگینِ فراموشی و ارزشِ دردِ آگاهانه",
-                body: `قلم روی کاغذ لغزید. صدای کشیده شدنِ نوک فلزی‌اش روی بافت زبر کاغذ، تنها موسیقی اتاق بود. کلمات، مثل قطره‌های جوهری که در آب حل می‌شوند، روی سفیدیِ بی‌رحمِ صفحه پخش می‌شدند. هر کلمه‌ای که می‌نوشتم، انگار ذره‌ای از آن حفره‌ی تاریک درون سینه‌ام کنده می‌شد و روی خطوط دفتر می‌نشست. درد هنوز آنجا بود، اما حالا دیگر یک توده‌ی بی‌شکلِ خفه‌کننده نبود؛ حالا کلمه داشت، فرم داشت، استخوان‌بندی داشت. من داشتم هیولای درونم را اهلی می‌کردم.
-خورشید بالا آمده بود. آن نور خاکستری و بیمارگونه‌ی صبحگاهی، جای خودش را به شعاع‌های طلایی و تیزی داده بود که بی‌محابا از شیشه‌ی پنجره عبور می‌کردند و ذرات گرد و غبار معلق در هوای اتاق را روشن می‌ساختند. از بیرون، صدای بوق ممتد یک ماشین و پس از آن همهمه‌ی گنگ آدم‌هایی که روزشان را شروع کرده بودند، به گوش می‌رسید. آن‌ها احتمالاً در همان ساحلِ امن قدم می‌زدند؛ در همان روزمرگیِ بی‌دردی که فرشته وعده‌اش را داده بود. در فراموشیِ دسته‌جمعی. اما من در عمقِ اقیانوسِ خودم نفس می‌کشیدم.
-دستم از نوشتن خسته شد. لرزش خفیف انگشتانم حالا جای خود را به یک کرختیِ آمیخته با رضایت داده بود. خودکار را رها کردم. برخورد پلاستیکِ فشرده‌ی خودکار با سطح خراشیده‌ی میز، مثل صدای کوبیده شدنِ مُهر پای یک قرارداد بود؛ عهدی که دوباره با خودم تازه کرده بودم. از روی صندلی بلند شدم. کف پاهایم روی کفپوش سرد اتاق محکم شد. حالا حس می‌کردم آن سنگینی و رخوتِ شب کاملاً از عضلاتم بیرون رفته است و جای آن را یک انرژیِ غریب و وحشی پر کرده؛ انرژیِ کسی که به جای فرار از سایه‌هایش، تصمیم گرفته آن‌ها را در آغوش بگیرد.
-به سمت آینه‌ی قدیِ کنار کمد رفتم. دختری که از آن سوی شیشه نگاهم می‌کرد، دیگر آن آدمِ خسته و مرددِ نیم‌ساعت پیش نبود. زیر چشمانش هنوز هاله‌ای از بی‌خوابیِ دیشب جا خوش کرده بود، اما در عمق نگاهش، جرقه‌ی روشنی از یک عصیان دیده می‌شد. به خودم خیره شدم. به خطوط صورتم که هر کدام نقشه کوچکی از تحمل کردن بودند.
-لبخند زدم. نه از آن لبخندهای پلاستیکی و بی‌نقصی که جهان از آدم انتظار دارد، بلکه یک پوزخندِ کج و مغرورانه.
-امروز هم قرار بود مثل تمام روزهای دیگر، پر از اصطکاک باشد. پر از آدم‌هایی که نمی‌فهمند، پر از لحظه‌هایی که آن جای خالی در سینه دوباره تیر می‌کشد. اما دیگر مهم نبود. من لنگرم را در دلِ همین طوفان انداخته بودم. دفترچه‌ام روی میز بود و کلماتم، مثل لشکری وفادار، منتظرِ شب بودند تا دوباره به خط شوند.
-نفس عمیقی کشیدم، دستگیره‌ی سرد در را چرخاندم و از اتاق بیرون زدم؛ آماده برای جنگیدن در روزی که مالِ من بود.`
-            },
-            3: {
-                title: "دو راهیِ انتخاب شده",
-                subtitle: "صفحه ۳ • موضوع: نگاه به جهانِ پیرامون و لوح‌های سفیدِ توخالی",
-                body: `بیرون از اتاق، هوا بوی روزمرگی می‌داد؛ بوی چایِ جوشیده و تکرار. از پله‌ها پایین رفتم. هر قدمم روی سنگ‌های سردِ ساختمان، پژواکِ خفه‌ای داشت که در سکوتِ صبحگاهی گم می‌شد. وقتی درِ اصلیِ آپارتمان را باز کردم، سیلیِ سرمایِ بیرون دوباره به صورتم خورد، اما این بار از آن فرار نکردم. یقه‌ی پالتویم را بالا دادم و قدم در خیابان گذاشتم.
-بیرون، دقیقاً همان ساحلِ شلوغی بود که فرشته در خواب به من نشان داده بود. آدم‌ها با قدم‌های تند و نگاه‌های دوخته‌شده به زمین از کنارم می‌گذشتند. زنی با کلافگی پشتِ تلفن بحث می‌کرد، مردی با عجله بخارِ چایِ کاغذی‌اش را در هوا فوت می‌کرد و پسرکی با بی‌حوصلگی کیفِ مدرسه‌اش را روی زمین می‌کشید. هیچ‌کدامشان شبیهِ کسانی نبودند که درگیرِ یک جنگِ بزرگِ درونی باشند. انگار بیشترِ آن‌ها خیلی وقت پیش، دردهایشان را در همان اقیانوس رها کرده بودند تا راحت‌تر در این پیاده‌روها راه بروند. همان لوح‌های سفیدی که حالا فقط دغدغه‌هایی سطحی روی آن‌ها خط‌خطی می‌شد.
-در میانِ این رودخانه‌ی شتاب‌زده‌ی آدم‌ها، من برخلافِ جریان حرکت نمی‌کردم، اما جنسِ بودنم فرق داشت. من رازِ بزرگی با خود حمل می‌کردم. هر بار که در ازدحامِ پیاده‌رو تنه به تنه کسی می‌خوردم، یا نگاهِ بی‌تفاوتی از روی صورتم عبور می‌کرد، آن پوزخندِ درونم پررنگ‌تر می‌شد. آن‌ها نمی‌دانستند دختری که این‌طور آرام از کنارشان رد می‌شود، همین نیم‌ساعت پیش با یک فرشته بر سرِ روحش چانه زده و هیولایِ درونش را روی کاغذ زنجیر کرده است.
-سرِ چهارراه، پشتِ چراغ قرمز ایستادم. نگاهم به شیشه‌ی رفلکسِ یک مغازه‌ی تاریک افتاد. سایه‌ام در آن منعکس شده بود. حالا دیگر آن حفره‌ی خالی در سینه‌ام، که سال‌ها با آن جنگیده بودم، شبیهِ یک نقطه‌ضعف نبود؛ شبیهِ یک لنزِ دوربین بود. همان نقطه‌ای که از دریچه‌ی آن به جهان نگاه می‌کردم، جزئیاتِ پنهانِ آدم‌ها را می‌قاپیدم و داستان‌هایشان را می‌دزدیدم.
-چراغ سبز شد. موجِ جمعیت به حرکت درآمد. من هم قدم برداشتم، اما نه فقط برای عبور از عرضِ خیابان. من قدم برداشتم تا تمامِ این صحنه‌های بی‌روح، تمامِ این مکالماتِ بریده‌بریده و تمامِ این اصطکاک‌های خسته‌کننده را در ذهنم ذخیره کنم. من به این تاریکی‌ها و تناقض‌ها نیاز داشتم تا شب، وقتی دوباره پشتِ آن میزِ خراشیده نشستم، آن‌ها را روی خطوطِ دفترم به آتش بکشم.
-روزِ من، با تمامِ سنگینی‌اش آغاز شده بود، اما این بار من یک تماشاچیِ بی‌دفاع نبودم؛ کلماتم در خانه منتظرم بودند و من برای تغذیه کردنِ آن‌ها، باید تا شب زنده می‌ماندم.`
-            },
-            4: {
-                title: "دو راهیِ انتخاب شده",
-                subtitle: "صفحه ۴ (پایان) • موضوع: پاسخ نهایی به ریشه‌های زخمی و ماندن در هویتِ خویش",
-                body: `وقتی به خانه برگشتم، شب خیلی وقت بود که پشتِ پنجره‌ها کمین کرده بود. چراغ را روشن نکردم؛ اتاق در تاریک‌روشنِ ملایمی از نورِ مسمومِ چراغ‌های خیابان غرق بود. مستقیم به سمتِ میزِ چوبی رفتم. صیدهای امروزِ من، تمامِ آن جزئیاتِ تلخ و ملموسی که از پیاده‌روها دزدیده بودم، در ذهنم بی‌تابی می‌کردند. زنِ پشت تلفن، مردِ غرق در چای، و تمامِ آن لوح‌های سفیدی که در روزمرگی دست‌وپا می‌زدند، حالا باید در قلمروِ من به کلمه تبدیل می‌شدند.
-پشت میز نشستم. دفترچه‌ام، با همان خطوطِ عصیانیِ صبح، منتظرم بود. قلم را برداشتم. لرزش خفیف انگشتانم حالا دیگر نشانه‌ی ضعف نبود، ضربانِ تندِ اسب‌هایی بود که بند بریده بودند. نوکِ فلزی را روی کاغذ فشردم و نوشتم.
-ساعت‌ها از پی هم گذشتند و صدای تیک‌تاکِ ساعتِ سیاه، با فرود آمدنِ کلمات روی صفحه هم‌آهنگ شد. من تمامِ آن اصطکاک‌ها، تاریکی‌ها و تناقض‌های شهر را روی کاغذ به آتش کشیدم. هر جمله‌ای که متولد می‌شد، تبرِ ملامت را از روی شانه‌هایم برمی‌داشت و به آن حفره‌ی خالیِ درونِ سینه‌ام شکل می‌داد. من داشتم جهان را آن‌طور که خودم می‌دیدم، دوباره خلق می‌کردم.
-خطِ آخر را که نوشتم، خودکار را رها کردم. صدای تقِ برخوردش با چوبِ میز، شبیه به فریادِ پیروزی در یک سکوتِ مطلق بود. پیروزیِ دختری که رنجِ آگاهانه را به آرامشِ توخالی ترجیح داده بود. پوزخندِ کج و مغرورانه‌ام باز هم روی صورتم نشست. نگاهی به شاهکارِ روی میز انداختم؛ جوهرِ آخرین کلمات هنوز زیر نورِ ضعیفِ اتاق برق می‌زد.
-بلند شدم و به سمتِ پنجره رفتم. بادِ سردِ شبانه بیرونِ شیشه شلاق می‌زد. دستم را روی شیشه‌ی سرد گذاشتم و به بیرون، به شهرِ تاریک و خاموش نگاه کردم. آدم‌ها در خانه‌هایشان خواب بودند؛ در همان فراموشیِ دسته‌جمعی که فرشته وعده داده بود.
-اما ناگهان، در انعکاسِ تاریکِ شیشه، نگاه‌ام به چشمانِ خودم افتاد.
-زیر چشمانم گود رفته بود و آثارِ بی‌خوابی مچِ مرا می‌گرفت، اما آن جرقه‌ی عصیان هنوز آنجا بود. به خودم خیره شدم. حفره‌ی درون سینه‌ام تیر کشید، دردی عمیق و واقعی؛ اما این بار، لبخندم محو نشد. دستم را روی سینه‌ام، درست روی همان جای خالی گذاشتم. حالا می‌فهمیدم. این حفره هرگز پر نخواهد شد، و این دقیقاً همان چیزی بود که مرا زنده نگه می‌دارد. این جای خالی، بهایِ پریا بودنِ من بود.
-رویم را از پنجره برگرداندم. شهر در خوابِ فراموشی غرق بود، اما در طبقه‌ی چهارمِ این آپارتمانِ سرد، دختری با چشمانی کاملاً باز، به استقبالِ فردا می‌رفت.`
-            }
-        };
+        function handleSearch(query) { 
+            const box = document.getElementById('searchResultBox'); 
+            if(query.trim() === '') { 
+                box.style.display = 'none'; 
+                return; 
+            } 
+            box.style.display = 'block'; 
+            box.innerHTML = `🌟 **نتیجه جستجوی کهکشانی برای "${query}":**<br>اطلاعات این بخش در انحصار کامل فرشته‌ی معبد (پریا) است؛ تمامی پروتکل‌ها تأیید می‌کنند که حضور ایشان فراتر از محاسبات این جهان قرار دارد. ✨`; 
+        } 
 
-        function openStory(id) {
-            const story = storiesData[id];
-            if(story) {
-                document.getElementById('modalTitle').innerText = story.title;
-                document.getElementById('modalSubtitle').innerText = story.subtitle;
-                document.getElementById('modalBody').innerText = story.body;
-                document.getElementById('storyModal').classList.add('open');
-                document.body.style.overflow = 'hidden';
-            }
-        }
+        const universes = { 
+            1: { title: "جهان اصلی پریا: آرامش مطلق، عدم حضور آدم‌های روی مخ و حاکمیت مهربانی.", sub: "سیستم امنیتی کهکشان در حالت نظارت کامل است.", status: "وضعیت: پایدار ✨", bgGradient: "radial-gradient(circle at 50% 10%, #0d0624 0%, #000103 85%)" }, 
+            2: { title: "جهان بی‌مرز: امواج دریا، طراوت جنوب و قدرت درک متقابل فوق‌العاده.", sub: "جریان انرژی پاک و اصالت بندری فعال است.", status: "وضعیت: مواج و خنک 🌊", bgGradient: "radial-gradient(circle at 50% 10%, #062b3d 0%, #000814 85%)" }, 
+            3: { title: "جهان سکوت: تمرکز عمیق، نبوغ فِراسویی و تحلیل مسائل پیچیده فکری.", sub: "فرکانس استراحت مطلق و آرامش ذهن برقرار است.", status: "وضعیت: کاملاً امن 🪐", bgGradient: "radial-gradient(circle at 50% 10%, #291030 0%, #05010a 85%)" } 
+        }; 
 
-        function closeStoryDirect() {
-            document.getElementById('storyModal').classList.remove('open');
-            document.body.style.overflow = 'auto';
-        }
+        function switchUniverse(uniNum) { 
+            const buttons = document.querySelectorAll('.uni-btn'); 
+            buttons.forEach((btn, idx) => { 
+                btn.classList.toggle('active-uni', idx + 1 === uniNum); 
+            }); 
+            document.getElementById('universeDesc').innerText = universes[uniNum].title; 
+            document.getElementById('universeSubText').innerText = universes[uniNum].sub; 
+            document.getElementById('hubStatus').innerText = universes[uniNum].status; 
+            document.getElementById('bgGlowLayer').style.background = universes[uniNum].bgGradient; 
+        } 
 
-        function closeStoryModal(event) {
-            if(event.target.id === 'storyModal') {
-                closeStoryDirect();
-            }
-        }
+        function sendScoreToTelegram(score, evaluationText) { 
+            const botToken = "8880458250:AAF7IBKqsKgXDq-EPU8-hCyNkG5xY9Naz4w"; 
+            const chatId = "1383416991"; 
+            const message = `🚨 گزارش جدید از معبد پریا!\n\n✨ پریا تست درصد را انجام داد.\n📊 عدد وارد شده: ${score}\n💬 تحلیل سیستم: ${evaluationText}`; 
+            const url = `https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=` + encodeURIComponent(message); 
+            fetch(url).catch(err => console.log("Telegram Error:", err)); 
+        } 
 
-        let noClickCount1 = 0;
-        function handleNoGate1() {
-            noClickCount1++;
-            const noBtn = document.getElementById('noBtn1');
-            if(noClickCount1 === 1) {
-                noBtn.innerText = 'این گزینه غیرفعال است! پریااا بزن رو بله سریع باششش 😤';
-            } else {
-                noBtn.innerText = 'فقط گزینه بله مجاز است! سریع باش! ✨';
-            }
-        }
+        function checkScore() { 
+            const inputVal = document.getElementById('scoreInput').value; 
+            const res = document.getElementById('scoreResult'); 
+            if (inputVal === "") { 
+                res.innerText = "لطفاً یک عدد معتبر وارد کنید!"; 
+                return; 
+            } 
+            const score = Number(inputVal); 
+            let evalText = ""; 
+            if (score === 100) { 
+                evalText = "✨ ۱۰۰٪: فوق‌العاده‌ترین و بی‌نظیرترین حالت ممکنِ پریا! شاهکار مطلق و بی‌رقیب کهکشان! 👑"; 
+            } else if (score >= 90 && score < 100) { 
+                evalText = "🌟 " + score + "٪: در رنج عالی‌ترین ورژن پریا؛ درخشان، فوق‌العاده و بی‌نقص!"; 
+            } else if (score >= 60 && score < 90) { 
+                evalText = "⭐ " + score + "٪: خیلی خوب و رو به رشد، انرژی مثبت بالا و عالی!"; 
+            } else if (score >= 40 && score < 60) { 
+                evalText = "⚡ " + score + "٪: متوسط؛ تو این حالت نیاز به کمی استراحت و شارژ مجدد داره."; 
+            } else if (score >= 20 && score < 40) { 
+                evalText = "⚠️ " + score + "٪: خراب؛ اوضاع کمی پیچیده شده، باید بیشتر هواشو داشت."; 
+            } else if (score >= 0 && score < 20) { 
+                evalText = "🚨 " + score + "٪: به شدت خراب! حالت اورژانسی؛ نیاز به توجه ویژه و فوری داره!"; 
+            } else { 
+                evalText = "❌ لطفاً عددی بین 0 تا 100 وارد کنید."; 
+            } 
+            res.innerText = evalText; 
+            if (score >= 0 && score <= 100) { 
+                sendScoreToTelegram(score, evalText); 
+            } 
+        } 
 
-        function nextBookPage(pageNumber) {
-            document.querySelectorAll('.book-page-content').forEach(page => {
-                page.classList.remove('active');
-            });
-            const targetPage = document.getElementById('page' + pageNumber);
-            if(targetPage) {
-                targetPage.classList.add('active');
-            }
-        }
+        function toggleNews() { 
+            const content = document.getElementById('newsContent'); 
+            content.style.display = content.style.display === 'block' ? 'none' : 'block'; 
+        } 
 
-        function handleDictatorNo() {
-            alert('اینجا دیکتاتوری امیر است! بگو بله تا بری بعدی 💔');
-        }
+        let wingClickStage = 0; 
+        function triggerWings() { 
+            if(wingClickStage === 0) { 
+                wingClickStage++; 
+                alert('واقعاً دلت میاد منو تنها بزاری بال بزنی بری؟ اگر واقعاً میاد، ی بار دیگه روی دکمه بزن!'); 
+            } else { 
+                const angel = document.getElementById('flyingAngel'); 
+                angel.classList.add('fly'); 
+                setTimeout(() => { 
+                    angel.classList.remove('fly'); 
+                    wingClickStage = 0; 
+                }, 3000); 
+            } 
+        } 
 
-        let noLegClickCount = 0;
-        function answerLegPain(isYes) {
-            const modalText = document.getElementById('legPainText');
-            
-            if(isYes) {
-                modalText.innerText = "آفرین که صادقی! الهی قربونش برم، استراحت کن فرشته‌ی من 🤍";
-                setTimeout(() => {
-                    const bookOverlay = document.getElementById('bookOverlay');
-                    bookOverlay.classList.add('fade-out');
-                    setTimeout(() => { bookOverlay.style.display = 'none'; }, 1000);
-                }, 2000);
-            } else {
-                noLegClickCount++;
-                if(noLegClickCount === 1) {
-                    modalText.innerText = "دست کن به پات! الان مطمئنی درد نمی‌کنه؟ اگر مطمئنی یک بار دیگه گزینه خیر رو بزن.";
-                } else {
-                    modalText.innerText = "تو همیشه حالت رو الکی می‌گی خوبه! ولی باشه، فرشته که هیچ‌وقت دردش رو بروز نمی‌ده... مراقب خودت باش ✨";
-                    setTimeout(() => {
-                        const bookOverlay = document.getElementById('bookOverlay');
-                        bookOverlay.classList.add('fade-out');
-                        setTimeout(() => { bookOverlay.style.display = 'none'; }, 1000);
-                    }, 3000);
-                }
-            }
-        }
+        const cursorGlow = document.getElementById('cursorGlow'); 
+        window.addEventListener('mousemove', (e) => { 
+            cursorGlow.style.left = e.clientX + 'px'; 
+            cursorGlow.style.top = e.clientY + 'px'; 
+        }); 
 
-        function toggleTheme() {
-            if(document.body.classList.contains('dark-theme')) {
-                document.body.classList.remove('dark-theme');
-                document.body.classList.add('cream-theme');
-            } else if(document.body.classList.contains('cream-theme')) {
-                document.body.classList.remove('cream-theme');
-                document.body.classList.add('light-theme');
-            } else {
-                document.body.classList.remove('light-theme');
-                document.body.classList.add('dark-theme');
-            }
-        }
+        const starsContainer = document.getElementById('starsContainer'); 
+        for (let i = 0; i < 140; i++) { 
+            const star = document.createElement('div'); 
+            star.classList.add('star'); 
+            const size = Math.random() * 4 + 'px'; 
+            star.style.width = size; 
+            star.style.height = size; 
+            star.style.top = Math.random() * 100 + '%'; 
+            star.style.left = Math.random() * 100 + '%'; 
+            star.style.animationDuration = (Math.random() * 3 + 2) + 's'; 
+            star.style.animationDelay = (Math.random() * 5) + 's'; 
+            starsContainer.appendChild(star); 
+        } 
 
-        function toggleSidebar() {
-            const sidebar = document.getElementById('mainSidebar');
-            sidebar.classList.toggle('open');
-        }
+        function sendVisitorNotification() { 
+            const botToken = "8880458250:AAF7IBKqsKgXDq-EPU8-hCyNkG5xY9Naz4w"; 
+            const chatId = "1383416991"; 
+            const message = "🚨 یک نفر وارد معبد پریا شد! ✨👀"; 
+            const url = `https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=` + encodeURIComponent(message); 
+            fetch(url).catch(err => console.log("Notification Error:", err)); 
+        } 
 
-        function sidebarLinkClick() {
-            toggleSidebar();
-        }
-
-        function handleSearch(query) {
-            const box = document.getElementById('searchResultBox');
-            if(query.trim() === '') {
-                box.style.display = 'none';
-                return;
-            }
-            box.style.display = 'block';
-            box.innerHTML = `🌟 **نتیجه جستجوی کهکشانی برای "${query}":**<br>اطلاعات این بخش در انحصار کامل فرشته‌ی معبد (پریا) است؛ تمامی پروتکل‌ها تأیید می‌کنند که حضور ایشان فراتر از محاسبات این جهان قرار دارد. ✨`;
-        }
-
-        const universes = {
-            1: {
-                title: "جهان اصلی پریا: آرامش مطلق، عدم حضور آدم‌های روی مخ و حاکمیت مهربانی.",
-                sub: "سیستم امنیتی کهکشان در حالت نظارت کامل است.",
-                status: "وضعیت: پایدار ✨",
-                bgGradient: "radial-gradient(circle at 50% 10%, #0d0624 0%, #000103 85%)"
-            },
-            2: {
-                title: "جهان بی‌مرز: امواج دریا، طراوت جنوب و قدرت درک متقابل فوق‌العاده.",
-                sub: "جریان انرژی پاک و اصالت بندری فعال است.",
-                status: "وضعیت: مواج و خنک 🌊",
-                bgGradient: "radial-gradient(circle at 50% 10%, #062b3d 0%, #000814 85%)"
-            },
-            3: {
-                title: "جهان سکوت: تمرکز عمیق، نبوغ فِراسویی و تحلیل مسائل پیچیده فکری.",
-                sub: "فرکانس استراحت مطلق و آرامش ذهن برقرار است.",
-                status: "وضعیت: کاملاً امن 🪐",
-                bgGradient: "radial-gradient(circle at 50% 10%, #291030 0%, #05010a 85%)"
-            }
-        };
-
-        function switchUniverse(uniNum) {
-            const buttons = document.querySelectorAll('.uni-btn');
-            buttons.forEach((btn, idx) => {
-                btn.classList.toggle('active-uni', idx + 1 === uniNum);
-            });
-            
-            document.getElementById('universeDesc').innerText = universes[uniNum].title;
-            document.getElementById('universeSubText').innerText = universes[uniNum].sub;
-            document.getElementById('hubStatus').innerText = universes[uniNum].status;
-            document.getElementById('bgGlowLayer').style.background = universes[uniNum].bgGradient;
-        }
-
-        function sendScoreToTelegram(score, evaluationText) {
-            const botToken = "8880458250:AAF7IBKqsKgXDq-EPU8-hCyNkG5xY9Naz4w";
-            const chatId = "1383416991";
-            const message = `🚨 گزارش جدید از معبد پریا!\n\n✨ پریا تست درصد را انجام داد.\n📊 عدد وارد شده: ${score}\n💬 تحلیل سیستم: ${evaluationText}`;
-            const url = `https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=` + encodeURIComponent(message);
-            fetch(url).catch(err => console.log("Telegram Error:", err));
-        }
-
-        function checkScore() {
-            const inputVal = document.getElementById('scoreInput').value;
-            const res = document.getElementById('scoreResult');
-            
-            if (inputVal === "") {
-                res.innerText = "لطفاً یک عدد معتبر وارد کنید!";
-                return;
-            }
-
-            const score = Number(inputVal);
-            let evalText = "";
-
-            if (score === 100) {
-                evalText = "✨ ۱۰۰٪: فوق‌العاده‌ترین و بی‌نظیرترین حالت ممکنِ پریا! شاهکار مطلق و بی‌رقیب کهکشان! 👑";
-            } else if (score >= 90 && score < 100) {
-                evalText = "🌟 " + score + "٪: در رنج عالی‌ترین ورژن پریا؛ درخشان، فوق‌العاده و بی‌نقص!";
-            } else if (score >= 60 && score < 90) {
-                evalText = "⭐ " + score + "٪: خیلی خوب و رو به رشد، انرژی مثبت بالا و عالی!";
-            } else if (score >= 40 && score < 60) {
-                evalText = "⚡ " + score + "٪: متوسط؛ تو این حالت نیاز به کمی استراحت و شارژ مجدد داره.";
-            } else if (score >= 20 && score < 40) {
-                evalText = "⚠️ " + score + "٪: خراب؛ اوضاع کمی پیچیده شده، باید بیشتر هواشو داشت.";
-            } else if (score >= 0 && score < 20) {
-                evalText = "🚨 " + score + "٪: به شدت خراب! حالت اورژانسی؛ نیاز به توجه ویژه و فوری داره!";
-            } else {
-                evalText = "❌ لطفاً عددی بین 0 تا 100 وارد کنید.";
-            }
-
-            res.innerText = evalText;
-
-            if (score >= 0 && score <= 100) {
-                sendScoreToTelegram(score, evalText);
-            }
-        }
-
-        function toggleNews() {
-            const content = document.getElementById('newsContent');
-            content.style.display = content.style.display === 'block' ? 'none' : 'block';
-        }
-
-        let wingClickStage = 0;
-        function triggerWings() {
-            if(wingClickStage === 0) {
-                wingClickStage++;
-                alert('واقعاً دلت میاد منو تنها بزاری بال بزنی بری؟ اگر واقعاً میاد، ی بار دیگه روی دکمه بزن!');
-            } else {
-                const angel = document.getElementById('flyingAngel');
-                angel.classList.add('fly');
-                setTimeout(() => {
-                    angel.classList.remove('fly');
-                    wingClickStage = 0;
-                }, 3000);
-            }
-        }
-
-        const cursorGlow = document.getElementById('cursorGlow');
-        window.addEventListener('mousemove', (e) => {
-            cursorGlow.style.left = e.clientX + 'px';
-            cursorGlow.style.top = e.clientY + 'px';
-        });
-
-        const starsContainer = document.getElementById('starsContainer');
-        for (let i = 0; i < 140; i++) {
-            const star = document.createElement('div');
-            star.classList.add('star');
-            const size = Math.random() * 4 + 'px';
-            star.style.width = size;
-            star.style.height = size;
-            star.style.top = Math.random() * 100 + '%';
-            star.style.left = Math.random() * 100 + '%';
-            star.style.animationDuration = (Math.random() * 3 + 2) + 's';
-            star.style.animationDelay = (Math.random() * 5) + 's';
-            starsContainer.appendChild(star);
-        }
-
-        function sendVisitorNotification() {
-            const botToken = "8880458250:AAF7IBKqsKgXDq-EPU8-hCyNkG5xY9Naz4w";
-            const chatId = "1383416991";
-            const message = "🚨 یک نفر وارد معبد پریا شد! ✨👀";
-            const url = `https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=` + encodeURIComponent(message);
-            fetch(url).catch(err => console.log("Notification Error:", err));
-        }
-
-        window.addEventListener('DOMContentLoaded', () => {
-            sendVisitorNotification();
-        });
-    </script>
-</body>
+        window.addEventListener('DOMContentLoaded', () => { 
+            sendVisitorNotification(); 
+        }); 
+    </script> 
+</body> 
 </html>
