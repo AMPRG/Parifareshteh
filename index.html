@@ -8,7 +8,7 @@
     <style>
         :root {
             --bg-dark: #000103;
-            --card-bg: rgba(5, 9, 18, 0.96);
+            --card-bg: rgba(5, 9, 18, 0.94);
             --accent-purple: #7c3aed;
             --accent-gold: #fbbf24;
             --accent-cyan: #06b6d4;
@@ -20,7 +20,7 @@
 
         body.dark-theme {
             --bg-dark: #000103;
-            --card-bg: rgba(5, 9, 18, 0.96);
+            --card-bg: rgba(5, 9, 18, 0.94);
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
             --border: rgba(255, 255, 255, 0.08);
@@ -28,7 +28,7 @@
 
         body.light-theme {
             --bg-dark: #f0f4f8;
-            --card-bg: rgba(255, 255, 255, 0.96);
+            --card-bg: rgba(255, 255, 255, 0.94);
             --text-main: #0f172a;
             --text-muted: #475569;
             --border: rgba(0, 0, 0, 0.1);
@@ -36,7 +36,7 @@
 
         body.cream-theme {
             --bg-dark: #1e1612;
-            --card-bg: rgba(43, 33, 27, 0.96);
+            --card-bg: rgba(43, 33, 27, 0.94);
             --accent-purple: #d97706;
             --accent-gold: #fbbf24;
             --accent-cyan: #f59e0b;
@@ -59,7 +59,7 @@
             overflow-x: hidden;
             position: relative;
             min-height: 100vh;
-            transition: background 0.4s ease, color 0.4s ease;
+            transition: background 0.3s ease, color 0.3s ease;
         }
 
         .floating-angel-text {
@@ -71,16 +71,8 @@
             font-size: 0.75rem;
             font-weight: 800;
             color: #c4b5fd;
-            backdrop-filter: blur(10px);
-            animation: float-rotate 6s infinite ease-in-out;
-            box-shadow: 0 0 15px rgba(124, 58, 237, 0.3);
             white-space: nowrap;
             margin: 0 15px;
-        }
-        @keyframes float-rotate {
-            0% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-3px) rotate(0.5deg); }
-            100% { transform: translateY(0) rotate(0deg); }
         }
 
         #bookOverlay {
@@ -92,8 +84,8 @@
             justify-content: center;
             align-items: center;
             padding: 1.5rem;
-            backdrop-filter: blur(25px);
-            transition: opacity 1s ease, visibility 1s;
+            backdrop-filter: blur(15px);
+            transition: opacity 0.5s ease, visibility 0.5s;
         }
         #bookOverlay.fade-out {
             opacity: 0;
@@ -106,38 +98,23 @@
             border-radius: 20px 35px 35px 20px;
             max-width: 650px;
             width: 100%;
-            box-shadow: 0 0 50px rgba(217, 119, 6, 0.4), inset 0 0 30px rgba(0,0,0,0.8);
+            box-shadow: 0 0 40px rgba(217, 119, 6, 0.3);
             position: relative;
             padding: 3.5rem 3rem;
             text-align: center;
-            box-sizing: border-box;
             min-height: 480px;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
         }
-        .magical-book::before {
-            content: '';
-            position: absolute;
-            top: 0; bottom: 0; right: 25px;
-            width: 15px;
-            background: linear-gradient(90deg, #0d0806, #2c1f18, #0d0806);
-            border-radius: 5px;
-            box-shadow: inset 0 0 10px rgba(0,0,0,0.9);
-        }
 
         .book-page-content {
             display: none;
             width: 100%;
-            animation: pageTurn 0.6s ease;
         }
         .book-page-content.active {
             display: block;
-        }
-        @keyframes pageTurn {
-            from { opacity: 0; transform: scale(0.97); }
-            to { opacity: 1; transform: scale(1); }
         }
 
         .book-cover-title {
@@ -147,7 +124,6 @@
             background: linear-gradient(135deg, #fef3c7, #fbbf24);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            text-shadow: 0 5px 15px rgba(0,0,0,0.5);
         }
 
         .gate-title {
@@ -176,40 +152,24 @@
             font-weight: 900;
             border-radius: 50px;
             cursor: pointer;
-            box-shadow: 0 10px 25px rgba(124, 58, 237, 0.4);
-            transition: 0.3s;
+            box-shadow: 0 5px 20px rgba(124, 58, 237, 0.3);
+            transition: 0.2s;
         }
         .gate-btn.no-btn {
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid var(--border);
             color: var(--text-muted);
         }
-        .gate-btn:hover { transform: scale(1.05); }
-
-        .cursor-glow {
-            position: fixed;
-            width: 500px; height: 500px;
-            background: radial-gradient(circle, rgba(124, 58, 237, 0.12) 0%, rgba(6, 182, 212, 0.04) 50%, transparent 75%);
-            border-radius: 50%;
-            pointer-events: none;
-            transform: translate(-50%, -50%);
-            z-index: 9998;
-            mix-blend-mode: screen;
-        }
+        .gate-btn:hover { transform: scale(1.03); }
 
         .bg-glow {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
             background: radial-gradient(circle at 50% 10%, #0d0624 0%, #000103 85%);
             z-index: -2;
-            transition: background 0.5s ease;
         }
-        body.light-theme .bg-glow {
-            background: radial-gradient(circle at 50% 10%, #e2e8f0 0%, #f8fafc 85%);
-        }
-        body.cream-theme .bg-glow {
-            background: radial-gradient(circle at 50% 10%, #2c1f18 0%, #1e1612 85%);
-        }
+        body.light-theme .bg-glow { background: radial-gradient(circle at 50% 10%, #e2e8f0 0%, #f8fafc 85%); }
+        body.cream-theme .bg-glow { background: radial-gradient(circle at 50% 10%, #2c1f18 0%, #1e1612 85%); }
 
         .stars {
             position: fixed;
@@ -221,11 +181,7 @@
             position: absolute;
             background: #ffffff;
             border-radius: 50%;
-            animation: twinkle 3s infinite ease-in-out;
-        }
-        @keyframes twinkle {
-            0%, 100% { opacity: 0.1; transform: scale(0.6); }
-            50% { opacity: 0.9; transform: scale(1.5); }
+            opacity: 0.6;
         }
 
         .top-nav {
@@ -237,7 +193,7 @@
             padding: 0.8rem 1.5rem;
             z-index: 990;
             background: rgba(0, 1, 3, 0.85);
-            backdrop-filter: blur(20px);
+            backdrop-filter: blur(10px);
             border-bottom: 1px solid var(--border);
         }
         body.light-theme .top-nav { background: rgba(255, 255, 255, 0.85); }
@@ -264,9 +220,7 @@
             font-size: 0.78rem;
             font-weight: 800;
             cursor: pointer;
-            transition: 0.3s;
         }
-        .theme-toggle-btn:hover { background: rgba(124, 58, 237, 0.3); }
 
         .menu-toggle-btn {
             background: none;
@@ -280,13 +234,11 @@
             align-items: center;
             gap: 5px;
             cursor: pointer;
-            transition: 0.3s;
             flex-shrink: 0;
         }
         .menu-toggle-btn span {
             display: block; width: 16px; height: 2px; background: currentColor; border-radius: 2px;
         }
-        .menu-toggle-btn:hover { border-color: var(--accent-purple); }
 
         .sidebar {
             position: fixed;
@@ -294,8 +246,8 @@
             background: var(--card-bg);
             border-right: 1px solid var(--border);
             z-index: 9999;
-            box-shadow: 20px 0 50px rgba(0,0,0,0.8);
-            transition: left 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 10px 0 30px rgba(0,0,0,0.5);
+            transition: left 0.3s ease;
             padding: 3rem 2rem;
             display: flex;
             flex-direction: column;
@@ -315,13 +267,10 @@
             text-decoration: none;
             font-weight: 700;
             font-size: 0.9rem;
-            transition: 0.3s;
             display: block;
+            transition: 0.2s;
         }
-        .sidebar-link:hover {
-            background: rgba(124, 58, 237, 0.25);
-            transform: translateX(-4px);
-        }
+        .sidebar-link:hover { background: rgba(124, 58, 237, 0.2); }
 
         .search-container {
             margin-top: 0.5rem;
@@ -336,9 +285,7 @@
             color: var(--text-main);
             font-size: 0.9rem;
             outline: none;
-            transition: 0.3s;
         }
-        .search-input:focus { border-color: var(--accent-purple); }
         .search-result-box {
             margin-top: 10px;
             padding: 14px;
@@ -370,7 +317,6 @@
             border-radius: 50px;
             font-size: 1.05rem;
             margin-bottom: 2rem;
-            box-shadow: 0 0 40px rgba(124, 58, 237, 0.35);
             font-weight: 800;
         }
 
@@ -381,7 +327,6 @@
             background: linear-gradient(135deg, #ffffff 15%, #a78bfa 85%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            letter-spacing: -1px;
         }
 
         p.subtitle {
@@ -392,22 +337,19 @@
             margin-bottom: 3.5rem;
         }
 
-        /* --- داشبورد کنترل جهان‌های موازی --- */
         .multiverse-hub {
             background: var(--card-bg);
             border: 1px solid rgba(124, 58, 237, 0.35);
-            backdrop-filter: blur(25px);
+            backdrop-filter: blur(15px);
             padding: 2.5rem;
             border-radius: 32px;
-            box-shadow: 0 35px 70px rgba(0, 0, 0, 0.85);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
             max-width: 650px;
             width: 100%;
             display: flex;
             flex-direction: column;
             gap: 1.8rem;
             text-align: right;
-            position: relative;
-            overflow: hidden;
         }
 
         .hub-header {
@@ -435,11 +377,10 @@
             border-radius: 20px;
             font-size: 0.8rem;
             font-weight: 800;
-            transition: 0.3s;
         }
 
         .universe-screen {
-            background: rgba(0, 0, 0, 0.5);
+            background: rgba(0, 0, 0, 0.4);
             border: 1px solid var(--border);
             border-radius: 20px;
             padding: 1.8rem;
@@ -449,22 +390,6 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            position: relative;
-            overflow: hidden;
-            transition: 0.4s;
-        }
-
-        .universe-screen::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 2px;
-            background: linear-gradient(90deg, transparent, var(--accent-cyan), transparent);
-            animation: scanline 3s infinite linear;
-        }
-
-        @keyframes scanline {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
         }
 
         .universe-text {
@@ -472,14 +397,12 @@
             font-weight: 700;
             color: #c4b5fd;
             line-height: 2.2;
-            transition: 0.3s;
         }
 
         .universe-sub {
             font-size: 0.85rem;
             color: var(--text-muted);
             margin-top: 8px;
-            transition: 0.3s;
         }
 
         .universe-controls-grid {
@@ -496,27 +419,18 @@
             border-radius: 14px;
             font-size: 0.85rem;
             cursor: pointer;
-            transition: 0.3s;
             font-weight: 800;
             text-align: center;
+            transition: 0.2s;
         }
-
-        .uni-btn:hover {
-            border-color: var(--accent-purple);
-            color: var(--text-main);
-            background: rgba(124, 58, 237, 0.15);
-            transform: translateY(-2px);
-        }
-
+        .uni-btn:hover { border-color: var(--accent-purple); color: var(--text-main); }
         .uni-btn.active-uni {
             background: linear-gradient(135deg, #7c3aed, #06b6d4);
             border-color: transparent;
             color: white;
-            box-shadow: 0 0 25px rgba(124, 58, 237, 0.5);
         }
-        /* ---------------------------------------------------- */
 
-        /* --- استایل امکانات جادویی (بدون صندوقچه) --- */
+        /* --- امکانات جدید و ایده‌های اثبات فرشته بودن --- */
         .new-features-container {
             max-width: 1200px;
             margin: 0 auto 6rem;
@@ -531,8 +445,8 @@
             border: 1px solid rgba(124, 58, 237, 0.3);
             border-radius: 30px;
             padding: 2.5rem;
-            backdrop-filter: blur(20px);
-            box-shadow: 0 25px 60px rgba(0,0,0,0.7);
+            backdrop-filter: blur(15px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
             text-align: right;
             display: flex;
             flex-direction: column;
@@ -549,70 +463,92 @@
             gap: 10px;
         }
 
-        /* ۱. موزیک پلیر */
-        .music-player-controls {
-            display: flex;
-            gap: 10px;
-            margin-top: 1.5rem;
-        }
-
-        /* ۲. اوراکل روزانه */
-        .oracle-display {
+        /* بخش ۱: تالار بازجویی از فرشتگان منکر */
+        .court-result {
             background: rgba(0,0,0,0.4);
             border: 1px solid var(--border);
             border-radius: 16px;
             padding: 1.2rem;
             color: var(--text-muted);
-            font-size: 0.95rem;
+            font-size: 0.92rem;
             line-height: 2;
-            min-height: 90px;
+            min-height: 80px;
             margin-top: 1rem;
             text-align: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
         }
 
-        /* ۳. مینی‌گیم شکار ستاره */
-        .star-game-area {
-            background: rgba(0,0,0,0.5);
-            border: 1px dashed rgba(124, 58, 237, 0.5);
+        /* بخش ۲: ساعت شنی / باران ستاره‌های زمانی */
+        .time-rain-box {
+            text-align: center;
+            padding: 1rem 0;
+        }
+
+        /* بخش ۳: پادکست آوای فرشته */
+        .podcast-player-box {
+            background: rgba(0,0,0,0.4);
             border-radius: 16px;
-            height: 110px;
-            position: relative;
-            overflow: hidden;
+            padding: 1.2rem;
             margin-top: 1rem;
-            cursor: pointer;
+            text-align: center;
+        }
+        .equalizer {
             display: flex;
             justify-content: center;
+            gap: 4px;
+            height: 25px;
+            align-items: flex-end;
+            margin: 10px 0;
+        }
+        .eq-bar {
+            width: 4px;
+            background: var(--accent-cyan);
+            border-radius: 2px;
+            height: 5px;
+            transition: height 0.3s;
+        }
+        .playing .eq-bar {
+            animation: eqAnim 0.8s infinite alternate ease-in-out;
+        }
+        .playing .eq-bar:nth-child(2) { animation-delay: 0.2s; }
+        .playing .eq-bar:nth-child(3) { animation-delay: 0.4s; }
+        .playing .eq-bar:nth-child(4) { animation-delay: 0.1s; }
+        @keyframes eqAnim {
+            0% { height: 5px; }
+            100% { height: 22px; }
+        }
+
+        /* بخش ۴: آینه‌ی جادویی حقیقت‌سنج */
+        .magic-mirror {
+            background: radial-gradient(circle, rgba(124,58,237,0.2) 0%, rgba(0,0,0,0.6) 80%);
+            border: 2px solid rgba(124,58,237,0.5);
+            border-radius: 20px;
+            padding: 1.5rem;
+            min-height: 100px;
+            display: flex;
             align-items: center;
-        }
-        .collectible-star {
-            position: absolute;
-            font-size: 1.8rem;
-            animation: bounceStar 2s infinite alternate ease-in-out;
-            cursor: pointer;
-        }
-        @keyframes bounceStar {
-            0% { transform: translateY(-10px) scale(1); }
-            100% { transform: translateY(10px) scale(1.2); }
+            justify-content: center;
+            text-align: center;
+            color: #c4b5fd;
+            font-size: 0.95rem;
+            font-weight: 700;
+            line-height: 2;
+            margin-top: 1rem;
         }
 
-        /* افکت کلیک ذرات (ستاره/قلب) */
-        .click-particle {
-            position: fixed;
-            font-size: 1.2rem;
-            pointer-events: none;
-            z-index: 999999;
-            animation: particleFade 0.8s forwards ease-out;
+        /* ابزارهای دیگر صفحه */
+        .music-player-controls { display: flex; gap: 10px; margin-top: 1.5rem; }
+        .oracle-display {
+            background: rgba(0,0,0,0.4); border: 1px solid var(--border); border-radius: 16px;
+            padding: 1.2rem; color: var(--text-muted); font-size: 0.95rem; line-height: 2;
+            min-height: 90px; margin-top: 1rem; text-align: center; display: flex; align-items: center; justify-content: center;
         }
-        @keyframes particleFade {
-            0% { transform: translate(-50%, -50%) scale(0.5); opacity: 1; }
-            100% { transform: translate(calc(-50% + var(--dx)), calc(-50% + var(--dy))) scale(1.4); opacity: 0; }
+        .star-game-area {
+            background: rgba(0,0,0,0.5); border: 1px dashed rgba(124, 58, 237, 0.5); border-radius: 16px;
+            height: 110px; position: relative; overflow: hidden; margin-top: 1rem; cursor: pointer; display: flex; justify-content: center; align-items: center;
         }
-        /* ------------------------------------------------ */
+        .collectible-star { position: absolute; font-size: 1.8rem; cursor: pointer; }
 
-        .percentage-panel {
+        .percentage-panel, .angelic-traits-section, .newspaper-section, .wings-section, .verification-footer-section {
             max-width: 1200px;
             margin: 0 auto 6rem;
             padding: 0 1.5rem;
@@ -622,162 +558,65 @@
             border: 1px solid rgba(124, 58, 237, 0.45);
             border-radius: 35px;
             padding: 4rem 3.5rem;
-            box-shadow: 0 35px 80px rgba(0,0,0,0.85);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.6);
             text-align: center;
         }
-        .percentage-input-group {
-            display: flex; gap: 15px; max-width: 450px; margin: 2rem auto 0;
-        }
+        .percentage-input-group { display: flex; gap: 15px; max-width: 450px; margin: 2rem auto 0; }
         .score-input {
             flex-grow: 1; background: rgba(0,0,0,0.6); border: 1px solid var(--border);
             border-radius: 16px; padding: 14px 20px; color: #fff; font-size: 1.1rem; text-align: center; outline: none;
         }
         .score-btn {
             background: var(--accent-purple); color: white; border: none; padding: 0 28px;
-            border-radius: 16px; font-weight: 800; cursor: pointer; transition: 0.3s;
+            border-radius: 16px; font-weight: 800; cursor: pointer;
         }
-        .score-result {
-            margin-top: 2rem; font-size: 1.15rem; color: #c4b5fd; font-weight: 800; min-height: 40px; line-height: 2;
-        }
+        .score-result { margin-top: 2rem; font-size: 1.15rem; color: #c4b5fd; font-weight: 800; min-height: 40px; line-height: 2; }
 
-        .angelic-traits-section {
-            max-width: 1200px;
-            margin: 0 auto 6rem;
-            padding: 0 1.5rem;
-        }
         .section-title {
-            text-align: center;
-            font-size: 2.2rem;
-            font-weight: 900;
-            margin-bottom: 0.9rem;
-            background: linear-gradient(135deg, #fff, #a78bfa);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            text-align: center; font-size: 2.2rem; font-weight: 900; margin-bottom: 0.9rem;
+            background: linear-gradient(135deg, #fff, #a78bfa); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
         .section-desc {
-            text-align: center;
-            color: var(--text-muted);
-            margin-bottom: 4rem;
-            font-size: 1.05rem;
-            max-width: 750px;
-            margin-left: auto; margin-right: auto;
-            line-height: 2.2;
+            text-align: center; color: var(--text-muted); margin-bottom: 4rem; font-size: 1.05rem; max-width: 750px; margin-left: auto; margin-right: auto; line-height: 2.2;
         }
-        .traits-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
+        .traits-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; margin-top: 3rem; }
         .trait-card {
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            border-radius: 28px;
-            padding: 2.5rem;
-            text-align: right;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.6);
-            backdrop-filter: blur(15px);
-            transition: 0.3s;
+            background: var(--card-bg); border: 1px solid var(--border); border-radius: 28px; padding: 2.5rem; text-align: right; box-shadow: 0 15px 35px rgba(0,0,0,0.4);
         }
-        .trait-card:hover { border-color: rgba(124, 58, 237, 0.5); transform: translateY(-5px); }
         .trait-title { font-size: 1.2rem; font-weight: 900; color: #c4b5fd; margin-bottom: 1rem; display: flex; align-items: center; gap: 10px; }
         .trait-desc { font-size: 0.95rem; color: var(--text-muted); line-height: 2.5; }
 
-        .newspaper-section {
-            max-width: 1200px;
-            margin: 0 auto 6rem;
-            padding: 0 1.5rem;
-        }
         .news-box {
             background: linear-gradient(135deg, rgba(12, 18, 32, 0.98), rgba(20, 10, 35, 0.99));
-            border: 2px solid rgba(251, 191, 36, 0.4);
-            border-radius: 35px;
-            padding: 4rem 3.5rem;
-            box-shadow: 0 40px 90px rgba(0,0,0,0.9);
-            cursor: pointer;
-            transition: 0.4s;
-            position: relative;
-            overflow: hidden;
+            border: 2px solid rgba(251, 191, 36, 0.4); border-radius: 35px; padding: 4rem 3.5rem; box-shadow: 0 30px 60px rgba(0,0,0,0.6); cursor: pointer;
         }
-        .news-box:hover { border-color: var(--accent-gold); transform: scale(1.01); }
         .news-header-tag {
             background: rgba(251, 191, 36, 0.15); color: #fde047; border: 1px solid rgba(251, 191, 36, 0.4);
             padding: 6px 20px; border-radius: 20px; font-size: 0.85rem; font-weight: 800; display: inline-block; margin-bottom: 1.2rem;
         }
-        .news-content {
-            margin-top: 1.5rem; display: none; line-height: 2.8; color: var(--text-muted); font-size: 1.05rem; text-align: right;
-            border-top: 1px solid var(--border); padding-top: 2rem;
-        }
+        .news-content { margin-top: 1.5rem; display: none; line-height: 2.8; color: var(--text-muted); font-size: 1.05rem; text-align: right; border-top: 1px solid var(--border); padding-top: 2rem; }
 
-        .wings-section {
-            max-width: 900px;
-            margin: 0 auto 6rem;
-            padding: 0 1.5rem;
-            text-align: center;
-        }
+        .wings-section { text-align: center; }
         .wings-btn {
-            background: linear-gradient(135deg, #7c3aed, #06b6d4);
-            color: white; border: none; padding: 1.4rem 4rem; font-size: 1.2rem; font-weight: 900;
-            border-radius: 50px; cursor: pointer; box-shadow: 0 20px 50px rgba(124, 58, 237, 0.5); transition: 0.3s;
+            background: linear-gradient(135deg, #7c3aed, #06b6d4); color: white; border: none; padding: 1.4rem 4rem; font-size: 1.2rem; font-weight: 900;
+            border-radius: 50px; cursor: pointer; box-shadow: 0 10px 30px rgba(124, 58, 237, 0.4);
         }
-        .wings-btn:hover { transform: scale(1.05); }
-
         .flying-angel-icon {
-            position: fixed;
-            bottom: -150px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 6rem;
-            z-index: 99999;
-            transition: bottom 2.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 2.5s;
-            pointer-events: none;
-            opacity: 0;
-            filter: drop-shadow(0 0 35px rgba(255, 255, 255, 0.9));
+            position: fixed; bottom: -150px; left: 50%; transform: translateX(-50%); font-size: 6rem; z-index: 99999;
+            transition: bottom 2s ease, opacity 2s; pointer-events: none; opacity: 0; filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.8));
         }
-        .flying-angel-icon.fly {
-            bottom: 105vh;
-            opacity: 1;
-        }
+        .flying-angel-icon.fly { bottom: 105vh; opacity: 1; }
 
-        .verification-footer-section {
-            max-width: 1000px;
-            margin: 0 auto 6rem;
-            padding: 0 1.5rem;
-            text-align: center;
-        }
         .warning-box {
-            background: rgba(239, 68, 68, 0.08);
-            border: 1px solid rgba(239, 68, 68, 0.35);
-            border-radius: 28px;
-            padding: 3rem;
-            margin-bottom: 3rem;
-            text-align: right;
-            box-shadow: 0 25px 60px rgba(0,0,0,0.6);
+            background: rgba(239, 68, 68, 0.08); border: 1px solid rgba(239, 68, 68, 0.35); border-radius: 28px; padding: 3rem; margin-bottom: 3rem; text-align: right;
         }
-        .warning-title {
-            color: #f87171; font-size: 1.2rem; font-weight: 900; margin-bottom: 1rem; display: flex; align-items: center; gap: 10px;
-        }
-        .warning-list {
-            list-style: none; display: flex; flex-direction: column; gap: 12px; color: #fca5a5; font-size: 0.98rem; line-height: 2.2;
-        }
+        .warning-title { color: #f87171; font-size: 1.2rem; font-weight: 900; margin-bottom: 1rem; display: flex; align-items: center; gap: 10px; }
+        .warning-list { list-style: none; display: flex; flex-direction: column; gap: 12px; color: #fca5a5; font-size: 0.98rem; line-height: 2.2; }
 
         .authenticity-badge {
-            background: var(--card-bg);
-            border: 1px solid rgba(124, 58, 237, 0.4);
-            border-radius: 30px;
-            padding: 3rem;
-            backdrop-filter: blur(20px);
-            box-shadow: 0 30px 70px rgba(0,0,0,0.8);
+            background: var(--card-bg); border: 1px solid rgba(124, 58, 237, 0.4); border-radius: 30px; padding: 3rem; backdrop-filter: blur(15px); box-shadow: 0 20px 50px rgba(0,0,0,0.5); text-align: center;
         }
-
-        footer {
-            text-align: center;
-            padding: 4.5rem 1.5rem;
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            border-top: 1px solid var(--border);
-            letter-spacing: 2.5px;
-        }
+        footer { text-align: center; padding: 4.5rem 1.5rem; color: var(--text-muted); font-size: 0.95rem; border-top: 1px solid var(--border); letter-spacing: 2.5px; }
     </style>
 </head>
 <body class="dark-theme">
@@ -848,7 +687,6 @@
         </div>
     </div>
 
-    <div class="cursor-glow" id="cursorGlow"></div>
     <div class="bg-glow" id="bgGlowLayer"></div>
     <div class="stars" id="starsContainer"></div>
 
@@ -881,7 +719,7 @@
         </div>
 
         <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 0.5rem;">
-            <a href="#extraFeaturesSec" class="sidebar-link" onclick="toggleSidebar()">ابزارهای ویژه جادویی ✨</a>
+            <a href="#extraFeaturesSec" class="sidebar-link" onclick="toggleSidebar()">ابزارهای ویژه و اثبات فرشته بودن ✨</a>
             <a href="#percentageSec" class="sidebar-link" onclick="toggleSidebar()">تست درصد کلی پریا 📊</a>
             <a href="#traitsSec" class="sidebar-link" onclick="toggleSidebar()">ملاک‌های فرشته بودن 🤍</a>
             <a href="#newsSec" class="sidebar-link" onclick="toggleSidebar()">روزنامه معتبر آسمانی 🗞️</a>
@@ -915,9 +753,54 @@
         </div>
     </header>
 
-    <!-- ابزارهای جادویی (بدون صندوقچه) -->
+    <!-- ابزارهای جدید و ایده‌های اثبات فرشته بودن -->
     <section class="new-features-container" id="extraFeaturesSec">
-        <!-- ۱. جعبه موسیقی کهکشانی -->
+        <!-- ۱. تالار بازجویی از فرشتگان منکر -->
+        <div class="feature-box">
+            <h3>⚖️ تالار استعلام اصالت فرشته</h3>
+            <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 2;">ثبت استعلام رسمی جهت اثبات کمال و فرشته بودن پریا برای افراد شکاک:</p>
+            <div class="court-result" id="courtResultBox">آماده برای استعلام سوابق و اصالت کیهانی...</div>
+            <button class="gate-btn" style="margin-top: 1rem; padding: 0.7rem; font-size: 0.9rem;" onclick="runCourtInquiry()">استعلام فوری اصالت ✨</button>
+        </div>
+
+        <!-- ۲. باران ستاره‌های زمانی -->
+        <div class="feature-box">
+            <h3>⏳ توقف زمان و باران ستاره‌ای</h3>
+            <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 2;">با این کلید، زمان به احترام نفس‌های فرشته متوقف شده و باران ستاره می‌بارد:</p>
+            <div class="time-rain-box">
+                <button class="gate-btn" style="padding: 0.7rem 1.8rem; font-size: 0.9rem;" onclick="triggerTimeFreeze()">توقف زمان و باران ستاره 🌟</button>
+            </div>
+        </div>
+
+        <!-- ۳. آوای زمزمه فرشته (پادکست متحرک) -->
+        <div class="feature-box">
+            <h3>🎙️ آوای زمزمه و طنین فرشته</h3>
+            <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 2;">پخش امواج صوتی فرکانس آرامش‌بخش و طنین صدای خاص پریا در معبد:</p>
+            <div class="podcast-player-box" id="podcastBox">
+                <div style="font-size: 0.85rem; color: #c4b5fd; font-weight: 800;">تراکت صوتی: طنین آرامش ابسولوت</div>
+                <div class="equalizer" id="eqVisualizer">
+                    <div class="eq-bar"></div>
+                    <div class="eq-bar"></div>
+                    <div class="eq-bar"></div>
+                    <div class="eq-bar"></div>
+                </div>
+            </div>
+            <div style="display: flex; gap: 10px; margin-top: 1rem;">
+                <button class="gate-btn" style="flex:1; padding: 0.6rem; font-size: 0.85rem;" onclick="togglePodcastAudio()">پخش آوا 🎧</button>
+                <button class="gate-btn no-btn" style="flex:1; padding: 0.6rem; font-size: 0.85rem;" onclick="stopPodcastAudio()">توقف ⏹️</button>
+            </div>
+            <audio id="angelPodcastAudio" loop src="https://actions.google.com/sounds/v1/ambiences/night_crickets.ogg"></audio>
+        </div>
+
+        <!-- ۴. آینه‌ی جادویی حقیقت‌سنج -->
+        <div class="feature-box">
+            <h3>🔮 آینه‌ی جادویی حقیقت‌سنج</h3>
+            <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 2;">نگاه کردن به آینه برای دیدن بازتاب واقعی وجود پریا در این جهان:</p>
+            <div class="magic-mirror" id="magicMirrorBox">روی دکمه کلیک کنید تا آینه تصویر واقعی را نمایان کند...</div>
+            <button class="gate-btn" style="margin-top: 1rem; padding: 0.7rem; font-size: 0.9rem;" onclick="useMagicMirror()">فعالسازی اسکن آینه ✨</button>
+        </div>
+
+        <!-- ۵. جعبه موسیقی کهکشانی -->
         <div class="feature-box">
             <h3>🎵 جعبه موسیقی کهکشانی</h3>
             <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 2;">پخش نواهای ملایم و آرامش‌بخش برای همراهی با لحظات پریا.</p>
@@ -928,7 +811,7 @@
             <audio id="ambientAudio" loop src="https://actions.google.com/sounds/v1/ambiences/rain_heavy.ogg"></audio>
         </div>
 
-        <!-- ۲. طالع‌بینی روزانه فرشته‌ها -->
+        <!-- ۶. طالع‌بینی روزانه فرشته‌ها -->
         <div class="feature-box">
             <h3>🔮 طالع‌بینی روزانه فرشته</h3>
             <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 2;">دریافت پیام و انرژی مثبت اختصاصی کهکشان برای امروز:</p>
@@ -936,7 +819,7 @@
             <button class="gate-btn" style="margin-top: 1rem; padding: 0.7rem; font-size: 0.9rem;" onclick="getDailyOracle()">دریافت پیام کهکشانی 🌟</button>
         </div>
 
-        <!-- ۳. بازی شکار ستاره‌ها -->
+        <!-- ۷. بازی شکار ستاره‌ها -->
         <div class="feature-box">
             <h3>⭐ شکار ستاره‌های معبد</h3>
             <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 2;">امتیاز فعلی شما: <strong id="starScore" style="color:var(--accent-gold)">0</strong> ستاره</p>
@@ -1072,14 +955,13 @@
         let noLegClickCount = 0;
         function answerLegPain(isYes) {
             const modalText = document.getElementById('legPainText');
-            
             if(isYes) {
                 modalText.innerText = "آفرین که صادقی! الهی قربونش برم، استراحت کن فرشته‌ی من 🤍";
                 setTimeout(() => {
                     const bookOverlay = document.getElementById('bookOverlay');
                     bookOverlay.classList.add('fade-out');
-                    setTimeout(() => { bookOverlay.style.display = 'none'; }, 1000);
-                }, 2000);
+                    setTimeout(() => { bookOverlay.style.display = 'none'; }, 500);
+                }, 1500);
             } else {
                 noLegClickCount++;
                 if(noLegClickCount === 1) {
@@ -1089,8 +971,8 @@
                     setTimeout(() => {
                         const bookOverlay = document.getElementById('bookOverlay');
                         bookOverlay.classList.add('fade-out');
-                        setTimeout(() => { bookOverlay.style.display = 'none'; }, 1000);
-                    }, 3000);
+                        setTimeout(() => { bookOverlay.style.display = 'none'; }, 500);
+                    }, 2000);
                 }
             }
         }
@@ -1149,17 +1031,52 @@
             buttons.forEach((btn, idx) => {
                 btn.classList.toggle('active-uni', idx + 1 === uniNum);
             });
-            
             document.getElementById('universeDesc').innerText = universes[uniNum].title;
             document.getElementById('universeSubText').innerText = universes[uniNum].sub;
             document.getElementById('hubStatus').innerText = universes[uniNum].status;
             document.getElementById('bgGlowLayer').style.background = universes[uniNum].bgGradient;
         }
 
-        // اسکریپت‌های قابلیت‌های جادویی
+        // توابع جدید اضافه شده
+        function runCourtInquiry() {
+            const box = document.getElementById('courtResultBox');
+            box.innerText = "⏳ در حال استعلام از دادگاه عالی کهکشان...";
+            setTimeout(() => {
+                box.innerHTML = "🛡️ **نتیجه قطعی:** این موجود رسماً فرشته ابسولوت است و هرگونه شک و تردید یا انکاری پیگرد قانونی و کیهانی دارد! اصالت صد در صد تایید شد. ✨";
+            }, 1000);
+        }
+
+        function triggerTimeFreeze() {
+            alert("⏳ زمان در این منظومه به احترام نفس‌های فرشته متوقف شد! آسمان پر از باران ستاره‌ای گردید... ✨");
+        }
+
+        function togglePodcastAudio() {
+            const audio = document.getElementById('angelPodcastAudio');
+            const box = document.getElementById('podcastBox');
+            audio.play().then(() => {
+                box.classList.add('playing');
+            }).catch(e => alert('پخش صدا نیازمند تعامل با صفحه است!'));
+        }
+
+        function stopPodcastAudio() {
+            const audio = document.getElementById('angelPodcastAudio');
+            const box = document.getElementById('podcastBox');
+            audio.pause();
+            audio.currentTime = 0;
+            box.classList.remove('playing');
+        }
+
+        function useMagicMirror() {
+            const mirror = document.getElementById('magicMirrorBox');
+            mirror.innerText = "✨ در حال اسکن آینه توسط سیستم...";
+            setTimeout(() => {
+                mirror.innerHTML = "🪞 **تصویر بازتاب‌یافته:** نور خالص، مهربانی بی‌نهایت، قلبی پاک و بال‌های پنهان فرشته که جهان را زیباتر کرده است. 🤍";
+            }, 1000);
+        }
+
         function toggleAmbientMusic() {
             const audio = document.getElementById('ambientAudio');
-            audio.play().catch(e => alert('پخش موزیک نیازمند تعامل اولیه با صفحه است!'));
+            audio.play().catch(e => alert('پخش موزیک نیازمند تعامل با صفحه است!'));
         }
         function stopAmbientMusic() {
             const audio = document.getElementById('ambientAudio');
@@ -1187,24 +1104,6 @@
             starEl.style.left = (Math.random() * 70 + 10) + '%';
         }
 
-        // افکت کلیک ذرات (ستاره/قلب)
-        window.addEventListener('click', (e) => {
-            const symbols = ['✨', '🤍', '⭐', '💖', '🌟'];
-            const particle = document.createElement('div');
-            particle.className = 'click-particle';
-            particle.innerText = symbols[Math.floor(Math.random() * symbols.length)];
-            particle.style.left = e.clientX + 'px';
-            particle.style.top = e.clientY + 'px';
-            
-            const angle = Math.random() * Math.PI * 2;
-            const distance = Math.random() * 60 + 30;
-            particle.style.setProperty('--dx', Math.cos(angle) * distance + 'px');
-            particle.style.setProperty('--dy', Math.sin(angle) * distance + 'px');
-            
-            document.body.appendChild(particle);
-            setTimeout(() => particle.remove(), 800);
-        });
-
         function sendScoreToTelegram(score, evaluationText) {
             const botToken = "8880458250:AAF7IBKqsKgXDq-EPU8-hCyNkG5xY9Naz4w";
             const chatId = "1383416991";
@@ -1216,15 +1115,12 @@
         function checkScore() {
             const inputVal = document.getElementById('scoreInput').value;
             const res = document.getElementById('scoreResult');
-            
             if (inputVal === "") {
                 res.innerText = "لطفاً یک عدد معتبر وارد کنید!";
                 return;
             }
-
             const score = Number(inputVal);
             let evalText = "";
-
             if (score === 100) {
                 evalText = "✨ ۱۰۰٪: فوق‌العاده‌ترین و بی‌نظیرترین حالت ممکنِ پریا! شاهکار مطلق و بی‌رقیب کهکشان! 👑";
             } else if (score >= 90 && score < 100) {
@@ -1240,9 +1136,7 @@
             } else {
                 evalText = "❌ لطفاً عددی بین 0 تا 100 وارد کنید.";
             }
-
             res.innerText = evalText;
-
             if (score >= 0 && score <= 100) {
                 sendScoreToTelegram(score, evalText);
             }
@@ -1264,40 +1158,29 @@
                 setTimeout(() => {
                     angel.classList.remove('fly');
                     wingClickStage = 0;
-                }, 3000);
+                }, 2500);
             }
         }
 
-        const cursorGlow = document.getElementById('cursorGlow');
-        window.addEventListener('mousemove', (e) => {
-            cursorGlow.style.left = e.clientX + 'px';
-            cursorGlow.style.top = e.clientY + 'px';
-        });
-
+        // تولید بهینه و سبک ستاره‌ها
         const starsContainer = document.getElementById('starsContainer');
-        for (let i = 0; i < 140; i++) {
+        for (let i = 0; i < 60; i++) {
             const star = document.createElement('div');
             star.classList.add('star');
-            const size = Math.random() * 4 + 'px';
+            const size = (Math.random() * 3 + 1) + 'px';
             star.style.width = size;
             star.style.height = size;
             star.style.top = Math.random() * 100 + '%';
             star.style.left = Math.random() * 100 + '%';
-            star.style.animationDuration = (Math.random() * 3 + 2) + 's';
-            star.style.animationDelay = (Math.random() * 5) + 's';
             starsContainer.appendChild(star);
         }
 
-        function sendVisitorNotification() {
+        window.addEventListener('DOMContentLoaded', () => {
             const botToken = "8880458250:AAF7IBKqsKgXDq-EPU8-hCyNkG5xY9Naz4w";
             const chatId = "1383416991";
             const message = "🚨 یک نفر وارد معبد پریا شد! ✨👀";
             const url = `https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=` + encodeURIComponent(message);
             fetch(url).catch(err => console.log("Notification Error:", err));
-        }
-
-        window.addEventListener('DOMContentLoaded', () => {
-            sendVisitorNotification();
         });
     </script>
 </body>
