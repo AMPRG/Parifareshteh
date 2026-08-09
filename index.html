@@ -46,7 +46,7 @@
         .floating-angel-text {
             position: fixed;
             top: 25px;
-            left: 80px;
+            right: 80px;
             background: linear-gradient(135deg, rgba(124, 58, 237, 0.25), rgba(6, 182, 212, 0.25));
             border: 1px solid rgba(124, 58, 237, 0.5);
             padding: 8px 22px;
@@ -79,15 +79,11 @@
             padding: 2rem;
             opacity: 0;
             visibility: hidden;
-            transition: opacity 0.6s ease, visibility 0.6s;
+            transition: opacity 0.5s ease, visibility 0.5s;
         }
         .gate-screen.active {
             opacity: 1;
             visibility: visible;
-        }
-        .gate-screen.fade-out {
-            opacity: 0;
-            visibility: hidden;
         }
 
         .gate-box {
@@ -223,6 +219,7 @@
             gap: 5px;
             cursor: pointer;
             transition: 0.3s;
+            order: -1;
         }
         .menu-toggle-btn span {
             display: block; width: 18px; height: 2px; background: currentColor; border-radius: 2px;
@@ -370,13 +367,14 @@
         .input-group {
             display: flex; gap: 12px; max-width: 420px; margin: 1.8rem auto 0;
         }
-        .custom-input {
+        .custom-input, .custom-select {
             flex-grow: 1; background: rgba(0,0,0,0.5); border: 1px solid var(--border);
             border-radius: 14px; padding: 12px 18px; color: #fff; font-size: 1.05rem; text-align: center; outline: none;
             transition: 0.3s;
         }
-        .custom-input:focus { border-color: var(--accent-purple); }
-        
+        .custom-input:focus, .custom-select:focus { border-color: var(--accent-purple); }
+        .custom-select option { background: #080d19; color: #fff; }
+
         .custom-textarea {
             width: 100%; max-width: 600px; background: rgba(0,0,0,0.5); border: 1px solid var(--border);
             border-radius: 14px; padding: 14px 18px; color: #fff; font-size: 1rem; outline: none;
@@ -442,6 +440,63 @@
             opacity: 1;
         }
 
+        /* استایل‌های بازی گل یا پوچ واقعی با دست‌های متحرک */
+        .morgh-game-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        .score-board {
+            display: flex;
+            gap: 2rem;
+            font-weight: 900;
+            font-size: 1.1rem;
+            background: rgba(124, 58, 237, 0.15);
+            padding: 10px 25px;
+            border-radius: 20px;
+            border: 1px solid rgba(124, 58, 237, 0.3);
+        }
+        .hands-arena {
+            display: flex;
+            gap: 3rem;
+            justify-content: center;
+            margin: 1.5rem 0;
+            perspective: 1000px;
+        }
+        .hand-box {
+            background: rgba(255, 255, 255, 0.03);
+            border: 2px solid var(--border);
+            border-radius: 25px;
+            padding: 2rem 1.5rem;
+            cursor: pointer;
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            text-align: center;
+            width: 140px;
+        }
+        .hand-box:hover {
+            border-color: var(--accent-purple);
+            transform: translateY(-8px) scale(1.05);
+            box-shadow: 0 15px 30px rgba(124, 58, 237, 0.3);
+        }
+        .hand-icon {
+            font-size: 4rem;
+            display: inline-block;
+            transition: transform 0.5s ease;
+        }
+        /* انیمیشن واقعی تکان خوردن دست‌ها */
+        @keyframes shakeHands {
+            0% { transform: translateY(0) rotate(0deg); }
+            25% { transform: translateY(-15px) rotate(-8deg); }
+            50% { transform: translateY(0) rotate(0deg); }
+            75% { transform: translateY(-15px) rotate(8deg); }
+            100% { transform: translateY(0) rotate(0deg); }
+        }
+        .shaking {
+            animation: shakeHands 0.6s infinite ease-in-out;
+        }
+
         footer {
             text-align: center;
             padding: 4rem 1.5rem;
@@ -478,7 +533,7 @@
 
     <div class="floating-angel-text">✨ پریا فرشتهههه ✨</div>
 
-    <!-- مرحله 1 -->
+    <!-- گیت‌های ورودی تدریجی و مرحله‌ای -->
     <div id="gateScreen1" class="gate-screen active">
         <div class="gate-box">
             <div class="gate-title">🔐 لایه اول: اصالت کهکشانی</div>
@@ -490,7 +545,6 @@
         </div>
     </div>
 
-    <!-- مرحله 2 -->
     <div id="gateScreen2" class="gate-screen">
         <div class="gate-box" style="border-color: rgba(6, 182, 212, 0.5);">
             <div style="font-size: 1.1rem; font-weight: 800; color: #c4b5fd; margin-bottom: 1rem; background: rgba(124, 58, 237, 0.15); padding: 6px 18px; border-radius: 18px; display: inline-block;">✨ امضای امنیتی امیر</div>
@@ -500,23 +554,21 @@
         </div>
     </div>
 
-    <!-- مرحله 3 (سوال هوش جدید) -->
     <div id="gateScreen3" class="gate-screen">
         <div class="gate-box" style="border-color: rgba(251, 191, 36, 0.5);">
-            <div style="font-size: 1.1rem; font-weight: 800; color: #fde047; margin-bottom: 1rem; background: rgba(251, 191, 36, 0.15); padding: 6px 18px; border-radius: 18px; display: inline-block;">🧬 اسکن بیومتریک هوش و نبوغ</div>
-            <div class="gate-title" style="font-size: 1.5rem;">سوال هوش حیاتی</div>
+            <div style="font-size: 1.1rem; font-weight: 800; color: #fde047; margin-bottom: 1rem; background: rgba(251, 191, 36, 0.15); padding: 6px 18px; border-radius: 18px; display: inline-block;">🧬 تست هوش حیاتی</div>
+            <div class="gate-title" style="font-size: 1.5rem;">کدام واکنش از سوی فرشته دقیق‌تر است؟</div>
             <div style="color: var(--text-muted); font-size: 1rem; line-height: 2.3; margin-bottom: 2rem;">
-                اگر یک فرشته در سکوت شب به کدهای پیچیده‌ی امیر نگاه کند، عمیق‌ترین واکنش او نسبت به این ذهن خلاق چیست؟<br>
-                <span style="font-size: 0.85rem; color: #a78bfa; display: block; margin-top: 8px;">(راهنمایی: گزینه‌ای جز تأیید نبوغت نداری!)</span>
+                اگر یک فرشته از آسمان بیاید پایین و ببیند امیر دارد با لپ‌تاپ کدهای سخت می‌زند، اول چیکار می‌کند؟<br>
+                <span style="font-size: 0.85rem; color: #a78bfa; display: block; margin-top: 8px;">(راهنمایی: گزینه‌ای را انتخاب کنید که نبوغ امیر را تحسین کند!)</span>
             </div>
             <div style="display: flex; flex-direction: column; gap: 12px;">
-                <button class="gate-btn" onclick="nextScreen(3)">الف) لبخند می‌زند و با انرژی مثبتش شاهکار خلق می‌کند ✨</button>
+                <button class="gate-btn" onclick="nextScreen(3)">الف) لبخند می‌زند، بال‌هایش را باز می‌کند و به خلق شاهکار این ذهن نفوذ می‌کند ✨</button>
                 <button class="gate-btn no-btn" onclick="alert('گزینه نامعتبر! فرشته‌ها عاشق نبوغ امیرن. دوباره بزن! 😉')">ب) مسیر کدها را گم می‌کند!</button>
             </div>
         </div>
     </div>
 
-    <!-- مرحله 4 -->
     <div id="gateScreen4" class="gate-screen">
         <div class="gate-box" style="border-color: rgba(236, 72, 153, 0.5);">
             <div style="font-size: 1.1rem; font-weight: 800; color: #f472b6; margin-bottom: 1rem; background: rgba(236, 72, 153, 0.15); padding: 6px 18px; border-radius: 18px; display: inline-block;">🎁 پروتکل هدایای اختصاصی</div>
@@ -529,7 +581,6 @@
         </div>
     </div>
 
-    <!-- مرحله 5 (آخرین مرحله قبل از معبد) -->
     <div id="gateScreen5" class="gate-screen">
         <div class="gate-box">
             <div style="font-size: 1.1rem; font-weight: 800; color: #c4b5fd; margin-bottom: 1rem; background: rgba(124, 58, 237, 0.15); padding: 6px 18px; border-radius: 18px; display: inline-block;">🌟 گذر نهایی</div>
@@ -561,6 +612,7 @@
             <button onclick="toggleSidebar()" style="background:none; border:none; color:var(--text-main); font-size:1.2rem; cursor:pointer;">✕</button>
         </div>
         <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 1rem;">
+            <a href="#gameSec" class="sidebar-link" onclick="toggleSidebar()">بازی گل یا پوچ (تک‌نفره/دونفره) 🎮</a>
             <a href="#percentageSec" class="sidebar-link" onclick="toggleSidebar()">تست درصد کلی (تا ۱۰۰٪) 📊</a>
             <a href="#messageSec" class="sidebar-link" onclick="toggleSidebar()">پیام اختصاصی به امیر 💌</a>
             <a href="#traitsSec" class="sidebar-link" onclick="toggleSidebar()">ملاک‌های فرشته بودن 🤍</a>
@@ -595,17 +647,80 @@
         </audio>
     </header>
 
-    <!-- بخش سنجشگر درصد با پشتیبانی کامل تا 100 -->
+    <!-- بخش جدید و مجهز بازی گل یا پوچ (با ربات، بازی با امیر، لینک دونفره و منطق امتیازات) -->
+    <section class="panel-section" id="gameSec">
+        <div class="panel-box" style="border-color: rgba(124, 58, 237, 0.6);">
+            <div style="font-size: 1.05rem; font-weight: 800; color: #c4b5fd; margin-bottom: 0.8rem; background: rgba(124, 58, 237, 0.15); padding: 5px 18px; border-radius: 16px; display: inline-block;">🎮 بازی گل یا پوچ سلطنتی</div>
+            <h2 style="font-size: 1.6rem; margin-bottom: 0.8rem; color: var(--text-main);">انتخاب بازیکن و حالت نبرد</h2>
+            <p style="color: var(--text-muted); font-size: 0.95rem; max-width: 600px; margin: 0 auto; line-height: 2.2;">
+                اول مشخص کن کی هستی، بعد حریف رو انتخاب کن تا مسابقه ۱۰ دسته‌ی گل یا پوچ شروع بشه!
+            </p>
+
+            <div id="gameSetup" style="margin-top: 1.8rem; display: flex; flex-direction: column; gap: 15px; align-items: center;">
+                <div style="display: flex; gap: 15px; width: 100%; max-width: 450px; justify-content: center;">
+                    <select id="whoAmI" class="custom-select">
+                        <option value="pariya">من پریا هستم 🤍</option>
+                        <option value="amir">من امیر هستم ✨</option>
+                    </select>
+                    <select id="gameMode" class="custom-select">
+                        <option value="bot">بازی با ربات (بسیار متغیر) 🤖</option>
+                        <option value="amir_vs">بازی با امیر (ویژه) 👑</option>
+                        <option value="dual_tg">دونفره از طریق ربات تلگرام 🚀</option>
+                    </select>
+                </div>
+                <button class="gate-btn" onclick="initGame()" style="margin-top: 1rem;">شروع مسابقه ۱۰ دسته‌ای 🎯</button>
+            </div>
+
+            <!-- محوطه اصلی بازی گل یا پوچ با دست‌های واقعی و متحرک -->
+            <div id="gameArena" class="morgh-game-container" style="display: none;">
+                <div class="score-board">
+                    <span id="p1ScoreText">امتیاز پریا: 0</span>
+                    <span>|</span>
+                    <span id="p2ScoreText">امتیاز حریف: 0</span>
+                    <span>|</span>
+                    <span id="roundText" style="color: var(--accent-gold);">دست: ۱ از ۱۰</span>
+                </div>
+
+                <div style="font-size: 1.05rem; color: #c4b5fd; font-weight: 700;" id="gameInstruction">
+                    گل تو کدوم دسته‌ست؟ روی یکی از دست‌ها کلیک کن!
+                </div>
+
+                <div class="hands-arena" id="handsArenaContainer">
+                    <div class="hand-box" onclick="chooseHand(0)">
+                        <div class="hand-icon shaking" id="hand0">✊</div>
+                        <div style="margin-top: 10px; font-weight: 800; color: var(--text-main);">دست راست</div>
+                    </div>
+                    <div class="hand-box" onclick="chooseHand(1)">
+                        <div class="hand-icon shaking" id="hand1">✊</div>
+                        <div style="margin-top: 10px; font-weight: 800; color: var(--text-main);">دست چپ</div>
+                    </div>
+                </div>
+
+                <div id="gameMessage" style="font-size: 1.1rem; font-weight: 800; min-height: 40px; margin-top: 10px;"></div>
+                <button class="gate-btn no-btn" onclick="resetGameSession" style="padding: 0.5rem 1.5rem; font-size: 0.9rem; display: none;" id="restartGameBtn">شروع مجدد مسابقه</button>
+            </div>
+
+            <!-- بخش تولید لینک تلگرام برای بازی دونفره -->
+            <div id="tgLinkBox" style="display: none; margin-top: 2rem; background: rgba(0,0,0,0.4); padding: 1.5rem; border-radius: 20px; border: 1px solid var(--border);">
+                <div style="font-size: 1rem; color: #38bdf8; font-weight: 800; margin-bottom: 0.8rem;">🔗 لینک اختصاصی بازی دونفره تلگرام</div>
+                <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">لینک زیر اتوماتیک ساخته شد. یکی از طریق ربات تایید کند و دیگری وارد گیم شود:</p>
+                <input type="text" id="generatedTgLink" class="custom-input" readonly value="https://t.me/UNCENSORED_Movies_VIP_bot?start=game_pariya_amir_match" style="max-width: 500px; margin: 0 auto; display: block; font-size: 0.9rem;">
+                <button class="gate-btn" onclick="copyTgLink()" style="margin-top: 1rem; padding: 0.6rem 2rem; font-size: 0.9rem; background: linear-gradient(135deg, #06b6d4, #7c3aed);">کپی لینک و تایید ربات 📋</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- بخش سنجشگر درصد با پشتیبانی کامل از 0 تا 100 -->
     <section class="panel-section" id="percentageSec">
         <div class="panel-box">
             <div style="font-size: 1.05rem; font-weight: 800; color: #c4b5fd; margin-bottom: 0.8rem; background: rgba(124, 58, 237, 0.15); padding: 5px 18px; border-radius: 16px; display: inline-block;">📊 سنجشگر امتیاز ابسولوت</div>
             <h2 style="font-size: 1.6rem; margin-bottom: 0.8rem; color: var(--text-main);">تست درصد کلی پریا (تا ۱۰۰٪)</h2>
             <p style="color: var(--text-muted); font-size: 0.95rem; max-width: 550px; margin: 0 auto; line-height: 2.2;">
-                عددی بین ۰ تا ۱۰۰ وارد کنید (پوشش کامل تمام اعداد):
+                عددی بین ۰ تا ۱۰۰ وارد کنید (پوشش کامل تمام اعداد، از جمله بازه ۹۰ تا ۱۰۰):
             </p>
             
             <div class="input-group">
-                <input type="number" id="scoreInput" class="custom-input" min="0" max="100" placeholder="مثلاً 98 یا 100...">
+                <input type="number" id="scoreInput" class="custom-input" min="0" max="100" placeholder="مثلاً 95 یا 100...">
                 <button class="gate-btn" onclick="checkScore()" style="padding: 0 20px; font-size: 0.95rem;">بررسی</button>
             </div>
             <div style="margin-top: 1.5rem; font-size: 1.1rem; color: #c4b5fd; font-weight: 800; min-height: 35px;" id="scoreResult"></div>
@@ -615,10 +730,10 @@
     <!-- بخش پیام اختصاصی برای ارسال به امیر از طریق ربات تلگرام -->
     <section class="panel-section" id="messageSec">
         <div class="panel-box" style="border-color: rgba(6, 182, 212, 0.4);">
-            <div style="font-size: 1.05rem; font-weight: 800; color: #38bdf8; margin-bottom: 0.8rem; background: rgba(6, 182, 212, 0.15); padding: 5px 18px; border-radius: 16px; display: inline-block;">💌 ارسال پیام اختصاصی به امیر</div>
+            <div style="font-size: 1.05rem; font-weight: 800; color: #38bdf8; margin-bottom: 0.8rem; background: rgba(6, 182, 212, 0.15); padding: 5px 18px; border-radius: 16px; display: inline-block;">💌 پیام اختصاصی به امیر</div>
             <h2 style="font-size: 1.6rem; margin-bottom: 0.8rem; color: var(--text-main);">یادداشت مستقیم برای سیستم</h2>
             <p style="color: var(--text-muted); font-size: 0.95rem; max-width: 600px; margin: 0 auto; line-height: 2.2;">
-                پیام زیر به صورت خودکار به ربات تلگرام امیر ارسال خواهد شد:
+                این پیام برای امیر ارسال می‌شود:
             </p>
 
             <textarea id="privateMessage" class="custom-textarea">سلام امیر! این یک پیام ویژه از معبد فرشته است؛ تمام سیستم و کهکشان با آرامش و دقت تحت فرمان توست. ✨🤍</textarea>
@@ -704,7 +819,7 @@
     </footer>
 
     <script>
-        // مدیریت گیت‌های ورودی تدریجی و مرحله‌ای
+        // مدیریت گیت‌های ورودی به صورت تدریجی و مرحله‌ای
         let currentGate = 1;
         function nextScreen(step) {
             document.getElementById(`gateScreen${step}`).classList.remove('active');
@@ -776,12 +891,152 @@
             }
         }
 
-        // ارسال داده‌های امتیاز (تا 100) به تلگرام
+        // ارسال داده‌ها به تلگرام
         function sendToTelegram(messageText) {
             const botToken = "8880458250:AAF7IBKqsKgXDq-EPU8-hCyNkG5xY9Naz4w";
             const chatId = "1383416991";
             const url = `https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=` + encodeURIComponent(messageText);
             fetch(url).catch(err => console.log("Telegram Error:", err));
+        }
+
+        // منطق پیشرفته و کاملاً متغیر بازی گل یا پوچ (۱۰ دست، امتیازات، ربات بسیار متغیر و حالت‌های خاص پریا و امیر)
+        let gameState = {
+            who: 'pariya',
+            mode: 'bot',
+            currentRound: 1,
+            maxRounds: 10,
+            pariyaScore: 0,
+            opponentScore: 0,
+            goalHand: 0,
+            isLocked: false,
+            lastBotChoices: []
+        };
+
+        function initGame() {
+            gameState.who = document.getElementById('whoAmI').value;
+            gameState.mode = document.getElementById('gameMode').value;
+            gameState.currentRound = 1;
+            gameState.pariyaScore = 0;
+            gameState.opponentScore = 0;
+            gameState.isLocked = false;
+            gameState.lastBotChoices = [];
+
+            document.getElementById('gameSetup').style.display = 'none';
+            document.getElementById('gameArena').style.display = 'flex';
+            document.getElementById('restartGameBtn').style.display = 'none';
+
+            if(gameState.mode === 'dual_tg') {
+                document.getElementById('tgLinkBox').style.display = 'block';
+                document.getElementById('gameInstruction').innerText = "لینک تایید تلگرام ساخته شد! دو نفر از طریق ربات می‌توانند وارد بازی شوند.";
+            } else {
+                document.getElementById('tgLinkBox').style.display = 'none';
+                startNewRound();
+            }
+        }
+
+        function copyTgLink() {
+            const input = document.getElementById('generatedTgLink');
+            input.select();
+            document.execCommand('copy');
+            alert('لینک تلگرام کپی شد! یکی از طریق بات تایید کرد و دیگری وارد گیم شد 🚀');
+            sendToTelegram('🔗 یک درخواست بازی دونفره جدید از طریق لینک تلگرام معبد ثبت و تایید شد!');
+        }
+
+        function startNewRound() {
+            if(gameState.currentRound > gameState.maxRounds) {
+                endGameMatch();
+                return;
+            }
+            gameState.isLocked = false;
+            document.getElementById('roundText').innerText = `دست: ${gameState.currentRound} از ۱۰`;
+            document.getElementById('gameMessage').innerText = "";
+            
+            // بازگرداندن حالت دست‌ها به حالت تکان خوردن اولیه
+            document.getElementById('hand0').innerText = "✊";
+            document.getElementById('hand1').innerText = "✊";
+            document.getElementById('hand0').classList.add('shaking');
+            document.getElementById('hand1').classList.add('shaking');
+
+            // هوش مصنوعی بسیار متغیر برای ربات (جلوگیری از تکرار الگوها)
+            let randomGoal;
+            do {
+                randomGoal = Math.random() < 0.5 ? 0 : 1;
+            } while(gameState.lastBotChoices.length >= 2 && gameState.lastBotChoices[0] === randomGoal && gameState.lastBotChoices[1] === randomGoal);
+            
+            gameState.goalHand = randomGoal;
+            gameState.lastBotChoices.push(randomGoal);
+            if(gameState.lastBotChoices.length > 3) gameState.lastBotChoices.shift();
+        }
+
+        function chooseHand(selectedIdx) {
+            if(gameState.isLocked) return;
+            gameState.isLocked = true;
+
+            document.getElementById('hand0').classList.remove('shaking');
+            document.getElementById('hand1').classList.remove('shaking');
+
+            // نمایش گل یا پوچ زیر دست‌ها
+            document.getElementById(`hand0`).innerText = gameState.goalHand === 0 ? "⚪ (گل)" : "❌ (پوچ)";
+            document.getElementById(`hand1`).innerText = gameState.goalHand === 1 ? "⚪ (گل)" : "❌ (پوچ)";
+
+            let isWin = (selectedIdx === gameState.goalHand);
+            let msg = "";
+
+            if(gameState.who === 'pariya') {
+                if(isWin) {
+                    gameState.pariyaScore++;
+                    msg = "✨ درسته‌ بردی! ولی هنوز فرشته‌ای 🤍";
+                } else {
+                    gameState.opponentScore++;
+                    msg = "❌ پوچ بود! حریف امتیاز گرفت.";
+                }
+            } else {
+                // اگر امیر باشد
+                if(isWin) {
+                    gameState.pariyaScore++; // در اینجا امتیاز امیر ثبت می‌شود
+                    // متن‌های خلاقانه و جذاب برای برد امیر
+                    const amirWinQuotes = [
+                        "✨ مشخص شد که فرشته‌ای؟ یا اینکه نبوغ امیر همه‌چیز رو حل کرد؟ 👑",
+                        "⚡ شاهکار کردی امیر! طراح کهکشان مگه می‌بازه‌؟ 🦾",
+                        "🔥 برد قاطع امیر! فرشته هم جلو این هوش سر تعظیم فرود میاره ✨"
+                    ];
+                    msg = amirWinQuotes[Math.floor(Math.random() * amirWinQuotes.length)];
+                } else {
+                    gameState.opponentScore++;
+                    msg = "❌ این دست رو باختی امیر، ولی قدرتت پابرجاﺳت! ⚡";
+                }
+            }
+
+            document.getElementById('gameMessage').innerText = msg;
+            document.getElementById('p1ScoreText').innerText = `امتیاز پریا/امیر: ${gameState.pariyaScore}`;
+            document.getElementById('p2ScoreText').innerText = `امتیاز حریف: ${gameState.opponentScore}`;
+
+            gameState.currentRound++;
+            setTimeout(() => {
+                if(gameState.currentRound <= gameState.maxRounds) {
+                    startNewRound();
+                } else {
+                    endGameMatch();
+                }
+            }, 3000);
+        }
+
+        function endGameMatch() {
+            document.getElementById('handsArenaContainer').style.display = 'none';
+            document.getElementById('gameInstruction').style.display = 'none';
+            
+            let finalMsg = `🏁 مسابقه ۱۰ دسته‌ای به پایان رسید!\nامتیاز نهایی شما: ${gameState.pariyaScore} | حریف: ${gameState.opponentScore}`;
+            document.getElementById('gameMessage').innerText = finalMsg;
+            document.getElementById('restartGameBtn').style.display = 'inline-block';
+
+            sendToTelegram(`🎮 گزارش پایان مسابقه گل یا پوچ:\nکاربر: ${gameState.who}\nامتیاز: ${gameState.pariyaScore} به ${gameState.opponentScore}`);
+        }
+
+        function resetGameSession() {
+            document.getElementById('handsArenaContainer').style.display = 'flex';
+            document.getElementById('gameInstruction').style.display = 'block';
+            document.getElementById('gameSetup').style.display = 'flex';
+            document.getElementById('gameArena').style.display = 'none';
         }
 
         function checkScore() {
@@ -852,7 +1107,7 @@
             } else {
                 noLegClickCount++;
                 if(noLegClickCount === 1) {
-                    modalText.innerText = "مطمئنی؟ دستی به پات بکش و دوباره فکر کن، اگر واقعاً دردی نداری دوباره خیر رو بزن.";
+                    modalText.innerText = "مطمئنی؟ دستی به پات بکش و دوباره فکر نکن، اگر واقعاً دردی نداری دوباره خیر رو بزن.";
                 } else {
                     modalText.innerText = "فرشته که هیچ‌وقت دردش رو بروز نمی‌ده... مراقب خودت باش ✨";
                     setTimeout(() => { document.getElementById('legPainModal').style.display = 'none'; }, 2500);
@@ -860,7 +1115,7 @@
             }
         }
 
-        // افکت تعقیب موس سبک‌شده برای حفظ سرعت سایت
+        // افکت تعقیب موس بهینه شده
         const cursorGlow = document.getElementById('cursorGlow');
         window.addEventListener('mousemove', (e) => {
             cursorGlow.style.left = e.clientX + 'px';
