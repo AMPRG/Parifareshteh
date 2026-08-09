@@ -18,14 +18,6 @@
             --border: rgba(255, 255, 255, 0.08);
         }
 
-        body.dark-theme {
-            --bg-dark: #000103;
-            --card-bg: rgba(5, 9, 18, 0.96);
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
-            --border: rgba(255, 255, 255, 0.08);
-        }
-
         body.light-theme {
             --bg-dark: #f0f4f8;
             --card-bg: rgba(255, 255, 255, 0.96);
@@ -48,13 +40,13 @@
             overflow-x: hidden;
             position: relative;
             min-height: 100vh;
-            transition: background 0.4s ease, color 0.4s ease;
+            transition: background 0.3s ease, color 0.3s ease;
         }
 
         .floating-angel-text {
             position: fixed;
             top: 25px;
-            right: 40px;
+            left: 80px;
             background: linear-gradient(135deg, rgba(124, 58, 237, 0.25), rgba(6, 182, 212, 0.25));
             border: 1px solid rgba(124, 58, 237, 0.5);
             padding: 8px 22px;
@@ -63,18 +55,18 @@
             font-weight: 900;
             color: #c4b5fd;
             z-index: 9999;
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(8px);
             animation: float-rotate 6s infinite ease-in-out;
-            box-shadow: 0 0 25px rgba(124, 58, 237, 0.4);
+            box-shadow: 0 0 20px rgba(124, 58, 237, 0.3);
             pointer-events: none;
         }
         @keyframes float-rotate {
             0% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-8px) rotate(2deg); }
+            50% { transform: translateY(-6px) rotate(1deg); }
             100% { transform: translateY(0) rotate(0deg); }
         }
 
-        #gateScreen {
+        .gate-screen {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
             background: #000103;
@@ -85,24 +77,31 @@
             align-items: center;
             text-align: center;
             padding: 2rem;
-            transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), visibility 1.2s;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.6s ease, visibility 0.6s;
         }
-        #gateScreen.fade-out {
+        .gate-screen.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        .gate-screen.fade-out {
             opacity: 0;
             visibility: hidden;
         }
+
         .gate-box {
             background: rgba(8, 13, 25, 0.99);
             border: 1px solid rgba(124, 58, 237, 0.5);
             border-radius: 35px;
-            padding: 4rem 3rem;
+            padding: 3.5rem 2.5rem;
             max-width: 580px;
             width: 100%;
-            box-shadow: 0 35px 90px rgba(0,0,0,0.99);
-            backdrop-filter: blur(30px);
+            box-shadow: 0 30px 70px rgba(0,0,0,0.9);
+            backdrop-filter: blur(20px);
         }
         .gate-title {
-            font-size: 1.9rem;
+            font-size: 1.8rem;
             font-weight: 900;
             margin-bottom: 1.5rem;
             background: linear-gradient(135deg, #fff, #a78bfa);
@@ -124,7 +123,7 @@
             font-weight: 900;
             border-radius: 50px;
             cursor: pointer;
-            box-shadow: 0 10px 30px rgba(124, 58, 237, 0.5);
+            box-shadow: 0 8px 25px rgba(124, 58, 237, 0.4);
             transition: 0.3s;
         }
         .gate-btn.no-btn {
@@ -132,32 +131,16 @@
             border: 1px solid var(--border);
             color: var(--text-muted);
         }
-        .gate-btn:hover { transform: scale(1.05); }
-
-        #securityScreen, #geniusScreen, #giftScreen, #introScreen {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: #000103;
-            z-index: 99988;
-            display: none;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 2rem;
-            opacity: 0;
-            transition: opacity 0.8s ease;
-        }
+        .gate-btn:hover { transform: scale(1.03); }
 
         .cursor-glow {
             position: fixed;
-            width: 500px; height: 500px;
-            background: radial-gradient(circle, rgba(124, 58, 237, 0.12) 0%, rgba(6, 182, 212, 0.04) 50%, transparent 75%);
+            width: 400px; height: 400px;
+            background: radial-gradient(circle, rgba(124, 58, 237, 0.1) 0%, transparent 70%);
             border-radius: 50%;
             pointer-events: none;
             transform: translate(-50%, -50%);
             z-index: 9998;
-            mix-blend-mode: screen;
         }
 
         .bg-glow {
@@ -183,8 +166,8 @@
             animation: twinkle 3s infinite ease-in-out;
         }
         @keyframes twinkle {
-            0%, 100% { opacity: 0.1; transform: scale(0.6); }
-            50% { opacity: 0.9; transform: scale(1.5); }
+            0%, 100% { opacity: 0.2; transform: scale(0.6); }
+            50% { opacity: 0.8; transform: scale(1.2); }
         }
 
         .top-nav {
@@ -193,14 +176,14 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1.2rem 2.5rem;
+            padding: 1.2rem 2rem;
             z-index: 999;
-            background: rgba(0, 1, 3, 0.7);
-            backdrop-filter: blur(20px);
+            background: rgba(0, 1, 3, 0.8);
+            backdrop-filter: blur(15px);
             border-bottom: 1px solid var(--border);
         }
         body.light-theme .top-nav {
-            background: rgba(255, 255, 255, 0.7);
+            background: rgba(255, 255, 255, 0.8);
         }
         .nav-brand {
             font-size: 1.15rem;
@@ -218,9 +201,9 @@
             background: rgba(124, 58, 237, 0.15);
             border: 1px solid rgba(124, 58, 237, 0.4);
             color: #c4b5fd;
-            padding: 8px 16px;
-            border-radius: 14px;
-            font-size: 0.85rem;
+            padding: 8px 14px;
+            border-radius: 12px;
+            font-size: 0.82rem;
             font-weight: 800;
             cursor: pointer;
             transition: 0.3s;
@@ -231,7 +214,7 @@
             background: none;
             border: 1px solid var(--border);
             color: var(--text-main);
-            width: 42px; height: 42px;
+            width: 40px; height: 40px;
             border-radius: 12px;
             display: flex;
             flex-direction: column;
@@ -242,70 +225,43 @@
             transition: 0.3s;
         }
         .menu-toggle-btn span {
-            display: block; width: 20px; height: 2px; background: currentColor; border-radius: 2px;
+            display: block; width: 18px; height: 2px; background: currentColor; border-radius: 2px;
         }
         .menu-toggle-btn:hover { border-color: var(--accent-purple); }
 
         .sidebar {
             position: fixed;
-            top: 0; left: -360px; width: 350px; height: 100%;
+            top: 0; right: -360px; width: 340px; height: 100%;
             background: var(--card-bg);
-            border-right: 1px solid var(--border);
+            border-left: 1px solid var(--border);
             z-index: 9999;
-            box-shadow: 20px 0 50px rgba(0,0,0,0.8);
-            transition: left 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: -20px 0 40px rgba(0,0,0,0.8);
+            transition: right 0.35s cubic-bezier(0.16, 1, 0.3, 1);
             padding: 3rem 2rem;
             display: flex;
             flex-direction: column;
-            gap: 1.5rem;
+            gap: 1.2rem;
             overflow-y: auto;
         }
-        .sidebar.open { left: 0; }
+        .sidebar.open { right: 0; }
         .sidebar-title {
-            font-size: 1.3rem; font-weight: 900; color: var(--text-main); margin-bottom: 0.5rem;
+            font-size: 1.25rem; font-weight: 900; color: var(--text-main);
         }
         .sidebar-link {
             background: rgba(124, 58, 237, 0.08);
             border: 1px solid rgba(124, 58, 237, 0.25);
-            padding: 14px 20px;
-            border-radius: 16px;
+            padding: 12px 18px;
+            border-radius: 14px;
             color: #c4b5fd;
             text-decoration: none;
             font-weight: 700;
-            font-size: 0.95rem;
+            font-size: 0.92rem;
             transition: 0.3s;
             display: block;
         }
         .sidebar-link:hover {
             background: rgba(124, 58, 237, 0.25);
-            transform: translateX(-4px);
-        }
-
-        .search-container {
-            margin-top: 1rem;
-            position: relative;
-        }
-        .search-input {
-            width: 100%;
-            background: rgba(0,0,0,0.4);
-            border: 1px solid var(--border);
-            border-radius: 14px;
-            padding: 12px 18px;
-            color: var(--text-main);
-            font-size: 0.9rem;
-            outline: none;
-            transition: 0.3s;
-        }
-        .search-input:focus { border-color: var(--accent-purple); }
-        .search-result-box {
-            margin-top: 10px;
-            padding: 12px;
-            background: rgba(124, 58, 237, 0.15);
-            border-radius: 12px;
-            font-size: 0.88rem;
-            color: #f8fafc;
-            display: none;
-            border: 1px solid rgba(124, 58, 237, 0.4);
+            transform: translateX(4px);
         }
 
         header {
@@ -323,18 +279,18 @@
             background: rgba(124, 58, 237, 0.18);
             color: #c4b5fd;
             border: 1px solid rgba(124, 58, 237, 0.45);
-            padding: 0.8rem 2.8rem;
+            padding: 0.7rem 2.5rem;
             border-radius: 50px;
-            font-size: 1.05rem;
+            font-size: 1rem;
             margin-bottom: 2rem;
-            box-shadow: 0 0 40px rgba(124, 58, 237, 0.35);
+            box-shadow: 0 0 30px rgba(124, 58, 237, 0.3);
             font-weight: 800;
         }
 
         h1 {
-            font-size: clamp(2.6rem, 6vw, 4.8rem);
+            font-size: clamp(2.4rem, 5.5vw, 4.5rem);
             font-weight: 900;
-            margin-bottom: 1.2rem;
+            margin-bottom: 1rem;
             background: linear-gradient(135deg, #ffffff 15%, #a78bfa 85%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -342,249 +298,179 @@
         }
 
         p.subtitle {
-            font-size: clamp(1.05rem, 2.3vw, 1.25rem);
+            font-size: clamp(1rem, 2.2vw, 1.2rem);
             color: var(--text-muted);
-            max-width: 800px;
-            line-height: 2.6;
-            margin-bottom: 3.5rem;
+            max-width: 750px;
+            line-height: 2.5;
+            margin-bottom: 3rem;
         }
 
         .player-container {
             background: var(--card-bg);
             border: 1px solid rgba(124, 58, 237, 0.3);
-            backdrop-filter: blur(25px);
-            padding: 1.9rem 2.6rem;
-            border-radius: 32px;
-            box-shadow: 0 35px 70px rgba(0, 0, 0, 0.85);
-            max-width: 520px;
+            backdrop-filter: blur(20px);
+            padding: 1.8rem 2.4rem;
+            border-radius: 30px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8);
+            max-width: 500px;
             width: 100%;
             display: flex;
             flex-direction: column;
-            gap: 1.4rem;
+            gap: 1.3rem;
         }
         .player-top {
             display: flex;
             align-items: center;
-            gap: 1.6rem;
+            gap: 1.5rem;
         }
         .play-btn {
             background: linear-gradient(135deg, #7c3aed, #06b6d4);
             color: white;
             border: none;
-            width: 65px; height: 65px;
+            width: 60px; height: 60px;
             border-radius: 50%;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             transition: 0.3s;
-            box-shadow: 0 0 30px rgba(6, 182, 212, 0.5);
+            box-shadow: 0 0 25px rgba(6, 182, 212, 0.4);
             flex-shrink: 0;
         }
-        .play-btn:hover { transform: scale(1.08); }
+        .play-btn:hover { transform: scale(1.06); }
         .track-info { text-align: right; flex-grow: 1; }
-        .track-title { font-weight: 800; font-size: 1.1rem; color: var(--text-main); }
-        .track-desc { font-size: 0.85rem; color: #a78bfa; margin-top: 5px; }
+        .track-title { font-weight: 800; font-size: 1.05rem; color: var(--text-main); }
+        .track-desc { font-size: 0.82rem; color: #a78bfa; margin-top: 4px; }
         .audio-modes {
-            display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; border-top: 1px solid var(--border); padding-top: 14px;
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; border-top: 1px solid var(--border); padding-top: 12px;
         }
         .mode-btn {
             background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border);
-            color: var(--text-muted); padding: 10px 4px; border-radius: 12px; font-size: 0.76rem;
+            color: var(--text-muted); padding: 9px 4px; border-radius: 10px; font-size: 0.74rem;
             cursor: pointer; transition: 0.3s; font-weight: 700; text-align: center;
         }
         .mode-btn.active {
             background: rgba(124, 58, 237, 0.3); border-color: rgba(124, 58, 237, 0.7); color: var(--text-main);
         }
 
-        .percentage-panel {
-            max-width: 1200px;
-            margin: 0 auto 6rem;
+        .panel-section {
+            max-width: 1100px;
+            margin: 0 auto 5rem;
             padding: 0 1.5rem;
         }
-        .percentage-box {
-            background: linear-gradient(135deg, rgba(8, 13, 25, 0.98), rgba(30, 15, 45, 0.99));
-            border: 1px solid rgba(124, 58, 237, 0.45);
-            border-radius: 35px;
-            padding: 4rem 3.5rem;
-            box-shadow: 0 35px 80px rgba(0,0,0,0.85);
+        .panel-box {
+            background: linear-gradient(135deg, rgba(8, 13, 25, 0.98), rgba(25, 12, 40, 0.99));
+            border: 1px solid rgba(124, 58, 237, 0.4);
+            border-radius: 32px;
+            padding: 3.5rem 3rem;
+            box-shadow: 0 30px 70px rgba(0,0,0,0.8);
             text-align: center;
         }
-        .percentage-input-group {
-            display: flex; gap: 15px; max-width: 450px; margin: 2rem auto 0;
+        .input-group {
+            display: flex; gap: 12px; max-width: 420px; margin: 1.8rem auto 0;
         }
-        .score-input {
-            flex-grow: 1; background: rgba(0,0,0,0.6); border: 1px solid var(--border);
-            border-radius: 16px; padding: 14px 20px; color: #fff; font-size: 1.1rem; text-align: center; outline: none;
+        .custom-input {
+            flex-grow: 1; background: rgba(0,0,0,0.5); border: 1px solid var(--border);
+            border-radius: 14px; padding: 12px 18px; color: #fff; font-size: 1.05rem; text-align: center; outline: none;
+            transition: 0.3s;
         }
-        .score-btn {
-            background: var(--accent-purple); color: white; border: none; padding: 0 28px;
-            border-radius: 16px; font-weight: 800; cursor: pointer; transition: 0.3s;
+        .custom-input:focus { border-color: var(--accent-purple); }
+        
+        .custom-textarea {
+            width: 100%; max-width: 600px; background: rgba(0,0,0,0.5); border: 1px solid var(--border);
+            border-radius: 14px; padding: 14px 18px; color: #fff; font-size: 1rem; outline: none;
+            margin: 1.5rem auto 0; display: block; resize: none; height: 110px; transition: 0.3s;
         }
-        .score-result {
-            margin-top: 2rem; font-size: 1.2rem; color: #c4b5fd; font-weight: 800; min-height: 40px;
-        }
+        .custom-textarea:focus { border-color: var(--accent-purple); }
 
-        .angelic-traits-section {
-            max-width: 1200px;
-            margin: 0 auto 6rem;
-            padding: 0 1.5rem;
-        }
-        .section-title {
-            text-align: center;
-            font-size: 2.2rem;
-            font-weight: 900;
-            margin-bottom: 0.9rem;
-            background: linear-gradient(135deg, #fff, #a78bfa);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .section-desc {
-            text-align: center;
-            color: var(--text-muted);
-            margin-bottom: 4rem;
-            font-size: 1.05rem;
-            max-width: 750px;
-            margin-left: auto; margin-right: auto;
-            line-height: 2.2;
-        }
         .traits-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.8rem;
+            margin-top: 2.5rem;
         }
         .trait-card {
             background: var(--card-bg);
             border: 1px solid var(--border);
-            border-radius: 28px;
-            padding: 2.5rem;
+            border-radius: 24px;
+            padding: 2.2rem;
             text-align: right;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.6);
-            backdrop-filter: blur(15px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.5);
             transition: 0.3s;
         }
-        .trait-card:hover { border-color: rgba(124, 58, 237, 0.5); transform: translateY(-5px); }
-        .trait-title { font-size: 1.2rem; font-weight: 900; color: #c4b5fd; margin-bottom: 1rem; display: flex; align-items: center; gap: 10px; }
-        .trait-desc { font-size: 0.95rem; color: var(--text-muted); line-height: 2.5; }
+        .trait-card:hover { border-color: rgba(124, 58, 237, 0.5); transform: translateY(-4px); }
+        .trait-title { font-size: 1.15rem; font-weight: 900; color: #c4b5fd; margin-bottom: 0.8rem; display: flex; align-items: center; gap: 10px; }
+        .trait-desc { font-size: 0.92rem; color: var(--text-muted); line-height: 2.4; }
 
-        .newspaper-section {
-            max-width: 1200px;
-            margin: 0 auto 6rem;
-            padding: 0 1.5rem;
-        }
         .news-box {
             background: linear-gradient(135deg, rgba(12, 18, 32, 0.98), rgba(20, 10, 35, 0.99));
             border: 2px solid rgba(251, 191, 36, 0.4);
-            border-radius: 35px;
-            padding: 4rem 3.5rem;
-            box-shadow: 0 40px 90px rgba(0,0,0,0.9);
+            border-radius: 32px;
+            padding: 3.5rem 3rem;
+            box-shadow: 0 35px 80px rgba(0,0,0,0.8);
             cursor: pointer;
-            transition: 0.4s;
-            position: relative;
-            overflow: hidden;
+            transition: 0.3s;
         }
-        .news-box:hover { border-color: var(--accent-gold); transform: scale(1.01); }
-        .news-header-tag {
-            background: rgba(251, 191, 36, 0.15); color: #fde047; border: 1px solid rgba(251, 191, 36, 0.4);
-            padding: 6px 20px; border-radius: 20px; font-size: 0.85rem; font-weight: 800; display: inline-block; margin-bottom: 1.2rem;
-        }
+        .news-box:hover { border-color: var(--accent-gold); transform: scale(1.005); }
         .news-content {
-            margin-top: 1.5rem; display: none; line-height: 2.8; color: var(--text-muted); font-size: 1.05rem; text-align: right;
-            border-top: 1px solid var(--border); padding-top: 2rem;
+            margin-top: 1.5rem; display: none; line-height: 2.7; color: var(--text-muted); font-size: 1rem; text-align: right;
+            border-top: 1px solid var(--border); padding-top: 1.8rem;
         }
 
-        .wings-section {
-            max-width: 900px;
-            margin: 0 auto 6rem;
-            padding: 0 1.5rem;
-            text-align: center;
-        }
         .wings-btn {
             background: linear-gradient(135deg, #7c3aed, #06b6d4);
-            color: white; border: none; padding: 1.4rem 4rem; font-size: 1.2rem; font-weight: 900;
-            border-radius: 50px; cursor: pointer; box-shadow: 0 20px 50px rgba(124, 58, 237, 0.5); transition: 0.3s;
+            color: white; border: none; padding: 1.2rem 3.5rem; font-size: 1.15rem; font-weight: 900;
+            border-radius: 50px; cursor: pointer; box-shadow: 0 15px 40px rgba(124, 58, 237, 0.4); transition: 0.3s;
         }
-        .wings-btn:hover { transform: scale(1.05); }
+        .wings-btn:hover { transform: scale(1.04); }
 
         .flying-angel-icon {
             position: fixed;
             bottom: -150px;
             left: 50%;
             transform: translateX(-50%);
-            font-size: 6rem;
+            font-size: 5rem;
             z-index: 99999;
-            transition: bottom 2.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 2.5s;
+            transition: bottom 2.2s cubic-bezier(0.16, 1, 0.3, 1), opacity 2.2s;
             pointer-events: none;
             opacity: 0;
-            filter: drop-shadow(0 0 35px rgba(255, 255, 255, 0.9));
+            filter: drop-shadow(0 0 30px rgba(236, 72, 153, 0.8));
         }
         .flying-angel-icon.fly {
             bottom: 105vh;
             opacity: 1;
         }
 
-        .verification-footer-section {
-            max-width: 1000px;
-            margin: 0 auto 6rem;
-            padding: 0 1.5rem;
-            text-align: center;
-        }
-        .warning-box {
-            background: rgba(239, 68, 68, 0.08);
-            border: 1px solid rgba(239, 68, 68, 0.35);
-            border-radius: 28px;
-            padding: 3rem;
-            margin-bottom: 3rem;
-            text-align: right;
-            box-shadow: 0 25px 60px rgba(0,0,0,0.6);
-        }
-        .warning-title {
-            color: #f87171; font-size: 1.2rem; font-weight: 900; margin-bottom: 1rem; display: flex; align-items: center; gap: 10px;
-        }
-        .warning-list {
-            list-style: none; display: flex; flex-direction: column; gap: 12px; color: #fca5a5; font-size: 0.98rem; line-height: 2.2;
-        }
-
-        .authenticity-badge {
-            background: var(--card-bg);
-            border: 1px solid rgba(124, 58, 237, 0.4);
-            border-radius: 30px;
-            padding: 3rem;
-            backdrop-filter: blur(20px);
-            box-shadow: 0 30px 70px rgba(0,0,0,0.8);
-        }
-
         footer {
             text-align: center;
-            padding: 4.5rem 1.5rem;
+            padding: 4rem 1.5rem;
             color: var(--text-muted);
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             border-top: 1px solid var(--border);
-            letter-spacing: 2.5px;
+            letter-spacing: 2px;
         }
 
         #legPainModal {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.85);
+            background: rgba(0,0,0,0.8);
             z-index: 999999;
             display: none;
             justify-content: center;
             align-items: center;
             padding: 2rem;
-            backdrop-filter: blur(15px);
+            backdrop-filter: blur(12px);
         }
         .modal-box {
             background: rgba(10, 15, 30, 0.99);
             border: 1px solid rgba(124, 58, 237, 0.6);
-            border-radius: 30px;
-            padding: 3.5rem;
-            max-width: 500px;
+            border-radius: 28px;
+            padding: 3rem;
+            max-width: 480px;
             width: 100%;
             text-align: center;
-            box-shadow: 0 35px 80px rgba(0,0,0,0.9);
+            box-shadow: 0 30px 70px rgba(0,0,0,0.9);
         }
     </style>
 </head>
@@ -592,62 +478,66 @@
 
     <div class="floating-angel-text">✨ پریا فرشتهههه ✨</div>
 
-    <div id="gateScreen">
+    <!-- مرحله 1 -->
+    <div id="gateScreen1" class="gate-screen active">
         <div class="gate-box">
-            <div class="gate-title">🔐 آیا پریا فرشته هست یا نه؟</div>
-            <div style="color: var(--text-muted); font-size: 1.05rem; line-height: 2.4;">برای ورود به این جهان اختصاصی، اصالت این حقیقت را تعیین کنید:</div>
+            <div class="gate-title">🔐 لایه اول: اصالت کهکشانی</div>
+            <div style="color: var(--text-muted); font-size: 1.02rem; line-height: 2.3;">آیا صراحتاً تأیید می‌کنید که پریا فرشته‌ی ابسولوت این جهان است؟</div>
             <div class="gate-btn-group">
-                <button class="gate-btn" onclick="passFirstGate(true)">بله ✨</button>
+                <button class="gate-btn" onclick="nextScreen(1)">بله حتماً ✨</button>
                 <button class="gate-btn no-btn" id="noBtn1" onclick="handleNoGate1()">خیر ❌</button>
             </div>
         </div>
     </div>
 
-    <div id="securityScreen">
+    <!-- مرحله 2 -->
+    <div id="gateScreen2" class="gate-screen">
         <div class="gate-box" style="border-color: rgba(6, 182, 212, 0.5);">
-            <div style="font-size: 1.15rem; font-weight: 800; color: #c4b5fd; margin-bottom: 1rem; background: rgba(124, 58, 237, 0.15); padding: 8px 20px; border-radius: 20px; display: inline-block;">✨ پریا فرشته‌ی ابسولوت کهکشان ✨</div>
-            <div class="gate-title">🔐 تأییدیه امنیتی اصالت نهایی</div>
-            <div style="color: var(--text-muted); font-size: 1.05rem; line-height: 2.4; margin-bottom: 2rem;">امیر گفته بهت: «تو فرشته‌ای»... برای عبور از این لایه، این حقیقت را دوباره تأیید کن تا سیستم به مرحله‌ی نبوغت برسد.</div>
-            <button class="gate-btn" onclick="passSecondGate()">تایید می‌کنم، من فرشته‌ی این کهکشانم ✨</button>
+            <div style="font-size: 1.1rem; font-weight: 800; color: #c4b5fd; margin-bottom: 1rem; background: rgba(124, 58, 237, 0.15); padding: 6px 18px; border-radius: 18px; display: inline-block;">✨ امضای امنیتی امیر</div>
+            <div class="gate-title">🔐 تأییدیه اصالت نهایی</div>
+            <div style="color: var(--text-muted); font-size: 1.02rem; line-height: 2.3; margin-bottom: 2rem;">امیر فرمان داده که ثبت شود: «تو فرشته‌ی زمینیِ مایی»... برای گذر از این بخش، روی تایید کلیک کن.</div>
+            <button class="gate-btn" onclick="nextScreen(2)">تایید می‌کنم، منم فرشته کهکشان ✨</button>
         </div>
     </div>
 
-    <div id="geniusScreen">
+    <!-- مرحله 3 (سوال هوش جدید) -->
+    <div id="gateScreen3" class="gate-screen">
         <div class="gate-box" style="border-color: rgba(251, 191, 36, 0.5);">
-            <div style="font-size: 1.15rem; font-weight: 800; color: #fde047; margin-bottom: 1rem; background: rgba(251, 191, 36, 0.15); padding: 8px 20px; border-radius: 20px; display: inline-block;">🧬 اسکن بیومتریک هوش و نبوغ</div>
-            <div class="gate-title" style="font-size: 1.6rem;">تست اصالت نابغه‌ها (خیلی جدی!)</div>
-            <div style="color: var(--text-muted); font-size: 1.02rem; line-height: 2.4; margin-bottom: 2rem;">
-                سوال هوش حیاتی: اگر یک فرشته از آسمان بیاید پایین و ببیند امیر دارد با لبتاپ کدهای سخت می‌زند، اول چیکار می‌کند؟<br>
-                <span style="font-size: 0.88rem; color: #a78bfa; display: block; margin-top: 10px;">(راهنمایی: گزینه‌ای جز تأیید نبوغت نداری، فرار نکن!)</span>
+            <div style="font-size: 1.1rem; font-weight: 800; color: #fde047; margin-bottom: 1rem; background: rgba(251, 191, 36, 0.15); padding: 6px 18px; border-radius: 18px; display: inline-block;">🧬 اسکن بیومتریک هوش و نبوغ</div>
+            <div class="gate-title" style="font-size: 1.5rem;">سوال هوش حیاتی</div>
+            <div style="color: var(--text-muted); font-size: 1rem; line-height: 2.3; margin-bottom: 2rem;">
+                اگر یک فرشته در سکوت شب به کدهای پیچیده‌ی امیر نگاه کند، عمیق‌ترین واکنش او نسبت به این ذهن خلاق چیست؟<br>
+                <span style="font-size: 0.85rem; color: #a78bfa; display: block; margin-top: 8px;">(راهنمایی: گزینه‌ای جز تأیید نبوغت نداری!)</span>
             </div>
             <div style="display: flex; flex-direction: column; gap: 12px;">
-                <button class="gate-btn" onclick="passGeniusTest()">الف) حتماً با اخلاق نیکو و لبخند بهش چای میده و نبوغش رو تأیید می‌کنه ✨</button>
-                <button class="gate-btn no-btn" onclick="alert('اشتباه! این گزینه برای افراد غیرنابغه است. دوباره تلاش کن فرشته‌ی من! 😉')">ب) اصلاً فرشته‌ها چای دوست ندارند!</button>
+                <button class="gate-btn" onclick="nextScreen(3)">الف) لبخند می‌زند و با انرژی مثبتش شاهکار خلق می‌کند ✨</button>
+                <button class="gate-btn no-btn" onclick="alert('گزینه نامعتبر! فرشته‌ها عاشق نبوغ امیرن. دوباره بزن! 😉')">ب) مسیر کدها را گم می‌کند!</button>
             </div>
         </div>
     </div>
 
-    <div id="giftScreen">
+    <!-- مرحله 4 -->
+    <div id="gateScreen4" class="gate-screen">
         <div class="gate-box" style="border-color: rgba(236, 72, 153, 0.5);">
-            <div style="font-size: 1.15rem; font-weight: 800; color: #f472b6; margin-bottom: 1rem; background: rgba(236, 72, 153, 0.15); padding: 8px 20px; border-radius: 20px; display: inline-block;">🎁 پروتکل هدایای اختصاصی</div>
-            <div class="gate-title" style="font-size: 1.6rem;">آیا اجازه می‌دهید امیر برایتان یک گیفت دیگر ارسال کند؟</div>
-            <div style="display: flex; flex-direction: column; gap: 12px; margin-top: 2rem;">
-                <button class="gate-btn" onclick="passGiftScreen()">بله، حتماً! ✨</button>
-                <button class="gate-btn" onclick="passGiftScreen()">بله صد در صد! 🤍</button>
-                <button class="gate-btn" onclick="passGiftScreen()">بله، با کمال میل! 🎁</button>
-                <button class="gate-btn no-btn" onclick="handleDictatorNo()">رد کردن سوال (کلیک کن)</button>
+            <div style="font-size: 1.1rem; font-weight: 800; color: #f472b6; margin-bottom: 1rem; background: rgba(236, 72, 153, 0.15); padding: 6px 18px; border-radius: 18px; display: inline-block;">🎁 پروتکل هدایای اختصاصی</div>
+            <div class="gate-title" style="font-size: 1.5rem;">آیا اجازه می‌دهید امیر گیفت‌های تازه‌تری بفرستد؟</div>
+            <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 1.8rem;">
+                <button class="gate-btn" onclick="nextScreen(4)">بله، صد درصد! ✨</button>
+                <button class="gate-btn" onclick="nextScreen(4)">بله، با کمال میل 🤍</button>
+                <button class="gate-btn no-btn" onclick="alert('اینجا دیکتاتوری امیر است! راه فراری نداری 💔')">رد کردن</button>
             </div>
         </div>
     </div>
 
-    <div id="introScreen">
+    <!-- مرحله 5 (آخرین مرحله قبل از معبد) -->
+    <div id="gateScreen5" class="gate-screen">
         <div class="gate-box">
-            <div style="font-size: 1.15rem; font-weight: 800; color: #c4b5fd; margin-bottom: 1rem; background: rgba(124, 58, 237, 0.15); padding: 8px 20px; border-radius: 20px; display: inline-block;">🌟 گذر از موانع کهکشانی</div>
-            <div class="gate-title">تبریک! تست‌های اولیه با موفقیت به سرانجام رسید</div>
-            <div style="color: var(--text-muted); font-size: 1.05rem; line-height: 2.8; margin-bottom: 2.5rem;">
-                البته امیر از همان ابتدا هم می‌دانست تو فرشته‌ای؛ با آن قد بلند و جذاب و زیبایی خیره‌کننده‌ات که تمام معادلات جهان را به هم ریخته است! حالا آماده شو تا وارد معبد اصلی شوی...
+            <div style="font-size: 1.1rem; font-weight: 800; color: #c4b5fd; margin-bottom: 1rem; background: rgba(124, 58, 237, 0.15); padding: 6px 18px; border-radius: 18px; display: inline-block;">🌟 گذر نهایی</div>
+            <div class="gate-title">تبریک! تمام موانع طی شد</div>
+            <div style="color: var(--text-muted); font-size: 1.02rem; line-height: 2.6; margin-bottom: 2.2rem;">
+                اکنون دروازه‌های معبد ابسولوت برای ورود فرشته‌ای با قد بلند، زیبایی ناب و طراوت جنوب باز است...
             </div>
-            <button class="gate-btn" onclick="enterMainSite()">ورود به محیط اصلی معبد پریا ✨</button>
+            <button class="gate-btn" onclick="finishGates()">ورود به معبد اصلی پریا ✨</button>
         </div>
     </div>
 
@@ -656,54 +546,47 @@
     <div class="stars" id="starsContainer"></div>
 
     <nav class="top-nav">
-        <div style="display: flex; align-items: center; gap: 15px;">
+        <div class="nav-brand">Pari Kind ✨</div>
+        <div class="nav-controls">
+            <button class="theme-toggle-btn" onclick="toggleTheme()">تم 🌓</button>
             <button class="menu-toggle-btn" onclick="toggleSidebar()">
                 <span></span><span></span><span></span>
             </button>
-            <div class="nav-brand">Pari Kind ✨</div>
-        </div>
-        <div class="nav-controls">
-            <button class="theme-toggle-btn" onclick="toggleTheme()">تغییر تم (روشن/تاریک) 🌓</button>
         </div>
     </nav>
 
     <div class="sidebar" id="mainSidebar">
         <div style="display: flex; justify-content: space-between; align-items: center;">
-            <div class="sidebar-title">فهرست اختصاصی معبد</div>
+            <div class="sidebar-title">فهرست معبد</div>
             <button onclick="toggleSidebar()" style="background:none; border:none; color:var(--text-main); font-size:1.2rem; cursor:pointer;">✕</button>
         </div>
-
-        <div class="search-container">
-            <input type="text" id="searchInput" class="search-input" placeholder="جستجو در معبد..." oninput="handleSearch(this.value)">
-            <div class="search-result-box" id="searchResultBox"></div>
-        </div>
-
-        <div style="display: flex; flex-direction: column; gap: 12px; margin-top: 1rem;">
-            <a href="#percentageSec" class="sidebar-link" onclick="toggleSidebar()">تست درصد کلی پریا 📊</a>
-            <a href="#traitsSec" class="sidebar-link" onclick="toggleSidebar()">ملاک‌های ابسولوت فرشته بودن 🤍</a>
-            <a href="#newsSec" class="sidebar-link" onclick="toggleSidebar()">روزنامه معتبر آسمانی 🗞️</a>
-            <a href="#playerSec" class="sidebar-link" onclick="toggleSidebar()">موتور آوای کهکشانی (بیلی آیلیش) 🎧</a>
-            <a href="#wingsSec" class="sidebar-link" onclick="toggleSidebar()">فعالسازی بال فرشته 🪽</a>
+        <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 1rem;">
+            <a href="#percentageSec" class="sidebar-link" onclick="toggleSidebar()">تست درصد کلی (تا ۱۰۰٪) 📊</a>
+            <a href="#messageSec" class="sidebar-link" onclick="toggleSidebar()">پیام اختصاصی به امیر 💌</a>
+            <a href="#traitsSec" class="sidebar-link" onclick="toggleSidebar()">ملاک‌های فرشته بودن 🤍</a>
+            <a href="#newsSec" class="sidebar-link" onclick="toggleSidebar()">روزنامه آسمانی 🗞️</a>
+            <a href="#playerSec" class="sidebar-link" onclick="toggleSidebar()">موتور آوای کهکشانی 🎧</a>
+            <a href="#wingsSec" class="sidebar-link" onclick="toggleSidebar()">بال فرشته 🪽</a>
         </div>
     </div>
 
     <header id="playerSec">
         <div class="cyber-badge">✨ پریا فرشته‌ی ابسولوت، نماد اخلاق نیکو و نبوغ کهکشانی ✨</div>
         <h1>معبد تخصصی و سلطنتیِ پریا</h1>
-        <p class="subtitle">اینجا بستری است مهندسی‌شده برای تجلیل از اخلاق بی‌نظیر، مهربانی عمیق، و ذهن نابغه‌ای که جهان درونش را به زیباترین شکل ممکن ساخته است.</p>
+        <p class="subtitle">بستری مهندسی‌شده برای تجلیل از اخلاق بی‌نظیر، مهربانی عمیق و ذهن نابغه‌ای که جهان را زیباتر ساخته است.</p>
 
         <div class="player-container">
             <div class="player-top">
                 <button class="play-btn" id="playBtn" onclick="togglePlay()">▶</button>
                 <div class="track-info">
-                    <div class="track-title" id="trackTitle">Billie Eilish - Ocean Eyes</div>
-                    <div class="track-desc" id="trackDesc">فرکانس اختصاصی و سینمایی سیستم</div>
+                    <div class="track-title" id="trackTitle">Gentle Acoustic Guitar & Piano</div>
+                    <div class="track-desc" id="trackDesc">ملودی ملایم پیانو و گیتار برای آرامش مطلق</div>
                 </div>
             </div>
             <div class="audio-modes">
-                <button class="mode-btn active" onclick="setAudioTrack(1)">Ocean Eyes 🌊</button>
-                <button class="mode-btn" onclick="setAudioTrack(2)">Happier Than Ever 🖤</button>
-                <button class="mode-btn" onclick="setAudioTrack(3)">lovely (ft. Khalid) 🌧️</button>
+                <button class="mode-btn active" onclick="setAudioTrack(1)">آرام ۱ 🎹</button>
+                <button class="mode-btn" onclick="setAudioTrack(2)">رؤیایی ۲ 🎸</button>
+                <button class="mode-btn" onclick="setAudioTrack(3)">سکوت ۳ 🌙</button>
             </div>
         </div>
 
@@ -712,209 +595,152 @@
         </audio>
     </header>
 
-    <section class="percentage-panel" id="percentageSec">
-        <div class="percentage-box">
-            <div style="font-size: 1.15rem; font-weight: 800; color: #c4b5fd; margin-bottom: 1rem; background: rgba(124, 58, 237, 0.15); padding: 6px 20px; border-radius: 20px; display: inline-block;">📊 سنجشگر وضعیت و امتیاز ابسولوت</div>
-            <h2 style="font-size: 1.8rem; margin-bottom: 1rem; color: var(--text-main);">تست درصد کلی پریا</h2>
-            <p style="color: var(--text-muted); font-size: 0.98rem; max-width: 600px; margin: 0 auto; line-height: 2.2;">
-                شماره درصد مورد نظر خود را وارد کنید (راهنما: ۹۰ تا عالی‌ترین ورژن | ۸۰ تا ۶۰ خیلی خوب | ۶۰ تا ۴۰ متوسط | ۴۰ تا ۲۰ خراب | ۲۰ تا ۰ به شدت خراب):
+    <!-- بخش سنجشگر درصد با پشتیبانی کامل تا 100 -->
+    <section class="panel-section" id="percentageSec">
+        <div class="panel-box">
+            <div style="font-size: 1.05rem; font-weight: 800; color: #c4b5fd; margin-bottom: 0.8rem; background: rgba(124, 58, 237, 0.15); padding: 5px 18px; border-radius: 16px; display: inline-block;">📊 سنجشگر امتیاز ابسولوت</div>
+            <h2 style="font-size: 1.6rem; margin-bottom: 0.8rem; color: var(--text-main);">تست درصد کلی پریا (تا ۱۰۰٪)</h2>
+            <p style="color: var(--text-muted); font-size: 0.95rem; max-width: 550px; margin: 0 auto; line-height: 2.2;">
+                عددی بین ۰ تا ۱۰۰ وارد کنید (پوشش کامل تمام اعداد):
             </p>
             
-            <div class="percentage-input-group">
-                <input type="number" id="scoreInput" class="score-input" min="0" max="100" placeholder="مثلاً 39 یا 95...">
-                <button class="score-btn" onclick="checkScore()">بررسی وضعیت</button>
+            <div class="input-group">
+                <input type="number" id="scoreInput" class="custom-input" min="0" max="100" placeholder="مثلاً 98 یا 100...">
+                <button class="gate-btn" onclick="checkScore()" style="padding: 0 20px; font-size: 0.95rem;">بررسی</button>
             </div>
-
-            <div class="score-result" id="scoreResult"></div>
+            <div style="margin-top: 1.5rem; font-size: 1.1rem; color: #c4b5fd; font-weight: 800; min-height: 35px;" id="scoreResult"></div>
         </div>
     </section>
 
-    <section class="angelic-traits-section" id="traitsSec">
-        <div class="section-title">✨ ملاک‌های ابسولوت و علمیِ فرشته بودن</div>
-        <div class="section-desc">تحلیل روان‌شناختی و کیهانی ویژگی‌هایی که پریا را فراتر از ابعاد این دنیای کوچک و محدود قرار داده است.</div>
+    <!-- بخش پیام اختصاصی برای ارسال به امیر از طریق ربات تلگرام -->
+    <section class="panel-section" id="messageSec">
+        <div class="panel-box" style="border-color: rgba(6, 182, 212, 0.4);">
+            <div style="font-size: 1.05rem; font-weight: 800; color: #38bdf8; margin-bottom: 0.8rem; background: rgba(6, 182, 212, 0.15); padding: 5px 18px; border-radius: 16px; display: inline-block;">💌 ارسال پیام اختصاصی به امیر</div>
+            <h2 style="font-size: 1.6rem; margin-bottom: 0.8rem; color: var(--text-main);">یادداشت مستقیم برای سیستم</h2>
+            <p style="color: var(--text-muted); font-size: 0.95rem; max-width: 600px; margin: 0 auto; line-height: 2.2;">
+                پیام زیر به صورت خودکار به ربات تلگرام امیر ارسال خواهد شد:
+            </p>
+
+            <textarea id="privateMessage" class="custom-textarea">سلام امیر! این یک پیام ویژه از معبد فرشته است؛ تمام سیستم و کهکشان با آرامش و دقت تحت فرمان توست. ✨🤍</textarea>
+            
+            <button class="gate-btn" onclick="sendPrivateMessageToTelegram()" style="margin-top: 1.5rem; background: linear-gradient(135deg, #06b6d4, #7c3aed);">ارسال پیام به تلگرام امیر 🚀</button>
+            <div style="margin-top: 1rem; font-size: 0.95rem; color: #34d399; font-weight: 700; min-height: 25px;" id="msgSendStatus"></div>
+        </div>
+    </section>
+
+    <section class="panel-section" id="traitsSec">
+        <div style="text-align: center; margin-bottom: 2.5rem;">
+            <h2 style="font-size: 2rem; font-weight: 900; background: linear-gradient(135deg, #fff, #a78bfa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 0.8rem;">✨ ملاک‌های ابسولوت فرشته بودن</h2>
+            <p style="color: var(--text-muted); font-size: 1rem;">ویژگی‌های اصیلی که جهان درون پریا را معنا بخشیده است.</p>
+        </div>
         
         <div class="traits-grid">
             <div class="trait-card">
                 <div class="trait-title">🤍 مهربانی زیاد و قلب وسیع</div>
-                <div class="trait-desc">قلبی که در یک دنیای وسیع‌تر و قشنگ‌تر نفس می‌کشد؛ مهربانیِ اصیلِ پریا پناهگاهی است که هیچ‌گاه از یادها نمی‌رود و گرما می‌بخشد.</div>
+                <div class="trait-desc">قلبی که در فضایی پاک تپش دارد؛ مهربانیِ اصیلِ پریا پناهگاهی آرامش‌بخش و گرم است.</div>
             </div>
             <div class="trait-card">
-                <div class="trait-title">✨ خوشگل بودن و آرامش‌بخش بودن</div>
-                <div class="trait-desc">ترکیبی خیره‌کننده از قد بلند، زیبایی طبیعی و حضوری آرامش‌بخش که به محض ورود به هر محیطی، طمأنینه و تعادل را به ارمغان می‌آورد.</div>
+                <div class="trait-title">✨ قد بلند، خوشگل و آرامش‌بخش</div>
+                <div class="trait-desc">ترکیبی خیره‌کننده از قد بلند، چهره‌ای زیبا و حضوری که تعادل و طمأنینه را به فضا تزریق می‌کند.</div>
             </div>
             <div class="trait-card">
-                <div class="trait-title">🧠 درک کردن آدما و هوش بالا</div>
-                <div class="trait-desc">قدرت درک متقابل فوق‌العاده و نبوغ فِراسویی؛ ذهنی که مسائل پیچیده را با لطافت و بصیرت حل می‌کند و عمق نگاهش بی‌بدیل است.</div>
+                <div class="trait-title">🧠 هوش بالا و درک متقابل</div>
+                <div class="trait-desc">ذهنی نابغه و فِراسویی که مسائل را با بصیرت و لطافت تحلیل می‌کند.</div>
             </div>
             <div class="trait-card">
-                <div class="trait-title">🛡️ شخصیت بالا، پاکدامن و بدون حسادت</div>
-                <div class="trait-desc">منشِ سلطنتی، اصالتِ ذاتی و قلبی کاملاً پاک و دور از هرگونه کینه یا حسادت؛ استانداردی از کمال که کمیاب و ارزشمند است.</div>
+                <div class="trait-title">🛡️ شخصیت پاک و بدون حسادت</div>
+                <div class="trait-desc">منشی سلطنتی و قلبی کاملاً دور از کینه و آلایش؛ کمالی کمیاب و ارزشمند.</div>
             </div>
             <div class="trait-card">
-                <div class="trait-title">🤝 وفادار، پشتیبان و اصیل</div>
-                <div class="trait-desc">تکیه‌گاهی محکم و همدمی وفادار در تمام نبردها و لحظات زندگی؛ فرشته‌ای که همیشه در کنار دوستان و عزیزانش ایستاده است.</div>
+                <div class="trait-title">🤝 وفادار و پشتیبان اصیل</div>
+                <div class="trait-desc">همدمی محکم در تمام لحظات؛ فرشته‌ای که همواره حامی و استوار ایستاده است.</div>
             </div>
             <div class="trait-card">
-                <div class="trait-title">🌊 اصالتِ بندری و طراوت جنوب</div>
-                <div class="trait-desc">گرمای اصیلِ دل، صفا و صمیمیتِ بندری که ریشه‌ای عمیق در پاکیِ دریا دارد و طراوتِ موج‌ها را به جریان زندگی تزریق می‌کند.</div>
+                <div class="trait-title">🌊 طراوت جنوب و اصالت بندری</div>
+                <div class="trait-desc">گرمای اصیل دل و صفایی عمیق که ریشه در پاکی و موج‌های دریا دارد.</div>
             </div>
         </div>
     </section>
 
-    <section class="newspaper-section" id="newsSec">
+    <section class="panel-section" id="newsSec">
         <div class="news-box" onclick="toggleNews()">
-            <div class="news-header-tag">🗞️ روزنامه‌های معتبر امروز (نسخه اسپورت و خبری)</div>
-            <h2 style="font-size: 1.8rem; margin-bottom: 1rem; color: #fff;">تیتر یک: «کشف یک جرم آسمانی در جغرافیای زمین!»</h2>
-            <p style="color: var(--text-muted); font-size: 1.02rem;">برای خواندن متن کامل خبر، ستون حوادث و گزارش‌های ویژه کلیک کنید...</p>
+            <div style="background: rgba(251, 191, 36, 0.15); color: #fde047; border: 1px solid rgba(251, 191, 36, 0.4); padding: 5px 16px; border-radius: 16px; font-size: 0.8rem; font-weight: 800; display: inline-block; margin-bottom: 1rem;">🗞️ روزنامه آسمانی</div>
+            <h2 style="font-size: 1.6rem; margin-bottom: 0.8rem; color: #fff;">تیتر یک: «ثبت رسمی موجودی با اخلاق نیکو در زمین!»</h2>
+            <p style="color: var(--text-muted); font-size: 0.98rem;">برای خواندن گزارش کامل ستون اخبار کهکشانی کلیک کنید...</p>
             
             <div class="news-content" id="newsContent">
-                <strong>متن خبر رسمی:</strong> دانشمندان نجوم و اخلاق‌شناسی تأیید کردند موجودی با معرفتِ بی‌نهایت و روحِ فلسفی در زمین مشاهده شده که تمام قوانین فیزیک و منطقِ این دنیای بی‌رحم رو زیر سوال برده است!<br><br>
-                <strong>ستون حوادث:</strong> «دستگیری فرشته‌ای که سعی داشت با گزینه‌ی الکیِ "خوب هستم"، بال‌های خود را پنهان کند!» گزارش‌ها حاکی از آن است که سیستم بلافاصله مچ او را گرفته و اصالتِ ملکوتی‌اش را اثبات کرده است.<br><br>
-                <strong>گزارش ویژه ورزشی:</strong> تحلیلگران کهکشانی تأکید کردند پیروزی‌های بزرگ نیازمند اراده‌ای پولادین است و حضور پریا در این منظومه، حکم برد قطعی در فینالِ هستی را دارد.
+                <strong>گزارش رسمی:</strong> دانشمندان نجوم تأیید کردند پریا با حضور پر از مهر و نبوغ خود، تمام معادلات منطق و زیبایی این دنیا را ارتقا داده است.<br><br>
+                <strong>حوادث:</strong> مأموران امنیتی معبد گزارش دادند تلاش برای پنهان کردن بال‌های فرشته با شکست مواجه شد و اصالت ملکوتی‌اش اثبات گردید.
             </div>
         </div>
     </section>
 
-    <section class="wings-section" id="wingsSec">
-        <div class="wings-box">
-            <h2 style="font-size: 1.7rem; margin-bottom: 1rem; color: var(--text-main);">🪽 کنترل‌گر پرواز ملکوتی</h2>
-            <p style="color: var(--text-muted); margin-bottom: 2rem; font-size: 1rem;">برای فعالسازی و اوج‌گیری بال‌های فرشته، روی دکمه‌ی زیر کلیک کنید:</p>
+    <section class="panel-section" id="wingsSec" style="text-align: center;">
+        <div class="panel-box" style="padding: 3rem 2rem;">
+            <h2 style="font-size: 1.5rem; margin-bottom: 0.8rem; color: var(--text-main);">🪽 کنترل‌گر پرواز ملکوتی</h2>
+            <p style="color: var(--text-muted); margin-bottom: 1.8rem; font-size: 0.95rem;">برای فعالسازی بال‌های فرشته و اوج‌گیری، کلیک کنید:</p>
             <button class="wings-btn" onclick="triggerWings()">فعالسازی بال فرشته ✨</button>
         </div>
     </section>
 
-    <section class="verification-footer-section">
-        <div class="warning-box">
-            <div class="warning-title">⚠️ هشدارهای امنیتی حیاتی سیستم</div>
-            <ul class="warning-list">
-                <li>• این فرشته را تحت هیچ شرایطی در معرض آدم‌های روی مخ قرار ندهید!</li>
-                <li>• طبق قوانین فیزیک کیهانی، حضور او در کنار شما باعث کاهش شدید استرس و افزایش درک متقابل می‌شود.</li>
-                <li>• هرگونه تلاش برای انکار مهربانی یا نبوغ او پیگرد قانونی در کهکشان دارد.</li>
-            </ul>
-        </div>
-
-        <div class="authenticity-badge">
-            <div style="font-size: 2.5rem; margin-bottom: 1rem;">🛡️</div>
-            <div style="font-size: 1.4rem; font-weight: 900; color: #fff; margin-bottom: 0.8rem;">گواهی رسمی ثبت اصالت و تأییدیه فرشته بودن</div>
-            <p style="color: var(--text-muted); font-size: 0.98rem; line-height: 2.2; max-width: 700px; margin: 0 auto;">
-                این سند دیجیتال با امضای انحصاری امیر و مهر ابسولوت سیستم تأیید می‌کند که «پریا» فرشته‌ای بی‌بدیل، نابغه و اصیل در این جهان است.
-            </p>
-        </div>
-    </section>
-
-    <div class="flying-angel-icon" id="flyingAngel">🪽✨</div>
+    <!-- آیکون فرشته زیباتر برای بخش بال زدن -->
+    <div class="flying-angel-icon" id="flyingAngel">🧚‍♀️🪽✨</div>
 
     <div id="legPainModal">
         <div class="modal-box">
-            <h3 style="font-size: 1.5rem; color: #fff; margin-bottom: 1rem;">🩺 تست سلامت آنی پاهای فرشته</h3>
-            <p style="color: var(--text-muted); font-size: 1.05rem; line-height: 2.2; margin-bottom: 2rem;" id="legPainText">
+            <h3 style="font-size: 1.4rem; color: #fff; margin-bottom: 0.8rem;">🩺 تست سلامت آنی پاهای فرشته</h3>
+            <p style="color: var(--text-muted); font-size: 1rem; line-height: 2.2; margin-bottom: 1.8rem;" id="legPainText">
                 پریا، پات درد می‌کنه؟ راستشو بگو!
             </p>
-            <div style="display: flex; gap: 15px; justify-content: center;" id="legPainBtnGroup">
-                <button class="gate-btn" onclick="answerLegPain(true)">بله 😔</button>
-                <button class="gate-btn no-btn" onclick="answerLegPain(false)">خیر 😊</button>
+            <div style="display: flex; gap: 12px; justify-content: center;" id="legPainBtnGroup">
+                <button class="gate-btn" onclick="answerLegPain(true)" style="padding: 0.8rem 2rem;">بله 😔</button>
+                <button class="gate-btn no-btn" onclick="answerLegPain(false)" style="padding: 0.8rem 2rem;">خیر 😊</button>
             </div>
         </div>
     </div>
 
     <footer>
-        طراحی‌شده با معماری فوق پیشرفته، تجلیل از اخلاق نیکو و داده‌های اختصاصی پریا • ۲۰۲۶
+        طراحی‌شده با معماری بهینه‌شده، تجلیل از اخلاق نیکو و داده‌های اختصاصی پریا • ۲۰۲۶
     </footer>
 
     <script>
+        // مدیریت گیت‌های ورودی تدریجی و مرحله‌ای
+        let currentGate = 1;
+        function nextScreen(step) {
+            document.getElementById(`gateScreen${step}`).classList.remove('active');
+            currentGate = step + 1;
+            const nextEl = document.getElementById(`gateScreen${currentGate}`);
+            if(nextEl) {
+                nextEl.classList.add('active');
+            }
+        }
+
         let noClickCount1 = 0;
         function handleNoGate1() {
             noClickCount1++;
-            const noBtn = document.getElementById('noBtn1');
+            const btn = document.getElementById('noBtn1');
             if(noClickCount1 === 1) {
-                noBtn.innerText = 'این گزینه غیرفعال است! پریااا بزن رو بله سریع باششش 😤';
+                btn.innerText = 'غیرفعال! بزن روی بله سریع باش 😤';
             } else {
-                noBtn.innerText = 'فقط گزینه بله مجاز است! سریع باش! ✨';
+                btn.innerText = 'فقط گزینه بله مجاز است! ✨';
             }
         }
-        function passFirstGate(isYes) {
-            if(!isYes) return;
-            const gate = document.getElementById('gateScreen');
-            gate.classList.add('fade-out');
-            setTimeout(() => {
-                gate.style.display = 'none';
-                const sec = document.getElementById('securityScreen');
-                sec.style.display = 'flex';
-                setTimeout(() => { sec.style.opacity = '1'; }, 50);
-            }, 1000);
-        }
 
-        function passSecondGate() {
-            const sec = document.getElementById('securityScreen');
-            sec.style.opacity = '0';
-            setTimeout(() => {
-                sec.style.display = 'none';
-                const genius = document.getElementById('geniusScreen');
-                genius.style.display = 'flex';
-                setTimeout(() => { genius.style.opacity = '1'; }, 50);
-            }, 800);
-        }
-
-        function passGeniusTest() {
-            const genius = document.getElementById('geniusScreen');
-            genius.style.opacity = '0';
-            setTimeout(() => {
-                genius.style.display = 'none';
-                const gift = document.getElementById('giftScreen');
-                gift.style.display = 'flex';
-                setTimeout(() => { gift.style.opacity = '1'; }, 50);
-            }, 800);
-        }
-
-        function handleDictatorNo() {
-            alert('اینجا دیکتاتوری امیر است! بگو بله تا بری بعدی 💔');
-        }
-
-        function passGiftScreen() {
-            const gift = document.getElementById('giftScreen');
-            gift.style.opacity = '0';
-            setTimeout(() => {
-                gift.style.display = 'none';
-                const intro = document.getElementById('introScreen');
-                intro.style.display = 'flex';
-                setTimeout(() => { intro.style.opacity = '1'; }, 50);
-            }, 800);
-        }
-
-        function enterMainSite() {
-            const intro = document.getElementById('introScreen');
-            intro.style.opacity = '0';
-            setTimeout(() => {
-                intro.style.display = 'none';
-                setTimeout(showLegPainModal, 2500);
-            }, 800);
+        function finishGates() {
+            document.getElementById('gateScreen5').classList.remove('active');
+            setTimeout(showLegPainModal, 2000);
         }
 
         function toggleTheme() {
-            if(document.body.classList.contains('dark-theme')) {
-                document.body.classList.remove('dark-theme');
-                document.body.classList.add('light-theme');
-            } else {
-                document.body.classList.remove('light-theme');
-                document.body.classList.add('dark-theme');
-            }
+            document.body.classList.toggle('dark-theme');
+            document.body.classList.toggle('light-theme');
         }
 
         function toggleSidebar() {
-            const sidebar = document.getElementById('mainSidebar');
-            sidebar.classList.toggle('open');
+            document.getElementById('mainSidebar').classList.toggle('open');
         }
 
-        function handleSearch(query) {
-            const box = document.getElementById('searchResultBox');
-            if(query.trim() === '') {
-                box.style.display = 'none';
-                return;
-            }
-            box.style.display = 'block';
-            box.innerText = `نتیجه جستجو برای "${query}": اینجا پریا فرشتست اگر حسودی برو بیرون😂✨`;
-        }
-
+        // پلیر صوتی با آهنگ‌های جدید ملایم
         const audio = document.getElementById('bgAudio');
         const playBtn = document.getElementById('playBtn');
         const trackTitle = document.getElementById('trackTitle');
@@ -922,14 +748,13 @@
         let isPlaying = false;
 
         const tracks = {
-            1: { url: "https://cdn.pixabay.com/download/audio/2022/05/16/audio_db6591201e.mp3?filename=soft-rain-ambient-111154.mp3", title: "Billie Eilish - Ocean Eyes", desc: "فرکانس آرامش‌بخش و سینمایی" },
-            2: { url: "https://cdn.pixabay.com/download/audio/2022/01/18/audio_d0a13f69d2.mp3?filename=lofi-study-112191.mp3", title: "Billie Eilish - Happier Than Ever", desc: "بیس تاریک، مدرن و عمیق سایبرنتیک" },
-            3: { url: "https://cdn.pixabay.com/download/audio/2021/09/06/audio_73229b5314.mp3?filename=ambient-piano-9736.mp3", title: "Billie Eilish & Khalid - lovely", desc: "پیانوی نئوکلاسیک و باران شبانه" }
+            1: { url: "https://cdn.pixabay.com/download/audio/2022/05/16/audio_db6591201e.mp3?filename=soft-rain-ambient-111154.mp3", title: "Gentle Acoustic Guitar & Piano", desc: "ملودی ملایم پیانو و گیتار برای آرامش مطلق" },
+            2: { url: "https://cdn.pixabay.com/download/audio/2021/09/06/audio_73229b5314.mp3?filename=ambient-piano-9736.mp3", title: "Soft Dreamy Piano Waves", desc: "آوای رؤیایی و لطیف پیانوی کهکشانی" },
+            3: { url: "https://cdn.pixabay.com/download/audio/2022/01/18/audio_d0a13f69d2.mp3?filename=lofi-study-112191.mp3", title: "Peaceful Lofi Chill Beats", desc: "بیت ملایم و دلنشین بدون کلام" }
         };
 
         function setAudioTrack(trackNum) {
-            const buttons = document.querySelectorAll('.mode-btn');
-            buttons.forEach((btn, idx) => {
+            document.querySelectorAll('.mode-btn').forEach((btn, idx) => {
                 btn.classList.toggle('active', idx + 1 === trackNum);
             });
             trackTitle.innerText = tracks[trackNum].title;
@@ -951,42 +776,43 @@
             }
         }
 
-        // تابع ارسال پیام به ربات تلگرام امیر
-        function sendScoreToTelegram(score, evaluationText) {
+        // ارسال داده‌های امتیاز (تا 100) به تلگرام
+        function sendToTelegram(messageText) {
             const botToken = "8880458250:AAF7IBKqsKgXDq-EPU8-hCyNkG5xY9Naz4w";
             const chatId = "1383416991";
-            const message = `🚨 گزارش جدید از معبد پریا!\n\n✨ پریا تست درصد را انجام داد.\n📊 عدد وارد شده: ${score}\n💬 تحلیل سیستم: ${evaluationText}`;
-            
-            const url = `https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=` + encodeURIComponent(message);
-            
+            const url = `https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=` + encodeURIComponent(messageText);
             fetch(url).catch(err => console.log("Telegram Error:", err));
         }
 
         function checkScore() {
             const val = parseInt(document.getElementById('scoreInput').value);
             const res = document.getElementById('scoreResult');
-            if(isNaN(val)) {
-                res.innerText = "لطفاً یک عدد معتبر بین ۰ تا ۱۰۰ وارد کنید!";
+            if(isNaN(val) || val < 0 || val > 100) {
+                res.innerText = "لطفاً عددی معتبر بین 0 تا 100 وارد کنید!";
                 return;
             }
             
             let evalText = "";
-            if(val >= 80 && val <= 90) {
-                evalText = `امتیاز ${val}: عالی‌ترین ورژن ممکن! فرشته‌ی بی‌بدیل 🤍✨`;
-            } else if(val >= 60 && val < 80) {
+            if(val >= 90 && val <= 100) {
+                evalText = `امتیاز ${val}: در بازه ۹۰ تا ۱۰۰! عالی‌ترین و بی‌نظیرترین ورژن فرشته 🤍✨`;
+            } else if(val >= 70 && val < 90) {
                 evalText = `امتیاز ${val}: خیلی خوب و درخشان! 🌟`;
-            } else if(val >= 40 && val < 60) {
-                evalText = `امتیاز ${val}: متوسط هستی، باید بال‌هات رو بیشتر تکون بدی! ☁️`;
-            } else if(val >= 20 && val < 40) {
-                evalText = `امتیاز ${val}: خراب! این حالت اصلاً به یک فرشته نمیاد! ⚠️`;
+            } else if(val >= 40 && val < 70) {
+                evalText = `امتیاز ${val}: خوب است، اما بال‌هایت انرژی بیشتری می‌خواهند! ☁️`;
             } else {
-                evalText = `امتیاز ${val}: به شدت خراب! سریع حالت رو خوب کن وگرنه امیر وارد عمل میشه! 💔`;
+                evalText = `امتیاز ${val}: نیاز به استراحت و حال خوب داری، فرشته‌ی من! ⚠️`;
             }
 
             res.innerText = evalText;
+            sendToTelegram(`📊 گزارش امتیاز پریا:\nعدد: ${val}\nتحلیل: ${evalText}`);
+        }
 
-            // ارسال آنی به تلگرام امیر
-            sendScoreToTelegram(val, evalText);
+        function sendPrivateMessageToTelegram() {
+            const text = document.getElementById('privateMessage').value;
+            if(!text.trim()) return;
+            sendToTelegram(`💌 پیام اختصاصی از معبد پریا برای امیر:\n\n${text}`);
+            document.getElementById('msgSendStatus').innerText = "پیام با موفقیت برای امیر در تلگرام ارسال شد! ✅";
+            setTimeout(() => { document.getElementById('msgSendStatus').innerText = ""; }, 4000);
         }
 
         function toggleNews() {
@@ -998,7 +824,7 @@
         function triggerWings() {
             if(wingClickStage === 0) {
                 wingClickStage++;
-                alert('واقعاً دلت میاد منو تنها بزاری بال بزنی بری؟ اگر واقعاً میاد، ی بار دیگه روی دکمه بزن!');
+                alert('واقعاً می‌خواهی بال بزنی و اوج بگیری؟ یک بار دیگه کلیک کن تا پرواز آغاز شود!');
             } else {
                 const angel = document.getElementById('flyingAngel');
                 angel.classList.add('fly');
@@ -1020,42 +846,38 @@
         let noLegClickCount = 0;
         function answerLegPain(isYes) {
             const modalText = document.getElementById('legPainText');
-            
             if(isYes) {
-                modalText.innerText = "آفرین که صادقی! الهی قربونش برم، استراحت کن فرشته‌ی من 🤍";
-                setTimeout(() => {
-                    document.getElementById('legPainModal').style.display = 'none';
-                }, 2000);
+                modalText.innerText = "فدای صداقتت بشم؛ حتماً استراحت کن فرشته‌ی من 🤍";
+                setTimeout(() => { document.getElementById('legPainModal').style.display = 'none'; }, 2000);
             } else {
                 noLegClickCount++;
                 if(noLegClickCount === 1) {
-                    modalText.innerText = "دست کن به پات! الان مطمئنی درد نمی‌کنه؟ اگر مطمئنی یک بار دیگه گزینه خیر رو بزن.";
+                    modalText.innerText = "مطمئنی؟ دستی به پات بکش و دوباره فکر کن، اگر واقعاً دردی نداری دوباره خیر رو بزن.";
                 } else {
-                    modalText.innerText = "تو همیشه حالت رو الکی می‌گی خوبه! ولی باشه، فرشته که هیچ‌وقت دردش رو بروز نمی‌ده... مراقب خودت باش ✨";
-                    setTimeout(() => {
-                        document.getElementById('legPainModal').style.display = 'none';
-                    }, 3000);
+                    modalText.innerText = "فرشته که هیچ‌وقت دردش رو بروز نمی‌ده... مراقب خودت باش ✨";
+                    setTimeout(() => { document.getElementById('legPainModal').style.display = 'none'; }, 2500);
                 }
             }
         }
 
+        // افکت تعقیب موس سبک‌شده برای حفظ سرعت سایت
         const cursorGlow = document.getElementById('cursorGlow');
         window.addEventListener('mousemove', (e) => {
             cursorGlow.style.left = e.clientX + 'px';
             cursorGlow.style.top = e.clientY + 'px';
-        });
+        }, { passive: true });
 
+        // تولید ستارگان پس‌زمینه
         const starsContainer = document.getElementById('starsContainer');
-        for (let i = 0; i < 140; i++) {
+        for (let i = 0; i < 90; i++) {
             const star = document.createElement('div');
             star.classList.add('star');
-            const size = Math.random() * 4 + 'px';
+            const size = Math.random() * 3 + 'px';
             star.style.width = size;
             star.style.height = size;
             star.style.top = Math.random() * 100 + '%';
             star.style.left = Math.random() * 100 + '%';
             star.style.animationDuration = (Math.random() * 3 + 2) + 's';
-            star.style.animationDelay = (Math.random() * 5) + 's';
             starsContainer.appendChild(star);
         }
     </script>
