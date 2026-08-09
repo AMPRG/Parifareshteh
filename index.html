@@ -34,7 +34,6 @@
             --border: rgba(0, 0, 0, 0.1);
         }
 
-        /* تم قهوه‌ای / کرمی (رنگ مورد علاقه پریا) */
         body.cream-theme {
             --bg-dark: #1e1612;
             --card-bg: rgba(43, 33, 27, 0.96);
@@ -63,7 +62,6 @@
             transition: background 0.4s ease, color 0.4s ease;
         }
 
-        /* اصلاح کامل جایگاه متن متحرک برای جلوگیری از تداخل */
         .floating-angel-text {
             display: inline-block;
             background: linear-gradient(135deg, rgba(124, 58, 237, 0.25), rgba(6, 182, 212, 0.25));
@@ -85,57 +83,102 @@
             100% { transform: translateY(0) rotate(0deg); }
         }
 
-        #gateScreen {
+        /* استایل اختصاصی کتاب جادویی و صفحات آن */
+        #bookOverlay {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: #000103;
+            background: rgba(0, 1, 3, 0.92);
             z-index: 99999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 1.5rem;
+            backdrop-filter: blur(25px);
+            transition: opacity 1s ease, visibility 1s;
+        }
+        #bookOverlay.fade-out {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .magical-book {
+            background: linear-gradient(135deg, #2c1f18 0%, #17100c 100%);
+            border: 3px solid #d97706;
+            border-radius: 20px 35px 35px 20px;
+            max-width: 650px;
+            width: 100%;
+            box-shadow: 0 0 50px rgba(217, 119, 6, 0.4), inset 0 0 30px rgba(0,0,0,0.8);
+            position: relative;
+            padding: 3.5rem 3rem;
+            text-align: center;
+            box-sizing: border-box;
+            min-height: 480px;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            text-align: center;
-            padding: 2rem;
-            transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), visibility 1.2s;
         }
-        #gateScreen.fade-out {
-            opacity: 0;
-            visibility: hidden;
+        /* جلوه صحافی کتاب */
+        .magical-book::before {
+            content: '';
+            position: absolute;
+            top: 0; bottom: 0; right: 25px;
+            width: 15px;
+            background: linear-gradient(90deg, #0d0806, #2c1f18, #0d0806);
+            border-radius: 5px;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.9);
         }
-        .gate-box {
-            background: rgba(8, 13, 25, 0.99);
-            border: 1px solid rgba(124, 58, 237, 0.5);
-            border-radius: 35px;
-            padding: 4rem 3rem;
-            max-width: 580px;
+
+        .book-page-content {
+            display: none;
             width: 100%;
-            box-shadow: 0 35px 90px rgba(0,0,0,0.99);
-            backdrop-filter: blur(30px);
+            animation: pageTurn 0.6s ease;
         }
-        .gate-title {
-            font-size: 1.9rem;
+        .book-page-content.active {
+            display: block;
+        }
+        @keyframes pageTurn {
+            from { opacity: 0; transform: scale(0.97); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .book-cover-title {
+            font-size: 2.2rem;
             font-weight: 900;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.2rem;
+            background: linear-gradient(135deg, #fef3c7, #fbbf24);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 5px 15px rgba(0,0,0,0.5);
+        }
+
+        .gate-title {
+            font-size: 1.6rem;
+            font-weight: 900;
+            margin-bottom: 1.2rem;
             background: linear-gradient(135deg, #fff, #a78bfa);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
+
         .gate-btn-group {
             display: flex;
             gap: 15px;
             justify-content: center;
             margin-top: 2rem;
+            flex-wrap: wrap;
         }
+
         .gate-btn {
             background: linear-gradient(135deg, #7c3aed, #06b6d4);
             color: white;
             border: none;
-            padding: 1rem 2.5rem;
-            font-size: 1.05rem;
+            padding: 0.9rem 2.2rem;
+            font-size: 1rem;
             font-weight: 900;
             border-radius: 50px;
             cursor: pointer;
-            box-shadow: 0 10px 30px rgba(124, 58, 237, 0.5);
+            box-shadow: 0 10px 25px rgba(124, 58, 237, 0.4);
             transition: 0.3s;
         }
         .gate-btn.no-btn {
@@ -144,21 +187,6 @@
             color: var(--text-muted);
         }
         .gate-btn:hover { transform: scale(1.05); }
-
-        #securityScreen, #geniusScreen, #giftScreen, #introScreen {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: #000103;
-            z-index: 99988;
-            display: none;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 2rem;
-            opacity: 0;
-            transition: opacity 0.8s ease;
-        }
 
         .cursor-glow {
             position: fixed;
@@ -579,88 +607,82 @@
             border-top: 1px solid var(--border);
             letter-spacing: 2.5px;
         }
-
-        #legPainModal {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.85);
-            z-index: 999999;
-            display: none;
-            justify-content: center;
-            align-items: center;
-            padding: 2rem;
-            backdrop-filter: blur(15px);
-        }
-        .modal-box {
-            background: rgba(10, 15, 30, 0.99);
-            border: 1px solid rgba(124, 58, 237, 0.6);
-            border-radius: 30px;
-            padding: 3.5rem;
-            max-width: 500px;
-            width: 100%;
-            text-align: center;
-            box-shadow: 0 35px 80px rgba(0,0,0,0.9);
-        }
     </style>
 </head>
 <body class="dark-theme">
 
-    <div id="gateScreen">
-        <div class="gate-box">
-            <div class="gate-title">🔐 آیا پریا فرشته هست یا نه؟</div>
-            <div style="color: var(--text-muted); font-size: 1.05rem; line-height: 2.4;">برای ورود به این جهان اختصاصی، اصالت این حقیقت را تعیین کنید:</div>
-            <div class="gate-btn-group">
-                <button class="gate-btn" onclick="passFirstGate(true)">بله ✨</button>
-                <button class="gate-btn no-btn" id="noBtn1" onclick="handleNoGate1()">خیر ❌</button>
+    <!-- کتاب جادویی و ورق خوردن صفحات تست اصالت و پرسش‌ها -->
+    <div id="bookOverlay">
+        <div class="magical-book">
+            
+            <!-- صفحه اول: کتاب دنیای فرشته ها و سوال اول -->
+            <div class="book-page-content active" id="page1">
+                <div class="book-cover-title">📖 کتاب دنیای فرشته‌ها</div>
+                <div class="gate-title" style="font-size: 1.4rem;">🔐 آیا پریا فرشته هست یا نه؟</div>
+                <div style="color: var(--text-muted); font-size: 1rem; line-height: 2.2;">برای ورود به این جهان اختصاصی، اصالت این حقیقت را تعیین کنید:</div>
+                <div class="gate-btn-group">
+                    <button class="gate-btn" onclick="nextBookPage(2)">بله ✨</button>
+                    <button class="gate-btn no-btn" id="noBtn1" onclick="handleNoGate1()">خیر ❌</button>
+                </div>
             </div>
-        </div>
-    </div>
 
-    <div id="securityScreen">
-        <div class="gate-box" style="border-color: rgba(6, 182, 212, 0.5);">
-            <div style="font-size: 1.15rem; font-weight: 800; color: #c4b5fd; margin-bottom: 1rem; background: rgba(124, 58, 237, 0.15); padding: 8px 20px; border-radius: 20px; display: inline-block;">✨ پریا فرشته‌ی ابسولوت کهکشان ✨</div>
-            <div class="gate-title">🔐 تأییدیه امنیتی اصالت نهایی</div>
-            <div style="color: var(--text-muted); font-size: 1.05rem; line-height: 2.4; margin-bottom: 2rem;">امیر گفته بهت: «تو فرشته‌ای»... برای عبور از این لایه، این حقیقت را دوباره تأیید کن تا سیستم به مرحله‌ی نبوغت برسد.</div>
-            <button class="gate-btn" onclick="passSecondGate()">تایید می‌کنم، من فرشته‌ی این کهکشانم ✨</button>
-        </div>
-    </div>
+            <!-- صفحه دوم: تأییدیه امنیتی اصالت نهایی -->
+            <div class="book-page-content" id="page2">
+                <div style="font-size: 1rem; font-weight: 800; color: #c4b5fd; margin-bottom: 0.8rem; background: rgba(124, 58, 237, 0.15); padding: 6px 16px; border-radius: 20px; display: inline-block;">✨ پریا فرشته‌ی ابسولوت کهکشان ✨</div>
+                <div class="gate-title" style="font-size: 1.4rem;">🔐 تأییدیه امنیتی اصالت نهایی</div>
+                <div style="color: var(--text-muted); font-size: 0.98rem; line-height: 2.2; margin-bottom: 1.5rem;">امیر گفته بهت: «تو فرشته‌ای»... برای عبور از این لایه، این حقیقت را دوباره تأیید کن تا سیستم به مرحله‌ی نبوغت برسد.</div>
+                <button class="gate-btn" onclick="nextBookPage(3)">تایید می‌کنم، من فرشته‌ی این کهکشانم ✨</button>
+            </div>
 
-    <div id="geniusScreen">
-        <div class="gate-box" style="border-color: rgba(251, 191, 36, 0.5);">
-            <div style="font-size: 1.15rem; font-weight: 800; color: #fde047; margin-bottom: 1rem; background: rgba(251, 191, 36, 0.15); padding: 8px 20px; border-radius: 20px; display: inline-block;">🧬 اسکن بیومتریک هوش و نبوغ</div>
-            <div class="gate-title" style="font-size: 1.6rem;">تست اصالت نابغه‌ها (خیلی جدی!)</div>
-            <div style="color: var(--text-muted); font-size: 1.02rem; line-height: 2.4; margin-bottom: 2rem;">
-                سوال هوش حیاتی: اگر یک فرشته از آسمان بیاید پایین و ببیند امیر دارد با لبتاپ کدهای سخت می‌زند، اول چیکار می‌کند؟<br>
-                <span style="font-size: 0.88rem; color: #a78bfa; display: block; margin-top: 10px;">(راهنمایی: گزینه‌ای جز تأیید نبوغت نداری، فرار نکن!)</span>
+            <!-- صفحه سوم: تست اصالت نابغه‌ها -->
+            <div class="book-page-content" id="page3">
+                <div style="font-size: 1rem; font-weight: 800; color: #fde047; margin-bottom: 0.8rem; background: rgba(251, 191, 36, 0.15); padding: 6px 16px; border-radius: 20px; display: inline-block;">🧬 اسکن بیومتریک هوش و نبوغ</div>
+                <div class="gate-title" style="font-size: 1.3rem;">تست اصالت نابغه‌ها (خیلی جدی!)</div>
+                <div style="color: var(--text-muted); font-size: 0.95rem; line-height: 2.2; margin-bottom: 1.5rem;">
+                    سوال هوش حیاتی: اگر یک فرشته از آسمان بیاید پایین و ببیند امیر دارد با لبتاپ کدهای سخت می‌زند، اول چیکار می‌کند؟<br>
+                    <span style="font-size: 0.82rem; color: #a78bfa; display: block; margin-top: 6px;">(راهنمایی: گزینه‌ای جز تأیید نبوغت نداری، فرار نکن!)</span>
+                </div>
+                <div style="display: flex; flex-direction: column; gap: 10px;">
+                    <button class="gate-btn" style="font-size: 0.9rem; padding: 0.8rem 1rem;" onclick="nextBookPage(4)">الف) حتماً با اخلاق نیکو و لبخند بهش چای میده و نبوغش رو تأیید می‌کنه ✨</button>
+                    <button class="gate-btn no-btn" style="font-size: 0.9rem; padding: 0.8rem 1rem;" onclick="alert('اشتباه! این گزینه برای افراد غیرنابغه است. دوباره تلاش کن فرشته‌ی من! 😉')">ب) اصلاً فرشته‌ها چای دوست ندارند!</button>
+                </div>
             </div>
-            <div style="display: flex; flex-direction: column; gap: 12px;">
-                <button class="gate-btn" onclick="passGeniusTest()">الف) حتماً با اخلاق نیکو و لبخند بهش چای میده و نبوغش رو تأیید می‌کنه ✨</button>
-                <button class="gate-btn no-btn" onclick="alert('اشتباه! این گزینه برای افراد غیرنابغه است. دوباره تلاش کن فرشته‌ی من! 😉')">ب) اصلاً فرشته‌ها چای دوست ندارند!</button>
-            </div>
-        </div>
-    </div>
 
-    <div id="giftScreen">
-        <div class="gate-box" style="border-color: rgba(236, 72, 153, 0.5);">
-            <div style="font-size: 1.15rem; font-weight: 800; color: #f472b6; margin-bottom: 1rem; background: rgba(236, 72, 153, 0.15); padding: 8px 20px; border-radius: 20px; display: inline-block;">🎁 پروتکل هدایای اختصاصی</div>
-            <div class="gate-title" style="font-size: 1.6rem;">آیا اجازه می‌دهید امیر برایتان یک گیفت دیگر ارسال کند؟</div>
-            <div style="display: flex; flex-direction: column; gap: 12px; margin-top: 2rem;">
-                <button class="gate-btn" onclick="passGiftScreen()">بله، حتماً! ✨</button>
-                <button class="gate-btn" onclick="passGiftScreen()">بله صد در صد! 🤍</button>
-                <button class="gate-btn" onclick="passGiftScreen()">بله، با کمال میل! 🎁</button>
-                <button class="gate-btn no-btn" onclick="handleDictatorNo()">رد کردن سوال (کلیک کن)</button>
+            <!-- صفحه چهارم: پروتکل هدایای اختصاصی -->
+            <div class="book-page-content" id="page4">
+                <div style="font-size: 1rem; font-weight: 800; color: #f472b6; margin-bottom: 0.8rem; background: rgba(236, 72, 153, 0.15); padding: 6px 16px; border-radius: 20px; display: inline-block;">🎁 پروتکل هدایای اختصاصی</div>
+                <div class="gate-title" style="font-size: 1.4rem;">آیا اجازه می‌دهید امیر برایتان یک گیفت دیگر ارسال کند؟</div>
+                <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 1.5rem;">
+                    <button class="gate-btn" style="padding: 0.7rem;" onclick="nextBookPage(5)">بله، حتماً! ✨</button>
+                    <button class="gate-btn" style="padding: 0.7rem;" onclick="nextBookPage(5)">بله صد در صد! 🤍</button>
+                    <button class="gate-btn" style="padding: 0.7rem;" onclick="nextBookPage(5)">بله، با کمال میل! 🎁</button>
+                    <button class="gate-btn no-btn" style="padding: 0.7rem;" onclick="handleDictatorNo()">رد کردن سوال (کلیک کن)</button>
+                </div>
             </div>
-        </div>
-    </div>
 
-    <div id="introScreen">
-        <div class="gate-box">
-            <div style="font-size: 1.15rem; font-weight: 800; color: #c4b5fd; margin-bottom: 1rem; background: rgba(124, 58, 237, 0.15); padding: 8px 20px; border-radius: 20px; display: inline-block;">🌟 گذر از موانع کهکشانی</div>
-            <div class="gate-title">تبریک! تست‌های اولیه با موفقیت به سرانجام رسید</div>
-            <div style="color: var(--text-muted); font-size: 1.05rem; line-height: 2.8; margin-bottom: 2.5rem;">
-                البته امیر از همان ابتدا هم می‌دانست تو فرشته‌ای؛ با آن قد بلند و جذاب و زیبایی خیره‌کننده‌ات که تمام معادلات جهان را به هم ریخته است! حالا آماده شو تا وارد معبد اصلی شوی...
+            <!-- صفحه پنجم: گذر از موانع کهکشانی -->
+            <div class="book-page-content" id="page5">
+                <div style="font-size: 1rem; font-weight: 800; color: #c4b5fd; margin-bottom: 0.8rem; background: rgba(124, 58, 237, 0.15); padding: 6px 16px; border-radius: 20px; display: inline-block;">🌟 گذر از موانع کهکشانی</div>
+                <div class="gate-title" style="font-size: 1.4rem;">تبریک! تست‌های اولیه با موفقیت به سرانجام رسید</div>
+                <div style="color: var(--text-muted); font-size: 0.98rem; line-height: 2.5; margin-bottom: 2rem;">
+                    البته امیر از همان ابتدا هم می‌دانست تو فرشته‌ای؛ با آن قد بلند و جذاب و زیبایی خیره‌کننده‌ات که تمام معادلات جهان را به هم ریخته است! حالا آماده شو تا وارد معبد اصلی شوی...
+                </div>
+                <button class="gate-btn" onclick="nextBookPage(6)">ورود به محیط اصلی معبد پریا ✨</button>
             </div>
-            <button class="gate-btn" onclick="enterMainSite()">ورود به محیط اصلی معبد پریا ✨</button>
+
+            <!-- صفحه ششم (نهایی): تست سلامت آنی پاهای فرشته داخل کتاب -->
+            <div class="book-page-content" id="page6">
+                <div style="font-size: 1rem; font-weight: 800; color: #fbbf24; margin-bottom: 0.8rem; background: rgba(251, 191, 36, 0.15); padding: 6px 16px; border-radius: 20px; display: inline-block;">🩺 سنجشگر سلامت کتاب</div>
+                <div class="gate-title" style="font-size: 1.4rem;">تست سلامت آنی پاهای فرشته</div>
+                <div style="color: var(--text-muted); font-size: 1.05rem; line-height: 2.5; margin-bottom: 2rem;" id="legPainText">
+                    پریا، پات درد می‌کنه؟ راستشو بگو!
+                </div>
+                <div class="gate-btn-group" id="legPainBtnGroup">
+                    <button class="gate-btn" onclick="answerLegPain(true)">بله 😔</button>
+                    <button class="gate-btn no-btn" onclick="answerLegPain(false)">خیر 😊</button>
+                </div>
+            </div>
+
         </div>
     </div>
 
@@ -823,19 +845,6 @@
 
     <div class="flying-angel-icon" id="flyingAngel">🪽✨</div>
 
-    <div id="legPainModal">
-        <div class="modal-box">
-            <h3 style="font-size: 1.5rem; color: #fff; margin-bottom: 1rem;">🩺 تست سلامت آنی پاهای فرشته</h3>
-            <p style="color: var(--text-muted); font-size: 1.05rem; line-height: 2.2; margin-bottom: 2rem;" id="legPainText">
-                پریا، پات درد می‌کنه؟ راستشو بگو!
-            </p>
-            <div style="display: flex; gap: 15px; justify-content: center;" id="legPainBtnGroup">
-                <button class="gate-btn" onclick="answerLegPain(true)">بله 😔</button>
-                <button class="gate-btn no-btn" onclick="answerLegPain(false)">خیر 😊</button>
-            </div>
-        </div>
-    </div>
-
     <footer>
         طراحی‌شده با معماری فوق پیشرفته، تجلیل از اخلاق نیکو و داده‌های اختصاصی پریا • ۲۰۲۶
     </footer>
@@ -851,62 +860,46 @@
                 noBtn.innerText = 'فقط گزینه بله مجاز است! سریع باش! ✨';
             }
         }
-        function passFirstGate(isYes) {
-            if(!isYes) return;
-            const gate = document.getElementById('gateScreen');
-            gate.classList.add('fade-out');
-            setTimeout(() => {
-                gate.style.display = 'none';
-                const sec = document.getElementById('securityScreen');
-                sec.style.display = 'flex';
-                setTimeout(() => { sec.style.opacity = '1'; }, 50);
-            }, 1000);
-        }
 
-        function passSecondGate() {
-            const sec = document.getElementById('securityScreen');
-            sec.style.opacity = '0';
-            setTimeout(() => {
-                sec.style.display = 'none';
-                const genius = document.getElementById('geniusScreen');
-                genius.style.display = 'flex';
-                setTimeout(() => { genius.style.opacity = '1'; }, 50);
-            }, 800);
-        }
-
-        function passGeniusTest() {
-            const genius = document.getElementById('geniusScreen');
-            genius.style.opacity = '0';
-            setTimeout(() => {
-                genius.style.display = 'none';
-                const gift = document.getElementById('giftScreen');
-                gift.style.display = 'flex';
-                setTimeout(() => { gift.style.opacity = '1'; }, 50);
-            }, 800);
+        // عملکرد ورق زدن صفحات کتاب
+        function nextBookPage(pageNumber) {
+            document.querySelectorAll('.book-page-content').forEach(page => {
+                page.classList.remove('active');
+            });
+            const targetPage = document.getElementById('page' + pageNumber);
+            if(targetPage) {
+                targetPage.classList.add('active');
+            }
         }
 
         function handleDictatorNo() {
             alert('اینجا دیکتاتوری امیر است! بگو بله تا بری بعدی 💔');
         }
 
-        function passGiftScreen() {
-            const gift = document.getElementById('giftScreen');
-            gift.style.opacity = '0';
-            setTimeout(() => {
-                gift.style.display = 'none';
-                const intro = document.getElementById('introScreen');
-                intro.style.display = 'flex';
-                setTimeout(() => { intro.style.opacity = '1'; }, 50);
-            }, 800);
-        }
-
-        function enterMainSite() {
-            const intro = document.getElementById('introScreen');
-            intro.style.opacity = '0';
-            setTimeout(() => {
-                intro.style.display = 'none';
-                setTimeout(showLegPainModal, 2500);
-            }, 800);
+        let noLegClickCount = 0;
+        function answerLegPain(isYes) {
+            const modalText = document.getElementById('legPainText');
+            
+            if(isYes) {
+                modalText.innerText = "آفرین که صادقی! الهی قربونش برم، استراحت کن فرشته‌ی من 🤍";
+                setTimeout(() => {
+                    const bookOverlay = document.getElementById('bookOverlay');
+                    bookOverlay.classList.add('fade-out');
+                    setTimeout(() => { bookOverlay.style.display = 'none'; }, 1000);
+                }, 2000);
+            } else {
+                noLegClickCount++;
+                if(noLegClickCount === 1) {
+                    modalText.innerText = "دست کن به پات! الان مطمئنی درد نمی‌کنه؟ اگر مطمئنی یک بار دیگه گزینه خیر رو بزن.";
+                } else {
+                    modalText.innerText = "تو همیشه حالت رو الکی می‌گی خوبه! ولی باشه، فرشته که هیچ‌وقت دردش رو بروز نمی‌ده... مراقب خودت باش ✨";
+                    setTimeout(() => {
+                        const bookOverlay = document.getElementById('bookOverlay');
+                        bookOverlay.classList.add('fade-out');
+                        setTimeout(() => { bookOverlay.style.display = 'none'; }, 1000);
+                    }, 3000);
+                }
+            }
         }
 
         // سه‌حالته کردن تم‌ها (تاریک، روشن، و قهوه‌ای/کرمی پریا)
@@ -1034,36 +1027,6 @@
                     angel.classList.remove('fly');
                     wingClickStage = 0;
                 }, 3000);
-            }
-        }
-
-        let legModalShown = false;
-        function showLegPainModal() {
-            if(!legModalShown) {
-                document.getElementById('legPainModal').style.display = 'flex';
-                legModalShown = true;
-            }
-        }
-
-        let noLegClickCount = 0;
-        function answerLegPain(isYes) {
-            const modalText = document.getElementById('legPainText');
-            
-            if(isYes) {
-                modalText.innerText = "آفرین که صادقی! الهی قربونش برم، استراحت کن فرشته‌ی من 🤍";
-                setTimeout(() => {
-                    document.getElementById('legPainModal').style.display = 'none';
-                }, 2000);
-            } else {
-                noLegClickCount++;
-                if(noLegClickCount === 1) {
-                    modalText.innerText = "دست کن به پات! الان مطمئنی درد نمی‌کنه؟ اگر مطمئنی یک بار دیگه گزینه خیر رو بزن.";
-                } else {
-                    modalText.innerText = "تو همیشه حالت رو الکی می‌گی خوبه! ولی باشه، فرشته که هیچ‌وقت دردش رو بروز نمی‌ده... مراقب خودت باش ✨";
-                    setTimeout(() => {
-                        document.getElementById('legPainModal').style.display = 'none';
-                    }, 3000);
-                }
             }
         }
 
