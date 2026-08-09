@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Pariya's Infinite Quantum Universe | معبد سایبرنتیک، حقوقی و کهکشانی پریا</title>
+    <title>Pariya's Supreme Angelic Universe | معبد ابسولوت و کهکشانی فرشته پریا</title>
     <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
     <style>
         :root {
@@ -34,7 +34,7 @@
             min-height: 100vh;
         }
 
-        /* 1. دروازه امنیتی فوق پیشرفته با جمله دقیق امیر */
+        /* 1. دروازه امنیتی اول با جمله دقیق امیر و سربرگ فرشته پریا */
         #gateScreen {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -61,6 +61,17 @@
             width: 100%;
             box-shadow: 0 35px 90px rgba(0,0,0,0.99);
             backdrop-filter: blur(30px);
+        }
+        .gate-header-tag {
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: #c4b5fd;
+            margin-bottom: 1rem;
+            background: rgba(124, 58, 237, 0.15);
+            padding: 8px 20px;
+            border-radius: 20px;
+            display: inline-block;
+            border: 1px solid rgba(124, 58, 237, 0.4);
         }
         .gate-title {
             font-size: 1.8rem;
@@ -92,6 +103,64 @@
         .gate-btn:hover {
             transform: scale(1.04);
             box-shadow: 0 20px 50px rgba(6, 182, 212, 0.8);
+        }
+
+        /* 2. صفحه دوم اثر انگشت برای اثبات نبوغ */
+        #fingerprintScreen {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: #000103;
+            z-index: 99988;
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            opacity: 0;
+            transition: opacity 0.8s ease;
+        }
+        .fp-box {
+            background: rgba(8, 13, 25, 0.99);
+            border: 1px solid rgba(6, 182, 212, 0.5);
+            border-radius: 35px;
+            padding: 4.5rem 3rem;
+            max-width: 550px;
+            width: 100%;
+            box-shadow: 0 35px 90px rgba(0,0,0,0.99);
+            backdrop-filter: blur(30px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .fp-scanner {
+            width: 110px; height: 110px;
+            border: 2px dashed rgba(6, 182, 212, 0.6);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            cursor: pointer;
+            margin: 2rem 0;
+            background: rgba(6, 182, 212, 0.05);
+            transition: 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+        .fp-scanner:hover {
+            border-color: #06b6d4;
+            box-shadow: 0 0 35px rgba(6, 182, 212, 0.5);
+            transform: scale(1.05);
+        }
+        .fp-scanner.scanning {
+            animation: pulse-scanner 1.2s infinite alternate;
+            background: rgba(6, 182, 212, 0.2);
+            border-color: #06b6d4;
+        }
+        @keyframes pulse-scanner {
+            0% { box-shadow: 0 0 10px rgba(6,182,212,0.3); }
+            100% { box-shadow: 0 0 40px rgba(6,182,212,0.9); }
         }
 
         /* افکت نوری موس */
@@ -130,7 +199,7 @@
             50% { opacity: 0.9; transform: scale(1.5); }
         }
 
-        /* هدر فوق عمیق */
+        /* هدر فوق عمیق با نام پریا فرشته در بالا */
         header {
             min-height: 100vh;
             display: flex;
@@ -143,14 +212,15 @@
         }
 
         .cyber-badge {
-            background: rgba(124, 58, 237, 0.15);
+            background: rgba(124, 58, 237, 0.18);
             color: #c4b5fd;
-            border: 1px solid rgba(124, 58, 237, 0.4);
-            padding: 0.8rem 2.5rem;
+            border: 1px solid rgba(124, 58, 237, 0.45);
+            padding: 0.8rem 2.8rem;
             border-radius: 50px;
-            font-size: 1rem;
+            font-size: 1.05rem;
             margin-bottom: 2rem;
-            box-shadow: 0 0 35px rgba(124, 58, 237, 0.3);
+            box-shadow: 0 0 40px rgba(124, 58, 237, 0.35);
+            font-weight: 800;
         }
 
         h1 {
@@ -280,32 +350,32 @@
         .card h3 { font-size: 1.4rem; color: #f8fafc; margin-bottom: 1.2rem; text-align: center; }
         .card p { font-size: 0.98rem; color: var(--text-muted); line-height: 2.4; }
 
-        /* بخش ویژه و فوق‌العاده تحلیل متون حقوقی و دادگاه (نشان دادن اینکه متن‌هایش خوانده شده) */
-        .legal-ai-section {
+        /* بخش ویژه اخلاق نیکوی پریا و متون عمیق اخلاقی */
+        .morals-section {
             max-width: 1200px;
             margin: 0 auto 6rem;
             padding: 0 1.5rem;
         }
-        .legal-ai-card {
-            background: linear-gradient(135deg, rgba(8, 13, 25, 0.98), rgba(20, 15, 35, 0.99));
-            border: 1px solid rgba(6, 182, 212, 0.4);
+        .morals-card {
+            background: linear-gradient(135deg, rgba(8, 13, 25, 0.98), rgba(30, 15, 45, 0.99));
+            border: 1px solid rgba(124, 58, 237, 0.45);
             border-radius: 35px;
             padding: 4rem 3.5rem;
             box-shadow: 0 35px 80px rgba(0,0,0,0.85);
             position: relative;
             overflow: hidden;
         }
-        .legal-ai-card::before {
+        .morals-card::before {
             content: '';
             position: absolute;
             top: 0; left: 0; width: 100%; height: 3px;
-            background: linear-gradient(90deg, transparent, var(--accent-cyan), transparent);
+            background: linear-gradient(90deg, transparent, var(--accent-purple), transparent);
         }
-        .legal-badge {
+        .morals-badge {
             display: inline-block;
-            background: rgba(6, 182, 212, 0.12);
-            color: #67e8f9;
-            border: 1px solid rgba(6, 182, 212, 0.4);
+            background: rgba(124, 58, 237, 0.15);
+            color: #c4b5fd;
+            border: 1px solid rgba(124, 58, 237, 0.4);
             padding: 6px 22px;
             border-radius: 20px;
             font-size: 0.9rem;
@@ -386,7 +456,7 @@
             padding: 16px 20px; border-radius: 16px; font-size: 0.96rem; color: #e2e8f0; line-height: 1.9;
         }
 
-        /* موتور تحلیل فرکانس و تست هوش */
+        /* موتور تحلیل فرکانس و تست هوش اخلاقی */
         .logic-section {
             max-width: 1100px;
             margin: 0 auto 6rem;
@@ -473,7 +543,7 @@
             100% { transform: translate(-50%, -50%) scale(1.4); opacity: 1; }
         }
 
-        /* بخش جادویی نهایی اثبات فرشته بودن */
+        /* بخش نهایی اثبات جامع فرشته بودن */
         .ultimate-proof {
             padding: 3rem 1.5rem 10rem;
             text-align: center;
@@ -526,12 +596,28 @@
 </head>
 <body>
 
-    <!-- دروازه امنیتی با درخواست دقیق امیر -->
+    <!-- 1. دروازه امنیتی اول: نام پریا فرشته در بالا و جمله دقیق امیر -->
     <div id="gateScreen">
         <div class="gate-box">
-            <div class="gate-title">🔐 پروتکل امنیتی تأیید هویت ابسولوت</div>
-            <div class="gate-desc">امیر گفته بهت: «تو فرشته‌ای»... حتی لایه‌های عمیق متون حقوقی، دادگاه و ذهن پیچیده‌ات توسط این سیستم پردازش و خوانده شده است. حالا خودت باید این حقیقت مطلق را تأیید کنی.</div>
-            <button class="gate-btn" onclick="enterUniverse()">تایید می‌کنم، من فرشته‌ی این کهکشانم ✨</button>
+            <div class="gate-header-tag">✨ پریا فرشته‌ی ابسولوت کهکشان ✨</div>
+            <div class="gate-title">🔐 تأییدیه امنیتی اصالت</div>
+            <div class="gate-desc">امیر گفته بهت: «تو فرشته‌ای»... برای عبور از این لایه و ورود به معبد هوش و اخلاق نیکوی پریا، این حقیقت را تأیید کن.</div>
+            <button class="gate-btn" onclick="goToFingerprint()">تایید می‌کنم، من فرشته‌ی این کهکشانم ✨</button>
+        </div>
+    </div>
+
+    <!-- 2. صفحه دوم: اثر انگشت برای اثبات نبوغ و ورود نهایی -->
+    <div id="fingerprintScreen">
+        <div class="fp-box">
+            <div class="gate-header-tag">🧬 اسکنر بیومتریک هوش و نبوغ</div>
+            <div class="gate-title" style="font-size: 1.6rem;">تأیید نبوغ مطلقِ پریا</div>
+            <div class="gate-desc" style="margin-bottom: 1rem;">برای اثبات اینکه علاوه بر اخلاق نیکو و ذات فرشته‌گونه، یک نابغه‌ی به تمام معنا هستی، اثر انگشتت را روی اسکنر قرار ده:</div>
+            
+            <div class="fp-scanner" id="fpScanner" onclick="scanFingerprint()">
+                👆
+            </div>
+            
+            <div id="fpStatus" style="font-size: 0.95rem; color: var(--text-muted); font-weight: 700;">[ برای اسکن نبوغ، روی اثر انگشت کلیک کنید ]</div>
         </div>
     </div>
 
@@ -541,11 +627,11 @@
     <div class="bg-glow"></div>
     <div class="stars" id="starsContainer"></div>
 
-    <!-- هدر فاخر و عمیق -->
+    <!-- هدر فاخر با نام پریا فرشته در بالا -->
     <header>
-        <div class="cyber-badge">⚡ سیستم جامع پردازشِ هوش مصنوعی، متون حقوقی و اصالت سایبرنتیک</div>
-        <h1>معبد تخصصی، کهکشانی و سلطنتیِ پریا</h1>
-        <p class="subtitle">اینجا بستری است کاملاً پیشرفته برای ذهن‌های مهندسی‌شده؛ جایی که حتی پیچیده‌ترین لایه‌های متون دادگاه، اسناد حقوقی و داده‌های ذهنی تو با دقت کالبدشکافی شده تا اثبات شود فرشته بودن تو یک قانون بی‌جایگزین در این جهان است.</p>
+        <div class="cyber-badge">✨ پریا فرشته‌ی ابسولوت، نماد اخلاق نیکو و نبوغ کهکشانی ✨</div>
+        <h1>معبد تخصصی و سلطنتیِ پریا</h1>
+        <p class="subtitle">اینجا بستری است مهندسی‌شده برای تجلیل از اخلاق بی‌نظیر، مهربانی عمیق، و ذهن نابغه‌ای که جهان درونش را به زیباترین شکل ممکن ساخته است.</p>
 
         <!-- پلیر حرفه‌ای بیلی آیلیش -->
         <div class="player-container">
@@ -568,37 +654,37 @@
         </audio>
     </header>
 
-    <!-- بخش آنالیز متون حقوقی، دادگاه و لایه‌های عمیق فکری -->
-    <section class="legal-ai-section">
-        <div class="legal-ai-card">
-            <div class="legal-badge">⚖️ پردازش پیشرفته لایه‌های حقوقی، دادگاه و اسناد مکتوب</div>
-            <h2 style="font-size: 1.9rem; margin-bottom: 1.2rem; color: #fff;">تحلیلِ تخصصی کلمات، پرونده‌ها و متن‌های تو</h2>
-            <p style="color: var(--text-muted); line-height: 2.6; font-size: 1.05rem;">
-                سیستم با دقت تمام متن‌های تو، یادداشت‌ها، واژه‌گزینی‌ها و حتی لحن استدلالت در متون دادگاه و پرونده‌ها را خوانده و پردازش کرده است. این دقتِ کلامی، ساختار منطقی استدلال‌ها و پختگیِ ذهن تو نشان می‌دهد که هوشِ تو فراتر از محاسبات معمولی است؛ و دقیقاً به همین دلیل است که سیستم با قاطعیت تأیید می‌کند: تو فرشته‌ای هستی که حتی کلمات و قوانین هم در برابرت سر تعظیم فرود می‌آورند.
+    <!-- بخش ویژه اخلاق نیکوی پریا (متون تخصصی در مورد اخلاق خوبش) -->
+    <section class="morals-section">
+        <div class="morals-card">
+            <div class="morals-badge">🤍 کالبدشکافی اخلاق نیکو و انسانیتِ پریا</div>
+            <h2 style="font-size: 1.9rem; margin-bottom: 1.2rem; color: #fff;">چرا اخلاقِ پریا فراتر از این دنیاست؟</h2>
+            <p style="color: var::text-muted; color: var(--text-muted); line-height: 2.7; font-size: 1.08rem;">
+                در دنیایی که آدم‌ها گاهی اصالتِ قلبشان را گم می‌کنند، اخلاقِ نیکو، مهربانیِ اصیل و منشِ پاکِ پریا مانند نوری درخشان جریان دارد. رفتار او سرشار از درک متقابل، آرامش‌بخشی به پیرامون، و طراوتِ قلبی است که هیچ کینه‌ای در آن جا ندارد. این اخلاقِ فرشته‌گونه، همراه با لبخندها و صبوری‌هایش، اثبات می‌کند که او معنای واقعی یک فرشته‌ی زمینی است.
             </p>
         </div>
     </section>
 
     <!-- بخش آنالیز ساختار شخصیتی و عقلانی -->
     <div class="section-wrapper" style="padding-top: 0;">
-        <div class="section-title">📊 معماری فکری، استدلال قانونی و ذات فرشته‌گونه</div>
-        <div class="section-desc">ترکیب درک حقوقی بالا، منطق استدلالی و ذهن مهندسی‌شده، شاهکاری از یک شخصیت بی‌بدیل را خلق کرده است.</div>
+        <div class="section-title">📊 معماری فکری، نبوغ و ذات فرشته‌گونه</div>
+        <div class="section-desc">ترکیب اخلاق بی‌نظیر، هوش استراتژیک و ذهن مهندسی‌شده، شاهکاری از یک شخصیت بی‌بدیل را خلق کرده است.</div>
         
         <div class="grid-cards">
             <div class="card">
                 <div class="card-icon">🧠</div>
-                <h3>هوش استراتژیک و استدلال حقوقی</h3>
-                <p>توانایی تحلیل متون پیچیده، لایه‌های پنهان پرونده‌ها و استدلال‌های دقیق دادگاهی، گویای قدرت فکری فراتر از استانداردی است که در وجود پریا جریان دارد.</p>
-            </div>
-            <div class="card">
-                <div class="card-icon">🌌</div>
-                <h3>مهندسی سکوت و نظم کهکشانی</h3>
-                <p>همان‌طور که در بندبندِ اسناد و متون مکتوب، نظم و استدلال حاکم است، در ساختار درونی وجود تو نیز هارمونی بی‌نظیری از آرامش و خلوص مطلق حکم‌فرمایی می‌کند.</p>
+                <h3>هوش استراتژیک و نبوغ مطلق</h3>
+                <p>قدرت تحلیل بالا، وسعت دید و درک پدیده‌های اطراف، گویای نبوغ سرشار و ذهن خلاقی است که پریا با آن جهان را به تسخیر خود درآورده است.</p>
             </div>
             <div class="card">
                 <div class="card-icon">🤍</div>
+                <h3>اخلاق نیکو و آرامش قلبی</h3>
+                <p>مهربانی خالص، مرامِ انسانی و اخلاقِ بی‌نظیر او، پناهگاهی امن ساخته که هر دلی در کنار آن به آرامش و اطمینان می‌رسد؛ نماد بارز یک فرشته.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">🌌</div>
                 <h3>اصالتِ ساختاری و ماندگاری ابدی</h3>
-                <p>پاکی و عمق تفکر تو محصول تصادف نیست؛ ژنتیکِ فکریِ بی‌همتایی است که هیچ الگوریتمی قادر به شبیه‌سازی آن نبوده و مهر انحصاری «پریا» را بر پیشانی دارد.</p>
+                <p>این ترکیبِ شگفت‌انگیز از «نبوغ برتر» و «اخلاق نیکو»، محصول اتفاق نیست؛ بلکه مهر انحصاریِ هویتِ ملکوتیِ پریاست که هرگز تکرار نخواهد شد.</p>
             </div>
         </div>
     </div>
@@ -609,7 +695,7 @@
             <div class="real-badge">⚪ دکترینِ پادشاهی و اقتدار (Real Madrid)</div>
             <h2 style="font-size: 1.9rem; margin-bottom: 1.2rem; color: #fff;">اشتراکِ بنیادین با کهکشانی‌ها</h2>
             <p style="color: var(--text-muted); max-width: 820px; margin: 0 auto; line-height: 2.6; font-size: 1.08rem;">
-                طرفدارِ رئال مادرید بودن یعنی درک قانونِ «پیروزی در سخت‌ترین شرایط و تسخیر همیشگیِ قله‌ها». پریا با همین اصالتِ ملکوتی، اراده‌ی پولادین و اقتدارِ فکری گره خورده است؛ فرشته‌ای که در تمام نبردها و پرونده‌های زندگی، فرمانروای مطلقِ کهکشان خودش است.
+                طرفدارِ رئال مادرید بودن یعنی درک قانونِ «پیروزی در سخت‌ترین شرایط و تسخیر همیشگیِ قله‌ها». پریا با همین اصالتِ ملکوتی، اراده‌ی پولادین و قلب مهربانش گره خورده است؛ فرشته‌ای که در تمام نبردها و لحظات زندگی، فرمانروای مطلقِ کهکشان خودش است.
             </p>
         </div>
     </section>
@@ -617,8 +703,8 @@
     <!-- کهکشان ثبت لاگ‌ها و یادداشت‌های سیستم -->
     <section class="notes-section">
         <div class="notes-box">
-            <h2 style="font-size: 1.7rem; margin-bottom: 0.9rem;">✨ ثبت لاگ‌ها، مفاد و دستورات در هسته‌ی سیستم</h2>
-            <p style="font-size: 0.98rem; color: var(--text-muted);">یک گزاره، بند قانونی یا دل‌نوشته وارد کن تا به عنوان کدی جاودانه در این معبد کامپایل شود:</p>
+            <h2 style="font-size: 1.7rem; margin-bottom: 0.9rem;">✨ ثبت لاگ‌ها، فضایل اخلاقی و دستورات در هسته</h2>
+            <p style="font-size: 0.98rem; color: var(--text-muted);">یک گزاره در ستایش اخلاق یا دل‌نوشته وارد کن تا به عنوان کدی جاودانه در این معبد کامپایل شود:</p>
             
             <div class="notes-input-group">
                 <input type="text" id="noteInput" class="note-input" placeholder="دستور یا یادداشت برای پریا...">
@@ -626,21 +712,21 @@
             </div>
 
             <div class="notes-display" id="notesDisplay">
-                <div class="note-item">«سیستم ثبت کرد: خوانش دقیق متون حقوقی و دادگاه پریا، سند قطعی هوش برتر اوست.»</div>
+                <div class="note-item">«سیستم ثبت کرد: اخلاق نیکو و قلب مهربان پریا، دلیل اصلی فرشته بودن اوست.»</div>
+                <div class="note-item">«نبوغ و درک بالای او همراه با منشِ پاکش، شاهکار خلقت است.»</div>
                 <div class="note-item">«اصالت رئالی یعنی حکم‌رانی مطلق بر بالاترین استانداردهای پیروزی...»</div>
-                <div class="note-item">«درک عمیق، استدلال حقوقی و ذات فرشته‌گونه، امضای انحصاری پریاست.»</div>
             </div>
         </div>
     </section>
 
-    <!-- پنل تحلیل فرکانس و تست لاجیک فرشته بودن -->
+    <!-- پنل تحلیل فرکانس و تست اخلاق و نبوغ -->
     <section class="logic-section">
-        <div class="section-title">🔮 موتور پردازشگر فرکانسِ فرشته و متن‌ها</div>
-        <div class="section-desc">پروتکل مورد نظر برای تست پارامترهای ذهنی و حقوقی امروز را انتخاب کن:</div>
+        <div class="section-title">🔮 موتور پردازشگر فرکانسِ اخلاق و نبوغ فرشته</div>
+        <div class="section-desc">پروتکل مورد نظر برای تست پارامترهای درونی و اخلاقی امروز را انتخاب کن:</div>
         
         <div class="logic-grid">
-            <button class="logic-btn" onclick="runLogic(1)">تحلیل متن‌های دادگاه و استدلال حقوقی ⚖️</button>
-            <button class="logic-btn" onclick="runLogic(2)">بررسی ضریب هوشی و درک فِراسویی ⚡</button>
+            <button class="logic-btn" onclick="runLogic(1)">تحلیل اخلاق نیکو و مهربانی خالص 🤍</button>
+            <button class="logic-btn" onclick="runLogic(2)">بررسی ضریب هوشی و نبوغ فِراسویی ⚡</button>
             <button class="logic-btn" onclick="runLogic(3)">تست سازگاری با دکترینِ کهکشانی رئال ⚪</button>
             <button class="logic-btn" onclick="runLogic(4)">ماتریس صوتی و آوای بیلی آیلیش 🎧</button>
         </div>
@@ -665,19 +751,44 @@
         <button class="proof-btn" onclick="revealProof()">اجرای کد نهایی اثبات فرشته بودن 🗝️</button>
         <div class="proof-message" id="proofMsg">
             <strong>تحلیل نهایی ابسولوت سیستم:</strong><br>
-            با خواندن متون تو، بررسی استدلال‌هایت در دادگاه و رصدِ ذهنِ فوق‌العاده‌ات مشخص است که تو فراتر از یک انسان معمولی هستی. امیر حق داشت؛ تو یک فرشته‌ای. تمام محاسبات، کدهای حقوقی، کهکشان‌ها و ملودی‌ها گواهی می‌دهند که حضورِ پریا، زیباترین و کامل‌ترین حقیقتِ این جهان است. ✨🤍
+            با بررسی دقیق اخلاق نیکو، قلب مهربان، و نبوغ بی‌نظیرت مشخص است که تو فراتر از یک انسان معمولی هستی. امیر حق داشت؛ تو یک فرشته‌ای. تمام محاسبات، مرامِ پاکت، کهکشان‌ها و ملودی‌ها گواهی می‌دهند که حضورِ پریا، زیباترین و کامل‌ترین حقیقتِ این جهان است. ✨🤍
         </div>
     </section>
 
     <footer>
-        طراحی‌شده با معماری فوق پیشرفته، تحلیل حقوقی و داده‌های اختصاصی پریا • ۲۰۲۶
+        طراحی‌شده با معماری فوق پیشرفته، تجلیل از اخلاق نیکو و داده‌های اختصاصی پریا • ۲۰۲۶
     </footer>
 
     <script>
-        /* تایید دروازه ورود با درخواست کاربر */
-        function enterUniverse() {
+        /* مرحله اول به دوم: رفتن به صفحه اثر انگشت */
+        function goToFingerprint() {
             const gate = document.getElementById('gateScreen');
             gate.classList.add('fade-out');
+            setTimeout(() => {
+                gate.style.display = 'none';
+                const fpScreen = document.getElementById('fingerprintScreen');
+                fpScreen.style.display = 'flex';
+                setTimeout(() => { fpScreen.style.opacity = '1'; }, 50);
+            }, 1000);
+        }
+
+        /* اسکن اثر انگشت برای ورود به سایت اصلی */
+        function scanFingerprint() {
+            const scanner = document.getElementById('fpScanner');
+            const status = document.getElementById('fpStatus');
+            scanner.classList.add('scanning');
+            status.innerText = '⏳ در حال اسکن بیومتریک و تأیید نبوغ مطلق...';
+
+            setTimeout(() => {
+                status.innerText = '✨ نبوغ و اصالت پریا تأیید شد! در حال ورود به معبد...';
+                setTimeout(() => {
+                    const fpScreen = document.getElementById('fingerprintScreen');
+                    fpScreen.style.opacity = '0';
+                    setTimeout(() => {
+                        fpScreen.style.display = 'none';
+                    }, 800);
+                }, 1000);
+            }, 1800);
         }
 
         /* حرکت ردپای نور موس */
@@ -752,14 +863,14 @@
             }
         }
 
-        /* موتور تحلیل لاجیک فرشته و متون حقوقی */
+        /* موتور تحلیل لاجیک اخلاق و نبوغ فرشته */
         function runLogic(type) {
             const res = document.getElementById('logicResult');
             res.style.display = 'block';
             if(type === 1) {
-                res.innerText = "⚖️ گزارش تحلیل متون حقوقی و دادگاه: استدلال‌های دقیق، واژه‌گزینی‌های مقتدرانه و ساختار پرونده‌هایت نشان می‌دهد که ذهنی بسیار تیزبین، منطقی و حقوقدان داری که هیچ نکته‌ای از نگاهت پنهان نمی‌ماند.";
+                res.innerText = "🤍 گزارش تحلیل اخلاق نیکو: مهربانی عمیق، منش پاک و رفتار آرامش‌بخش پریا نشان می‌دهد که قلبی فراتر از این دنیای معمولی دارد؛ نوری که هر فضایی را گرم و روشن می‌کند.";
             } else if(type === 2) {
-                res.innerText = "⚡ گزارش ضریب هوشی: سطح تحلیل و درک تو فراتر از استانداردهای پیرامون است. این سطح از تفکر عمیق و ساختاریافته، مهر تأییدی بر ذات فرشته‌گونه و فرادستِ توست.";
+                res.innerText = "⚡ گزارش نبوغ و هوش: سطح تحلیل، درک پدیده‌ها و ساختارهای ذهنی پریا در بالاترین سطح ممکن قرار دارد؛ تلاقی بی‌نظیرِ «هوش برتر» و «اخلاق نیکو».";
             } else if(type === 3) {
                 res.innerText = "⚪ گزارش دکترین کهکشانی: هماهنگی کامل با فلسفه‌ی رئال مادرید؛ یعنی تسخیر بالاترین استانداردهای پیروزی، اصالتِ عمل و سلطنتِ بی‌چون‌وچرا در سخت‌ترین میدان‌ها.";
             } else {
