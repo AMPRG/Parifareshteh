@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
     <meta charset="UTF-8">
@@ -17,7 +17,6 @@
             --text-muted: #94a3b8;
             --border: rgba(255, 255, 255, 0.08);
         }
-
         body.dark-theme {
             --bg-dark: #000103;
             --card-bg: rgba(5, 9, 18, 0.96);
@@ -25,7 +24,6 @@
             --text-muted: #94a3b8;
             --border: rgba(255, 255, 255, 0.08);
         }
-
         body.light-theme {
             --bg-dark: #f0f4f8;
             --card-bg: rgba(255, 255, 255, 0.96);
@@ -33,7 +31,6 @@
             --text-muted: #475569;
             --border: rgba(0, 0, 0, 0.1);
         }
-
         body.cream-theme {
             --bg-dark: #1e1612;
             --card-bg: rgba(43, 33, 27, 0.96);
@@ -44,7 +41,6 @@
             --text-muted: #d1d5db;
             --border: rgba(217, 119, 6, 0.25);
         }
-
         * {
             margin: 0;
             padding: 0;
@@ -52,7 +48,6 @@
             font-family: 'Vazirmatn', sans-serif;
             -webkit-tap-highlight-color: transparent;
         }
-
         body {
             background-color: var(--bg-dark);
             color: var(--text-main);
@@ -61,7 +56,6 @@
             min-height: 100vh;
             transition: background 0.4s ease, color 0.4s ease;
         }
-
         .floating-angel-text {
             display: inline-block;
             background: linear-gradient(135deg, rgba(124, 58, 237, 0.25), rgba(6, 182, 212, 0.25));
@@ -82,10 +76,12 @@
             50% { transform: translateY(-3px) rotate(0.5deg); }
             100% { transform: translateY(0) rotate(0deg); }
         }
-
         #bookOverlay {
             position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             background: rgba(0, 1, 3, 0.92);
             z-index: 99999;
             display: flex;
@@ -99,7 +95,6 @@
             opacity: 0;
             visibility: hidden;
         }
-
         .magical-book {
             background: linear-gradient(135deg, #2c1f18 0%, #17100c 100%);
             border: 3px solid #d97706;
@@ -120,13 +115,14 @@
         .magical-book::before {
             content: '';
             position: absolute;
-            top: 0; bottom: 0; right: 25px;
+            top: 0;
+            bottom: 0;
+            right: 25px;
             width: 15px;
             background: linear-gradient(90deg, #0d0806, #2c1f18, #0d0806);
             border-radius: 5px;
             box-shadow: inset 0 0 10px rgba(0,0,0,0.9);
         }
-
         .book-page-content {
             display: none;
             width: 100%;
@@ -139,7 +135,6 @@
             from { opacity: 0; transform: scale(0.97); }
             to { opacity: 1; transform: scale(1); }
         }
-
         .book-cover-title {
             font-size: 2.2rem;
             font-weight: 900;
@@ -149,7 +144,6 @@
             -webkit-text-fill-color: transparent;
             text-shadow: 0 5px 15px rgba(0,0,0,0.5);
         }
-
         .gate-title {
             font-size: 1.6rem;
             font-weight: 900;
@@ -158,7 +152,6 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-
         .gate-btn-group {
             display: flex;
             gap: 15px;
@@ -166,7 +159,6 @@
             margin-top: 2rem;
             flex-wrap: wrap;
         }
-
         .gate-btn {
             background: linear-gradient(135deg, #7c3aed, #06b6d4);
             color: white;
@@ -184,11 +176,13 @@
             border: 1px solid var(--border);
             color: var(--text-muted);
         }
-        .gate-btn:hover { transform: scale(1.05); }
-
+        .gate-btn:hover {
+            transform: scale(1.05);
+        }
         .cursor-glow {
             position: fixed;
-            width: 500px; height: 500px;
+            width: 500px;
+            height: 500px;
             background: radial-gradient(circle, rgba(124, 58, 237, 0.12) 0%, rgba(6, 182, 212, 0.04) 50%, transparent 75%);
             border-radius: 50%;
             pointer-events: none;
@@ -196,10 +190,12 @@
             z-index: 9998;
             mix-blend-mode: screen;
         }
-
         .bg-glow {
             position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             background: radial-gradient(circle at 50% 10%, #0d0624 0%, #000103 85%);
             z-index: -2;
             transition: background 0.5s ease;
@@ -210,10 +206,12 @@
         body.cream-theme .bg-glow {
             background: radial-gradient(circle at 50% 10%, #2c1f18 0%, #1e1612 85%);
         }
-
         .stars {
             position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             z-index: -1;
             pointer-events: none;
         }
@@ -227,10 +225,11 @@
             0%, 100% { opacity: 0.1; transform: scale(0.6); }
             50% { opacity: 0.9; transform: scale(1.5); }
         }
-
         .top-nav {
             position: fixed;
-            top: 0; left: 0; width: 100%;
+            top: 0;
+            left: 0;
+            width: 100%;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -240,9 +239,12 @@
             backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--border);
         }
-        body.light-theme .top-nav { background: rgba(255, 255, 255, 0.85); }
-        body.cream-theme .top-nav { background: rgba(30, 22, 18, 0.85); }
-
+        body.light-theme .top-nav {
+            background: rgba(255, 255, 255, 0.85);
+        }
+        body.cream-theme .top-nav {
+            background: rgba(30, 22, 18, 0.85);
+        }
         .nav-brand {
             font-size: 1.05rem;
             font-weight: 900;
@@ -266,13 +268,15 @@
             cursor: pointer;
             transition: 0.3s;
         }
-        .theme-toggle-btn:hover { background: rgba(124, 58, 237, 0.3); }
-
+        .theme-toggle-btn:hover {
+            background: rgba(124, 58, 237, 0.3);
+        }
         .menu-toggle-btn {
             background: none;
             border: 1px solid var(--border);
             color: var(--text-main);
-            width: 38px; height: 38px;
+            width: 38px;
+            height: 38px;
             border-radius: 12px;
             display: flex;
             flex-direction: column;
@@ -284,13 +288,21 @@
             flex-shrink: 0;
         }
         .menu-toggle-btn span {
-            display: block; width: 16px; height: 2px; background: currentColor; border-radius: 2px;
+            display: block;
+            width: 16px;
+            height: 2px;
+            background: currentColor;
+            border-radius: 2px;
         }
-        .menu-toggle-btn:hover { border-color: var(--accent-purple); }
-
+        .menu-toggle-btn:hover {
+            border-color: var(--accent-purple);
+        }
         .sidebar {
             position: fixed;
-            top: 0; left: -360px; width: 350px; height: 100%;
+            top: 0;
+            left: -360px;
+            width: 350px;
+            height: 100%;
             background: var(--card-bg);
             border-right: 1px solid var(--border);
             z-index: 9999;
@@ -302,9 +314,14 @@
             gap: 1.5rem;
             overflow-y: auto;
         }
-        .sidebar.open { left: 0; }
+        .sidebar.open {
+            left: 0;
+        }
         .sidebar-title {
-            font-size: 1.3rem; font-weight: 900; color: var(--text-main); margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+            font-weight: 900;
+            color: var(--text-main);
+            margin-bottom: 0.5rem;
         }
         .sidebar-link {
             background: rgba(124, 58, 237, 0.08);
@@ -322,7 +339,6 @@
             background: rgba(124, 58, 237, 0.25);
             transform: translateX(-4px);
         }
-
         .search-container {
             margin-top: 1rem;
             position: relative;
@@ -338,7 +354,9 @@
             outline: none;
             transition: 0.3s;
         }
-        .search-input:focus { border-color: var(--accent-purple); }
+        .search-input:focus {
+            border-color: var(--accent-purple);
+        }
         .search-result-box {
             margin-top: 10px;
             padding: 14px;
@@ -350,7 +368,6 @@
             border: 1px solid rgba(124, 58, 237, 0.4);
             line-height: 1.8;
         }
-
         header {
             min-height: 100vh;
             display: flex;
@@ -361,7 +378,6 @@
             padding: 6rem 1.5rem 3rem;
             position: relative;
         }
-
         .cyber-badge {
             background: rgba(124, 58, 237, 0.18);
             color: #c4b5fd;
@@ -373,7 +389,6 @@
             box-shadow: 0 0 40px rgba(124, 58, 237, 0.35);
             font-weight: 800;
         }
-
         h1 {
             font-size: clamp(2.6rem, 6vw, 4.8rem);
             font-weight: 900;
@@ -383,7 +398,6 @@
             -webkit-text-fill-color: transparent;
             letter-spacing: -1px;
         }
-
         p.subtitle {
             font-size: clamp(1.05rem, 2.3vw, 1.25rem);
             color: var(--text-muted);
@@ -391,7 +405,6 @@
             line-height: 2.6;
             margin-bottom: 3.5rem;
         }
-
         .pariya-writings-section {
             max-width: 1200px;
             margin: 0 auto 6rem;
@@ -423,7 +436,10 @@
         .writing-card::before {
             content: '';
             position: absolute;
-            top: 0; left: 0; width: 100%; height: 4px;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
             background: linear-gradient(90deg, #7c3aed, #06b6d4);
             opacity: 0.7;
             transition: 0.3s;
@@ -433,7 +449,9 @@
             transform: translateY(-8px);
             box-shadow: 0 30px 70px rgba(124, 58, 237, 0.25);
         }
-        .writing-card:hover::before { opacity: 1; }
+        .writing-card:hover::before {
+            opacity: 1;
+        }
         .writing-icon {
             font-size: 2.5rem;
             margin-bottom: 1rem;
@@ -464,10 +482,12 @@
             background: var(--accent-purple);
             color: #fff;
         }
-
         .writing-modal {
             position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             background: rgba(0, 1, 3, 0.88);
             z-index: 99999;
             display: flex;
@@ -498,11 +518,13 @@
         }
         .modal-close-btn {
             position: absolute;
-            top: 25px; left: 25px;
+            top: 25px;
+            left: 25px;
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid var(--border);
             color: var(--text-main);
-            width: 40px; height: 40px;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
             font-size: 1.1rem;
             cursor: pointer;
@@ -511,7 +533,11 @@
             align-items: center;
             transition: 0.3s;
         }
-        .modal-close-btn:hover { background: rgba(239, 68, 68, 0.2); border-color: #ef4444; color: #f87171; }
+        .modal-close-btn:hover {
+            background: rgba(239, 68, 68, 0.2);
+            border-color: #ef4444;
+            color: #f87171;
+        }
         .modal-story-title {
             font-size: 1.5rem;
             font-weight: 900;
@@ -539,7 +565,6 @@
             border-top: 1px solid var(--border);
             padding-top: 2rem;
         }
-
         .multiverse-hub {
             background: var(--card-bg);
             border: 1px solid rgba(124, 58, 237, 0.35);
@@ -556,7 +581,6 @@
             position: relative;
             overflow: hidden;
         }
-
         .hub-header {
             display: flex;
             align-items: center;
@@ -564,7 +588,6 @@
             border-bottom: 1px solid var(--border);
             padding-bottom: 1.2rem;
         }
-
         .hub-title {
             font-weight: 900;
             font-size: 1.2rem;
@@ -573,7 +596,6 @@
             align-items: center;
             gap: 10px;
         }
-
         .hub-status-badge {
             background: rgba(6, 182, 212, 0.15);
             color: #38bdf8;
@@ -584,7 +606,6 @@
             font-weight: 800;
             transition: 0.3s;
         }
-
         .universe-screen {
             background: rgba(0, 0, 0, 0.5);
             border: 1px solid var(--border);
@@ -600,20 +621,20 @@
             overflow: hidden;
             transition: 0.4s;
         }
-
         .universe-screen::before {
             content: '';
             position: absolute;
-            top: 0; left: 0; width: 100%; height: 2px;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
             background: linear-gradient(90deg, transparent, var(--accent-cyan), transparent);
             animation: scanline 3s infinite linear;
         }
-
         @keyframes scanline {
             0% { transform: translateX(-100%); }
             100% { transform: translateX(100%); }
         }
-
         .universe-text {
             font-size: 1.05rem;
             font-weight: 700;
@@ -621,20 +642,17 @@
             line-height: 2.2;
             transition: 0.3s;
         }
-
         .universe-sub {
             font-size: 0.85rem;
             color: var(--text-muted);
             margin-top: 8px;
             transition: 0.3s;
         }
-
         .universe-controls-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 12px;
         }
-
         .uni-btn {
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid var(--border);
@@ -647,21 +665,18 @@
             font-weight: 800;
             text-align: center;
         }
-
         .uni-btn:hover {
             border-color: var(--accent-purple);
             color: var(--text-main);
             background: rgba(124, 58, 237, 0.15);
             transform: translateY(-2px);
         }
-
         .uni-btn.active-uni {
             background: linear-gradient(135deg, #7c3aed, #06b6d4);
             border-color: transparent;
             color: white;
             box-shadow: 0 0 25px rgba(124, 58, 237, 0.5);
         }
-
         .percentage-panel {
             max-width: 1200px;
             margin: 0 auto 6rem;
@@ -676,20 +691,40 @@
             text-align: center;
         }
         .percentage-input-group {
-            display: flex; gap: 15px; max-width: 450px; margin: 2rem auto 0;
+            display: flex;
+            gap: 15px;
+            max-width: 450px;
+            margin: 2rem auto 0;
         }
         .score-input {
-            flex-grow: 1; background: rgba(0,0,0,0.6); border: 1px solid var(--border);
-            border-radius: 16px; padding: 14px 20px; color: #fff; font-size: 1.1rem; text-align: center; outline: none;
+            flex-grow: 1;
+            background: rgba(0,0,0,0.6);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 14px 20px;
+            color: #fff;
+            font-size: 1.1rem;
+            text-align: center;
+            outline: none;
         }
         .score-btn {
-            background: var(--accent-purple); color: white; border: none; padding: 0 28px;
-            border-radius: 16px; font-weight: 800; cursor: pointer; transition: 0.3s;
+            background: var(--accent-purple);
+            color: white;
+            border: none;
+            padding: 0 28px;
+            border-radius: 16px;
+            font-weight: 800;
+            cursor: pointer;
+            transition: 0.3s;
         }
         .score-result {
-            margin-top: 2rem; font-size: 1.15rem; color: #c4b5fd; font-weight: 800; min-height: 40px; line-height: 2;
+            margin-top: 2rem;
+            font-size: 1.15rem;
+            color: #c4b5fd;
+            font-weight: 800;
+            min-height: 40px;
+            line-height: 2;
         }
-
         .angelic-traits-section {
             max-width: 1200px;
             margin: 0 auto 6rem;
@@ -710,7 +745,8 @@
             margin-bottom: 4rem;
             font-size: 1.05rem;
             max-width: 750px;
-            margin-left: auto; margin-right: auto;
+            margin-left: auto;
+            margin-right: auto;
             line-height: 2.2;
         }
         .traits-grid {
@@ -729,10 +765,24 @@
             backdrop-filter: blur(15px);
             transition: 0.3s;
         }
-        .trait-card:hover { border-color: rgba(124, 58, 237, 0.5); transform: translateY(-5px); }
-        .trait-title { font-size: 1.2rem; font-weight: 900; color: #c4b5fd; margin-bottom: 1rem; display: flex; align-items: center; gap: 10px; }
-        .trait-desc { font-size: 0.95rem; color: var(--text-muted); line-height: 2.5; }
-
+        .trait-card:hover {
+            border-color: rgba(124, 58, 237, 0.5);
+            transform: translateY(-5px);
+        }
+        .trait-title {
+            font-size: 1.2rem;
+            font-weight: 900;
+            color: #c4b5fd;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .trait-desc {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            line-height: 2.5;
+        }
         .newspaper-section {
             max-width: 1200px;
             margin: 0 auto 6rem;
@@ -749,16 +799,31 @@
             position: relative;
             overflow: hidden;
         }
-        .news-box:hover { border-color: var(--accent-gold); transform: scale(1.01); }
+        .news-box:hover {
+            border-color: var(--accent-gold);
+            transform: scale(1.01);
+        }
         .news-header-tag {
-            background: rgba(251, 191, 36, 0.15); color: #fde047; border: 1px solid rgba(251, 191, 36, 0.4);
-            padding: 6px 20px; border-radius: 20px; font-size: 0.85rem; font-weight: 800; display: inline-block; margin-bottom: 1.2rem;
+            background: rgba(251, 191, 36, 0.15);
+            color: #fde047;
+            border: 1px solid rgba(251, 191, 36, 0.4);
+            padding: 6px 20px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 800;
+            display: inline-block;
+            margin-bottom: 1.2rem;
         }
         .news-content {
-            margin-top: 1.5rem; display: none; line-height: 2.8; color: var(--text-muted); font-size: 1.05rem; text-align: right;
-            border-top: 1px solid var(--border); padding-top: 2rem;
+            margin-top: 1.5rem;
+            display: none;
+            line-height: 2.8;
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            text-align: right;
+            border-top: 1px solid var(--border);
+            padding-top: 2rem;
         }
-
         .wings-section {
             max-width: 900px;
             margin: 0 auto 6rem;
@@ -767,11 +832,19 @@
         }
         .wings-btn {
             background: linear-gradient(135deg, #7c3aed, #06b6d4);
-            color: white; border: none; padding: 1.4rem 4rem; font-size: 1.2rem; font-weight: 900;
-            border-radius: 50px; cursor: pointer; box-shadow: 0 20px 50px rgba(124, 58, 237, 0.5); transition: 0.3s;
+            color: white;
+            border: none;
+            padding: 1.4rem 4rem;
+            font-size: 1.2rem;
+            font-weight: 900;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 20px 50px rgba(124, 58, 237, 0.5);
+            transition: 0.3s;
         }
-        .wings-btn:hover { transform: scale(1.05); }
-
+        .wings-btn:hover {
+            transform: scale(1.05);
+        }
         .flying-angel-icon {
             position: fixed;
             bottom: -150px;
@@ -788,7 +861,6 @@
             bottom: 105vh;
             opacity: 1;
         }
-
         .verification-footer-section {
             max-width: 1000px;
             margin: 0 auto 6rem;
@@ -805,12 +877,23 @@
             box-shadow: 0 25px 60px rgba(0,0,0,0.6);
         }
         .warning-title {
-            color: #f87171; font-size: 1.2rem; font-weight: 900; margin-bottom: 1rem; display: flex; align-items: center; gap: 10px;
+            color: #f87171;
+            font-size: 1.2rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
         .warning-list {
-            list-style: none; display: flex; flex-direction: column; gap: 12px; color: #fca5a5; font-size: 0.98rem; line-height: 2.2;
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            color: #fca5a5;
+            font-size: 0.98rem;
+            line-height: 2.2;
         }
-
         .authenticity-badge {
             background: var(--card-bg);
             border: 1px solid rgba(124, 58, 237, 0.4);
@@ -819,7 +902,6 @@
             backdrop-filter: blur(20px);
             box-shadow: 0 30px 70px rgba(0,0,0,0.8);
         }
-
         footer {
             text-align: center;
             padding: 4.5rem 1.5rem;
@@ -831,7 +913,6 @@
     </style>
 </head>
 <body class="dark-theme">
-
     <div id="bookOverlay">
         <div class="magical-book">
             <div class="book-page-content active" id="page1">
@@ -843,14 +924,12 @@
                     <button class="gate-btn no-btn" id="noBtn1" onclick="handleNoGate1()">خیر ❌</button>
                 </div>
             </div>
-
             <div class="book-page-content" id="page2">
                 <div style="font-size: 1rem; font-weight: 800; color: #c4b5fd; margin-bottom: 0.8rem; background: rgba(124, 58, 237, 0.15); padding: 6px 16px; border-radius: 20px; display: inline-block;">✨ پریا فرشته‌ی ابسولوت کهکشان ✨</div>
                 <div class="gate-title" style="font-size: 1.4rem;">🔐 تأییدیه امنیتی اصالت نهایی</div>
                 <div style="color: var(--text-muted); font-size: 0.98rem; line-height: 2.2; margin-bottom: 1.5rem;">امیر گفته بهت: «تو فرشته‌ای»... برای عبور از این لایه، این حقیقت را دوباره تأیید کن تا سیستم به مرحله‌ی بعدی برسد.</div>
                 <button class="gate-btn" onclick="nextBookPage(3)">تایید می‌کنم، من فرشته‌ی این کهکشانم ✨</button>
             </div>
-
             <div class="book-page-content" id="page3">
                 <div style="font-size: 1rem; font-weight: 800; color: #38bdf8; margin-bottom: 0.8rem; background: rgba(56, 189, 248, 0.15); padding: 6px 16px; border-radius: 20px; display: inline-block;">🧩 چالش بقا در برابر آدم‌های روی مخ</div>
                 <div class="gate-title" style="font-size: 1.3rem;">تست اصالت و هوش حیاتی</div>
@@ -863,7 +942,6 @@
                     <button class="gate-btn no-btn" style="font-size: 0.9rem; padding: 0.8rem 1rem;" onclick="alert('اشتباه! تحمل آدم روی مخ ممنوع است! دوباره تلاش کن! 😅')">ب) باهاش بحث می‌کنم تا قانع بشه!</button>
                 </div>
             </div>
-
             <div class="book-page-content" id="page4">
                 <div style="font-size: 1rem; font-weight: 800; color: #f472b6; margin-bottom: 0.8rem; background: rgba(236, 72, 153, 0.15); padding: 6px 16px; border-radius: 20px; display: inline-block;">🎁 پروتکل هدایای اختصاصی</div>
                 <div class="gate-title" style="font-size: 1.4rem;">آیا اجازه می‌دهید امیر برایتان یک گیفت دیگر ارسال کند؟</div>
@@ -874,7 +952,6 @@
                     <button class="gate-btn no-btn" style="padding: 0.7rem;" onclick="handleDictatorNo()">رد کردن سوال (کلیک کن)</button>
                 </div>
             </div>
-
             <div class="book-page-content" id="page5">
                 <div style="font-size: 1rem; font-weight: 800; color: #c4b5fd; margin-bottom: 0.8rem; background: rgba(124, 58, 237, 0.15); padding: 6px 16px; border-radius: 20px; display: inline-block;">🌟 گذر از موانع کهکشانی</div>
                 <div class="gate-title" style="font-size: 1.4rem;">تبریک! تست‌های اولیه با موفقیت به سرانجام رسید</div>
@@ -883,7 +960,6 @@
                 </div>
                 <button class="gate-btn" onclick="nextBookPage(6)">ورود به محیط اصلی معبد پریا ✨</button>
             </div>
-
             <div class="book-page-content" id="page6">
                 <div style="font-size: 1rem; font-weight: 800; color: #fbbf24; margin-bottom: 0.8rem; background: rgba(251, 191, 36, 0.15); padding: 6px 16px; border-radius: 20px; display: inline-block;">🩺 سنجشگر سلامت کتاب</div>
                 <div class="gate-title" style="font-size: 1.4rem;">تست سلامت آنی پاهای فرشته</div>
@@ -909,11 +985,9 @@
             </button>
             <div class="nav-brand">Pari Kind</div>
         </div>
-
         <div style="overflow: hidden; flex-grow: 1; text-align: center;">
             <div class="floating-angel-text">✨ پریا فرشتهههه ✨</div>
         </div>
-
         <div class="nav-controls" style="flex-shrink: 0;">
             <button class="theme-toggle-btn" onclick="toggleTheme()">تغییر تم 🌓</button>
         </div>
@@ -924,12 +998,10 @@
             <div class="sidebar-title">فهرست اختصاصی معبد</div>
             <button onclick="toggleSidebar()" style="background:none; border:none; color:var(--text-main); font-size:1.2rem; cursor:pointer;">✕</button>
         </div>
-
         <div class="search-container">
             <input type="text" id="searchInput" class="search-input" placeholder="جستجو در معبد..." oninput="handleSearch(this.value)">
             <div class="search-result-box" id="searchResultBox"></div>
         </div>
-
         <div style="display: flex; flex-direction: column; gap: 12px; margin-top: 1rem;">
             <a href="#writingsSec" class="sidebar-link" onclick="toggleSidebar()">نوشته‌ها و داستان‌های پریا 🖋️</a>
             <a href="#percentageSec" class="sidebar-link" onclick="toggleSidebar()">تست درصد کلی پریا 📊</a>
@@ -944,18 +1016,16 @@
         <div class="cyber-badge">✨ پریا فرشته‌ی ابسولوت، نماد اخلاق نیکو و نبوغ کهکشانی ✨</div>
         <h1>معبد تخصصی و سلطنتیِ پریا</h1>
         <p class="subtitle">اینجا بستری است مهندسی‌شده برای تجلیل از اخلاق بی‌نظیر، مهربانی عمیق، و ذهن نابغه‌ای که جهان درونش را به زیباترین شکل ممکن ساخته است.</p>
-
+        
         <div class="multiverse-hub">
             <div class="hub-header">
                 <div class="hub-title">🌌 Multiverse Control Hub</div>
                 <div class="hub-status-badge" id="hubStatus">وضعیت: پایدار ✨</div>
             </div>
-
             <div class="universe-screen" id="uniScreenBox">
                 <div class="universe-text" id="universeDesc">جهان اصلی پریا: آرامش مطلق، عدم حضور آدم‌های روی مخ و حاکمیت مهربانی.</div>
                 <div class="universe-sub" id="universeSubText">سیستم امنیتی کهکشان در حالت نظارت کامل است.</div>
             </div>
-
             <div class="universe-controls-grid">
                 <button class="uni-btn active-uni" onclick="switchUniverse(1)">جهان اصلی ✨</button>
                 <button class="uni-btn" onclick="switchUniverse(2)">جهان بی‌مرز 🌊</button>
@@ -967,7 +1037,6 @@
     <section class="pariya-writings-section" id="writingsSec">
         <div class="section-title">🖋️ نوشته‌ها و داستان‌های پریا</div>
         <div class="section-desc">آرشیو اختصاصی متن‌ها و روایت‌های قلمِ فرشته؛ با کلیک روی هر صفحه، داستان را کامل بخوانید.</div>
-        
         <div class="writings-grid">
             <div class="writing-card" onclick="openStory(1)">
                 <div>
@@ -977,7 +1046,6 @@
                 </div>
                 <div class="writing-btn-view">مطالعه صفحه ۱ ✨</div>
             </div>
-
             <div class="writing-card" onclick="openStory(2)">
                 <div>
                     <div class="writing-icon">🖋️</div>
@@ -986,7 +1054,6 @@
                 </div>
                 <div class="writing-btn-view">مطالعه صفحه ۲ ✨</div>
             </div>
-
             <div class="writing-card" onclick="openStory(3)">
                 <div>
                     <div class="writing-icon">🏙️</div>
@@ -995,7 +1062,6 @@
                 </div>
                 <div class="writing-btn-view">مطالعه صفحه ۳ ✨</div>
             </div>
-
             <div class="writing-card" onclick="openStory(4)">
                 <div>
                     <div class="writing-icon">🌙</div>
@@ -1024,12 +1090,10 @@
                 شماره درصد مورد نظر خود را وارد کنید<br>
                 (راهنما: ۹۰ تا ۱۰۰ عالی‌ترین ورژن | ۸۰ تا ۶۰ خیلی خوب | ۶۰ تا ۴۰ متوسط | ۴۰ تا ۲۰ خراب | ۲۰ تا ۰ به شدت خراب):
             </p>
-            
             <div class="percentage-input-group">
                 <input type="number" id="scoreInput" class="score-input" min="0" max="100" placeholder="مثلاً 39 یا 100...">
                 <button class="score-btn" onclick="checkScore()">بررسی وضعیت</button>
             </div>
-
             <div class="score-result" id="scoreResult"></div>
         </div>
     </section>
@@ -1037,7 +1101,6 @@
     <section class="angelic-traits-section" id="traitsSec">
         <div class="section-title">✨ ملاک‌های ابسولوت و علمیِ فرشته بودن</div>
         <div class="section-desc">تحلیل روان‌شناختی و کیهانی ویژگی‌هایی که پریا را فراتر از ابعاد این دنیای کوچک و محدود قرار داده است.</div>
-        
         <div class="traits-grid">
             <div class="trait-card">
                 <div class="trait-title">🤍 مهربانی زیاد و قلب وسیع</div>
@@ -1071,7 +1134,6 @@
             <div class="news-header-tag">🗞️ روزنامه‌های معتبر امروز (نسخه اسپورت و خبری)</div>
             <h2 style="font-size: 1.8rem; margin-bottom: 1rem; color: #fff;">تیتر یک: «کشف یک جرم آسمانی در جغرافیای زمین!»</h2>
             <p style="color: var(--text-muted); font-size: 1.02rem;">برای خواندن متن کامل خبر، ستون حوادث و گزارش‌های ویژه کلیک کنید...</p>
-            
             <div class="news-content" id="newsContent">
                 <strong>متن خبر رسمی:</strong> دانشمندان نجوم و اخلاق‌شناسی تأیید کردند موجودی با معرفتِ بی‌نهایت و روحِ فلسفی در زمین مشاهده شده که تمام قوانین فیزیک و منطقِ این دنیای بی‌رحم رو زیر سوال برده است!<br><br>
                 <strong>ستون حوادث:</strong> «دستگیری فرشته‌ای که سعی داشت با گزینه‌ی الکیِ "خوب هستم"، بال‌های خود را پنهان کند!» گزارش‌ها حاکی از آن است که سیستم بلافاصله مچ او را گرفته و اصالتِ ملکوتی‌اش را اثبات کرده است.<br><br>
@@ -1097,7 +1159,6 @@
                 <li>• هرگونه تلاش برای انکار مهربانی یا نبوغ او پیگرد قانونی در کهکشان دارد.</li>
             </ul>
         </div>
-
         <div class="authenticity-badge">
             <div style="font-size: 2.5rem; margin-bottom: 1rem;">🛡️</div>
             <div style="font-size: 1.4rem; font-weight: 900; color: #fff; margin-bottom: 0.8rem;">گواهی رسمی ثبت اصالت و تأییدیه فرشته بودن</div>
@@ -1118,67 +1179,22 @@
             1: {
                 title: "دو راهیِ انتخاب شده",
                 subtitle: "صفحه ۱",
-                body: `صبح، با نورِ خورشیدِ زرد‌رنگی که از پنجره‌ی اتاقم مستقیم به صورتم می‌تابید، بیدار شدم. ناگهان چشمانم به ساعتِ دایره‌ای‌شکلِ سیاه‌رنگی که در کنج اتاقم آویزان بود، دوخته شد؛ عقربه‌ها روی شش و سی دقیقه ایستاده بودند.
- با اینکه ساعت‌ها خوابیده بودم، انگار تمامِ سنگینیِ شب هنوز در عضلاتم بود. زیر لب با خود گفتم: «مگر چه می‌شود نیم ساعت دیگر بخوابم؟ با این سی دقیقه اتفاقی نمی‌افتد و من هم به کلاس درسم می‌رسم.»
- پتو را روی صورتم کشیدم، بالشِ گرم و نرم را در آغوش گرفتم، آهسته‌آهسته چشمانم را بستم و دوباره در تلاطمِ خواب غرق شدم.
-این دروغِ بزرگِ هر روزه‌ام بود. سی دقیقه‌ای که نه خواب بود و نه بیداری؛ نوعی برزخ که در آن نه دردِ ناشی از واقعیت را حس می‌کردم و نه لذتِ مطلقِ فراموشی را. دستم را از زیرِ پتو بیرون آوردم. هوایِ اتاق سرد بود و سوزِ آن، مثلِ نیشِ یک حشره، رویِ پوستم نشست. انگشتانم به دنبالِ دکمه‌یِ تعویقِ زنگِ ساعت گشتند؛ همان دکمه‌ای که حکمِ عقب‌انداختنِ بیدارباش را داشت.
-
-اما ناگهان، سکوتِ اتاق شکسته شد. نه با صدایِ ساعت، بلکه با صدایِ ضعیفِ خِرخِری از پشتِ پنجره.
-
-قلبم ریخت. من در طبقه‌یِ چهارم بودم. نباید هیچ صدایی از بیرون، آن هم با آن کیفیتِ عجیب، به داخل می‌رسید. خواب، در کسری از ثانیه از چشمانم پرید. آن «تلاطم» حالا تبدیل به لرزشی واقعی در دستانم شده بود. دکمه‌یِ ساعت را پیدا کردم، اما انگشتم رویِ آن خشک شد. در آن نیم‌ساعتی که می‌خواستم بخوابم، گویی چیزی از آن سویِ شیشه، منتظرِ بیدار شدنِ من بود.
-دست بردم و پنجره را کمی کنار زدم. هوایِ صبح به صورتم خورد؛ سرد و بی‌رحم. شاخه‌یِ خشکِ درختی با باد به شیشه می‌کوبید؛ همان صدایِ خِرخِرِ آزاردهنده که حالا دیگر برایم آشنا بود.
-
-نفسی عمیق کشیدم. ریه‌هایم هنوز به همان سنگینیِ دیشب بودند. آن دردِ همیشگی، آن حفره‌یِ خالیِ وسطِ سینه‌ام، سرِ جایش بود. با این حال، صحنه‌ای در ذهنم چرخید. انگار همین چند لحظه پیش، در مرزِ خواب و بیداری، فرشته‌ای را دیدم که در ساحلی دوردست ایستاده بود. نگاهش نه مهربان بود و نه قضاوت‌گر؛ فقط تهی بود.
-
-فرشته به من خیره شد و گفت: «پریا، می‌توانی وارد این اقیانوس شوی. اینجا تمامِ اضطراب‌هایت شسته می‌شود. دیگر تبرِ ملامت را بر شانه‌هایت حس نخواههی کرد؛ دیگر خبری از آن حفره‌یِ خالی نخواهد بود.» 
-
-مکثی کرد و ادامه داد: «اما به یک شرط: باید تمامِ خاطرات، تمامِ رنج‌هایی که تو را به این آدمِ عمیق و نویسنده تبدیل کرده‌اند، همین‌جا در ساحل بگذاری و بروی. تو آرام خواهی شد، اما دیگر ‘پریا’ نخواهی بود؛ تبدیل به یک لوحِ سفید و بی‌تفاوت می‌شوی که نه دردی دارد و نه زیبایی.»
-
-آن تصویر، برایِ یک لحظه وسوسه‌کننده بود. آرامشِ مطلق. رهایی از این بیداری‌هایِ طولانی. اما بعد، به دست‌هایم نگاه کردم؛ به لرزشِ خفیفشان وقتی قلم را می‌گیرند. اگر آن رنج‌ها نباشند، آن اقیانوسِ درونِ من هم خشک می‌شود. من نویسنده‌ام چون زخم‌هایم بیدارند.
-
-تصویرِ فرشته در غبارِ صبحگاه محو شد. 
-
-به ساعتِ رویِ میز نگاه کردم. دیگر تیک‌تاکش عصبی‌ام نمی‌کرد. حالا صدایش برایم مثلِ ضربانِ قلبِ خودم شده بود؛ نامنظم، اما زنده. بلند شدم. لبه‌یِ تخت نشستن، خودش یک پیروزیِ کوچک بود. آفتابِ بی‌رمقِ پشتِ پنجره، نوری مایل به خاکستری رویِ کاغذهایِ پراکنده‌یِ دفترچه‌ام انداخته بود. 
-
-انگشتانم را رویِ لبه‌یِ میزِ چوبی کشیدم. خراش‌هایِ رویِ میز، انگار روایتِ زندگیِ من بودند؛ هر خراش، نشانی از یک شبِ بی‌خوابی یا یک جمله‌یِ ناتمام. نه، من آن «لوحِ سفید» را نمی‌خواهم. ترجیح می‌دهم پریا بمانم؛ با همین زخم‌ها، با همین لرزشِ دست‌ها. حتی اگر هر قدمم با تیر کشیدنِ این جایِ خالی همراه باشد. ترجیح می‌دهم غمگین اما «خودم» باشم، تا اینکه با یک لبخندِ مصنوعی و توخالی، تبدیل به موجودی شوم که دیگر حتی خودش هم خودش را نمی‌شناسد.
-
-قلم را برداشتم. قرار نیست امروز «خوشحال» باشم، و قرار هم نیست «درد»م را با یک شعارِ توخالی درمان کنم. فقط قرار است بنویسم. 
-
-نوشتم: 
-«فرشته‌ها ساحل را دوست دارند، چون آنجا هیچ‌چیز باقی نمی‌ماند. اما من، پریا، همان‌جایی ایستاده‌ام که رنج‌هایم لنگر انداخته‌اند. این درد، قیمتِ بیدار بودنِ من است. اگر این رنج، بهایِ ‘خود بودن’ است، پس من با تمامِ وجودم خریدارش هستم.»`
+                body: `صبح، با نورِ خورشیدِ زرد‌رنگی که از پنجره‌ی اتاقم مستقیم به صورتم می‌تابید، بیدار شدم. ناگهان چشمانم به ساعتِ دایره‌ای‌شکلِ سیاه‌رنگی که در کنج اتاقم آویزان بود، دوخته شد؛ عقربه‌ها روی شش و سی دقیقه ایستاده بودند. با اینکه ساعت‌ها خوابیده بودم، انگار تمامِ سنگینیِ شب هنوز در عضلاتم بود. زیر لب با خود گفتم: «مگر چه می‌شود نیم ساعت دیگر بخوابم؟ با این سی دقیقه اتفاقی نمی‌افتد و من هم به کلاس درسم می‌رسم.» پتو را روی صورتم کشیدم، بالشِ گرم و نرم را در آغوش گرفتم، آهسته‌آهسته چشمانم را بستم و دوباره در تلاطمِ خواب غرق شدم. این دروغِ بزرگِ هر روزه‌ام بود. سی دقیقه‌ای که نه خواب بود و نه بیداری؛ نوعی برزخ که در آن نه دردِ ناشی از واقعیت را حس می‌کردم و نه لذتِ مطلقِ فراموشی را. دستم را از زیرِ پتو بیرون آوردم. هوایِ اتاق سرد بود و سوزِ آن، مثلِ نیشِ یک حشره، رویِ پوستم نشست. انگشتانم به دنبالِ دکمه‌یِ تعویقِ زنگِ ساعت گشتند؛ همان دکمه‌یِ که حکمِ عقب‌انداختنِ بیدارباش را داشت. اما ناگهان، سکوتِ اتاق شکسته شد. نه با صدایِ ساعت، بلکه با صدایِ ضعیفِ خِرخِری از پشتِ پنجره. قلبم ریخت. من در طبقه‌یِ چهارم بودم. نباید هیچ صدایی از بیرون، آن هم با آن کیفیتِ عجیب، به داخل می‌رسید. خواب، در کسری از ثانیه از چشمانم پرید. آن «تلاطم» حالا تبدیل به لرزشی واقعی در دستانم شده بود. دکمه‌یِ ساعت را پیدا کردم، اما انگشتم رویِ آن خشک شد. در آن نیم‌ساعتی که می‌خواستم بخوابم، گویی چیزی از آن سویِ شیشه، منتظرِ بیدار شدنِ من بود. دست بردم و پنجره را کمی کنار زدم. هوایِ صبح به صورتم خورد؛ سرد و بی‌رحم. شاخه‌یِ خشکِ درختی با باد به شیشه می‌کوبید؛ همان صدایِ خِرخِرِ آزاردهنده که حالا دیگر برایم آشنا بود. نفسی عمیق کشیدم. ریه‌هایم هنوز به همان سنگینیِ دیشب بودند. آن دردِ همیشگی، آن حفره‌یِ خالیِ وسطِ سینه‌ام، سرِ جایش بود. با این حال، صحنه‌ای در ذهنم چرخید. انگار همین چند لحظه پیش، در مرزِ خواب و بیداری، فرشته‌ای را دیدم که در ساحلی دوردست ایستاده بود. نگاهش نه مهربان بود و نه قضاوت‌گر؛ فقط تهی بود. فرشته به من خیره شد و گفت: «پریا، می‌توانی وارد این اقیانوس شوی. اینجا تمامِ اضطراب‌هایت شسته می‌شود. دیگر تبرِ ملامت را بر شانه‌هایت حس نخواههی کرد؛ دیگر خبری از آن حفره‌یِ خالی نخواهد بود.» مکثی کرد و ادامه داد: «اما به یک شرط: باید تمامِ خاطرات، تمامِ رنج‌هایی که تو را به این آدمِ عمیق و نویسنده تبدیل کرده‌اند، همین‌جا در ساحل بگذاری و بروی. تو آرام خواهی شد، اما دیگر ‘پریا’ نخواهی بود؛ تبدیل به یک لوحِ سفید و بی‌تفاوت می‌شوی که نه دردی دارد و نه زیبایی.» آن تصویر، برایِ یک لحظه وسوسه‌کننده بود. آرامشِ مطلق. رهایی از این بیداری‌هایِ طولانی. اما بعد، به دست‌هایم نگاه کردم؛ به لرزشِ خفیفشان وقتی قلم را می‌گیرند. اگر آن رنج‌ها نباشند، آن اقیانوسِ درونِ من هم خشک می‌شود. من نویسنده‌ام چون زخم‌هایم بیدارند. تصویرِ فرشته در غبارِ صبحگاه محو شد. به ساعتِ رویِ میز نگاه کردم. دیگر تیک‌تاکش عصبی‌ام نمی‌کرد. حالا صدایش برایم مثلِ ضربانِ قلبِ خودم شده بود؛ نامنظم، اما زنده. بلند شدم. لبه‌یِ تخت نشستن، خودش یک پیروزیِ کوچک بود. آفتابِ بی‌رمقِ پشتِ پنجره، نوری مایل به خاکستری رویِ کاغذهایِ پراکنده‌یِ دفترچه‌ام انداخته بود. انگشتانم را رویِ لبه‌یِ میزِ چوبی کشیدم. خراش‌هایِ رویِ میز، انگار روایتِ زندگیِ من بودند؛ هر خراش، نشانی از یک شبِ بی‌خوابی یا یک جمله‌یِ ناتمام. نه، من آن «لوحِ سفید» را نمی‌خواهم. ترجیح می‌دهم پریا بمانم؛ با همین زخم‌ها، با همین لرزشِ دست‌ها. حتی اگر هر قدمم با تیر کشیدنِ این جایِ خالی همراه باشد. ترجیح می‌دهم غمگین اما ‘خودم’ باشم، تا اینکه با یک لبخندِ مصنوعی و توخالی، تبدیل به موجودی شوم که دیگر حتی خودش هم خودش را نمی‌شناسد. قلم را برداشتم. قرار نیست امروز ‘خوشحال’ باشم، و قرار هم نیست ‘درد’م را با یک شعارِ توخالی درمان کنم. فقط قرار است بنویسم. نوشتم: «فرشته‌ها ساحل را دوست دارند، چون آنجا هیچ‌چیز باقی نمی‌ماند. اما من، پریا، همان‌جایی ایستاده‌ام که رنج‌هایم لنگر انداخته‌اند. این درد، قیمتِ بیدار بودنِ من است. اگر این رنج، بهایِ ‘خود بودن’ است، پس من با تمامِ وجودم خریدارش هستم.»`
             },
             2: {
                 title: "دو راهیِ انتخاب شده",
                 subtitle: "صفحه ۲",
-                body: `قلم روی کاغذ لغزید. صدای کشیده شدنِ نوک فلزی‌اش روی بافت زبر کاغذ، تنها موسیقی اتاق بود. کلمات، مثل قطره‌های جوهری که در آب حل می‌شوند، روی سفیدیِ بی‌رحمِ صفحه پخش می‌شدند. هر کلمه‌ای که می‌نوشتم، انگار ذره‌ای از آن حفره‌ی تاریک درون سینه‌ام کنده می‌شد و روی خطوط دفتر می‌نشست. درد هنوز آنجا بود، اما حالا دیگر یک توده‌ی بی‌شکلِ خفه‌کننده نبود؛ حالا کلمه داشت، فرم داشت، استخوان‌بندی داشت. من داشتم هیولای درونم را اهلی می‌کردم.
-خورشید بالا آمده بود. آن نور خاکستری و بیمارگونه‌ی صبحگاهی، جای خودش را به شعاع‌های طلایی و تیزی داده بود که بی‌محابا از شیشه‌ی پنجره عبور می‌کردند و ذرات گرد و غبار معلق در هوای اتاق را روشن می‌ساختند. از بیرون، صدای بوق ممتد یک ماشین و پس از آن همهمه‌ی گنگ آدم‌هایی که روزشان را شروع کرده بودند، به گوش می‌رسید. آن‌ها احتمالاً در همان ساحلِ امن قدم می‌زدند؛ در همان روزمرگیِ بی‌دردی که فرشته وعده‌اش را داده بود. در فراموشیِ دسته‌جمعی. اما من در عمقِ اقیانوسِ خودم نفس می‌کشیدم.
-دستم از نوشتن خسته شد. لرزش خفیف انگشتانم حالا جای خود را به یک کرختیِ آمیخته با رضایت داده بود. خودکار را رها کردم. برخورد پلاستیکِ فشرده‌ی خودکار با سطح خراشیده‌ی میز، مثل صدای کوبیده شدنِ مُهر پای یک قرارداد بود؛ عهدی که دوباره با خودم تازه کرده بودم. از روی صندلی بلند شدم. کف پاهایم روی کفپوش سرد اتاق محکم شد. حالا حس می‌کردم آن سنگینی و رخوتِ شب کاملاً از عضلاتم بیرون رفته است و جای آن را یک انرژیِ غریب و وحشی پر کرده؛ انرژیِ کسی که به جای فرار از سایه‌هایش، تصمیم گرفته آن‌ها را در آغوش بگیرد.
-به سمت آینه‌ی قدیِ کنار کمد رفتم. دختری که از آن سوی شیشه نگاهم می‌کرد، دیگر آن آدمِ خسته و مرددِ نیم‌ساعت پیش نبود. زیر چشمانش هنوز هاله‌ای از بی‌خوابیِ دیشب جا خوش کرده بود، اما در عمق نگاهش، جرقه‌ی روشنی از یک عصیان دیده می‌شد. به خودم خیره شدم. به خطوط صورتم که هر کدام نقشه کوچکی از تحمل کردن بودند.
-لبخند زدم. نه از آن لبخندهای پلاستیکی و بی‌نقصی که جهان از آدم انتظار دارد، بلکه یک پوزخندِ کج و مغرورانه.
-امروز هم قرار بود مثل تمام روزهای دیگر، پر از اصطکاک باشد. پر از آدم‌هایی که نمی‌فهمند، پر از لحظه‌هایی که آن جای خالی در سینه دوباره تیر می‌کشد. اما دیگر مهم نبود. من لنگرم را در دلِ همین طوفان انداخته بودم. دفترچه‌ام روی میز بود و کلماتم، مثل لشکری وفادار، منتظرِ شب بودند تا دوباره به خط شوند.
-نفس عمیقی کشیدم، دستگیره‌ی سرد در را چرخاندم و از اتاق بیرون زدم؛ آماده برای جنگیدن در روزی که مالِ من بود.`
+                body: `قلم روی کاغذ لغزید. صدای کشیده شدنِ نوک فلزی‌اش روی بافت زبر کاغذ، تنها موسیقی اتاق بود. کلمات، مثل قطره‌های جوهری که در آب حل می‌شوند، روی سفیدیِ بی‌رحمِ صفحه پخش می‌شدند. هر کلمه‌ای که می‌نوشتم، انگار ذره‌ای از آن حفره‌ی تاریک درون سینه‌ام کنده می‌شد و روی خطوط دفتر می‌نشست. درد هنوز آنجا بود، اما حالا دیگر یک توده‌ی بی‌شکلِ خفه‌کننده نبود؛ حالا کلمه داشت، فرم داشت، استخوان‌بندی داشت. من داشتم هیولای درونم را اهلی می‌کردم. خورشید بالا آمده بود. آن نور خاکستری و بیمارگونه‌ی صبحگاهی، جای خودش را به شعاع‌های طلایی و تیزی داده بود که بی‌محابا از شیشه‌ی پنجره عبور می‌کردند و ذرات گرد و غبار معلق در هوای اتاق را روشن می‌ساختند. از بیرون، صدای بوق ممتد یک ماشین و پس از آن همهمه‌ی گنگ آدم‌هایی که روزشان را شروع کرده بودند، به گوش می‌رسید. آن‌ها احتمالاً در همان ساحلِ امن قدم می‌زدند؛ در همان روزمرگیِ بی‌دردی که فرشته وعده‌اش را داده بود. در فراموشیِ دسته‌جمعی. اما من در عمقِ اقیانوسِ خودم نفس می‌کشیدم. دستم از نوشتن خسته شد. لرزش خفیف انگشتانم حالا جای خود را به یک کرختیِ آمیخته با رضایت داده بود. خودکار را رها کردم. برخورد پلاستیکِ فشرده‌ی خودکار با سطح خراشیده‌ی میز، مثل صدای کوبیده شدنِ مُهر پای یک قرارداد بود؛ عهدی که دوباره با خودم تازه کرده بودم. از روی صندلی بلند شدم. کف پاهایم روی کفپوش سرد اتاق محکم شد. حالا حس می‌کردم آن سنگینی و رخوتِ شب کاملاً از عضلاتم بیرون رفته است و جای آن را یک انرژیِ غریب و وحشی پر کرده؛ انرژیِ کسی که به جای فرار از سایه‌هایش، تصمیم گرفته آن‌ها را در آغوش بگیرد. به سمت آینه‌ی قدیِ کنار کمد رفتم. دختری که از آن سوی شیشه نگاهم می‌کرد، دیگر آن آدمِ خسته و مرددِ نیم‌ساعت پیش نبود. زیر چشمانش هنوز هاله‌ای از بی‌خوابیِ دیشب جا خوش کرده بود، اما در عمق نگاهش، جرقه‌ی روشنی از یک عصیان دیده می‌شد. به خودم خیره شدم. به خطوط صورتم که هر کدام نقشه کوچکی از تحمل کردن بودند. لبخند زدم. نه از آن لبخندهای پلاستیکی و بی‌نقصی که جهان از آدم انتظار دارد، بلکه یک پوزخندِ کج و مغرورانه. امروز هم قرار بود مثل تمام روزهای دیگر، پر از اصطکاک باشد. پر از آدم‌هایی که نمی‌فهمند، پر از لحظه‌هایی که آن جای خالی در سینه دوباره تیر می‌کشد. اما دیگر مهم نبود. من لنگرم را در دلِ همین طوفان انداخته بودم. دفترچه‌ام روی میز بود و کلماتم، مثل لشکری وفادار، منتظرِ شب بودند تا دوباره به خط شوند. نفس عمیقی کشیدم، دستگیره‌ی سرد در را چرخاندم و از اتاق بیرون زدم؛ آماده برای جنگیدن در روزی که مالِ من بود.`
             },
             3: {
                 title: "دو راهیِ انتخاب شده",
                 subtitle: "صفحه ۳",
-                body: `بیرون از اتاق، هوا بوی روزمرگی می‌داد؛ بوی چایِ جوشیده و تکرار. از پله‌ها پایین رفتم. هر قدمم روی سنگ‌های سردِ ساختمان، پژواکِ خفه‌ای داشت که در سکوتِ صبحگاهی گم می‌شد. وقتی درِ اصلیِ آپارتمان را باز کردم، سیلیِ سرمایِ بیرون دوباره به صورتم خورد، اما این بار از آن فرار نکردم. یقه‌ی پالتویم را بالا دادم و قدم در خیابان گذاشتم.
-بیرون، دقیقاً همان ساحلِ شلوغی بود که فرشته در خواب به من نشان داده بود. آدم‌ها با قدم‌های تند و نگاه‌های دوخته‌شده به زمین از کنارم می‌گذشتند. زنی با کلافگی پشتِ تلفن بحث می‌کرد، مردی با عجله بخارِ چایِ کاغذی‌اش را در هوا فوت می‌کرد و پسرکی با بی‌حوصلگی کیفِ مدرسه‌اش را روی زمین می‌کشید. هیچ‌کدامشان شبیهِ کسانی نبودند که درگیرِ یک جنگِ بزرگِ درونی باشند. انگار بیشترِ آن‌ها خیلی وقت پیش، دردهایشان را در همان اقیانوس رها کرده بودند تا راحت‌تر در این پیاده‌روها راه بروند. همان لوح‌های سفیدی که حالا فقط دغدغه‌هایی سطحی روی آن‌ها خط‌خطی می‌شد.
-در میانِ این رودخانه‌ی شتاب‌زده‌ی آدم‌ها، من برخلافِ جریان حرکت نمی‌کردم، اما جنسِ بودنم فرق داشت. من رازِ بزرگی با خود حمل می‌کردم. هر بار که در ازدحامِ پیاده‌رو تنه به تنه‌ی کسی می‌خوردم، یا نگاهِ بی‌تفاوتی از روی صورتم عبور می‌کرد، آن پوزخندِ درونم پررنگ‌تر می‌شد. آن‌ها نمی‌دانستند دختری که این‌طور آرام از کنارشان رد می‌شود، همین نیم‌ساعت پیش با یک فرشته بر سرِ روحش چانه زده و هیولایِ درونش را روی کاغذ زنجیر کرده است.
-سرِ چهارراه، پشتِ چراغ قرمز ایستادم. نگاهم به شیشه‌ی رفلکسِ یک مغازه‌ی تاریک افتاد. سایه‌ام در آن منعکس شده بود. حالا دیگر آن حفره‌ی خالی در سینه‌ام، که سال‌ها با آن جنگیده بودم، شبیهِ یک نقطه‌ضعف نبود؛ شبیهِ یک لنزِ دوربین بود. همان نقطه‌ای که از دریچه‌ی آن به جهان نگاه می‌کردم، جزئیاتِ پنهانِ آدم‌ها را می‌قاپیدم و داستان‌هایشان را می‌دزدیدم.
-چراغ سبز شد. موجِ جمعیت به حرکت درآمد. من هم قدم برداشتم، اما نه فقط برای عبور از عرضِ خیابان. من قدم برداشتم تا تمامِ این صحنه‌های بی‌روح، تمامِ این مکالماتِ بریده‌بریده و تمامِ این اصطکاک‌های خسته‌کننده را در ذهنم ذخیره کنم. من به این تاریکی‌ها و تناقض‌ها نیاز داشتم تا شب، وقتی دوباره پشتِ آن میزِ خراشیده نشستم، آن‌ها را روی خطوطِ دفترم به آتش بکشم.
-روزِ من، با تمامِ سنگینی‌اش آغاز شده بود، اما این بار من یک تماشاچیِ بی‌دفاع نبودم؛ کلماتم در خانه منتظرم بودند و من برای تغذیه کردنِ آن‌ها، باید تا شب زنده می‌ماندم.`
+                body: `بیرون از اتاق، هوا بوی روزمرگی می‌داد؛ بوی چایِ جوشیده و تکرار. از پله‌ها پایین رفتم. هر قدمم روی سنگ‌های سردِ ساختمان، پژواکِ خفه‌ای داشت که در سکوتِ صبحگاهی گم می‌شد. وقتی درِ اصلیِ آپارتمان را باز کردم، سیلیِ سرمایِ بیرون دوباره به صورتم خورد، اما این بار از آن فرار نکردم. یقه‌ی پالتویم را بالا دادم و قدم در خیابان گذاشتم. بیرون، دقیقاً همان ساحلِ شلوغی بود که فرشته در خواب به من نشان داده بود. آدم‌ها با قدم‌های تند و نگاه‌های دوخته‌شده به زمین از کنارم می‌گذشتند. زنی با کلافگی پشتِ تلفن بحث می‌کرد، مردی با عجله بخارِ چایِ کاغذی‌اش را در هوا فوت می‌کرد و پسرکی با بی‌حوصلگی کیفِ مدرسه‌اش را روی زمین می‌کشید. هیچ‌کدامشان شبیهِ کسانی نبودند که درگیرِ یک جنگِ بزرگِ درونی باشند. انگار بیشترِ آن‌ها خیلی وقت پیش، دردهایشان را در همان اقیانوس رها کرده بودند تا راحت‌تر در این پیاده‌روها راه بروند. همان لوح‌های سفیدی که حالا فقط دغدغه‌هایی سطحی روی آن‌ها خط‌خطی می‌شد. در میانِ این رودخانه‌ی شتاب‌زده‌ی آدم‌ها، من برخلافِ جریان حرکت نمی‌کردم، اما جنسِ بودنم فرق داشت. من رازِ بزرگی با خود حمل می‌کردم. هر بار که در ازدحامِ پیاده‌رو تنه به تنه‌ی کسی می‌خوردم، یا نگاهِ بی‌تفاوتی از روی صورتم عبور می‌کرد، آن پوزخندِ درونم پررنگ‌تر می‌شد. آن‌ها نمی‌دانستند دختری که این‌طور آرام از کنارشان رد می‌شود، همین نیم‌ساعت پیش با یک فرشته بر سرِ روحش چانه زده و هیولایِ درونش را روی کاغذ زنجیر کرده است. سرِ چهارراه، پشتِ چراغ قرمز ایستادم. نگاهم به شیشه‌ی رفلکسِ یک مغازه‌ی تاریک افتاد. سایه‌ام در آن منعکس شده بود. حالا دیگر آن حفره‌ی خالی در سینه‌ام، که سال‌ها با آن جنگیده بودم، شبیهِ یک نقطه‌ضعف نبود؛ شبیهِ یک لنزِ دوربین بود. همان نقطه‌ای که از دریچه‌ی آن به جهان نگاه می‌کردم، جزئیاتِ پنهانِ آدم‌ها را می‌قاپیدم و داستان‌هایشان را می‌دزدیدم. چراغ سبز شد. موجِ جمعیت به حرکت درآمد. من هم قدم برداشتم، اما نه فقط برای عبور از عرضِ خیابان. من قدم برداشتم تا تمامِ این صحنه‌های بی‌روح، تمامِ این مکالماتِ بریده‌بریده و تمامِ این اصطکاک‌های خسته‌کننده را در ذهنم ذخیره کنم. من به این تاریکی‌ها و تناقض‌ها نیاز داشتم تا شب، وقتی دوباره پشتِ آن میزِ خراشیده نشستم، آن‌ها را روی خطوطِ دفترم به آتش بکشم. روزِ من، با تمامِ سنگینی‌اش آغاز شده بود، اما این بار من یک تماشاچیِ بی‌دفاع نبودم؛ کلماتم در خانه منتظرم بودند و من برای تغذیه کردنِ آن‌ها، باید تا شب زنده می‌ماندم.`
             },
             4: {
                 title: "دو راهیِ انتخاب شده",
                 subtitle: "صفحه ۴ (پایان)",
-                body: `وقتی به خانه برگشتم، شب خیلی وقت بود که پشتِ پنجره‌ها کمین کرده بود. چراغ را روشن نکردم؛ اتاق در تاریک‌روشنِ ملایمی از نورِ مسمومِ چراغ‌های خیابان غرق بود. مستقیم به سمتِ میزِ چوبی رفتم. صیدهای امروزِ من، تمامِ آن جزئیاتِ تلخ و ملموسی که از پیاده‌روها دزدیده بودم، در ذهنم بی‌تابی می‌کردند. زنِ پشت تلفن، مردِ غرق در چای، و تمامِ آن لوح‌های سفیدی که در روزمرگی دست‌وپا می‌زدند، حالا باید در قلمروِ من به کلمه تبدیل می‌شدند.
-پشت میز نشستم. دفترچه‌ام، با همان خطوطِ عصیانیِ صبح، منتظرم بود. قلم را برداشتم. لرزش خفیف انگشتانم حالا دیگر نشانه‌ی ضعف نبود، ضربانِ تندِ اسب‌هایی بود که بند بریده بودند. نوکِ فلزی را روی کاغذ فشردم و نوشتم.
-ساعت‌ها از پی هم گذشتند و صدای تیک‌تاکِ ساعتِ سیاه، با فرود آمدنِ کلمات روی صفحه هم‌آهنگ شد. من تمامِ آن اصطکاک‌ها، تاریکی‌ها و تناقض‌های شهر را روی کاغذ به آتش کشیدم. هر جمله‌ای که متولد می‌شد، تبرِ ملامت را از روی شانه‌هایم برمی‌داشت و به آن حفره‌ی خالیِ درونِ سینه‌ام شکل می‌داد. من داشتم جهان را آن‌طور که خودم می‌دیدم، دوباره خلق می‌کردم.
-خطِ آخر را که نوشتم، خودکار را رها کردم. صدای تقِ برخوردش با چوبِ میز، شبیه به فریادِ پیروزی در یک سکوتِ مطلق بود. پیروزیِ دختری که رنجِ آگاهانه را به آرامشِ توخالی ترجیح داده بود. پوزخندِ کج و مغرورانه‌ام باز هم روی صورتم نشست. نگاهی به شاهکارِ روی میز انداختم؛ جوهرِ آخرین کلمات هنوز زیر نورِ ضعیفِ اتاق برق می‌زد.
-بلند شدم و به سمتِ پنجره رفتم. بادِ سردِ شبانه بیرونِ شیشه شلاق می‌زد. دستم را روی شیشه‌ی سرد گذاشتم و به بیرون، به شهرِ تاریک و خاموش نگاه کردم. آدم‌ها در خانه‌هایشان خواب بودند؛ در همان فراموشیِ دسته‌جمعی که فرشته وعده داده بود.
-اما ناگهان، در انعکاسِ تاریکِ شیشه، نگاه‌ام به چشمانِ خودم افتاد.
-زیر چشمانم گود رفته بود و آثارِ بی‌خوابی مچِ مرا می‌گرفت، اما آن جرقه‌ی عصیان هنوز آنجا بود. به خودم خیره شدم. حفره‌ی درون سینه‌ام تیر کشید، دردی عمیق و واقعی؛ اما این بار، لبخندم محو نشد. دستم را روی سینه‌ام، درست روی همان جای خالی گذاشتم. حالا می‌فهمیدم. این حفره هرگز پر نخواهد شد، و این دقیقاً همان چیزی بود که مرا زنده نگه می‌دارد. این جای خالی، بهایِ پریا بودنِ من بود.
-رویم را از پنجره برگرداندم. شهر در خوابِ فراموشی غرق بود، اما در طبقه‌ی چهارمِ این آپارتمانِ سرد، دختری با چشمانی کاملاً باز، به استقبالِ فردا می‌رفت.`
+                body: `وقتی به خانه برگشتم، شب خیلی وقت بود که پشتِ پنجره‌ها کمین کرده بود. چراغ را روشن نکردم؛ اتاق در تاریک‌روشنِ ملایمی از نورِ مسمومِ چراغ‌های خیابان غرق بود. مستقیم به سمتِ میزِ چوبی رفتم. صیدهای امروزِ من، تمامِ آن جزئیاتِ تلخ و ملموسی که از پیاده‌روها دزدیده بودم، در ذهنم بی‌تابی می‌کردند. زنِ پشت تلفن، مردِ غرق در چای، و تمامِ آن لوح‌های سفیدی که در روزمرگی دست‌وپا می‌زدند، حالا باید در قلمروِ من به کلمه تبدیل می‌شدند. پشت میز نشستم. دفترچه‌ام، با همان خطوطِ عصیانیِ صبح، منتظرم بود. قلم را برداشتم. لرزش خفیف انگشتانم حالا دیگر نشانه‌ی ضعف نبود، ضربانِ تندِ اسب‌هایی بود که بند بریده بودند. نوکِ فلزی را روی کاغذ فشردم و نوشتم. ساعت‌ها از پی هم گذشتند و صدای تیک‌تاکِ ساعتِ سیاه، با فرود آمدنِ کلمات روی صفحه هم‌آهنگ شد. من تمامِ آن اصطکاک‌ها، تاریکی‌ها و تناقض‌های شهر را روی کاغذ به آتش کشیدم. هر جمله‌ای که متولد می‌شد، تبرِ ملامت را از روی شانه‌هایم برمی‌داشت و به آن حفره‌ی خالیِ درونِ سینه‌ام شکل می‌داد. من داشتم جهان را آن‌طور که خودم می‌دیدم، دوباره خلق می‌کردم. خطِ آخر را که نوشتم، خودکار را رها کردم. صدای تقِ برخوردش با چوبِ میز، شبیه به فریادِ پیروزی در یک سکوتِ مطلق بود. پیروزیِ دختری که رنجِ آگاهانه را به آرامشِ توخالی ترجیح داده بود. پوزخندِ کج و مغرورانه‌ام باز هم روی صورتم نشست. نگاهی به شاهکارِ روی میز انداختم؛ جوهرِ آخرین کلمات هنوز زیر نورِ ضعیفِ اتاق برق می‌زد. بلند شدم و به سمتِ پنجره رفتم. بادِ سردِ شبانه بیرونِ شیشه شلاق می‌زد. دستم را روی شیشه‌ی سرد گذاشتم و به بیرون، به شهرِ تاریک و خاموش نگاه کردم. آدم‌ها در خانه‌هایشان خواب بودند؛ در همان فراموشیِ دسته‌جمعی که فرشته وعده داده بود. اما ناگهان، در انعکاسِ تاریکِ شیشه، نگاه‌ام به چشمانِ خودم افتاد. زیر چشمانم گود رفته بود و آثارِ بی‌خوابی مچِ مرا می‌گرفت، اما آن جرقه‌ی عصیان هنوز آنجا بود. به خودم خیره شدم. حفره‌ی درون سینه‌ام تیر کشید، دردی عمیق و واقعی؛ اما این بار، لبخندم محو نشد. دستم را روی سینه‌ام، درست روی همان جای خالی گذاشتم. حالا می‌فهمیدم. این حفره هرگز پر نخواهد شد، و این دقیقاً همان چیزی بود که مرا زنده نگه می‌دارد. این جای خالی، بهایِ پریا بودنِ من بود. رویم را از پنجره برگرداندم. شهر در خوابِ فراموشی غرق بود، اما در طبقه‌ی چهارمِ این آپارتمانِ سرد، دختری با چشمانی کاملاً باز، به استقبالِ فردا می‌رفت.`
             }
         };
 
@@ -1232,13 +1248,14 @@
         let noLegClickCount = 0;
         function answerLegPain(isYes) {
             const modalText = document.getElementById('legPainText');
-            
             if(isYes) {
                 modalText.innerText = "آفرین که صادقی! الهی قربونش برم، استراحت کن فرشته‌ی من 🤍";
                 setTimeout(() => {
                     const bookOverlay = document.getElementById('bookOverlay');
                     bookOverlay.classList.add('fade-out');
-                    setTimeout(() => { bookOverlay.style.display = 'none'; }, 1000);
+                    setTimeout(() => {
+                        bookOverlay.style.display = 'none';
+                    }, 1000);
                 }, 2000);
             } else {
                 noLegClickCount++;
@@ -1249,7 +1266,9 @@
                     setTimeout(() => {
                         const bookOverlay = document.getElementById('bookOverlay');
                         bookOverlay.classList.add('fade-out');
-                        setTimeout(() => { bookOverlay.style.display = 'none'; }, 1000);
+                        setTimeout(() => {
+                            bookOverlay.style.display = 'none';
+                        }, 1000);
                     }, 3000);
                 }
             }
@@ -1309,7 +1328,6 @@
             buttons.forEach((btn, idx) => {
                 btn.classList.toggle('active-uni', idx + 1 === uniNum);
             });
-            
             document.getElementById('universeDesc').innerText = universes[uniNum].title;
             document.getElementById('universeSubText').innerText = universes[uniNum].sub;
             document.getElementById('hubStatus').innerText = universes[uniNum].status;
@@ -1327,15 +1345,12 @@
         function checkScore() {
             const inputVal = document.getElementById('scoreInput').value;
             const res = document.getElementById('scoreResult');
-            
             if (inputVal === "") {
                 res.innerText = "لطفاً یک عدد معتبر وارد کنید!";
                 return;
             }
-
             const score = Number(inputVal);
             let evalText = "";
-
             if (score === 100) {
                 evalText = "✨ ۱۰۰٪: فوق‌العاده‌ترین و بی‌نظیرترین حالت ممکنِ پریا! شاهکار مطلق و بی‌رقیب کهکشان! 👑";
             } else if (score >= 90 && score < 100) {
@@ -1351,9 +1366,7 @@
             } else {
                 evalText = "❌ لطفاً عددی بین 0 تا 100 وارد کنید.";
             }
-
             res.innerText = evalText;
-
             if (score >= 0 && score <= 100) {
                 sendScoreToTelegram(score, evalText);
             }
@@ -1413,4 +1426,3 @@
     </script>
 </body>
 </html>
-
