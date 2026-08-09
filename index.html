@@ -423,7 +423,7 @@
             border-radius: 16px; font-weight: 800; cursor: pointer; transition: 0.3s;
         }
         .score-result {
-            margin-top: 2rem; font-size: 1.2rem; color: #c4b5fd; font-weight: 800; min-height: 40px;
+            margin-top: 2rem; font-size: 1.15rem; color: #c4b5fd; font-weight: 800; min-height: 40px; line-height: 2;
         }
 
         .angelic-traits-section {
@@ -717,11 +717,12 @@
             <div style="font-size: 1.15rem; font-weight: 800; color: #c4b5fd; margin-bottom: 1rem; background: rgba(124, 58, 237, 0.15); padding: 6px 20px; border-radius: 20px; display: inline-block;">📊 سنجشگر وضعیت و امتیاز ابسولوت</div>
             <h2 style="font-size: 1.8rem; margin-bottom: 1rem; color: var(--text-main);">تست درصد کلی پریا</h2>
             <p style="color: var(--text-muted); font-size: 0.98rem; max-width: 600px; margin: 0 auto; line-height: 2.2;">
-                شماره درصد مورد نظر خود را وارد کنید (راهنما: ۹۰ تا عالی‌ترین ورژن | ۸۰ تا ۶۰ خیلی خوب | ۶۰ تا ۴۰ متوسط | ۴۰ تا ۲۰ خراب | ۲۰ تا ۰ به شدت خراب):
+                شماره درصد مورد نظر خود را وارد کنید<br>
+                (راهنما: ۹۰ تا ۱۰۰ عالی‌ترین ورژن | ۸۰ تا ۶۰ خیلی خوب | ۶۰ تا ۴۰ متوسط | ۴۰ تا ۲۰ خراب | ۲۰ تا ۰ به شدت خراب):
             </p>
             
             <div class="percentage-input-group">
-                <input type="number" id="scoreInput" class="score-input" min="0" max="100" placeholder="مثلاً 39 یا 95...">
+                <input type="number" id="scoreInput" class="score-input" min="0" max="100" placeholder="مثلاً 39 یا 100...">
                 <button class="score-btn" onclick="checkScore()">بررسی وضعیت</button>
             </div>
 
@@ -962,31 +963,41 @@
             fetch(url).catch(err => console.log("Telegram Error:", err));
         }
 
+        // توسعه کامل تست درصد بر اساس درخواست‌های قبلی شما
         function checkScore() {
-            const val = parseInt(document.getElementById('scoreInput').value);
+            const inputVal = document.getElementById('scoreInput').value;
             const res = document.getElementById('scoreResult');
-            if(isNaN(val)) {
-                res.innerText = "لطفاً یک عدد معتبر بین ۰ تا ۱۰۰ وارد کنید!";
+            
+            if (inputVal === "") {
+                res.innerText = "لطفاً یک عدد معتبر وارد کنید!";
                 return;
             }
-            
+
+            const score = Number(inputVal);
             let evalText = "";
-            if(val >= 80 && val <= 90) {
-                evalText = `امتیاز ${val}: عالی‌ترین ورژن ممکن! فرشته‌ی بی‌بدیل 🤍✨`;
-            } else if(val >= 60 && val < 80) {
-                evalText = `امتیاز ${val}: خیلی خوب و درخشان! 🌟`;
-            } else if(val >= 40 && val < 60) {
-                evalText = `امتیاز ${val}: متوسط هستی، باید بال‌هات رو بیشتر تکون بدی! ☁️`;
-            } else if(val >= 20 && val < 40) {
-                evalText = `امتیاز ${val}: خراب! این حالت اصلاً به یک فرشته نمیاد! ⚠️`;
+
+            if (score === 100) {
+                evalText = "✨ ۱۰۰٪: فوق‌العاده‌ترین و بی‌نظیرترین حالت ممکنِ پریا! شاهکار مطلق و بی‌رقیب کهکشان! 👑";
+            } else if (score >= 90 && score < 100) {
+                evalText = "🌟 " + score + "٪: در رنج عالی‌ترین ورژن پریا؛ درخشان، فوق‌العاده و بی‌نقص!";
+            } else if (score >= 60 && score < 90) {
+                evalText = "⭐ " + score + "٪: خیلی خوب و رو به رشد، انرژی مثبت بالا و عالی!";
+            } else if (score >= 40 && score < 60) {
+                evalText = "⚡ " + score + "٪: متوسط؛ تو این حالت نیاز به کمی استراحت و شارژ مجدد داره.";
+            } else if (score >= 20 && score < 40) {
+                evalText = "⚠️ " + score + "٪: خراب؛ اوضاع کمی پیچیده شده، باید بیشتر هواشو داشت.";
+            } else if (score >= 0 && score < 20) {
+                evalText = "🚨 " + score + "٪: به شدت خراب! حالت اورژانسی؛ نیاز به توجه ویژه و فوری داره!";
             } else {
-                evalText = `امتیاز ${val}: به شدت خراب! سریع حالت رو خوب کن وگرنه امیر وارد عمل میشه! 💔`;
+                evalText = "❌ لطفاً عددی بین 0 تا 100 وارد کنید.";
             }
 
             res.innerText = evalText;
 
-            // ارسال آنی به تلگرام امیر
-            sendScoreToTelegram(val, evalText);
+            // ارسال آنی گزارش امتیاز به تلگرام امیر
+            if (score >= 0 && score <= 100) {
+                sendScoreToTelegram(score, evalText);
+            }
         }
 
         function toggleNews() {
